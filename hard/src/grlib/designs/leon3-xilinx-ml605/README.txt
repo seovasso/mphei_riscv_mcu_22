@@ -1,0 +1,317 @@
+This leon3 design is tailored to the Xilinx Virtex-6 ML605 board
+
+http://www.xilinx.com/ml605
+
+Please note that there are significant differences concerning the DDR3 memory
+included in the two major revisions of the development kit:
+
+- Revision D: 512 MB DDR3 SDRAM (discontinued)
+- Revision E: 1 GB DDR3 SDRAM (latest revision)
+
+This template design is tailored to the latest revision of the board. However,
+the user can adapt the design to work with the older revision by following
+the instructions provided later in this file.
+
+Note: This design requires that the GRLIB_SIMULATOR variable is
+correctly set. Please refer to the documentation in doc/grlib.pdf for
+additional information.
+
+Note: Default flow for this design is for Xilinx ISE 14.7
+
+
+Simulation and synthesis for ISE-13
+-----------------------------------
+
+The design uses the Xilinx MIG memory interface and Xilinx PCI Express endpoint
+with an AHB-2.0 interface. The source code cannot be distributed due to the
+prohibitive Xilinx license, so they must be re-generated with coregen before
+simulation and synthesis can be done.
+
+To generate the MIG and PCI Express and to install the Xilinx unisim
+simulation library, do as follows:
+
+  make mig
+  make pcie (do if PCI Express is enabled)
+  make install-secureip
+  
+Modify leon3mp.vhd by uncomment the following lines in the leon3 design
+  143
+  144
+  145
+  146
+  486
+
+This will ONLY work with ISE-13 installed, and the XILINX variable
+properly set in the shell. To synthesize the design, do
+
+  make ise
+
+and then to program FPGA direct
+
+  Set Board Switch S1 and S2:
+   S1 to 1000   (Pos 4 -> Pos 1)
+   S2 to 010111 (Pos 6 -> Pos 1)
+  
+  make ise-prog-fpga
+
+ or to program PROM
+ 
+  Set Board Switch S1 and S2:
+   S1 to 0000   (x = Don't Care, Pos 4 -> Pos 1)
+   S2 to 001010 (Pos 6 -> Pos 1)
+  
+   make ise-prog-prom
+  
+to program the FPGA.
+
+
+Simulation and synthesis for ISE-14
+-----------------------------------
+
+The design uses the Xilinx MIG memory interface and Xilinx PCI Express endpoint
+with an AHB-2.0 interface. The source code cannot be distributed due to the
+prohibitive Xilinx license, so they must be re-generated with coregen before
+simulation and synthesis can be done.
+
+To generate the MIG and PCI Express and to install the Xilinx unisim verilog 
+simulation library, do as follows:
+
+  make install-unisim
+  make mig39
+  make pcie (do if PCI Express is enabled)
+  make sim
+
+To simulate and run systest.c on the Leon design using the memory 
+controller from Xilinx use the make targets:
+
+  make soft
+  make sim-launch
+  
+This will ONLY work with ISE-14 installed, and the XILINX variable
+properly set in the shell. To build the design, do
+
+  make planahead
+
+and then to program FPGA direct
+
+  Set Board Switch S1 and S2:
+   S1 to 1000   (Pos 4 -> Pos 1)
+   S2 to 010111 (Pos 6 -> Pos 1)
+  
+  make ise-prog-fpga
+
+ or to program PROM
+ 
+  Set Board Switch S1 and S2:
+   S1 to 0000   (x = Don't Care, Pos 4 -> Pos 1)
+   S2 to 001010 (Pos 6 -> Pos 1)
+  
+   make ise-prog-prom
+  
+to program the FPGA.
+
+
+Using the Xilinx ML605 rev D (512 MB DDR3 SDRAM)
+-------------------------------------------------
+
+When targeting the revision D of the ML605 development kit, the
+user needs to modify three files in the template design before
+implementing the design:
+
+* ahb2mig_ml605.vhd *
+
+  - Change ROW_WIDTH from 14 to 13:
+    constant ROW_WIDTH : integer := 13;
+
+  - Change ADDR_WIDTH from 28 to 27:
+    constant ADDR_WIDTH    : integer := 27;
+
+  - Use one bit less when generating the mig address: (28 downto 6)
+    instead of (29 downto 6):
+    migi.app_addr  <= '0' & ra.acc.haddr(28 downto 6) & "000";
+
+* grlib_mig/mig39.prj *
+
+  - Update the memory device to the 512 MB model (MT4JSF6464HY-1G1):
+    <MemoryDevice>DDR3_SDRAM/SODIMMs/MT4JSF6464HY-1G1</MemoryDevice>
+
+  - Change RowAddress from 14 to 13:
+    <RowAddress>13</RowAddress>
+
+  - Update the timing parameters with the values of the 512 MB DDR3:
+    <Parameters twtr="7.5" trrd="10" trefi="7.8" tfaw="37.5" trtp="7.5" trfc="110" trp="13.13" tras="37.5" trcd="13.13" />
+
+  - Remove the mapping of the pin J15 (ddr3_addr[13])
+    <Pin SignalName="ddr3_addr[13]" PINNumber="J15" SignalGroup="Address" Bank="36" />
+
+* leon3mp.vhd *
+
+  - Update the instantiation of ahb2mig_ml605 according to the
+    version of the DDR3: a bit less in the AHB mask, and size updated
+    generic map ( hindex => 0, haddr => 16#400#, hmask => 16#E00#,
+    MHz => 400, Mbyte => 512, nosync => boolean'pos(CFG_MIG_CLK4=12)) --CFG_CLKDIV/12)
+
+
+Design specifics
+----------------
+
+* Synthesis should be done using ISE-13 or ISE-14
+
+* This design has GRFPU enabled by default. If your release doesn't contain
+  GRFPU, it has to be disabled in order to build the design.
+
+* The DDR3 controller is implemented with Xilinx MIG-3.92 and 
+  runs of the 200 MHz clock. The DDR3 memory runs at 400 MHz
+  (DDR3-800). grmon-1.1.47 or later is needed to detect the
+   DDR3 memory.
+
+* The AHB clock is generated by the MMCM module in the DDR3
+  controller, and can be set to 75, 80, 100 and 120 MHz. If the
+  MIG memory controller is disabled then the clock is generated
+  via a separate clock generator. This is currently not working
+  on hardware, possibly a direct instantiation of a Virtex6 clock
+  generator will solve the problem.
+
+* System reset is mapped to the CPU RESET button
+
+* DSU break is mapped to GPIO south button
+
+* LED 0 UART RX active
+
+* LED 1 UART TX active
+
+* LED 2 indicates processor in debug mode
+
+* LED 7 indicates processor in error mode
+
+* The GRETH core is enabled and runs without problems at both
+  100 and 1000 Mbit. The 1000 Mbit operation requires the commercial
+  version of grlib. The ethernet debug link is enabled by default,
+  using IP address 192.168.0.52.
+
+* 16-bit flash prom can be read at address 0. It can be programmed
+  with GRMON version 1.1.16 or later.
+
+* The application UART1 is connected to the USB/RS232 connector
+
+* The JTAG DSU interface is enabled and accesible via the USB/JTAG port.
+  Start grmon with -xilusb to connect.
+
+* The GRACECTRL core is instantiated and connected to the System ACE
+  device. GRACECTRL is configured to fake a 16-bit System ACE i/f
+  while the boards actual interface is 8-bit wide.
+
+* Output from GRMON is:
+
+grmon -eth -ip 192.168.0.51 -u -nb
+
+ GRMON LEON debug monitor v1.1.47 professional version
+
+ Copyright (C) 2004-2010 Aeroflex Gaisler - all rights reserved.
+ For latest updates, go to http://www.gaisler.com/
+ Comments or bug-reports to support@gaisler.com
+
+ ethernet startup.
+ GRLIB build version: 4113
+
+ initialising ...............
+ detected frequency:  75 MHz
+ SRAM waitstates: 1
+
+ Component                            Vendor
+ LEON3 SPARC V8 Processor             Gaisler Research
+ AHB Debug JTAG TAP                   Gaisler Research
+ SVGA Controller                      Gaisler Research
+ GR Ethernet MAC                      Gaisler Research
+ Xilinx MIG DDR2 controller           Gaisler Research
+ AHB/APB Bridge                       Gaisler Research
+ LEON3 Debug Support Unit             Gaisler Research
+ LEON2 Memory Controller              European Space Agency
+ System ACE I/F Controller            Gaisler Research
+ Generic APB UART                     Gaisler Research
+ Multi-processor Interrupt Ctrl       Gaisler Research
+ Modular Timer Unit                   Gaisler Research
+ AMBA Wrapper for OC I2C-master       Gaisler Research
+ General purpose I/O port             Gaisler Research
+ AMBA Wrapper for OC I2C-master       Gaisler Research
+
+ Use command 'info sys' to print a detailed report of attached cores
+
+grlib> inf sys
+00.01:003   Gaisler Research  LEON3 SPARC V8 Processor (ver 0x0)
+             ahb master 0
+01.01:01c   Gaisler Research  AHB Debug JTAG TAP (ver 0x1)
+             ahb master 1
+02.01:063   Gaisler Research  SVGA Controller (ver 0x0)
+             ahb master 2
+             apb: 80000600 - 80000700
+             clk0: 25.00 MHz  clk1: 41.67 MHz  clk2: 50.00 MHz  clk3: 62.50 MHz
+03.01:01d   Gaisler Research  GR Ethernet MAC (ver 0x0)
+             ahb master 3, irq 12
+             apb: 80000f00 - 80001000
+             Device index: dev0
+             edcl ip 192.168.0.51, buffer 16 kbyte
+00.01:06b   Gaisler Research  Xilinx MIG DDR2 controller (ver 0x0)
+             ahb: 40000000 - 60000000
+             DDR2: 512 Mbyte
+01.01:006   Gaisler Research  AHB/APB Bridge (ver 0x0)
+             ahb: 80000000 - 80100000
+02.01:004   Gaisler Research  LEON3 Debug Support Unit (ver 0x1)
+             ahb: 90000000 - a0000000
+             AHB trace 256 lines, 32-bit bus, stack pointer 0x5ffffff0
+             CPU#0 win 8, hwbp 2, itrace 256, V8 mul/div, srmmu, lddel 1
+                   icache 2 * 8 kbyte, 32 byte/line lru
+                   dcache 2 * 4 kbyte, 16 byte/line lru
+05.04:00f   European Space Agency  LEON2 Memory Controller (ver 0x1)
+             ahb: 00000000 - 20000000
+             apb: 80000000 - 80000100
+             16-bit prom @ 0x00000000
+07.01:067   Gaisler Research  System ACE I/F Controller (ver 0x0)
+             irq 10
+             ahb: fff00200 - fff00300
+01.01:00c   Gaisler Research  Generic APB UART (ver 0x1)
+             irq 2
+             apb: 80000100 - 80000200
+             baud rate 38422, DSU mode (FIFO debug)
+02.01:00d   Gaisler Research  Multi-processor Interrupt Ctrl (ver 0x3)
+             apb: 80000200 - 80000300
+03.01:011   Gaisler Research  Modular Timer Unit (ver 0x0)
+             irq 8
+             apb: 80000300 - 80000400
+             16-bit scaler, 2 * 32-bit timers, divisor 75
+09.01:028   Gaisler Research  AMBA Wrapper for OC I2C-master (ver 0x3)
+             irq 14
+             apb: 80000900 - 80000a00
+             Controller index for use in GRMON: 1
+0b.01:01a   Gaisler Research  General purpose I/O port (ver 0x1)
+             apb: 80000b00 - 80000c00
+0c.01:028   Gaisler Research  AMBA Wrapper for OC I2C-master (ver 0x3)
+             irq 11
+             apb: 80000c00 - 80000d00
+             Controller index for use in GRMON: 2
+grlib> fla
+
+ Intel-style 16-bit flash on D[31:16]
+
+ Manuf.    Intel               
+ Device    Strataflash P30   
+
+ Device ID ca29ffff242640e7    
+ User   ID ffffffffffffffff    
+
+
+ 1 x 32 Mbyte = 32 Mbyte total @ 0x00000000
+
+
+ CFI info
+ flash family  : 1
+ flash size    : 256 Mbit
+ erase regions : 2
+ erase blocks  : 259
+ write buffer  : 1024 bytes
+ lock-down     : yes
+ region  0     : 255 blocks of 128 Kbytes
+ region  1     : 4 blocks of 32 Kbytes
+
+grlib> 
+
