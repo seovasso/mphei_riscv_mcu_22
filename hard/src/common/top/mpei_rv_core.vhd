@@ -19,7 +19,7 @@ use gaisler.spi.all;
 ---------------------------------------------------------
 
 library work;
-use work.core_const_pkg.all;		-- библиотека в которой будут хранится все параметры ( например кол-во мастеров и слейвов у AHBCTRL/APBCTRL )
+use work.core_const_pkg.all;		-- библиотека в которой будут храниться все параметры ( например кол-во мастеров и слейвов у AHBCTRL/APBCTRL )
 
 entity mpei_rv_core is
 generic (
@@ -115,11 +115,11 @@ generic map (
   rst         => , -- in  std_ulogic;
   clk         => , -- in  std_ulogic;
   
-  msti        => ahbmi, -- out ahb_mst_in_type;         -- массив AHB интерфейсов подключенных к мастерам (в нашем случае 1 мастер SCR1_WRP) 
-  msto        => ahbmo, -- in  ahb_mst_out_vector;		-- массив AHB интерфейсов подключенных к мастерам (в нашем случае 1 мастер SCR1_WRP) 
+  msti        => ahbmi, -- out ahb_mst_in_type;              -- массив AHB интерфейсов подключенных к мастерам (в нашем случае 1 мастер SCR1_WRP) 
+  msto        => ahbmo, -- in  ahb_mst_out_vector;		       -- массив AHB интерфейсов подключенных к мастерам (в нашем случае 1 мастер SCR1_WRP) 
   
-  slvi        => ahbsi, -- out ahb_slv_in_type;         -- массив AHB интерфейсов подключенных к слейвам  (в нашем случае 1 слейв APBCTRL) 
-  slvo        => ahbso, -- in  ahb_slv_out_vector;      -- массив AHB интерфейсов подключенных к слейвам  (в нашем случае 1 слейв APBCTRL)
+  slvi        => ahbsi, -- out ahb_slv_in_type;              -- массив AHB интерфейсов подключенных к слейвам  (в нашем случае 1 слейв APBCTRL) 
+  slvo        => ahbso, -- in  ahb_slv_out_vector;           -- массив AHB интерфейсов подключенных к слейвам  (в нашем случае 1 слейв APBCTRL)
   
   testen      => , -- in  std_ulogic := '0';
   testrst     => , -- in  std_ulogic := '1';
@@ -131,7 +131,6 @@ generic map (
 ------------------------------------------------------------------------------------
 --                                APBCTRL                                         --
 ------------------------------------------------------------------------------------
-
 -- исходник лежит здесь - mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/apbctrl.vhd 
 u_apbctrl : entity work.apbctrl
 generic map (
@@ -207,7 +206,28 @@ generic map (
 ------------------------------------------------------------------------------------
 --                                GRTIMER                                         --
 ------------------------------------------------------------------------------------
--- Подключить аналогично GPIO
+component grtimer is
+  generic (
+    pindex:           Integer := 0;
+    paddr:            Integer := 0;
+    pmask:            Integer := 16#fff#;
+    pirq:             Integer := 1;
+    sepirq:           Integer := 1;                 -- separate interrupts
+    sbits:            Integer := 10;                -- scaler bits
+    ntimers:          Integer range 1 to 7 := 2;    -- number of timers
+    nbits:            Integer := 32;                -- timer bits
+    wdog:             Integer := 0;
+    glatch:           Integer := 0;
+    gextclk:          Integer := 0;
+    gset:             Integer := 0);
+  port (
+    rst:        in    Std_ULogic;
+    clk:        in    Std_ULogic;
+    apbi:       in    apb_slv_in_type;
+    apbo:       out   apb_slv_out_type;
+    gpti:       in    gptimer_in_type;
+    gpto:       out   gptimer_out_type);
+end component;
 
 
 end mpei_rv_core_arc;

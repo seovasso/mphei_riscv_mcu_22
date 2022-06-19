@@ -1,6 +1,10 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library grlib;
+use grlib.stdlib.all;
+use grlib.amba.all;
+
 package core_const_pkg is
 
   ------------------------------------------------------------------------------------
