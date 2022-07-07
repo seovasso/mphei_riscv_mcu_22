@@ -14,14 +14,22 @@ set_property board_part xilinx.com:kc705:part0:1.6 [current_project]
 
 # add source
 create_fileset $COMMON_FILESET
-add_files -norecurse ../src/top.sv
+add_files -norecurse ../../../../../../grlib/lib/gaisler/spi/spictrl/src/vhdl2verilog.vhd
 
-# add simulation source
-create_fileset $SIM_FILESET
-add_files -norecurse ../src/tb.sv
 
-set_property top tb [get_filesets sim_1]
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/gaisler/spi/spi.vhd           -library gaisler
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/grlib/amba/amba.vhd       -library grlib
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/grlib/stdlib/config.vhd
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/grlib/stdlib/config_types.vhd         -library gaisler
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/grlib/amba/devices.vhd       -library grlib
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/gaisler/spi/spictrl.vhd            -library gaisler
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/gaisler/spi/spictrlx.vhd           -library gaisler
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/grlib/stdlib/stdlib.vhd         -library grlib
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/grlib/stdlib/version.vhd                 -library gaisler
 
-# launch simulation
-launch_simulation
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/techmap/gencomp/gencomp.vhd       -library techmap
+read_vhdl -vhdl2008 ../../../../../../grlib/lib/techmap/gencomp/netcomp.vhd       -library techmap
+
+
+
 start_gui
