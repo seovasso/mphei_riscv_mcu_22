@@ -2,6 +2,10 @@
 library grlib;
 use grlib.stdlib.all;
 use grlib.amba.all;
+--use grlib.device.all;
+
+library work;
+use work.core_const_pkg.all;
 
 entity scr1_wrp is
   port (
@@ -118,42 +122,43 @@ begin
   
   -- HRESP_RETRY 10, HRESP_SPLIT 11 ???
   if msti_imem.hresp = HRESP_OKAY
-    then imem_hresp <= '0'; -- HRESP_OKAY  "00"
-    else imem_hresp <= '1'; -- HRESP_ERROR "01"
+    then imem_hresp <= '0';  -- HRESP_OKAY  "00"
+    else imem_hresp <= '1';  -- HRESP_ERROR "01"
   end if;
 
   if msti_dmem.hresp = HRESP_OKAY 
-    then dmem_hresp <= '0'; -- HRESP_OKAY  "00"
-    else dmem_hresp <= '1'; -- HRESP_ERROR "01"
+    then dmem_hresp <= '0';  -- HRESP_OKAY  "00"
+    else dmem_hresp <= '1';  -- HRESP_ERROR "01"
   end if;
   
   --hconfig ???
-  constant HCONFIG0 : ahb_config_type := (
+  constant IMEM_HCONFIG : ahb_config_type := (
     0 => ahb_device_reg ( 
-      vendor,             -- amba_vendor_type;  vendor
-      device,             -- amba_device_type;  device ID
-      0,                  -- amba_cfgver_type;  cfgver, non configurabile
-      version,            -- amba_version_type; version
-      interrupt),         -- amba_irq_type;     interrupt
-    4 => ahb_membar(
-      memaddr,            -- ahb_addr_type; addres
-      prefetch,           -- std_ulogic;    prefetchable
-      cache,              -- std_ulogic;    cacheable
-      addrmask),          -- ahb_addr_type; mask
+      VENDOR_SYNTACORE    ,   -- amba_vendor_type;  vendor
+      SYNTACORE_SCR1      ,   -- amba_device_type;  device ID
+      0                   ,   -- amba_cfgver_type;  cfgver, non configurabile
+      version             ,   -- amba_version_type; version
+      0                   ),  -- amba_irq_type;     interrupt
+    4 => ahb_iobar(
+      INDEX_APB_SPICTRL*16,   -- ahb_addr_type; addres
+      16#FFF#             ),  -- ahb_addr_type; mask
     5 => ahb_iobar(
-      memaddr,            -- ahb_addr_type; addres
-      addrmask),          -- ahb_addr_type; mask
-    6 => ,
-    7 => ,
-    others => X"00000000"
+      INDEX_APB_APBUART*16,   -- ahb_addr_type; addres
+      16#FFF#             ),  -- ahb_addr_type; mask
+    6 => ahb_iobar(
+      INDEX_APB_GPIO*16   ,   -- ahb_addr_type; addres
+      16#FFF#             ),  -- ahb_addr_type; mask
+    7 => ahb_iobar(
+      INDEX_APB_GRTIMER*16,   -- ahb_addr_type; addres
+      16#FFF#             ),  -- ahb_addr_type; mask
+    others => X"00000000");
+
+  constant DMEM_HCONFIG : ahb_config_type := (
+    --...???
   );
 
-  constant HCONFIG1 : ahb_config_type := (
-    --...
-  );
-
-  msto_imem.hconfig <= HCONFIG0;
-  msto_dmem.hconfig <= HCONFIG1;
+  msto_imem.hconfig <= IMEM_HCONFIG;
+  msto_dmem.hconfig <= DMEM_HCONFIG;
 
   u_scr1_top_ahb : scr1_top_ahb
   port map (
