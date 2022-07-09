@@ -285,7 +285,8 @@ package devices is
 
 -- Syntacore
 
-  constant SYNTACORE_SCR1 : amba_device_type := 16#0D1#;
+  constant SYNTACORE_SCR1_IMEM : amba_device_type := 16#0D1#;
+  constant SYNTACORE_SCR1_DMEM : amba_device_type := 16#0D2#;
 
 -- Sun Microsystems
 
@@ -721,7 +722,8 @@ package devices is
 
   constant SYNTACORE_DESC         : vendor_description  := "Syntacore, custom cores and tools";
   constant syntacore_device_table : device_table_type   := (
-    SYNTACORE_SCR1 => "RISC-V compatible MCU-class core",
+    SYNTACORE_SCR1_IMEM => "RISC-V compatible MCU-class core",
+    SYNTACORE_SCR1_DMEM => "RISC-V compatible MCU-class core",
     others         => "Unknown Device                  ");
   constant syntacore_lib          : vendor_library_type := (
     vendorid       => VENDOR_SYNTACORE,

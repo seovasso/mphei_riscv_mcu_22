@@ -131,31 +131,25 @@ begin
     else dmem_hresp <= '1';  -- HRESP_ERROR "01"
   end if;
   
-  --hconfig ???
-  constant IMEM_HCONFIG : ahb_config_type := (
+  constant VERSION      : amba_version_type := 16#01#; -- random version
+
+  constant IMEM_HCONFIG : ahb_config_type   := (
     0 => ahb_device_reg ( 
       VENDOR_SYNTACORE    ,   -- amba_vendor_type;  vendor
-      SYNTACORE_SCR1      ,   -- amba_device_type;  device ID
+      SYNTACORE_SCR1_IMEM ,   -- amba_device_type;  device ID
       0                   ,   -- amba_cfgver_type;  cfgver, non configurabile
-      version             ,   -- amba_version_type; version
+      VERSION             ,   -- amba_version_type; version
       0                   ),  -- amba_irq_type;     interrupt
-    4 => ahb_iobar(
-      INDEX_APB_SPICTRL*16,   -- ahb_addr_type; addres
-      16#FFF#             ),  -- ahb_addr_type; mask
-    5 => ahb_iobar(
-      INDEX_APB_APBUART*16,   -- ahb_addr_type; addres
-      16#FFF#             ),  -- ahb_addr_type; mask
-    6 => ahb_iobar(
-      INDEX_APB_GPIO*16   ,   -- ahb_addr_type; addres
-      16#FFF#             ),  -- ahb_addr_type; mask
-    7 => ahb_iobar(
-      INDEX_APB_GRTIMER*16,   -- ahb_addr_type; addres
-      16#FFF#             ),  -- ahb_addr_type; mask
     others => X"00000000");
 
   constant DMEM_HCONFIG : ahb_config_type := (
-    --...???
-  );
+    0 => ahb_device_reg ( 
+      VENDOR_SYNTACORE    ,   -- amba_vendor_type;  vendor
+      SYNTACORE_SCR1_DMEM ,   -- amba_device_type;  device ID
+      0                   ,   -- amba_cfgver_type;  cfgver, non configurabile
+      VERSION             ,   -- amba_version_type; version
+      0                   ),  -- amba_irq_type;     interrupt
+    others => X"00000000");
 
   msto_imem.hconfig <= IMEM_HCONFIG;
   msto_dmem.hconfig <= DMEM_HCONFIG;

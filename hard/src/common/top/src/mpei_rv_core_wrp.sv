@@ -1,11 +1,10 @@
-`include "mpei_rv_core.vhd" 
 
 module 
   (
   parameter slvselsz = 1;  // for spictrl
   parameter NAHBIRQ  = 32; // for gptimer
   )
-  mpei_rv_top (
+  mpei_rv_core_wrp (
   input  logic                 clk_i      ,
   input  logic                 rstn_i     ,
 
