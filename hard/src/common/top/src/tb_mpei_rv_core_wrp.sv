@@ -142,6 +142,7 @@ mpei_rv_core_wrp #(
 
 logic ok = 1;
 
+initial clk_i = 1'b0;
 always  #(`CLK_PERIOD/2)    clk_i  = !clk_i;
 initial #(`RESET_GOES_HIGH) rstn_i = 1'b1;
 

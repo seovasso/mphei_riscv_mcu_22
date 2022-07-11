@@ -1,0 +1,9 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/jtag/jtag.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,jtag,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/misc/misc.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/misc/gptimer.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/misc/grgpio.vhd,,,misc,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/net/net.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,net,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spi.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrl.vhd,,,spi,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/uart/uart.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/uart/apbuart.vhd,,,uart,,,,,,,,

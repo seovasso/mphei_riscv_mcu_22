@@ -1,0 +1,15 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/core_const_pkg.vhd,1657395957,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_wrp.vhd,,,core_const_pkg,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,1657572611,vhdl2008,,,,mpei_rv_core,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_wrp.vhd,1657538996,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,scr1_wrp,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/misc/gptimer.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,gptimer,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/misc/grgpio.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,grgpio,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrl.vhd,1657107452,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,spictrl,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrlx.vhd,1655298618,vhdl2008,,,,spictrlx,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/uart/apbuart.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,apbuart,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/ahbctrl.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,ahbctrl,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/apbctrl.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core.vhd,,,apbctrl,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/apbctrlx.vhd,1655298618,vhdl2008,,,,apbctrlx,,,,,,,,

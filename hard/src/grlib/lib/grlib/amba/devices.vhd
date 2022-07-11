@@ -720,7 +720,7 @@ package devices is
     device_table => gaisler_device_table
     );
 
-  constant SYNTACORE_DESC         : vendor_description  := "Syntacore, custom cores and tools";
+  constant SYNTACORE_DESC         : vendor_description  := "Syntacore, cores & tools";
   constant syntacore_device_table : device_table_type   := (
     SYNTACORE_SCR1_IMEM => "RISC-V compatible MCU-class core",
     SYNTACORE_SCR1_DMEM => "RISC-V compatible MCU-class core",

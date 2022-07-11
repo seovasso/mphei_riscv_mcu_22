@@ -1,0 +1,6 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/techmap/gencomp/gencomp.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/jtag/jtag.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/misc/misc.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/net/net.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrl.vhd;C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/techmap/gencomp/netcomp.vhd,,,gencomp,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/techmap/gencomp/netcomp.vhd,1655298618,vhdl2008,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrl.vhd,,,netcomp,,,,,,,,

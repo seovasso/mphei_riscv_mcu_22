@@ -6,7 +6,7 @@
 <Project Version="7" Minor="49" Path="C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/work/def_prj/def_prj.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="fc2f0cc0876741f4bc6b8b08c605bd7f"/>
+    <Option Name="Id" Val="6ec0ec00fbe945b28077fa1758bcf575"/>
     <Option Name="Part" Val="xc7k325tffg900-2"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -38,7 +38,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="kc705"/>
-    <Option Name="WTXSimLaunchSim" Val="1"/>
+    <Option Name="WTXSimLaunchSim" Val="3"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -67,26 +67,23 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PPRDIR/../../src/mpei_rv_core_wrp.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/stdio.vhd">
+        <FileInfo>
+          <Attr Name="Library" Val="grlib"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/version.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/config_types.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/config.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -94,31 +91,27 @@
       <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/stdlib.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/stdio.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/testlib.vhd">
-        <FileInfo SFType="VHDL2008">
+        <FileInfo>
           <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/grlib/util/util.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/config_types.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/grlib/stdlib/config.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="grlib"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -126,7 +119,6 @@
       <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/amba.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -134,71 +126,27 @@
       <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/devices.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/grlib/modgen/multlib.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/ahbctrl.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="grlib"/>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="Library" Val="work"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/techmap/gencomp/gencomp.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/apbctrl.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="techmap"/>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="Library" Val="work"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/techmap/gencomp/netcomp.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/apbctrlx.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="techmap"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/techmap/maps/techbuf.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="techmap"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/techmap/maps/grgates.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="techmap"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/techmap/maps/tap.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="techmap"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/axi/axi.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="gaisler"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/misc/misc.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="gaisler"/>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="Library" Val="work"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -206,15 +154,27 @@
       <File Path="$PPRDIR/../../../../grlib/lib/gaisler/uart/uart.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="gaisler"/>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/uart/libdcom.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/uart/apbuart.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="gaisler"/>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="Library" Val="work"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/core_const_pkg.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="work"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/techmap/gencomp/gencomp.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="techmap"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -222,8 +182,84 @@
       <File Path="$PPRDIR/../../../../grlib/lib/gaisler/net/net.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="gaisler"/>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/misc/misc.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="gaisler"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/misc/gptimer.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="work"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/misc/grgpio.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="work"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/jtag/jtag.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="gaisler"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/spi/spi.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="gaisler"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/scr1_wrp.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="work"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/techmap/gencomp/netcomp.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="techmap"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/spi/spictrl.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="work"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/mpei_rv_core.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="work"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/spi/spictrlx.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="Library" Val="work"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/tb_mpei_rv_core_wrp.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
@@ -243,7 +279,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/jtag/jtag.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/i2c/i2c.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -251,7 +287,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/jtag/libjtagcom.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/i2c/i2cmst.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -259,7 +295,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/jtag/jtagtst.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/i2c/i2cslv.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -267,7 +303,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/jtag/jtagcom2.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/arith/arith.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -275,7 +311,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/spi/spi.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/srmmu/mmuconfig.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -283,107 +319,59 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/ahbctrl.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/srmmu/mmuiface.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/apbctrl.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/srmmu/libmmu.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/apbctrlx.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/memctrl/memctrl.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/spi/spictrl.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/uart/libdcom.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/spi/spictrlx.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/grdmac/grdmac_pkg.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/uart/apbuart.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/grlib/util/util.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="grlib"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/misc/grgpio.vhd">
+      <File Path="$PPRDIR/../../../../grlib/lib/grlib/modgen/multlib.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="grlib"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../../grlib/lib/gaisler/misc/gptimer.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/mpei_rv_core_wrp.sv">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/core_const_pkg.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/scr1_wrp.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/mpei_rv_core.vhd">
-        <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/tb_mpei_rv_core_wrp.sv">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
@@ -397,6 +385,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
+        <Option Name="TopModule" Val="tb_mpei_rv_core_wrp"/>
         <Option Name="TopAutoSet" Val="TRUE"/>
       </Config>
     </FileSet>
@@ -409,7 +398,7 @@
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="spictr"/>
+        <Option Name="TopModule" Val="tb_mpei_rv_core_wrp"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
         <Option Name="SelectedSimModel" Val="rtl"/>

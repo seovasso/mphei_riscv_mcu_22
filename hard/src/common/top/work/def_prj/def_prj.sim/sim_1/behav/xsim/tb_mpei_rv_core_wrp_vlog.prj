@@ -4,7 +4,7 @@ sv xil_defaultlib  \
 "../../../../../../src/tb_mpei_rv_core_wrp.sv" \
 
 # compile glbl module
-verilog grlib "glbl.v"
+verilog xil_defaultlib "glbl.v"
 
 # Do not sort compile order
 nosort

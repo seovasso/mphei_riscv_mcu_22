@@ -1,13 +1,19 @@
 # compile vhdl design source files
+vhdl grlib  \
+"../../../../../../../../grlib/lib/grlib/stdlib/stdio.vhd" \
+
 vhdl2008 grlib  \
 "../../../../../../../../grlib/lib/grlib/stdlib/version.vhd" \
 "../../../../../../../../grlib/lib/grlib/stdlib/stdlib.vhd" \
+
+vhdl grlib  \
+"../../../../../../../../grlib/lib/grlib/stdlib/testlib.vhd" \
+
+vhdl2008 grlib  \
 "../../../../../../../../grlib/lib/grlib/stdlib/config_types.vhd" \
 "../../../../../../../../grlib/lib/grlib/stdlib/config.vhd" \
 "../../../../../../../../grlib/lib/grlib/amba/amba.vhd" \
 "../../../../../../../../grlib/lib/grlib/amba/devices.vhd" \
-"../../../../../../../../grlib/lib/grlib/stdlib/stdio.vhd" \
-"../../../../../../../../grlib/lib/grlib/stdlib/testlib.vhd" \
 
 vhdl2008 work  \
 "../../../../../../../../grlib/lib/grlib/amba/ahbctrl.vhd" \
@@ -26,41 +32,26 @@ vhdl2008 techmap  \
 
 vhdl2008 gaisler  \
 "../../../../../../../../grlib/lib/gaisler/net/net.vhd" \
-"../../../../../../../../grlib/lib/gaisler/greth/ethernet_mac.vhd" \
 "../../../../../../../../grlib/lib/gaisler/misc/misc.vhd" \
 
 vhdl2008 work  \
 "../../../../../../../../grlib/lib/gaisler/misc/gptimer.vhd" \
-
-vhdl2008 gaisler  \
-"../../../../../../../../grlib/lib/gaisler/greth/greth.vhd" \
-
-vhdl2008 techmap  \
-"../../../../../../../../grlib/lib/techmap/maps/grgates.vhd" \
-
-vhdl2008 work  \
 "../../../../../../../../grlib/lib/gaisler/misc/grgpio.vhd" \
 
 vhdl2008 gaisler  \
 "../../../../../../../../grlib/lib/gaisler/jtag/jtag.vhd" \
-"../../../../../../../../grlib/lib/gaisler/jtag/libjtagcom.vhd" \
-"../../../../../../../../grlib/lib/gaisler/jtag/jtagcom2.vhd" \
 "../../../../../../../../grlib/lib/gaisler/spi/spi.vhd" \
 
 vhdl2008 work  \
 "../../../../../../src/scr1_wrp.vhd" \
-"../../../../../../src/mpei_rv_core.vhd" \
 
 vhdl2008 techmap  \
 "../../../../../../../../grlib/lib/techmap/gencomp/netcomp.vhd" \
 
 vhdl2008 work  \
 "../../../../../../../../grlib/lib/gaisler/spi/spictrl.vhd" \
+"../../../../../../src/mpei_rv_core.vhd" \
 "../../../../../../../../grlib/lib/gaisler/spi/spictrlx.vhd" \
-
-vhdl2008 techmap  \
-"../../../../../../../../grlib/lib/techmap/maps/tap.vhd" \
-"../../../../../../../../grlib/lib/techmap/maps/techbuf.vhd" \
 
 vhdl2008 grlib  \
 "../../../../../../../../grlib/lib/grlib/util/util.vhd" \

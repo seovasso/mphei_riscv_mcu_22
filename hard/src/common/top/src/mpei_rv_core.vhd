@@ -279,7 +279,7 @@ spi_io2oen_o     <=  spio.io2oen   ;
 spi_io3_o        <=  spio.io3      ;
 spi_io3oen_o     <=  spio.io3oen   ;
 
-u_spictrl : entity gaisler.spictrl
+u_spictrl : entity work.spictrl
 generic map(
   pindex    => INDEX_APB_SPICTRL       , -- integer               := 0;       slave bus index
   paddr     => INDEX_APB_SPICTRL*16    , -- integer               := 0;       APB address
@@ -333,7 +333,7 @@ uart_rxen     <=  uarto.rxen    ;
 uart_txtick   <=  uarto.txtick  ;
 uart_rxtick   <=  uarto.rxtick  ;
 
-u_apbuart : entity gaisler.apbuart
+u_apbuart : entity work.apbuart
 generic map (
   pindex   => INDEX_APB_APBUART       , -- integer                := 0; 
   paddr    => INDEX_APB_APBUART*16    , -- integer                := 0;
@@ -366,7 +366,7 @@ gpio_oen      <=  gpioo.oen      ;
 gpio_val      <=  gpioo.val      ;
 gpio_sig_out  <=  gpioo.sig_out  ;
 
-u_grgpio : entity gaisler.grgpio
+u_grgpio : entity work.grgpio
 generic map (
   pindex   => INDEX_APB_GPIO       , -- integer              := 0;
   paddr    => INDEX_APB_GPIO*16    , -- integer              := 0;
@@ -411,7 +411,7 @@ timr_timer1  <=  gpto.timer1  ;
 timr_wdogn   <=  gpto.wdogn   ;    
 timr_wdog    <=  gpto.wdog    ;    
 
-u_grtimer : entity gaisler.gptimer
+u_grtimer : entity work.gptimer
 generic map(
   pindex    => INDEX_APB_GRTIMER       , -- Integer              := 0;
   paddr     => INDEX_APB_GRTIMER*16    , -- Integer              := 0;
