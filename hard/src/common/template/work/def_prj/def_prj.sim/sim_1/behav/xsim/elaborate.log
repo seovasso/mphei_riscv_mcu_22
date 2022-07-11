@@ -1,0 +1,26 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto df6b5c40226b4bb7a85170605f7b8974 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_behav xil_defaultlib.tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3529] modport 'mst_tb' should not be used in hierarchical reference [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv:21]
+WARNING: [VRFC 10-3529] modport 'mst_tb' should not be used in hierarchical reference [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv:22]
+WARNING: [VRFC 10-3529] modport 'mst_tb' should not be used in hierarchical reference [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv:23]
+WARNING: [VRFC 10-3529] modport 'mst_tb' should not be used in hierarchical reference [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv:37]
+WARNING: [VRFC 10-3529] modport 'mst_tb' should not be used in hierarchical reference [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv:45]
+WARNING: [VRFC 10-3529] modport 'mst_tb' should not be used in hierarchical reference [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv:46]
+WARNING: [VRFC 10-3529] modport 'mst_tb' should not be used in hierarchical reference [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv:47]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/sim/apb_if.sv" Line 1. Module apb_if doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/top.sv" Line 1. Module top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/sim/apb_if.sv" Line 1. Module apb_if doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/top.sv" Line 1. Module top doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.apb_if
+Compiling module xil_defaultlib.top
+Compiling module xil_defaultlib.tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_behav

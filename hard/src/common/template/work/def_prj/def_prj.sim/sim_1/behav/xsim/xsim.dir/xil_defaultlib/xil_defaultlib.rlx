@@ -1,0 +1,8 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv,1657397167,systemVerilog,,,,tb,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/top.sv,1657543468,systemVerilog,,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv,,top,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/work/def_prj/def_prj.sim/sim_1/behav/xsim/glbl.v,1590624368,verilog,,,,glbl,,,,,,,,
+C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/sim/apb_if.sv,1657541136,systemVerilog,,C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/top.sv,,apb_if,,,,,,,,

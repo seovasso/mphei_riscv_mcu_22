@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../../../src/mpei_rv_core_wrp.sv" \
+"../../../../../../src/tb_mpei_rv_core_wrp.sv" \
+
+# compile glbl module
+verilog grlib "glbl.v"
+
+# Do not sort compile order
+nosort

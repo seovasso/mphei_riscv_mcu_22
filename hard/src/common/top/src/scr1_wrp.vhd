@@ -1,136 +1,126 @@
+library ieee;
+use ieee.std_logic_1164.all;
 
 library grlib;
 use grlib.stdlib.all;
 use grlib.amba.all;
---use grlib.device.all;
+use grlib.devices.all;
 
 library work;
 use work.core_const_pkg.all;
 
 entity scr1_wrp is
-  port (
-    -- Control
-    pwrup_rst_n     : in   std_ulogic;                                           -- Power-Up Reset
-    rst_n           : in   std_ulogic;                                           -- Regular Reset signal
-    cpu_rst_n       : in   std_ulogic;                                           -- CPU Reset (Core Reset)
-    test_mode       : in   std_ulogic;                                           -- Test mode
-    test_rst_n      : in   std_ulogic;                                           -- Test mode's reset
-    clk             : in   std_ulogic;                                           -- System clock
-    rtc_clk         : in   std_ulogic;                                           -- Real-time clock
-    sys_rst_n_o     : out  std_ulogic;                                           -- External System Reset out
+generic (
+  SCR1_XLEN           : integer := 32;
+  SCR1_IRQ_LINES_NUM  : integer := 16;
+  SCR1_AHB_WIDTH      : integer := 32
+);
+port (
+  -- Control
+  pwrup_rst_n         : in   std_ulogic;                                           -- Power-Up Reset
+  rst_n               : in   std_ulogic;                                           -- Regular Reset signal
+  cpu_rst_n           : in   std_ulogic;                                           -- CPU Reset (Core Reset)
+  test_mode           : in   std_ulogic;                                           -- Test mode
+  test_rst_n          : in   std_ulogic;                                           -- Test mode's reset
+  clk                 : in   std_ulogic;                                           -- System clock
+  rtc_clk             : in   std_ulogic;                                           -- Real-time clock
+  sys_rst_n_o         : out  std_ulogic;                                           -- External System Reset out
                                                                                  -- (for the processor cluster's components or
                                                                                  -- external SOC (could be useful in small
                                                                                  -- SCR-core-centric SOCs))
-    sys_rdc_qlfy_o  : out  std_ulogic;                                           -- System-to-External SOC Reset Domain Crossing Qualifier
+  sys_rdc_qlfy_o      : out  std_ulogic;                                           -- System-to-External SOC Reset Domain Crossing Qualifier
     
-    -- Fuses
-    fuse_mhartid    : in   std_logic_vector   (SCR1_XLEN-1 downto 0);            -- Hart ID
-    fuse_idcode     : in   std_logic_vector   (31 downto 0);                     -- TAPC IDCODE
+  -- Fuses
+  fuse_mhartid        : in   std_logic_vector   (SCR1_XLEN-1 downto 0);            -- Hart ID
+  fuse_idcode         : in   std_logic_vector   (31 downto 0);                     -- TAPC IDCODE
     
-    -- IRQ
-    irq_lines       : in   std_logic_vector   (SCR1_IRQ_LINES_NUM-1 downto 0);   -- IRQ lines to IPIC
-    ext_irq         : in   std_ulogic;                                           -- External IRQ in
-    soft_irq        : in   std_ulogic;                                           -- Software IRQ in
+  -- IRQ
+  irq_lines           : in   std_logic_vector   (SCR1_IRQ_LINES_NUM-1 downto 0);   -- IRQ lines to IPIC
+  ext_irq             : in   std_ulogic;                                           -- External IRQ in
+  soft_irq            : in   std_ulogic;                                           -- Software IRQ in
     
-    -- JTAG I/F
-    trst_n          : in   std_ulogic;                                   
-    tck             : in   std_ulogic;                                   
-    tms             : in   std_ulogic;                                   
-    tdi             : in   std_ulogic;                                   
-    tdo             : out  std_ulogic;                                   
-    tdo_en          : out  std_ulogic;
+  -- JTAG I/F
+  trst_n              : in   std_ulogic;                                   
+  tck                 : in   std_ulogic;                                   
+  tms                 : in   std_ulogic;                                   
+  tdi                 : in   std_ulogic;                                   
+  tdo                 : out  std_ulogic;                                   
+  tdo_en              : out  std_ulogic;
 
-    -- Instruction Memory Interface
-    msti_imem       : in   ahb_mst_in_type;
-    msto_imem       : out  ahb_mst_in_type;
+  -- Instruction Memory Interface
+  msti_imem           : in   ahb_mst_in_type;
+  msto_imem           : out  ahb_mst_out_type;
 
-    -- Data Memory Interface
-    msti_dmem       : in   ahb_mst_in_type;
-    msto_dmem       : out  ahb_mst_in_type;
-  );
+  -- Data Memory Interface
+  msti_dmem           : in   ahb_mst_in_type;
+  msto_dmem           : out  ahb_mst_out_type
+);
 end scr1_wrp;
 
 architecture scr1_wrp_arc of scr1_wrp is
 
-  constant SCR1_XLEN           : integer := 32;
-  constant SCR1_IRQ_LINES_NUM  : integer := 16;
-  constant SCR1_AHB_WIDTH      : integer := 32;
-
-  component scr1_top_ahb is
-    port(
-      -- Control
-      pwrup_rst_n     : in   std_ulogic;                                           -- Power-Up Reset
-      rst_n           : in   std_ulogic;                                           -- Regular Reset signal
-      cpu_rst_n       : in   std_ulogic;                                           -- CPU Reset (Core Reset)
-      test_mode       : in   std_ulogic;                                           -- Test mode
-      test_rst_n      : in   std_ulogic;                                           -- Test mode's reset
-      clk             : in   std_ulogic;                                           -- System clock
-      rtc_clk         : in   std_ulogic;                                           -- Real-time clock
-      sys_rst_n_o     : out  std_ulogic;                                           -- External System Reset out
-                                                                                   -- (for the processor cluster's components or
-                                                                                   -- external SOC (could be useful in small
-                                                                                   -- SCR-core-centric SOCs))
-      sys_rdc_qlfy_o  : out  std_ulogic;                                           -- System-to-External SOC Reset Domain Crossing Qualifier
-      
-      -- Fuses
-      fuse_mhartid    : in   std_logic_vector   (SCR1_XLEN-1 downto 0);            -- Hart ID
-      fuse_idcode     : in   std_logic_vector   (31 downto 0);                     -- TAPC IDCODE
-      
-      -- IRQ
-      irq_lines       : in   std_logic_vector   (SCR1_IRQ_LINES_NUM-1 downto 0);   -- IRQ lines to IPIC
-      ext_irq         : in   std_ulogic;                                           -- External IRQ in
-      soft_irq        : in   std_ulogic;                                           -- Software IRQ in
-      
-      -- JTAG I/F
-      trst_n          : in   std_ulogic;                                   
-      tck             : in   std_ulogic;                                   
-      tms             : in   std_ulogic;                                   
-      tdi             : in   std_ulogic;                                   
-      tdo             : out  std_ulogic;                                   
-      tdo_en          : out  std_ulogic;                                   
-      
-      -- Instruction Memory Interface
-      imem_hprot      : out  std_logic_vector   (3 downto 0);                             
-      imem_hburst     : out  std_logic_vector   (2 downto 0);                             
-      imem_hsize      : out  std_logic_vector   (2 downto 0);                             
-      imem_htrans     : out  std_logic_vector   (1 downto 0);                             
-      imem_hmastlock  : out  std_ulogic;                                   
-      imem_haddr      : out  std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
-      imem_hready     : in   std_ulogic                                   
-      imem_hrdata     : in   std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
-      imem_hresp      : in   std_ulogic;                                   
-      
-      -- Data Memory Interface
-      dmem_hprot      : out  std_logic_vector   (3 downto 0);                             
-      dmem_hburst     : out  std_logic_vector   (2 downto 0);                             
-      dmem_hsize      : out  std_logic_vector   (2 downto 0);                             
-      dmem_htrans     : out  std_logic_vector   (1 downto 0);                             
-      dmem_hmastlock  : out  std_ulogic;                                  
-      dmem_haddr      : out  std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
-      dmem_hwrite     : out  std_ulogic;                                   
-      dmem_hwdata     : out  std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
-      dmem_hready     : in   std_ulogic;                                   
-      dmem_hrdata     : in   std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
-      dmem_hresp      : in   std_ulogic;                                 
-    );
-  end component
+component scr1_top_ahb is
+port(
+  -- Control
+  pwrup_rst_n     : in   std_ulogic;                                           -- Power-Up Reset
+  rst_n           : in   std_ulogic;                                           -- Regular Reset signal
+  cpu_rst_n       : in   std_ulogic;                                           -- CPU Reset (Core Reset)
+  test_mode       : in   std_ulogic;                                           -- Test mode
+  test_rst_n      : in   std_ulogic;                                           -- Test mode's reset
+  clk             : in   std_ulogic;                                           -- System clock
+  rtc_clk         : in   std_ulogic;                                           -- Real-time clock
+  sys_rst_n_o     : out  std_ulogic;                                           -- External System Reset out
+                                                                                 -- (for the processor cluster's components or
+                                                                                 -- external SOC (could be useful in small
+                                                                                 -- SCR-core-centric SOCs))
+  sys_rdc_qlfy_o  : out  std_ulogic;                                           -- System-to-External SOC Reset Domain Crossing Qualifier
+    
+  -- Fuses
+  fuse_mhartid    : in   std_logic_vector   (SCR1_XLEN-1 downto 0);            -- Hart ID
+  fuse_idcode     : in   std_logic_vector   (31 downto 0);                     -- TAPC IDCODE
+    
+  -- IRQ
+  irq_lines       : in   std_logic_vector   (SCR1_IRQ_LINES_NUM-1 downto 0);   -- IRQ lines to IPIC
+  ext_irq         : in   std_ulogic;                                           -- External IRQ in
+  soft_irq        : in   std_ulogic;                                           -- Software IRQ in
+    
+  -- JTAG I/F
+  trst_n          : in   std_ulogic;                                   
+  tck             : in   std_ulogic;                                   
+  tms             : in   std_ulogic;                                   
+  tdi             : in   std_ulogic;                                   
+  tdo             : out  std_ulogic;                                   
+  tdo_en          : out  std_ulogic;                                   
+    
+  -- Instruction Memory Interface
+  imem_hprot      : out  std_logic_vector   (3 downto 0);                             
+  imem_hburst     : out  std_logic_vector   (2 downto 0);                             
+  imem_hsize      : out  std_logic_vector   (2 downto 0);                             
+  imem_htrans     : out  std_logic_vector   (1 downto 0);                             
+  imem_hmastlock  : out  std_ulogic;                                   
+  imem_haddr      : out  std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
+  imem_hready     : in   std_ulogic;                                   
+  imem_hrdata     : in   std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
+  imem_hresp      : in   std_ulogic;                                   
+  
+  -- Data Memory Interface
+  dmem_hprot      : out  std_logic_vector   (3 downto 0);                             
+  dmem_hburst     : out  std_logic_vector   (2 downto 0);                             
+  dmem_hsize      : out  std_logic_vector   (2 downto 0);                             
+  dmem_htrans     : out  std_logic_vector   (1 downto 0);                             
+  dmem_hmastlock  : out  std_ulogic;                                  
+  dmem_haddr      : out  std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
+  dmem_hwrite     : out  std_ulogic;                                   
+  dmem_hwdata     : out  std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
+  dmem_hready     : in   std_ulogic;                                   
+  dmem_hrdata     : in   std_logic_vector   (SCR1_AHB_WIDTH-1 downto 0);              
+  dmem_hresp      : in   std_ulogic                                 
+);
+end component;
 
   signal imem_hresp   : std_ulogic;
   signal dmem_hresp   : std_ulogic;
 
-begin
-  
-  -- HRESP_RETRY 10, HRESP_SPLIT 11 ???
-  if msti_imem.hresp = HRESP_OKAY
-    then imem_hresp <= '0';  -- HRESP_OKAY  "00"
-    else imem_hresp <= '1';  -- HRESP_ERROR "01"
-  end if;
-
-  if msti_dmem.hresp = HRESP_OKAY 
-    then dmem_hresp <= '0';  -- HRESP_OKAY  "00"
-    else dmem_hresp <= '1';  -- HRESP_ERROR "01"
-  end if;
-  
   constant VERSION      : amba_version_type := 16#01#; -- random version
 
   constant IMEM_HCONFIG : ahb_config_type   := (
@@ -151,6 +141,23 @@ begin
       0                   ),  -- amba_irq_type;     interrupt
     others => X"00000000");
 
+begin
+  
+  imem_hresp <= msti_imem.hresp(0); -- HRESP_OKAY "00", HRESP_ERROR "01"
+  dmem_hresp <= msti_imem.hresp(0); -- HRESP_OKAY "00", HRESP_ERROR "01"
+
+  /* -- HRESP_RETRY 10, HRESP_SPLIT 11 ???
+  HRESP : process (all) begin
+    if (msti_imem.hresp = HRESP_OKAY)
+      then imem_hresp <= '0';  -- HRESP_OKAY  "00"
+      else imem_hresp <= '1';  -- HRESP_ERROR "01"
+    end if;
+    if msti_dmem.hresp = HRESP_OKAY 
+      then dmem_hresp <= '0';  -- HRESP_OKAY  "00"
+      else dmem_hresp <= '1';  -- HRESP_ERROR "01"
+    end if;
+  end process; */
+  
   msto_imem.hconfig <= IMEM_HCONFIG;
   msto_dmem.hconfig <= DMEM_HCONFIG;
 

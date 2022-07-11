@@ -1,0 +1,7 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/sim/apb_if.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/work/def_prj/def_prj.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
