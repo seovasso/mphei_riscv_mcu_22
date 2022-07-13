@@ -60,7 +60,51 @@ add_files -norecurse ../src/mpei_rv_core_wrp.sv
 read_vhdl -vhdl2008  ../src/core_const_pkg.vhd                           -library work
 read_vhdl -vhdl2008  ../src/scr1_wrp.vhd                                 -library work  
 read_vhdl -vhdl2008  ../src/mpei_rv_core.vhd                             -library work  
-# add_files -norecurse ../../../scr1/src/top/scr1_top_ahb.sv
+
+add_files -norecurse ../../../scr1/src/top/scr1_dmem_router.sv
+add_files -norecurse ../../../scr1/src/top/scr1_imem_router.sv
+add_files -norecurse ../../../scr1/src/top/scr1_dp_memory.sv
+add_files -norecurse ../../../scr1/src/top/scr1_tcm.sv
+add_files -norecurse ../../../scr1/src/top/scr1_timer.sv
+add_files -norecurse ../../../scr1/src/top/scr1_dmem_ahb.sv
+add_files -norecurse ../../../scr1/src/top/scr1_imem_ahb.sv
+add_files -norecurse ../../../scr1/src/top/scr1_top_ahb.sv
+
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_hdu.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_tdu.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_ipic.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_csr.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_exu.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_ialu.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_idu.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_ifu.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_lsu.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_mprf.sv
+add_files -norecurse ../../../scr1/src/core/pipeline/scr1_pipe_top.sv
+add_files -norecurse ../../../scr1/src/core/primitives/scr1_reset_cells.sv
+add_files -norecurse ../../../scr1/src/core/primitives/scr1_cg.sv
+add_files -norecurse ../../../scr1/src/core/scr1_clk_ctrl.sv
+add_files -norecurse ../../../scr1/src/core/scr1_tapc_shift_reg.sv
+add_files -norecurse ../../../scr1/src/core/scr1_tapc.sv
+add_files -norecurse ../../../scr1/src/core/scr1_tapc_synchronizer.sv
+add_files -norecurse ../../../scr1/src/core/scr1_core_top.sv
+add_files -norecurse ../../../scr1/src/core/scr1_dm.sv
+add_files -norecurse ../../../scr1/src/core/scr1_dmi.sv
+add_files -norecurse ../../../scr1/src/core/scr1_scu.sv
+
+add_files -norecurse ../../../scr1/src/includes/scr1_ahb.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_arch_description.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_arch_types.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_csr.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_dm.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_hdu.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_ipic.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_memif.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_riscv_isa_decoding.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_scu.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_search_ms1.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_tapc.svh
+add_files -norecurse ../../../scr1/src/includes/scr1_tdu.svh
 
 # add simulation source
 create_fileset $SIM_FILESET

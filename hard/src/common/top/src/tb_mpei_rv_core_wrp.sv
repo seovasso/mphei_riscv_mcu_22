@@ -2,6 +2,9 @@
 
 //`include "scr1_top_ahb.sv"
 
+// all hierarchical path from top
+// tb_mpei_rv_core_wrp.mpei_rv_core_wrp.mpei_rv_core.scr1_wrp.scr1_top_ahb.scr1_tcm.scr1_dp_memory.ram_block
+`define mem_path_assign scr1_top_ahb.scr1_tcm.scr1_dp_memory.ram_block
 `define Nword 32
 
 `define CLK_PERIOD 10
@@ -146,12 +149,9 @@ mpei_rv_core_wrp #(
 
 logic ok = 1;
 
-//all hierarchical path from top
-//tb_mpei_rv_core_wrp.mpei_rv_core_wrp.mpei_rv_core.scr1_wrp.scr1_top_ahb.scr1_tcm.scr1_dp_memory.ram_block
-
 // tcm initialization
 initial begin
-  $readmemb ( "./firmware_scr1.bin" , scr1_top_ahb.scr1_tcm.scr1_dp_memory.ram_block, 0, Nword-1 );
+  $readmemb ( "./firmware_scr1.bin" , tb_mpei_rv_core_wrp.mpei_rv_core_wrp.mpei_rv_core.scr1_wrp.scr1_top_ahb.scr1_tcm.scr1_dp_memory.ram_block, 0, `Nword-1 );
 end
 
 // initial initialization

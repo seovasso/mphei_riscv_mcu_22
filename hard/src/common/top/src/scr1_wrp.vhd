@@ -36,7 +36,6 @@ port (
     
   -- IRQ
   irq_lines           : in   std_logic_vector   (SCR1_IRQ_LINES_NUM-1 downto 0);   -- IRQ lines to IPIC
-  ext_irq             : in   std_ulogic;                                           -- External IRQ in
   soft_irq            : in   std_ulogic;                                           -- Software IRQ in
     
   -- JTAG I/F
@@ -81,7 +80,6 @@ port(
     
   -- IRQ
   irq_lines       : in   std_logic_vector   (SCR1_IRQ_LINES_NUM-1 downto 0);   -- IRQ lines to IPIC
-  ext_irq         : in   std_ulogic;                                           -- External IRQ in
   soft_irq        : in   std_ulogic;                                           -- Software IRQ in
     
   -- JTAG I/F
@@ -183,7 +181,6 @@ begin
       
       -- IRQ
       irq_lines       => irq_lines,                                                -- IRQ lines to IPIC
-      ext_irq         => ext_irq,                                                  -- External IRQ in
       soft_irq        => soft_irq,                                                 -- Software IRQ in
       
       -- JTAG I/F

@@ -1,11 +1,10 @@
 Vivado Simulator 2020.1
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto be38544bd68b4ea18b981f992d11ebf6 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L grlib -L gaisler -L work -L techmap -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_mpei_rv_core_wrp_behav xil_defaultlib.tb_mpei_rv_core_wrp xil_defaultlib.glbl -log elaborate.log 
+Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto ca7df5cb9fc34ef19736783a18935144 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L grlib -L gaisler -L work -L techmap -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_mpei_rv_core_wrp_behav xil_defaultlib.tb_mpei_rv_core_wrp xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-4940] 'scr1_top_ahb' remains a black box since it has no binding entity [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_wrp.vhd:164]
 WARNING: [VRFC 10-4940] 'syncram_2p' remains a black box since it has no binding entity [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrlx.vhd:2242]
 WARNING: [VRFC 10-4940] 'syncram_2p' remains a black box since it has no binding entity [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrlx.vhd:2259]
-ERROR: [VRFC 10-2989] 'scr1_top_ahb' is not declared [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv:154]
+ERROR: [VRFC 10-2991] 'mpei_rv_core_wrp' is not declared under prefix 'tb_mpei_rv_core_wrp' [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv:154]
 ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

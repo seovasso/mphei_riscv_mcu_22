@@ -153,7 +153,6 @@ port map(
                         
   -- IRQ                                
   irq_lines          => ahbmi.hirq(15 downto 0)    ,  -- in std_logic_vector (SCR1_IRQ_LINES_NUM-1 downto 0); IRQ lines to IPIC
-  ext_irq            => '0'                        ,  -- in std_ulogic;                                       External IRQ in
   soft_irq           => '0'                        ,  -- in std_ulogic;                                       Software IRQ in
                                   
   -- JTAG I/F                               
