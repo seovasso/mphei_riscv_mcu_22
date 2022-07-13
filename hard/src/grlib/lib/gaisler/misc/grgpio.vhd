@@ -64,14 +64,18 @@ entity grgpio is
   port (
     rst    : in  std_ulogic;
     clk    : in  std_ulogic;
+    -- APB signals
     apbi   : in  apb_slv_in_type;
     apbo   : out apb_slv_out_type;
+    -- GPIO signals
     gpioi  : in  gpio_in_type;
     gpioo  : out gpio_out_type
   );
-end;
+end entity grgpio;
 
 architecture rtl of grgpio is
+
+-- Constants
 
 constant REVISION : integer := 3;
 constant PIMASK : std_logic_vector(31 downto 0) := '0' & conv_std_logic_vector(imask, 31);
