@@ -6,7 +6,7 @@
 <Project Version="7" Minor="49" Path="C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/work/def_prj/def_prj.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="6ec0ec00fbe945b28077fa1758bcf575"/>
+    <Option Name="Id" Val="be38544bd68b4ea18b981f992d11ebf6"/>
     <Option Name="Part" Val="xc7k325tffg900-2"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -38,7 +38,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="kc705"/>
-    <Option Name="WTXSimLaunchSim" Val="3"/>
+    <Option Name="WTXSimLaunchSim" Val="2"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -132,21 +132,21 @@
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/ahbctrl.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="grlib"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/apbctrl.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="grlib"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/grlib/amba/apbctrlx.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="grlib"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -160,7 +160,7 @@
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/gaisler/uart/apbuart.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -195,14 +195,14 @@
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/gaisler/misc/gptimer.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/gaisler/misc/grgpio.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -237,7 +237,7 @@
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/gaisler/spi/spictrl.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -251,7 +251,7 @@
       </File>
       <File Path="$PPRDIR/../../../../grlib/lib/gaisler/spi/spictrlx.vhd">
         <FileInfo SFType="VHDL2008">
-          <Attr Name="Library" Val="work"/>
+          <Attr Name="Library" Val="gaisler"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>

@@ -1,54 +1,11 @@
 Vivado Simulator 2020.1
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto 6ec0ec00fbe945b28077fa1758bcf575 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L grlib -L work -L gaisler -L techmap -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_mpei_rv_core_wrp_behav xil_defaultlib.tb_mpei_rv_core_wrp xil_defaultlib.glbl -log elaborate.log 
+Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto be38544bd68b4ea18b981f992d11ebf6 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L grlib -L gaisler -L work -L techmap -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_mpei_rv_core_wrp_behav xil_defaultlib.tb_mpei_rv_core_wrp xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-4940] 'scr1_top_ahb' remains a black box since it has no binding entity [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_wrp.vhd:164]
 WARNING: [VRFC 10-4940] 'syncram_2p' remains a black box since it has no binding entity [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrlx.vhd:2242]
 WARNING: [VRFC 10-4940] 'syncram_2p' remains a black box since it has no binding entity [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrlx.vhd:2259]
-Completed static elaboration
-Starting simulation data flow analysis
-WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core_wrp.sv" Line 2. Module mpei_rv_core_wrp doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core_wrp.sv" Line 2. Module mpei_rv_core_wrp doesn't have a timescale but at least one module in design has a timescale.
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling package ieee.numeric_std
-Compiling package grlib.version
-Compiling package grlib.stdlib
-Compiling package grlib.config_types
-Compiling package grlib.config
-Compiling package grlib.amba
-Compiling package grlib.devices
-Compiling package techmap.gencomp
-Compiling package gaisler.misc
-Compiling package gaisler.uart
-Compiling package gaisler.net
-Compiling package gaisler.jtag
-Compiling package gaisler.spi
-Compiling package work.core_const_pkg
-Compiling package ieee.math_real
-Compiling package grlib.stdio
-Compiling package grlib.testlib
-Compiling package techmap.netcomp
-Compiling architecture scr1_wrp_arc of entity work.scr1_wrp [scr1_wrp_default]
-Compiling architecture rtl of entity work.ahbctrl [\ahbctrl(rrobin=1,iomask=4080,na...]
-Compiling architecture rtl of entity work.apbctrlx [\apbctrlx(haddr0=512,hmask1=0,hm...]
-Compiling architecture struct of entity work.apbctrl [\apbctrl(haddr=512,nslaves=4)\]
-Compiling architecture rtl of entity work.spictrlx [\spictrlx(rev=6,acntbits=3)\]
-Compiling architecture beh of entity grlib.report_version [\report_version(msg1="spictrl0:_...]
-Compiling architecture rtl of entity work.spictrl [\spictrl(pmask=4080,acntbits=3)\]
-Compiling architecture beh of entity grlib.report_version [\report_version(msg1="apbuart1:_...]
-Compiling architecture rtl of entity work.apbuart [\apbuart(pindex=1,paddr=16,pmask...]
-Compiling architecture beh of entity grlib.report_version [\report_version(msg1="grgpio2:_3...]
-Compiling architecture rtl of entity work.grgpio [\grgpio(pindex=2,paddr=32,pmask=...]
-Compiling architecture beh of entity grlib.report_version [\report_version(msg1="gptimer3:_...]
-Compiling architecture rtl of entity work.gptimer [\gptimer(pindex=3,paddr=48,pmask...]
-Compiling architecture mpei_rv_core_arc of entity work.mpei_rv_core [mpei_rv_core_default]
-Compiling module xil_defaultlib.mpei_rv_core_wrp
-Compiling module xil_defaultlib.tb_mpei_rv_core_wrp
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot tb_mpei_rv_core_wrp_behav
+ERROR: [VRFC 10-2989] 'scr1_top_ahb' is not declared [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv:154]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

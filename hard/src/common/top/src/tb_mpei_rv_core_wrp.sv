@@ -1,5 +1,9 @@
 `timescale 1ns/10ps
 
+//`include "scr1_top_ahb.sv"
+
+`define Nword 32
+
 `define CLK_PERIOD 10
 `define RESET_GOES_HIGH 150
 
@@ -142,7 +146,20 @@ mpei_rv_core_wrp #(
 
 logic ok = 1;
 
-initial clk_i = 1'b0;
+//all hierarchical path from top
+//tb_mpei_rv_core_wrp.mpei_rv_core_wrp.mpei_rv_core.scr1_wrp.scr1_top_ahb.scr1_tcm.scr1_dp_memory.ram_block
+
+// tcm initialization
+initial begin
+  $readmemb ( "./firmware_scr1.bin" , scr1_top_ahb.scr1_tcm.scr1_dp_memory.ram_block, 0, Nword-1 );
+end
+
+// initial initialization
+initial begin
+  clk_i  = 1'b0;
+  rstn_i = 1'b0;
+end
+
 always  #(`CLK_PERIOD/2)    clk_i  = !clk_i;
 initial #(`RESET_GOES_HIGH) rstn_i = 1'b1;
 

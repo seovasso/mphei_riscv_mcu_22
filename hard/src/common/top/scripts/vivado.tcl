@@ -47,19 +47,20 @@ read_vhdl -vhdl2008 ../../../grlib/lib/grlib/amba/amba.vhd               -librar
 read_vhdl -vhdl2008 ../../../grlib/lib/grlib/amba/devices.vhd            -library grlib
 read_vhdl -vhdl2008 ../../../grlib/lib/grlib/modgen/multlib.vhd          -library grlib
 
-read_vhdl -vhdl2008  ../../../grlib/lib/grlib/amba/ahbctrl.vhd           -library work
-read_vhdl -vhdl2008  ../../../grlib/lib/grlib/amba/apbctrl.vhd           -library work
-read_vhdl -vhdl2008  ../../../grlib/lib/grlib/amba/apbctrlx.vhd          -library work
-read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/spi/spictrl.vhd          -library work
-read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/spi/spictrlx.vhd         -library work
-read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/uart/apbuart.vhd         -library work
-read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/misc/grgpio.vhd          -library work
-read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/misc/gptimer.vhd         -library work
+read_vhdl -vhdl2008  ../../../grlib/lib/grlib/amba/ahbctrl.vhd           -library grlib
+read_vhdl -vhdl2008  ../../../grlib/lib/grlib/amba/apbctrl.vhd           -library grlib
+read_vhdl -vhdl2008  ../../../grlib/lib/grlib/amba/apbctrlx.vhd          -library grlib
+read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/spi/spictrl.vhd          -library gaisler
+read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/spi/spictrlx.vhd         -library gaisler
+read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/uart/apbuart.vhd         -library gaisler
+read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/misc/grgpio.vhd          -library gaisler
+read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/misc/gptimer.vhd         -library gaisler
 
 add_files -norecurse ../src/mpei_rv_core_wrp.sv
 read_vhdl -vhdl2008  ../src/core_const_pkg.vhd                           -library work
 read_vhdl -vhdl2008  ../src/scr1_wrp.vhd                                 -library work  
 read_vhdl -vhdl2008  ../src/mpei_rv_core.vhd                             -library work  
+# add_files -norecurse ../../../scr1/src/top/scr1_top_ahb.sv
 
 # add simulation source
 create_fileset $SIM_FILESET

@@ -93,6 +93,7 @@ end mpei_rv_core;
 
 architecture mpei_rv_core_arc of mpei_rv_core is
 
+-- inner signal
 signal ahbmi     : ahb_mst_in_type;
 signal ahbmo     : ahb_mst_out_vector := (others => ahbm_none);
 
@@ -114,7 +115,13 @@ signal gpioo     : gpio_out_type;
 signal gpti      : gptimer_in_type;
 signal gpto      : gptimer_out_type;
 
+signal rst_i     : std_ulogic;                                   --inverted signal
+
+
 begin
+
+-- initialization of inner signal
+rst_i <= rstn_i;
 
 ------------------------------------------------------------------------------------
 --                                SCR1_WRP                                        --
@@ -170,7 +177,7 @@ port map(
 --                                AHBCTRL                                         --
 ------------------------------------------------------------------------------------
 -- исходник лежит здесь - mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/ahbctrl.vhd 
-u_ahbctrl : entity work.ahbctrl 
+u_ahbctrl : entity grlib.ahbctrl 
 generic map (
   defmast     => INDEX_AHBM_CPU_IMEM        , -- integer                    := 0;           -- default master
   split       => 0                          , -- integer                    := 0;           -- split support
@@ -207,7 +214,7 @@ generic map (
   unmapslv    => 0                          , -- integer                    := 0;           -- to redirect unmapped areas to slave, set to 256+bar*32+slv
   ahbendian   => GRLIB_ENDIAN                 -- integer                    := GRLIB_ENDIAN
 ) port map (
-  rst         => rstn_i                     , -- in  std_ulogic;
+  rst         => rst_i                     , -- in  std_ulogic;
   clk         => clk_i                      , -- in  std_ulogic;
   
   msti        => ahbmi                      , -- out ahb_mst_in_type;                       -- массив AHB интерфейсов подключенных к мастерам (в нашем случае 1 мастер SCR1_WRP) 
@@ -227,7 +234,7 @@ generic map (
 --                                APBCTRL                                         --
 ------------------------------------------------------------------------------------
 -- исходник лежит здесь - mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/apbctrl.vhd 
-u_apbctrl : entity work.apbctrl
+u_apbctrl : entity grlib.apbctrl
 generic map (
   hindex      => INDEX_AHBS_AHB2APB         ,  -- integer                    := 0;        -- значение INDEX_AHBS_AHB2APB см. в библиотеке core_const_pkg
   haddr       => ADDR_APBCTRL               ,  -- integer                    := 0;        -- значение ADDR_APBCTRL см. в библиотеке core_const_pkg
@@ -242,7 +249,7 @@ generic map (
   mcheck      => 1                          ,  -- integer range 0 to 1       := 1;
   ccheck      => 1                             -- integer range 0 to 1       := 1
 ) port map (  
-  rst         => rstn_i                     ,  -- in  std_ulogic;
+  rst         => rst_i                     ,  -- in  std_ulogic;
   clk         => clk_i                      ,  -- in  std_ulogic;
     
   ahbi        => ahbsi                      ,  -- in  ahb_slv_in_type;                  -- значение INDEX_AHBS_AHB2APB см. в библиотеке core_const_pkg
@@ -279,7 +286,7 @@ spi_io2oen_o     <=  spio.io2oen   ;
 spi_io3_o        <=  spio.io3      ;
 spi_io3oen_o     <=  spio.io3oen   ;
 
-u_spictrl : entity work.spictrl
+u_spictrl : entity gaisler.spictrl
 generic map(
   pindex    => INDEX_APB_SPICTRL       , -- integer               := 0;       slave bus index
   paddr     => INDEX_APB_SPICTRL*16    , -- integer               := 0;       APB address
@@ -333,7 +340,7 @@ uart_rxen     <=  uarto.rxen    ;
 uart_txtick   <=  uarto.txtick  ;
 uart_rxtick   <=  uarto.rxtick  ;
 
-u_apbuart : entity work.apbuart
+u_apbuart : entity gaisler.apbuart
 generic map (
   pindex   => INDEX_APB_APBUART       , -- integer                := 0; 
   paddr    => INDEX_APB_APBUART*16    , -- integer                := 0;
@@ -346,7 +353,7 @@ generic map (
   abits    => 8                       , -- integer                := 8;
   sbits    => 12                        -- integer range 12 to 32 := 12);
 ) port map(
-  rst      => rstn_i                  , --in  std_ulogic;
+  rst      => rst_i                  , --in  std_ulogic;
   clk      => clk_i                   , --in  std_ulogic;
   apbi     => apbi                    , --in  apb_slv_in_type;
   apbo     => apbo(INDEX_APB_APBUART) , --out apb_slv_out_type;
@@ -366,7 +373,7 @@ gpio_oen      <=  gpioo.oen      ;
 gpio_val      <=  gpioo.val      ;
 gpio_sig_out  <=  gpioo.sig_out  ;
 
-u_grgpio : entity work.grgpio
+u_grgpio : entity gaisler.grgpio
 generic map (
   pindex   => INDEX_APB_GPIO       , -- integer              := 0;
   paddr    => INDEX_APB_GPIO*16    , -- integer              := 0;
@@ -389,7 +396,7 @@ generic map (
   inpresv  => 0                    , -- integer              := 0;
   pulse    => 0                      -- integer              := 0
 ) port map (
-  rst      => rstn_i               , --in  std_ulogic;
+  rst      => rst_i               , --in  std_ulogic;
   clk      => clk_i                , --in  std_ulogic;
   apbi     => apbi                 , --in  apb_slv_in_type;
   apbo     => apbo(INDEX_APB_GPIO) , --out apb_slv_out_type; -- значение INDEX_APB_GPIO см. в библиотеке core_const_pkg
@@ -411,7 +418,7 @@ timr_timer1  <=  gpto.timer1  ;
 timr_wdogn   <=  gpto.wdogn   ;    
 timr_wdog    <=  gpto.wdog    ;    
 
-u_grtimer : entity work.gptimer
+u_grtimer : entity gaisler.gptimer
 generic map(
   pindex    => INDEX_APB_GRTIMER       , -- Integer              := 0;
   paddr     => INDEX_APB_GRTIMER*16    , -- Integer              := 0;
@@ -426,7 +433,7 @@ generic map(
   gextclk   => 0                       , -- Integer              := 0;
   gset      => 0                         -- Integer              := 0
 ) port map (
-  rst       => rstn_i                  , -- Std_ULogic;
+  rst       => rst_i                  , -- Std_ULogic;
   clk       => clk_i                   , -- Std_ULogic;
   apbi      => apbi                    , -- apb_slv_in_type;
   apbo      => apbo(INDEX_APB_GRTIMER) , -- apb_slv_out_type;

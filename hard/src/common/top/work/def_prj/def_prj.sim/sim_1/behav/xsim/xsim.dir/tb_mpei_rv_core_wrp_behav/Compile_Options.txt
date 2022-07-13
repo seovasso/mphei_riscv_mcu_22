@@ -1,1 +1,0 @@
--wto "6ec0ec00fbe945b28077fa1758bcf575" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "grlib" -L "work" -L "gaisler" -L "techmap" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "tb_mpei_rv_core_wrp_behav" "xil_defaultlib.tb_mpei_rv_core_wrp" "xil_defaultlib.glbl" -log "elaborate.log" 

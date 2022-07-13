@@ -14,17 +14,15 @@ vhdl2008 grlib  \
 "../../../../../../../../grlib/lib/grlib/stdlib/config.vhd" \
 "../../../../../../../../grlib/lib/grlib/amba/amba.vhd" \
 "../../../../../../../../grlib/lib/grlib/amba/devices.vhd" \
-
-vhdl2008 work  \
 "../../../../../../../../grlib/lib/grlib/amba/ahbctrl.vhd" \
 "../../../../../../../../grlib/lib/grlib/amba/apbctrl.vhd" \
 "../../../../../../../../grlib/lib/grlib/amba/apbctrlx.vhd" \
 
 vhdl2008 gaisler  \
 "../../../../../../../../grlib/lib/gaisler/uart/uart.vhd" \
+"../../../../../../../../grlib/lib/gaisler/uart/apbuart.vhd" \
 
 vhdl2008 work  \
-"../../../../../../../../grlib/lib/gaisler/uart/apbuart.vhd" \
 "../../../../../../src/core_const_pkg.vhd" \
 
 vhdl2008 techmap  \
@@ -33,12 +31,8 @@ vhdl2008 techmap  \
 vhdl2008 gaisler  \
 "../../../../../../../../grlib/lib/gaisler/net/net.vhd" \
 "../../../../../../../../grlib/lib/gaisler/misc/misc.vhd" \
-
-vhdl2008 work  \
 "../../../../../../../../grlib/lib/gaisler/misc/gptimer.vhd" \
 "../../../../../../../../grlib/lib/gaisler/misc/grgpio.vhd" \
-
-vhdl2008 gaisler  \
 "../../../../../../../../grlib/lib/gaisler/jtag/jtag.vhd" \
 "../../../../../../../../grlib/lib/gaisler/spi/spi.vhd" \
 
@@ -48,9 +42,13 @@ vhdl2008 work  \
 vhdl2008 techmap  \
 "../../../../../../../../grlib/lib/techmap/gencomp/netcomp.vhd" \
 
-vhdl2008 work  \
+vhdl2008 gaisler  \
 "../../../../../../../../grlib/lib/gaisler/spi/spictrl.vhd" \
+
+vhdl2008 work  \
 "../../../../../../src/mpei_rv_core.vhd" \
+
+vhdl2008 gaisler  \
 "../../../../../../../../grlib/lib/gaisler/spi/spictrlx.vhd" \
 
 vhdl2008 grlib  \
