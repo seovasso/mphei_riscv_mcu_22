@@ -32,62 +32,62 @@ port(
   --                 what have to output? JTAG, IQR, Fuses, control pin?
     
   --                 spictrl interface
-  spi_miso_i         : in  std_ulogic;
-  spi_mosi_i         : in  std_ulogic;
-  spi_sck_i          : in  std_ulogic;
-  spi_spisel_i       : in  std_ulogic;
-  spi_astart_i       : in  std_ulogic;
-  spi_cstart_i       : in  std_ulogic;
-  spi_ignore_i       : in  std_ulogic;
-  spi_io2_i          : in  std_ulogic;
-  spi_io3_i          : in  std_ulogic;
-  spi_miso_o         : out std_ulogic; 
-  spi_misooen_o      : out std_ulogic;
-  spi_mosi_o         : out std_ulogic;
-  spi_mosioen_o      : out std_ulogic;
-  spi_sck_o          : out std_ulogic; --???? duplicate pins
-  spi_sckoen_o       : out std_ulogic;
-  spi_enable_o       : out std_ulogic;
-  spi_astart_o       : out std_ulogic;
-  spi_aready_o       : out std_ulogic;
-  spi_io2_o          : out std_ulogic;
-  spi_io2oen_o       : out std_ulogic;
-  spi_io3_o          : out std_ulogic;
-  spi_io3oen_o       : out std_ulogic;
-  spi_slvsel_o       : out std_logic_vector((slvselsz-1) downto 0);
+  spi_in_miso        : in  std_ulogic;
+  spi_in_mosi        : in  std_ulogic;
+  spi_in_sck         : in  std_ulogic;
+  spi_in_spisel      : in  std_ulogic;
+  spi_in_astart      : in  std_ulogic;
+  spi_in_cstart      : in  std_ulogic;
+  spi_in_ignore      : in  std_ulogic;
+  spi_in_io2         : in  std_ulogic;
+  spi_in_io3         : in  std_ulogic;
+  spi_out_miso       : out std_ulogic; 
+  spi_out_misooen    : out std_ulogic;
+  spi_out_mosi       : out std_ulogic;
+  spi_out_mosioen    : out std_ulogic;
+  spi_out_sck        : out std_ulogic; --???? duplicate pins
+  spi_out_sckoen     : out std_ulogic;
+  spi_out_enable     : out std_ulogic;
+  spi_out_astart     : out std_ulogic;
+  spi_out_aready     : out std_ulogic;
+  spi_out_io2        : out std_ulogic;
+  spi_out_io2oen     : out std_ulogic;
+  spi_out_io3        : out std_ulogic;
+  spi_out_io3oen     : out std_ulogic;
+  spi_out_slvsel     : out std_logic_vector((slvselsz-1) downto 0);
                               
   --                 apbuart interface 
-  uart_rxd   	       : in  std_ulogic;
-  uart_ctsn   	     : in  std_ulogic;
-  uart_extclk	       : in  std_ulogic;
-  uart_rtsn   	     : out std_ulogic;
-  uart_txd   	       : out std_ulogic;
-  uart_scaler	       : out std_logic_vector(31 downto 0);
-  uart_txen          : out std_ulogic;
-  uart_flow   	     : out std_ulogic;
-  uart_rxen          : out std_ulogic;
-  uart_txtick        : out std_ulogic;
-  uart_rxtick        : out std_ulogic;
+  uart_in_rxd   	   : in  std_ulogic;
+  uart_in_ctsn   	   : in  std_ulogic;
+  uart_in_extclk	   : in  std_ulogic;
+  uart_out_rtsn   	 : out std_ulogic;
+  uart_out_txd   	   : out std_ulogic;
+  uart_out_scaler	   : out std_logic_vector(31 downto 0);
+  uart_out_txen      : out std_ulogic;
+  uart_out_flow   	 : out std_ulogic;
+  uart_out_rxen      : out std_ulogic;
+  uart_out_txtick    : out std_ulogic;
+  uart_out_rxtick    : out std_ulogic;
     
   --                 gpio interface
-  gpio_din           : in  std_logic_vector(31 downto 0);
-  gpio_sig_in        : in  std_logic_vector(31 downto 0);
-  gpio_sig_en        : in  std_logic_vector(31 downto 0);
-  gpio_dout          : out std_logic_vector(31 downto 0);
-  gpio_oen           : out std_logic_vector(31 downto 0);
-  gpio_val           : out std_logic_vector(31 downto 0);
-  gpio_sig_out       : out std_logic_vector(31 downto 0);
+  gpio_in_din        : in  std_logic_vector(31 downto 0);
+  gpio_in_sig_in     : in  std_logic_vector(31 downto 0);
+  gpio_in_sig_en     : in  std_logic_vector(31 downto 0);
+  gpio_out_dout      : out std_logic_vector(31 downto 0);
+  gpio_out_oen       : out std_logic_vector(31 downto 0);
+  gpio_out_val       : out std_logic_vector(31 downto 0);
+  gpio_out_sig_out   : out std_logic_vector(31 downto 0);
     
   --                 gptimer interface
-  timr_dhalt         : in  std_ulogic;
-  timr_extclk        : in  std_ulogic;
-  timr_wdogen        : in  std_ulogic;
-  timr_latchv        : in  std_logic_vector(NAHBIRQ-1 downto 0);
-  timr_latchd        : in  std_logic_vector(NAHBIRQ-1 downto 0);
-  timr_tick          : out std_logic_vector(0 to 7);
-  timr_timer1        : out std_logic_vector(31 downto 0);
-  timr_wdogn         : out std_ulogic;
-  timr_wdog          : out std_ulogic
+  timr_in_dhalt      : in  std_ulogic;
+  timr_in_extclk     : in  std_ulogic;
+  timr_in_wdogen     : in  std_ulogic;
+  timr_in_latchv     : in  std_logic_vector(NAHBIRQ-1 downto 0);
+  timr_in_latchd     : in  std_logic_vector(NAHBIRQ-1 downto 0);
+  timr_out_tick      : out std_logic_vector(0 to 7);
+  timr_out_timer1    : out std_logic_vector(31 downto 0);
+  timr_out_wdogn     : out std_ulogic;
+  timr_out_wdog      : out std_ulogic
 );
 end mpei_rv_core;
 
@@ -121,7 +121,7 @@ signal rst_i     : std_ulogic;                                   --inverted sign
 begin
 
 -- initialization of inner signal
-rst_i <= rstn_i;
+rst_i <= not rstn_i;
 
 ------------------------------------------------------------------------------------
 --                                SCR1_WRP                                        --
@@ -178,7 +178,7 @@ port map(
 -- исходник лежит здесь - mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/ahbctrl.vhd 
 u_ahbctrl : entity grlib.ahbctrl 
 generic map (
-  defmast     => INDEX_AHBM_CPU_IMEM        , -- integer                    := 0;           -- default master
+  defmast     => INDEX_AHBM_CPU_DMEM        , -- integer                    := 0;           -- default master
   split       => 0                          , -- integer                    := 0;           -- split support
   rrobin      => 1                          , -- integer                    := 0;           -- round-robin arbitration
   timeout     => 0                          , -- integer range 0 to 255     := 0;           -- HREADY timeout
@@ -201,7 +201,7 @@ generic map (
   hmstdisable => 0                          , -- integer                    := 0;           -- disable master checks
   hslvdisable => 0                          , -- integer                    := 0;           -- disable slave checks
   arbdisable  => 0                          , -- integer                    := 0;           -- disable arbiter checks
-  mprio       => INDEX_AHBM_CPU_IMEM        , -- integer                    := 0;           -- master with highest priority
+  mprio       => INDEX_AHBM_CPU_DMEM        , -- integer                    := 0;           -- master with highest priority
   mcheck      => 1                          , -- integer range 0 to 2       := 1;           -- check memory map for intersects
   ccheck      => 1                          , -- integer range 0 to 1       := 1;           -- perform sanity checks on pnp config
   acdm        => 0                          , -- integer                    := 0;           -- AMBA compliant data muxing (for hsize > word)
@@ -213,7 +213,7 @@ generic map (
   unmapslv    => 0                          , -- integer                    := 0;           -- to redirect unmapped areas to slave, set to 256+bar*32+slv
   ahbendian   => GRLIB_ENDIAN                 -- integer                    := GRLIB_ENDIAN
 ) port map (
-  rst         => rst_i                     , -- in  std_ulogic;
+  rst         => rst_i                      , -- in  std_ulogic;
   clk         => clk_i                      , -- in  std_ulogic;
   
   msti        => ahbmi                      , -- out ahb_mst_in_type;                       -- массив AHB интерфейсов подключенных к мастерам (в нашем случае 1 мастер SCR1_WRP) 
@@ -248,7 +248,7 @@ generic map (
   mcheck      => 1                          ,  -- integer range 0 to 1       := 1;
   ccheck      => 1                             -- integer range 0 to 1       := 1
 ) port map (  
-  rst         => rst_i                     ,  -- in  std_ulogic;
+  rst         => rst_i                      ,  -- in  std_ulogic;
   clk         => clk_i                      ,  -- in  std_ulogic;
     
   ahbi        => ahbsi                      ,  -- in  ahb_slv_in_type;                  -- значение INDEX_AHBS_AHB2APB см. в библиотеке core_const_pkg
@@ -261,29 +261,29 @@ generic map (
 ------------------------------------------------------------------------------------
 --                                SPICTRL                                         --
 ------------------------------------------------------------------------------------
-spii.miso        <=  spi_miso_i    ; 
-spii.mosi        <=  spi_mosi_i    ; 
-spii.sck         <=  spi_sck_i     ; 
-spii.spisel      <=  spi_spisel_i  ; 
-spii.astart      <=  spi_astart_i  ; 
-spii.cstart      <=  spi_cstart_i  ; 
-spii.ignore      <=  spi_ignore_i  ; 
-spii.io2         <=  spi_io2_i     ; 
-spii.io3         <=  spi_io3_i     ; 
+spii.miso        <=  spi_in_miso   ; 
+spii.mosi        <=  spi_in_mosi   ; 
+spii.sck         <=  spi_in_sck    ; 
+spii.spisel      <=  spi_in_spisel ; 
+spii.astart      <=  spi_in_astart ; 
+spii.cstart      <=  spi_in_cstart ; 
+spii.ignore      <=  spi_in_ignore ; 
+spii.io2         <=  spi_in_io2    ; 
+spii.io3         <=  spi_in_io3    ; 
   
-spi_miso_o       <=  spio.miso     ;
-spi_misooen_o    <=  spio.misooen  ;
-spi_mosi_o       <=  spio.mosi     ;
-spi_mosioen_o    <=  spio.mosioen  ;
-spi_sck_o        <=  spio.sck      ;
-spi_sckoen_o     <=  spio.sckoen   ;
-spi_enable_o     <=  spio.enable   ;
-spi_astart_o     <=  spio.astart   ;
-spi_aready_o     <=  spio.aready   ;
-spi_io2_o        <=  spio.io2      ;
-spi_io2oen_o     <=  spio.io2oen   ;
-spi_io3_o        <=  spio.io3      ;
-spi_io3oen_o     <=  spio.io3oen   ;
+spi_out_miso     <=  spio.miso     ;
+spi_out_misooen  <=  spio.misooen  ;
+spi_out_mosi     <=  spio.mosi     ;
+spi_out_mosioen  <=  spio.mosioen  ;
+spi_out_sck      <=  spio.sck      ;
+spi_out_sckoen   <=  spio.sckoen   ;
+spi_out_enable   <=  spio.enable   ;
+spi_out_astart   <=  spio.astart   ;
+spi_out_aready   <=  spio.aready   ;
+spi_out_io2      <=  spio.io2      ;
+spi_out_io2oen   <=  spio.io2oen   ;
+spi_out_io3      <=  spio.io3      ;
+spi_out_io3oen   <=  spio.io3oen   ;
 
 u_spictrl : entity gaisler.spictrl
 generic map(
@@ -320,24 +320,24 @@ generic map(
   apbo      => apbo(INDEX_APB_SPICTRL) , --apb_slv_out_type;
   spii      => spii                    , --spi_in_type;
   spio      => spio                    , --spi_out_type;
-  slvsel    => spi_slvsel_o              --std_logic_vector((slvselsz-1) downto 0)
+  slvsel    => spi_out_slvsel             --std_logic_vector((slvselsz-1) downto 0)
 );
 
 ------------------------------------------------------------------------------------
 --                                APBUART                                         --
 ------------------------------------------------------------------------------------
-uarti.rxd     <=  uart_rxd      ;
-uarti.ctsn    <=  uart_ctsn     ;
-uarti.extclk  <=  uart_extclk   ;
+uarti.rxd       <=  uart_in_rxd    ;
+uarti.ctsn      <=  uart_in_ctsn   ;
+uarti.extclk    <=  uart_in_extclk ;
 
-uart_rtsn     <=  uarto.rtsn    ;
-uart_txd      <=  uarto.txd     ;
-uart_scaler   <=  uarto.scaler  ;
-uart_txen     <=  uarto.txen    ;
-uart_flow     <=  uarto.flow    ;
-uart_rxen     <=  uarto.rxen    ;
-uart_txtick   <=  uarto.txtick  ;
-uart_rxtick   <=  uarto.rxtick  ;
+uart_out_rtsn   <=  uarto.rtsn     ;
+uart_out_txd    <=  uarto.txd      ;
+uart_out_scaler <=  uarto.scaler   ;
+uart_out_txen   <=  uarto.txen     ;
+uart_out_flow   <=  uarto.flow     ;
+uart_out_rxen   <=  uarto.rxen     ;
+uart_out_txtick <=  uarto.txtick   ;
+uart_out_rxtick <=  uarto.rxtick   ;
 
 u_apbuart : entity gaisler.apbuart
 generic map (
@@ -363,14 +363,14 @@ generic map (
 ------------------------------------------------------------------------------------
 --                                GPIO                                            --
 ------------------------------------------------------------------------------------
-gpioi.din     <=  gpio_din       ; 
-gpioi.sig_in  <=  gpio_sig_in    ; 
-gpioi.sig_en  <=  gpio_sig_en    ; 
+gpioi.din        <=  gpio_in_din    ; 
+gpioi.sig_in     <=  gpio_in_sig_in ; 
+gpioi.sig_en     <=  gpio_in_sig_en ; 
  
-gpio_dout     <=  gpioo.dout     ;
-gpio_oen      <=  gpioo.oen      ;
-gpio_val      <=  gpioo.val      ;
-gpio_sig_out  <=  gpioo.sig_out  ;
+gpio_out_dout    <=  gpioo.dout     ;
+gpio_out_oen     <=  gpioo.oen      ;
+gpio_out_val     <=  gpioo.val      ;
+gpio_out_sig_out <=  gpioo.sig_out  ;
 
 u_grgpio : entity gaisler.grgpio
 generic map (
@@ -406,16 +406,16 @@ generic map (
 ------------------------------------------------------------------------------------
 --                                GRTIMER                                         --
 ------------------------------------------------------------------------------------
-gpti.dhalt   <=  timr_dhalt   ;
-gpti.extclk  <=  timr_extclk  ;
-gpti.wdogen  <=  timr_wdogen  ;
-gpti.latchv  <=  timr_latchv  ;
-gpti.latchd  <=  timr_latchd  ;
+gpti.dhalt      <=  timr_in_dhalt  ;
+gpti.extclk     <=  timr_in_extclk ;
+gpti.wdogen     <=  timr_in_wdogen ;
+gpti.latchv     <=  timr_in_latchv ;
+gpti.latchd     <=  timr_in_latchd ;
 
-timr_tick    <=  gpto.tick    ;    
-timr_timer1  <=  gpto.timer1  ;    
-timr_wdogn   <=  gpto.wdogn   ;    
-timr_wdog    <=  gpto.wdog    ;    
+timr_out_tick   <=  gpto.tick      ;    
+timr_out_timer1 <=  gpto.timer1    ;    
+timr_out_wdogn  <=  gpto.wdogn     ;    
+timr_out_wdog   <=  gpto.wdog      ;    
 
 u_grtimer : entity gaisler.gptimer
 generic map(

@@ -6,5 +6,127 @@ Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-4940] 'syncram_2p' remains a black box since it has no binding entity [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrlx.vhd:2242]
 WARNING: [VRFC 10-4940] 'syncram_2p' remains a black box since it has no binding entity [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/gaisler/spi/spictrlx.vhd:2259]
-ERROR: [VRFC 10-2991] 'mpei_rv_core_wrp' is not declared under prefix 'tb_mpei_rv_core_wrp' [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv:154]
-ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core_wrp.sv" Line 2. Module mpei_rv_core_wrp doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core_wrp.sv" Line 2. Module mpei_rv_core_wrp doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_top_ahb.sv" Line 17. Module scr1_top_ahb doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 49. Module scr1_reset_sync_cell(STAGES_AMOUNT=32'b010) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 49. Module scr1_reset_sync_cell(STAGES_AMOUNT=32'b010) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 49. Module scr1_reset_sync_cell(STAGES_AMOUNT=32'b010) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 197. Module scr1_reset_and2_cell doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_core_top.sv" Line 20. Module scr1_core_top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_scu.sv" Line 34. Module scr1_scu doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 154. Module scr1_reset_qlfy_adapter_cell_sync doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 9. Module scr1_reset_buf_cell doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 101. Module scr1_data_sync_cell(STAGES_AMOUNT=32'b010) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 154. Module scr1_reset_qlfy_adapter_cell_sync doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 9. Module scr1_reset_buf_cell doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 101. Module scr1_data_sync_cell(STAGES_AMOUNT=32'b010) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 154. Module scr1_reset_qlfy_adapter_cell_sync doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 9. Module scr1_reset_buf_cell doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 101. Module scr1_data_sync_cell(STAGES_AMOUNT=32'b010) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" Line 9. Module scr1_reset_buf_cell doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_top.sv" Line 23. Module scr1_pipe_top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_ifu.sv" Line 33. Module scr1_pipe_ifu_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_idu.sv" Line 23. Module scr1_pipe_idu doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_exu.sv" Line 54. Module scr1_pipe_exu doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_ialu.sv" Line 30. Module scr1_pipe_ialu_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_lsu.sv" Line 30. Module scr1_pipe_lsu doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_mprf.sv" Line 9. Module scr1_pipe_mprf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_csr.sv" Line 47. Module scr1_pipe_csr doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_ipic.sv" Line 40. Module scr1_ipic doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_tdu.sv" Line 37. Module scr1_pipe_tdu_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_hdu.sv" Line 38. Module scr1_pipe_hdu_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_tapc.sv" Line 32. Module scr1_tapc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_tapc_shift_reg.sv" Line 9. Module scr1_tapc_shift_reg(SCR1_WIDTH=32'b01,SCR1_RESET_VALUE=1'b0) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_tapc_shift_reg.sv" Line 9. Module scr1_tapc_shift_reg(SCR1_WIDTH=32'b0100000,SCR1_RESET_VALUE=32'b0) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_tapc_shift_reg.sv" Line 9. Module scr1_tapc_shift_reg(SCR1_WIDTH=32'b0100000,SCR1_RESET_VALUE=32'b0) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_tapc_synchronizer.sv" Line 12. Module scr1_tapc_synchronizer doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_dmi.sv" Line 22. Module scr1_dmi_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_dm.sv" Line 46. Module scr1_dm_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_clk_ctrl.sv" Line 9. Module scr1_clk_ctrl doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_cg.sv" Line 9. Module scr1_cg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_tcm.sv" Line 10. Module scr1_tcm doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dp_memory.sv" Line 9. Module scr1_dp_memory_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_timer.sv" Line 9. Module scr1_timer doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_imem_router.sv" Line 8. Module scr1_imem_router(SCR1_ADDR_PATTERN=32'b010010000000000000000000) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dmem_router.sv" Line 8. Module scr1_dmem_router(SCR1_PORT1_ADDR_PATTERN=32'b010010000000000000000000,SCR1_PORT2_ADDR_MASK=32'b11111111111111111111111111100000,SCR1_PORT2_ADDR_PATTERN=32'b010010010000000000000000) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_imem_ahb.sv" Line 9. Module scr1_imem_ahb doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dmem_ahb.sv" Line 9. Module scr1_dmem_ahb doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package grlib.version
+Compiling package grlib.stdlib
+Compiling package grlib.config_types
+Compiling package grlib.config
+Compiling package grlib.amba
+Compiling package grlib.devices
+Compiling package techmap.gencomp
+Compiling package gaisler.misc
+Compiling package gaisler.uart
+Compiling package gaisler.net
+Compiling package gaisler.jtag
+Compiling package gaisler.spi
+Compiling package work.core_const_pkg
+Compiling package ieee.math_real
+Compiling package grlib.stdio
+Compiling package grlib.testlib
+Compiling package techmap.netcomp
+Compiling package xil_defaultlib.$unit_mpei_rv_core_wrp_sv
+Compiling module xil_defaultlib.scr1_reset_sync_cell(STAGES_AMOU...
+Compiling module xil_defaultlib.scr1_reset_and2_cell
+Compiling module xil_defaultlib.scr1_reset_buf_cell
+Compiling module xil_defaultlib.scr1_reset_qlfy_adapter_cell_syn...
+Compiling module xil_defaultlib.scr1_data_sync_cell(STAGES_AMOUN...
+Compiling module xil_defaultlib.scr1_scu
+Compiling module xil_defaultlib.scr1_pipe_ifu_default
+Compiling module xil_defaultlib.scr1_pipe_idu
+Compiling module xil_defaultlib.scr1_pipe_ialu_default
+Compiling module xil_defaultlib.scr1_pipe_lsu
+Compiling module xil_defaultlib.scr1_pipe_exu
+Compiling module xil_defaultlib.scr1_pipe_mprf
+Compiling module xil_defaultlib.scr1_pipe_csr
+Compiling module xil_defaultlib.scr1_ipic
+Compiling module xil_defaultlib.scr1_pipe_tdu_default
+Compiling module xil_defaultlib.scr1_pipe_hdu_default
+Compiling module xil_defaultlib.scr1_pipe_top
+Compiling module xil_defaultlib.scr1_tapc_shift_reg(SCR1_WIDTH=3...
+Compiling module xil_defaultlib.scr1_tapc_shift_reg(SCR1_WIDTH=3...
+Compiling module xil_defaultlib.scr1_tapc
+Compiling module xil_defaultlib.scr1_tapc_synchronizer
+Compiling module xil_defaultlib.scr1_dmi_default
+Compiling module xil_defaultlib.scr1_dm_default
+Compiling module xil_defaultlib.scr1_cg
+Compiling module xil_defaultlib.scr1_clk_ctrl
+Compiling module xil_defaultlib.scr1_core_top
+Compiling module xil_defaultlib.scr1_dp_memory_default
+Compiling module xil_defaultlib.scr1_tcm
+Compiling module xil_defaultlib.scr1_timer
+Compiling module xil_defaultlib.scr1_imem_router(SCR1_ADDR_PATTE...
+Compiling module xil_defaultlib.scr1_dmem_router(SCR1_PORT1_ADDR...
+Compiling module xil_defaultlib.scr1_imem_ahb
+Compiling module xil_defaultlib.scr1_dmem_ahb
+Compiling module xil_defaultlib.scr1_top_ahb
+Compiling architecture scr1_wrp_arc of entity work.scr1_wrp [scr1_wrp_default]
+Compiling architecture rtl of entity grlib.ahbctrl [\ahbctrl(defmast=1,rrobin=1,ioma...]
+Compiling architecture rtl of entity grlib.apbctrlx [\apbctrlx(haddr0=512,hmask1=0,hm...]
+Compiling architecture struct of entity grlib.apbctrl [\apbctrl(haddr=512,nslaves=4)\]
+Compiling architecture rtl of entity gaisler.spictrlx [\spictrlx(rev=6,acntbits=3)\]
+Compiling architecture beh of entity grlib.report_version [\report_version(msg1="spictrl0:_...]
+Compiling architecture rtl of entity gaisler.spictrl [\spictrl(pmask=4080,acntbits=3)\]
+Compiling architecture beh of entity grlib.report_version [\report_version(msg1="apbuart1:_...]
+Compiling architecture rtl of entity gaisler.apbuart [\apbuart(pindex=1,paddr=16,pmask...]
+Compiling architecture beh of entity grlib.report_version [\report_version(msg1="grgpio2:_3...]
+Compiling architecture rtl of entity gaisler.grgpio [\grgpio(pindex=2,paddr=32,pmask=...]
+Compiling architecture beh of entity grlib.report_version [\report_version(msg1="gptimer3:_...]
+Compiling architecture rtl of entity gaisler.gptimer [\gptimer(pindex=3,paddr=48,pmask...]
+Compiling architecture mpei_rv_core_arc of entity work.mpei_rv_core [mpei_rv_core_default]
+Compiling module xil_defaultlib.mpei_rv_core_wrp
+Compiling module xil_defaultlib.tb_mpei_rv_core_wrp
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_mpei_rv_core_wrp_behav
