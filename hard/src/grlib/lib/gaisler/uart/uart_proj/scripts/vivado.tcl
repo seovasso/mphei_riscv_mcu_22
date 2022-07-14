@@ -26,7 +26,7 @@ read_vhdl -vhdl2008 ../../../../grlib/stdlib/config.vhd          -library grlib
 read_vhdl -vhdl2008 ../../../../grlib/stdlib/stdlib.vhd          -library grlib
 read_vhdl -vhdl2008 ../../../../grlib/amba/amba.vhd              -library grlib
 read_vhdl -vhdl2008 ../../../../grlib/amba/devices.vhd           -library grlib
-
+read_vhdl -vhdl2008 ../src/wrapper.vhd            				 -library work
 
 # add simulation source
 create_fileset $SIM_FILESET
