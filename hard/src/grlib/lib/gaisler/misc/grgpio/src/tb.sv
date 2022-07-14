@@ -45,12 +45,15 @@ module tb ();
   logic [31:0] gpioo_val           ;
   logic [31:0] gpioo_sig_out       ;
 
+  logic [31:0] apb_rdata           ;
+
   always #(`CLK_PERIOD/2) clk = !clk;
   initial #(`RESET_GOES_HIGH) rstn = 1'b1;
 
 // APB Interface
   apb_if    apb( .pclk(clk) );
-
+  assign apb.mst_tb.pready  = 1'b1;
+  assign apb.mst_tb.pslverr = 1'b0;
   grgpio_wrp #(
   .pindex   (pindex  ),
   .paddr    (paddr   ),
@@ -74,50 +77,57 @@ module tb ();
   .pulse    (pulse   ) 
   ) 
   uut (
-    .rst           (!rstn          ),//: in  std_ulogic;
-    .clk           (clk          ),//: in  std_ulogic;
+    .rst           (!rstn              ),//: in  std_ulogic;
+    .clk           (clk                ),//: in  std_ulogic;
 
-    .apbi_psel     (apbi_psel    ),//: in  std_ulogic;
-    .apbi_penable  (apbi_penable ),//: in  std_ulogic;
-    .apbi_paddr    (apbi_paddr   ),//: in  std_logic_vector(31 downto 0);
-    .apbi_pwrite   (apbi_pwrite  ),//: in  std_ulogic;
-    .apbi_pwdata   (apbi_pwdata  ),//: in  std_logic_vector(31 downto 0);
-    .apbi_testen   (apbi_testen  ),//: in  std_ulogic;
-    .apbi_testrst  (apbi_testrst ),//: in  std_ulogic;
-    .apbi_scanen   (apbi_scanen  ),//: in  std_ulogic;
-    .apbi_testoen  (apbi_testoen ),//: in  std_ulogic;
+    .apbi_psel     (apb.mst_tb.psel    ),//: in  std_ulogic;
+    .apbi_penable  (apb.mst_tb.penable ),//: in  std_ulogic;
+    .apbi_paddr    (apb.mst_tb.paddr   ),//: in  std_logic_vector(31 downto 0);
+    .apbi_pwrite   (apb.mst_tb.pwrite  ),//: in  std_ulogic;
+    .apbi_pwdata   (apb.mst_tb.pwdata  ),//: in  std_logic_vector(31 downto 0);
+    .apbi_testen   (0                  ),//: in  std_ulogic;
+    .apbi_testrst  (0                  ),//: in  std_ulogic;
+    .apbi_scanen   (0                  ),//: in  std_ulogic;
+    .apbi_testoen  (0                  ),//: in  std_ulogic;
 
-    .apbo_prdata   (apbo_prdata  ),//: out std_logic_vector(31 downto 0);
-    .apbo_pirq     (apbo_pirq    ),//: out std_ulogic;
-
-    .gpioi_din     (gpioi_din    ),//: in  std_logic_vector(31 downto 0);
-    .gpioi_sig_in  (gpioi_sig_in ),//: in  std_logic_vector(31 downto 0);
-    .gpioi_sig_en  (gpioi_sig_en ),//: in  std_logic_vector(31 downto 0);
-
-    .gpioo_dout    (gpioo_dout   ),//: out std_logic_vector(31 downto 0);
-    .gpioo_oen     (gpioo_oen    ),//: out std_logic_vector(31 downto 0);
-    .gpioo_val     (gpioo_val    ),//: out std_logic_vector(31 downto 0);
-    .gpioo_sig_out (gpioo_sig_out) //: out std_logic_vector(31 downto 0))
+    .apbo_prdata   (apb.mst_tb.prdata  ),//: out std_logic_vector(31 downto 0);
+    .apbo_pirq     (apbo_pirq          ),//: out std_ulogic;
+      
+    .gpioi_din     (gpioi_din          ),//: in  std_logic_vector(31 downto 0);
+    .gpioi_sig_in  (gpioi_sig_in       ),//: in  std_logic_vector(31 downto 0);
+    .gpioi_sig_en  (gpioi_sig_en       ),//: in  std_logic_vector(31 downto 0);
+      
+    .gpioo_dout    (gpioo_dout         ),//: out std_logic_vector(31 downto 0);
+    .gpioo_oen     (gpioo_oen          ),//: out std_logic_vector(31 downto 0);
+    .gpioo_val     (gpioo_val          ),//: out std_logic_vector(31 downto 0);
+    .gpioo_sig_out (gpioo_sig_out      ) //: out std_logic_vector(31 downto 0))
   );
 
   // u_grgpio U1(.pindex(pindex),.paddr(paddr),.pmask(pmask).imask(imask),.nbits(nbits))
 
-  // logic ok = 1;
-  // initial begin
-  //   $display("TEST STARTED");
-  //   // we wait start
-  //   #(`RESET_GOES_HIGH);
-  //   #(`CLK_PERIOD);
+initial begin
+    apb_rdata = 32'h0;
+    apb.mst_tb.init;
 
+    $display("TEST STARTED");
+    // we wait start
+    #(`RESET_GOES_HIGH);
+    #(`CLK_PERIOD);
 
-  //   if (d_o != 1'b1) ok = 0;
+    // APB transaction
+    apb.mst_tb.cyc_wait(50);
+    // apb.mst_tb.write( 32'h0BAD_F00D, 32'h1234_5678, 4'hF );     // wite(data, addr(bytes), strb);
+    apb.mst_tb.read( apb_rdata, 0);                 // read(data, addr);
 
-  //   d_i = 0;
-  //   #(`CLK_PERIOD);
-  //   if (d_o != 1'b0) ok = 0;
+    // if (d_o != 1'b1) ok = 0;
 
-  //   if (ok == 1) $display("TEST PASSED");
-  //   else         $display("TEST FAILED");
-  //   $stop();
-  // end
+    // d_i = 0;
+    // #(`CLK_PERIOD);
+    // if (d_o != 1'b0) ok = 0;
+
+    // if (ok == 1) $display("TEST PASSED");
+    // else         $display("TEST FAILED");
+    apb.mst_tb.cyc_wait(50);
+    $stop();
+  end
 endmodule // tb

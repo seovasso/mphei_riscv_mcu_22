@@ -26,10 +26,10 @@ read_vhdl -vhdl2008 ../../../../grlib/stdlib/config.vhd           -library grlib
 read_vhdl -vhdl2008 ../../../../grlib/stdlib/stdlib.vhd           -library grlib
 read_vhdl -vhdl2008 ../../../../grlib/amba/amba.vhd               -library grlib
 read_vhdl -vhdl2008 ../../../../grlib/amba/devices.vhd            -library grlib
-
+add_files -norecurse ../../../../../../sim/apb_if.sv
 read_vhdl -vhdl2008 ../../grgpio.vhd    -library work
 # add simulation source
-create_fileset $SIM_FILESET
+
 add_files -norecurse ../src/tb.sv
 read_vhdl -vhdl2008 ../grgpio_wrp.vhd   -library work
 
