@@ -101,3 +101,4 @@ hard/src/grlib/lib/gaisler/spi/spictrl/work/def_prj/def_prj.sim/sim_1/behav/xsim
 hard/src/grlib/lib/gaisler/spi/spictrl/scripts/vivado.tcl
 hard/src/grlib/lib/gaisler/spi/spictrl/src/tb.sv
 hard/src/grlib/lib/gaisler/spi/spictrl/src/vhdl2verilog.vhd
+hard/src/grlib/lib/gaisler/spi/spictrl/vhdl2verilog.vhd
