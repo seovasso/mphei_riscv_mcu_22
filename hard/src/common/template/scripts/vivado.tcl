@@ -52,6 +52,7 @@ read_vhdl -vhdl2008 ../../../grlib/lib/grlib/modgen/multlib.vhd          -librar
 # add simulation source
 create_fileset $SIM_FILESET
 add_files -norecurse ../src/tb.sv
+add_files -norecurse ../../../sim/apb_if.sv
 
 set_property top tb [get_filesets sim_1]
 
