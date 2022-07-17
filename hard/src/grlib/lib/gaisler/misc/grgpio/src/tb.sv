@@ -3,6 +3,7 @@
 `define CLK_PERIOD 10
 `define RESET_GOES_HIGH 150
 module tb ();
+//grgpio
   parameter pindex   = 0;
   parameter paddr    = 0;
   parameter pmask    = 12'h0;
@@ -54,28 +55,29 @@ module tb ();
   apb_if    apb( .pclk(clk) );
   assign apb.mst_tb.pready  = 1'b1;
   assign apb.mst_tb.pslverr = 1'b0;
+  
   grgpio_wrp #(
-  .pindex   (pindex  ),
-  .paddr    (paddr   ),
-  .pmask    (pmask   ),
-  .imask    (imask   ),
-  .nbits    (nbits   ),
-  .oepol    (oepol   ),
-  .syncrst  (syncrst ),
-  .bypass   (bypass  ),
-  .scantest (scantest),
-  .bpdir    (bpdir   ),
-  .pirq     (pirq    ),
-  .irqgen   (irqgen  ),
-  .iflagreg (iflagreg),
-  .bpmode   (bpmode  ),
-  .inpen    (inpen   ),
-  .doutresv (doutresv),
-  .dirresv  (dirresv ),
-  .bpresv   (bpresv  ),
-  .inpresv  (inpresv ),
-  .pulse    (pulse   ) 
-  ) 
+    .pindex   (pindex  ),
+    .paddr    (paddr   ),
+    .pmask    (pmask   ),
+    .imask    (imask   ),
+    .nbits    (nbits   ),
+    .oepol    (oepol   ),
+    .syncrst  (syncrst ),
+    .bypass   (bypass  ),
+    .scantest (scantest),
+    .bpdir    (bpdir   ),
+    .pirq     (pirq    ),
+    .irqgen   (irqgen  ),
+    .iflagreg (iflagreg),
+    .bpmode   (bpmode  ),
+    .inpen    (inpen   ),
+    .doutresv (doutresv),
+    .dirresv  (dirresv ),
+    .bpresv   (bpresv  ),
+    .inpresv  (inpresv ),
+    .pulse    (pulse   ) 
+  )
   uut (
     .rst           (!rstn              ),//: in  std_ulogic;
     .clk           (clk                ),//: in  std_ulogic;
@@ -101,6 +103,107 @@ module tb ();
     .gpioo_oen     (gpioo_oen          ),//: out std_logic_vector(31 downto 0);
     .gpioo_val     (gpioo_val          ),//: out std_logic_vector(31 downto 0);
     .gpioo_sig_out (gpioo_sig_out      ) //: out std_logic_vector(31 downto 0))
+  );
+
+  //spi2ahb
+  parameter hindex   = 0;
+  parameter ahbaddrh = 0;
+  parameter ahbaddrl = 0;
+  parameter ahbmaskh = 0;
+  parameter ahbmaskl = 0;
+  parameter resen    = 0;
+  parameter pindex   = 0;
+  parameter paddr    = 0;
+  parameter filter   = 2;
+  parameter cpol     = 0;
+  parameter cpha     = 0;
+  parameter pmask    = 16'h0;
+  parameter oepol    = 0;//Output enable polarity
+  parameter pirq     = 0
+
+  logic ahbi    ;
+  logic ahbo    ;
+  logic apbi    ;
+  logic apbo    ;
+  
+  logic spii    ;
+  logic spio    ;
+  
+  logic miso    ;
+  logic mosi    ;
+  logic sck     ;
+  logic spisel  ;
+  logic astart  ;
+  logic cstart  ;
+  logic ignore  ;
+  logic io2     ;
+  logic io3     ;
+  
+  logic miso    ;
+  logic misooen ;
+  logic mosi    ;
+  logic mosioen ;
+  logic sck     ;
+  logic sckoen  ;
+  logic enable  ;
+  logic astart  ;
+  logic aready  ;
+  logic io2     ;
+  logic io2oen  ;
+  logic io3     ;
+  logic io3oen  ;
+
+  spi2ahb_wrp #(
+    .hindex   (hindex  ),
+    .ahbaddrh (ahbaddrh),
+    .ahbaddrl (ahbaddrl),
+    .ahbmaskh (ahbmaskh),
+    .ahbmaskl (ahbmaskl),
+    .resen    (resen   ),
+    .pindex   (pindex  ),
+    .paddr    (paddr   ),
+    .filter   (filter  ),
+    .cpol     (cpol    ),
+    .cpha     (cpha    ),
+    .pmask    (pmask   ),
+    .oepol    (oepol   ),
+    .pirq     (pirq    )
+  )
+  uut(
+    .rstn     (rstn   ),
+    .clk      (clk    ),
+    //AHB master interface
+    .ahbi     (ahbi   ),
+    .ahbo     (ahbo   ),
+    .apbi     (apbi   ),
+    .apbo     (apbo   ),
+    //SPI signals
+    .spii     (spii   ),
+    .spio     (spio   ),
+    //spi_in_type
+    .miso     (miso   ),
+    .mosi     (mosi   ),
+    .sck      (sck    ),
+    .spisel   (spisel ),
+    .astart   (astart ),
+    .cstart   (cstart ),
+    .ignore   (ignore ),
+    .io2      (io2    ),
+    .io3      (io3    ),
+    //spi_out_type
+    .miso     (miso   ),
+    .misooen  (misooen),
+    .mosi     (mosi   ),
+    .mosioen  (mosioen),
+    .sck      (sck    ),
+    .sckoen   (sckoen ),
+    .enable   (enable ),
+    .astart   (astart ),
+    .aready   (aready ),
+    .io2      (io2    ),
+    .io2oen   (io2oen ),
+    .io3      (io3    ),
+    .io3oen   (io3oen ),
   );
 
   // u_grgpio U1(.pindex(pindex),.paddr(paddr),.pmask(pmask).imask(imask),.nbits(nbits))
