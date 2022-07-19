@@ -29,14 +29,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="201220fs"></ZoomEndTime>
-      <Cursor1Time time="144073fs"></Cursor1Time>
+      <ZoomEndTime time="370001fs"></ZoomEndTime>
+      <Cursor1Time time="95332fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="162"></NameColumnWidth>
-      <ValueColumnWidth column_width="65"></ValueColumnWidth>
+      <ValueColumnWidth column_width="61"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
+   <WVObjectSize size="10" />
    <wvobject fp_name="/tb_mpei_rv_core_wrp/ok" type="logic">
       <obj_property name="ElementShortName">ok</obj_property>
       <obj_property name="ObjectShortName">ok</obj_property>
@@ -304,5 +304,9 @@
          <obj_property name="ElementShortName">apbo[0:15]</obj_property>
          <obj_property name="ObjectShortName">apbo[0:15]</obj_property>
       </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/mpei_rv_core/u_scr1_wrp/u_scr1_top_ahb/i_core_top/i_pipe_top/curr_pc" type="array">
+      <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
    </wvobject>
 </wave_config>

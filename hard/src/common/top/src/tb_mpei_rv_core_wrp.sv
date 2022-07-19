@@ -1,9 +1,12 @@
 `timescale 1ns/10ps
 
-                            // Change for your system
-`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/firmware_scr1.bin"
+                            // Change for your system                      
+//`define MEM_PROGRAMM_PATH "C:/Users/nmari/eclipse-workspace/scr1_example_project/soft/eclipse/projects/scr1_test_project/Debug/scr1_test_project.bin" //path to C work directory
+`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_test_project.bin"                          //path to vivado work directory
+//`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/firmware_scr1.bin"                              //path to vivado work directory
 `define MEM_HIERARCH_PATH tb_mpei_rv_core_wrp.DUT.mpei_rv_core.u_scr1_wrp.u_scr1_top_ahb.i_tcm.i_dp_memory.ram_block
-`define NWORD 32
+
+//`define NWORD 32
 
 `define CLK_PERIOD 10
 `define RESET_GOES_HIGH 150
@@ -148,8 +151,20 @@ mpei_rv_core_wrp #(
 logic ok = 1;
 
 // tcm initialization
-initial begin
-  $readmemh (`MEM_PROGRAMM_PATH , `MEM_HIERARCH_PATH, 0, `NWORD-1 );
+// initial begin
+//   //$readmemh (`MEM_PROGRAMM_PATH , `MEM_HIERARCH_PATH, 0, `NWORD-1 );
+//   $readmemb (`MEM_PROGRAMM_PATH , `MEM_HIERARCH_PATH);
+// end
+
+// tcm initialization
+integer data_file;
+initial begin 
+  data_file = $fopen(`MEM_PROGRAMM_PATH, "rb");
+  if (data_file == 0) begin //NULL (file didn't open)
+    $display("data_file handle was NULL");
+    $finish;
+  end
+  $fread(`MEM_HIERARCH_PATH, data_file);
 end
 
 // initial initialization
@@ -167,9 +182,9 @@ initial begin
   #(`RESET_GOES_HIGH);
   #(`CLK_PERIOD);
 
-  if (ok == 1) $display("TEST PASSED");
-  else         $display("TEST FAILED");
-  $stop();
+  //if (ok == 1) $display("TEST PASSED");
+  //else         $display("TEST FAILED");
+  #1000 $stop();
 end
 
 endmodule
