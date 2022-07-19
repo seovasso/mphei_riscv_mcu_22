@@ -1,6 +1,6 @@
 Vivado Simulator 2020.1
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto ca7df5cb9fc34ef19736783a18935144 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L grlib -L gaisler -L work -L techmap -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_mpei_rv_core_wrp_behav xil_defaultlib.tb_mpei_rv_core_wrp xil_defaultlib.glbl -log elaborate.log 
+Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto bef623e15a144978bbb22d3ccd2017e8 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L grlib -L gaisler -L work -L techmap -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_mpei_rv_core_wrp_behav xil_defaultlib.tb_mpei_rv_core_wrp xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -128,5 +128,6 @@ Compiling architecture rtl of entity gaisler.gptimer [\gptimer(pindex=3,paddr=48
 Compiling architecture mpei_rv_core_arc of entity work.mpei_rv_core [mpei_rv_core_default]
 Compiling module xil_defaultlib.mpei_rv_core_wrp
 Compiling module xil_defaultlib.tb_mpei_rv_core_wrp
+WARNING: [XSIM 43-3373] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv" Line 167. System function $fread is used as system task. This system function should have a LHS e.g. x=$fread().
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot tb_mpei_rv_core_wrp_behav

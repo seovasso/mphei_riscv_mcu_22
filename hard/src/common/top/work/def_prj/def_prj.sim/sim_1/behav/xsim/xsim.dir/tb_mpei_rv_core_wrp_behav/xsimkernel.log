@@ -1,4 +1,4 @@
-Running: xsim.dir/tb_mpei_rv_core_wrp_behav/xsimk.exe -simmode gui -wdb tb_mpei_rv_core_wrp_behav.wdb -simrunnum 0 -socket 60914
+Running: xsim.dir/tb_mpei_rv_core_wrp_behav/xsimk.exe -simmode gui -wdb tb_mpei_rv_core_wrp_behav.wdb -simrunnum 0 -socket 56354
 Design successfully loaded
-Design Loading Memory Usage: 69128 KB (Peak: 69128 KB)
-Design Loading CPU Usage: 171 ms
+Design Loading Memory Usage: 69164 KB (Peak: 69164 KB)
+Design Loading CPU Usage: 186 ms
