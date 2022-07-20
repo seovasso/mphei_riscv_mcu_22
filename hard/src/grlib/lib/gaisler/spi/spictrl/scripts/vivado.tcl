@@ -1,5 +1,5 @@
 # Variables
-set PROJECT_NAME            def_prj
+set PROJECT_NAME            woodoo
 set DIR_OUTPUT              ../work
 
 set COMMON_FILESET          src_common
@@ -15,7 +15,7 @@ set_property board_part xilinx.com:kc705:part0:1.6 [current_project]
 # add source
 create_fileset $COMMON_FILESET
 add_files -norecurse ../../../../../../grlib/lib/gaisler/spi/spictrl/src/spi_wrap.vhd
-
+add_files -norecurse ../../../../../../grlib/lib/gaisler/spi/spictrl/src/apb_if.sv
 
 read_vhdl -vhdl2008 ../../../../../../grlib/lib/gaisler/spi/spi.vhd        		-library gaisler
 read_vhdl -vhdl2008 ../../../../../../grlib/lib/grlib/amba/amba.vhd      		-library grlib
