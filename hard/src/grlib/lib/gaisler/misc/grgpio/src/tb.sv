@@ -34,11 +34,11 @@ module tb ();
   logic        apbi_pwrite         ;
   logic [31:0] apbi_pwdata         ;
   logic        apbi_pirq           ;
-  logic        apbi_testen         ;
-  logic        apbi_testrst        ;
-  logic        apbi_scanen         ;
-  logic        apbi_testoen        ;
-  logic        apbi_testin         ;
+  logic        apbi_testen      = 1'b0  ;
+  logic        apbi_testrst     = 1'b0   ;
+  logic        apbi_scanen      = 1'b0   ;
+  logic        apbi_testoen     = 1'b0  ;
+  logic        apbi_testin      = 1'b0   ;
   
   logic [31:0] apbo_prdata         ;
   logic        apbo_pirq           ;
@@ -62,7 +62,7 @@ module tb ();
   logic [31:0] apb_rdata           ;
 
   always #(`CLK_PERIOD/2) clk = !clk;
-  initial #(`RESET_GOES_HIGH) rstn = 1'b0;
+  initial #(`RESET_GOES_HIGH) rstn = 1'b1;
 
 // APB Interface
   apb_if    apb( .pclk(clk) );
@@ -77,7 +77,7 @@ module tb ();
   assign apbi_pwrite         = apb.mst_tb.pwrite ;
   assign apbi_pwdata         = apb.mst_tb.pwdata ;
   assign apbi_paddr          = apb.mst_tb.paddr  ;
-  assign apbi_prdata         = apb.mst_tb.prdata ;
+  assign apbo_prdata         = apb.mst_tb.prdata ;
   
   grgpio_wrp #(
     .pindex   (pindex  ),
@@ -117,7 +117,7 @@ module tb ();
     .apbi_testoen  (apbi_testoen       ),//: in  std_ulogic;
     .apbi_testin   (apbi_testin        ),
 
-    .apbo_prdata   (apbi_prdata        ),//: out std_logic_vector(31 downto 0);
+    .apbo_prdata   (apbo_prdata        ),//: out std_logic_vector(31 downto 0);
     //.apbo_pirq     (apbo_pirq          ),//: out std_ulogic;
       
     .gpioi_din     (gpioi_din          ),//: in  std_logic_vector(31 downto 0);
@@ -236,7 +236,7 @@ module tb ();
 initial begin
     apb_rdata = 32'h20000;
     apb.mst_tb.init;
-    gpioi_din = 32'h1;
+    gpioi_din = 32'h1234;
 
     $display("TEST STARTED");
     // we wait start
@@ -244,16 +244,16 @@ initial begin
     #(`CLK_PERIOD);
 
     // APB transaction
-    apb.mst_tb.cyc_wait(50);
-    apb.mst_tb.write( 32'h0BAD_F00D, 32'h4, 4'hF );     // write(data, addr(bytes), strb);
+    //apb.mst_tb.cyc_wait(50);
+    //apb.mst_tb.write( gpioi_din, 32'h4, 4'hF );     // write(data, addr(bytes), strb);
     //apb.mst_tb.read( apb_rdata, 32'h1234_5678);
     //apb.mst_tb.read( apb_rdata, 0);                 // read(data, addr);
+    //apb.mst_tb.cyc_wait(50);
+    //apb.mst_tb.write( apb_rdata, 32'h100);     // write(data, addr(bytes))
     apb.mst_tb.cyc_wait(50);
-    apb.mst_tb.write( apb_rdata, 32'h100);     // write(data, addr(bytes))
-    apb.mst_tb.cyc_wait(50);
-    apb.mst_tb.read( apb_rdata, 32'h200);        // read(data, addr);
-    apb.mst_tb.cyc_wait(50);
-    apb.mst_tb.write( apb_rdata, 32'h300);
+    apb.mst_tb.read( gpioi_din, 32'h0);        // read(data, addr);
+    //apb.mst_tb.cyc_wait(50);
+    //apb.mst_tb.write( apb_rdata, 32'h300);
 
     // if (d_o != 1'b1) ok = 0;
 

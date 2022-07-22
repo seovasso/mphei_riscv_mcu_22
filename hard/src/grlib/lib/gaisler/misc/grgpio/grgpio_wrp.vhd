@@ -173,13 +173,13 @@ begin
   );
   rstn          <= not rst;
 
-  -- apbi.psel     <= apbi_psel   ;
-  -- apbi.penable  <= apbi_penable;
-  -- apbi.pwrite   <= apbi_pwrite ;
-  -- apbi.testen   <= apbi_testen ;
-  -- apbi.testrst  <= apbi_testrst;
-  -- apbi.scanen   <= apbi_scanen ;
-  -- apbi.testoen  <= apbi_testoen; 
+  apbi.psel (0) <= apbi_psel   ;
+  apbi.penable  <= apbi_penable;
+  apbi.pwrite   <= apbi_pwrite ;
+  apbi.testen   <= apbi_testen ;
+  apbi.testrst  <= apbi_testrst;
+  apbi.scanen   <= apbi_scanen ;
+  apbi.testoen  <= apbi_testoen; 
   apbi.paddr    <= apbi_paddr  ;
   apbi.pwdata   <= apbi_pwdata ;
   apbi.pirq     <= apbi_pirq   ;
