@@ -32,7 +32,7 @@ read_vhdl -vhdl2008 ../../grgpio.vhd    -library work
 
 add_files -norecurse ../src/tb.sv
 read_vhdl -vhdl2008 ../grgpio_wrp.vhd   -library work
-read_vhdl -vhdl2008 ../spi2ahb_wrp.vhd   -library work
+#read_vhdl -vhdl2008 ../spi2ahb_wrp.vhd   -library work
 
 set_property top tb [get_filesets sim_1]
 

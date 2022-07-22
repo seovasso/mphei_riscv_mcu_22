@@ -44,7 +44,7 @@ entity grgpio_wrp is
     paddr    : integer               := 0;
     pmask    : integer               := 16#fff#;
     imask    : integer               := 16#0000#;
-    nbits    : integer range 0 to 32 := 8;			-- GPIO bits
+    nbits    : integer range 0 to 32 := 8;		-- GPIO bits
     oepol    : integer range 0 to 1  := 0;      -- Output enable polarity
     syncrst  : integer range 0 to 1  := 0;      -- Only synchronous reset
     bypass   : integer               := 16#0000#;
@@ -62,21 +62,25 @@ entity grgpio_wrp is
     pulse    : integer range 0 to 1  := 0
   );
   port (
-    rst           : in  std_ulogic;
-    clk           : in  std_ulogic;
+    rst           : in  std_logic;
+    clk           : in  std_logic;
     -- APB slave inputs
-    apbi_psel     : in  std_ulogic;
-    apbi_penable  : in  std_ulogic;
+    apbi_psel     : in  std_logic;
+    apbi_penable  : in  std_logic;
     apbi_paddr    : in  std_logic_vector(31 downto 0);
-    apbi_pwrite   : in  std_ulogic;
+    apbi_pwrite   : in  std_logic;
     apbi_pwdata   : in  std_logic_vector(31 downto 0);
-    apbi_testen   : in  std_ulogic;
-    apbi_testrst  : in  std_ulogic;
-    apbi_scanen   : in  std_ulogic;
-    apbi_testoen  : in  std_ulogic;
+    apbi_pirq     : in  std_logic_vector(NAHBIRQ-1 downto 0);
+    apbi_testen   : in  std_logic;
+    apbi_testrst  : in  std_logic;
+    apbi_scanen   : in  std_logic;
+    apbi_testoen  : in  std_logic;
+    apbi_testin   : in  std_logic_vector(NTESTINBITS-1 downto 0);
     -- APB slave outputs
     apbo_prdata   : out std_logic_vector(31 downto 0);
-    apbo_pirq     : out std_ulogic;
+    apbo_pirq     : out std_logic_vector(NAHBIRQ-1 downto 0); -- interrupt bus
+    --apbo_pconfig  : out apb_config_type;                      -- memory access reg.
+    --pindex        : out integer range 0 to NAPBSLV -1;
     --GPIO slave inputs
     gpioi_din           : in  std_logic_vector(31 downto 0);
     gpioi_sig_in        : in  std_logic_vector(31 downto 0);
@@ -114,8 +118,8 @@ component grgpio
     pulse    : integer := 0
   );
   port (
-    rst    : in  std_ulogic;
-    clk    : in  std_ulogic;
+    rst    : in  std_logic;
+    clk    : in  std_logic;
     -- APB signals
     apbi   : in  apb_slv_in_type;
     apbo   : out apb_slv_out_type;
@@ -168,6 +172,22 @@ begin
     gpioo  => gpioo 
   );
   rstn          <= not rst;
+
+  -- apbi.psel     <= apbi_psel   ;
+  -- apbi.penable  <= apbi_penable;
+  -- apbi.pwrite   <= apbi_pwrite ;
+  -- apbi.testen   <= apbi_testen ;
+  -- apbi.testrst  <= apbi_testrst;
+  -- apbi.scanen   <= apbi_scanen ;
+  -- apbi.testoen  <= apbi_testoen; 
+  apbi.paddr    <= apbi_paddr  ;
+  apbi.pwdata   <= apbi_pwdata ;
+  apbi.pirq     <= apbi_pirq   ;
+  apbi.testin   <= apbi_testin ;
+  
+  apbo_prdata   <= apbo.prdata;
+  apbo_pirq     <= apbo.pirq  ; 
+
   gpioi.din     <= gpioi_din;
   gpioi.sig_in  <= gpioi_sig_in;
   gpioi.sig_en  <= gpioi_sig_en;
