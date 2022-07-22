@@ -41,7 +41,7 @@ module tb ();
 									
   logic	 [31:0]			  			apbo_prdata    ;
   logic	 [NAHBIRQ-1:0]			  	apbo_pirq_o    ;
-  logic	 [32*NAPBCFG-1:0]			apbo_pconfig   ;
+  logic	 [NAPBCFG-1:0]				apbo_pconfig   ;
   integer			  				apbo_pindex    ;
 						
   logic			  uarti_rxd       ;
@@ -110,7 +110,7 @@ uut(
 				
 	.prdata  	(apbo_prdata ),
 	.pirq_o  	(apbo_pirq),
-	.pconfig 	(),
+	.pconfig 	(apbo_pconfig),
 	.pindex  	(apbo_pindex ),
 	
 	.rxd        (uarti_rxd   ),
