@@ -128,3 +128,4 @@ hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim
 hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim/webtalk_9680.backup.log
 hard/src/sim/apb_if.sv
 hard/src/sim/apb_if.sv
+hard/src/sim/apb_if.sv
