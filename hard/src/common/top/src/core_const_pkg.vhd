@@ -6,8 +6,8 @@ package core_const_pkg is
   ------------------------------------------------------------------------------------
   --                            List AHB bus masters/slaves
   ------------------------------------------------------------------------------------
-  constant INDEX_AHBM_CPU_IMEM        : integer    := 0;
-  constant INDEX_AHBM_CPU_DMEM        : integer    := 1;
+  constant INDEX_AHBM_CPU_DMEM        : integer    := 0;
+  constant INDEX_AHBM_CPU_IMEM        : integer    := 1;
   constant INDEX_AHBM_ALL             : integer    := 2;
 
   constant INDEX_AHBS_AHB2APB         : integer    := 0;

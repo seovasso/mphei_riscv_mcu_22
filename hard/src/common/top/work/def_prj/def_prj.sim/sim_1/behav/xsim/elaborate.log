@@ -50,8 +50,8 @@ WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard
 WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_tcm.sv" Line 10. Module scr1_tcm doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dp_memory.sv" Line 9. Module scr1_dp_memory_default doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_timer.sv" Line 9. Module scr1_timer doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_imem_router.sv" Line 8. Module scr1_imem_router(SCR1_ADDR_PATTERN=32'b010010000000000000000000) doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dmem_router.sv" Line 8. Module scr1_dmem_router(SCR1_PORT1_ADDR_PATTERN=32'b010010000000000000000000,SCR1_PORT2_ADDR_MASK=32'b11111111111111111111111111100000,SCR1_PORT2_ADDR_PATTERN=32'b010010010000000000000000) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_imem_router.sv" Line 8. Module scr1_imem_router(SCR1_ADDR_PATTERN=32'b11110000000000000000000000000000) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dmem_router.sv" Line 8. Module scr1_dmem_router(SCR1_PORT1_ADDR_PATTERN=32'b11110000000000000000000000000000,SCR1_PORT2_ADDR_MASK=32'b11111111111111111111111111100000,SCR1_PORT2_ADDR_PATTERN=32'b010010010000000000000000) doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_imem_ahb.sv" Line 9. Module scr1_imem_ahb doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dmem_ahb.sv" Line 9. Module scr1_dmem_ahb doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
@@ -113,21 +113,21 @@ Compiling module xil_defaultlib.scr1_imem_ahb
 Compiling module xil_defaultlib.scr1_dmem_ahb
 Compiling module xil_defaultlib.scr1_top_ahb
 Compiling architecture scr1_wrp_arc of entity work.scr1_wrp [scr1_wrp_default]
-Compiling architecture rtl of entity grlib.ahbctrl [\ahbctrl(defmast=1,rrobin=1,ioma...]
+Compiling architecture rtl of entity grlib.ahbctrl [\ahbctrl(rrobin=1,nahbm=16,nahbs...]
 Compiling architecture rtl of entity grlib.apbctrlx [\apbctrlx(haddr0=512,hmask1=0,hm...]
 Compiling architecture struct of entity grlib.apbctrl [\apbctrl(haddr=512,nslaves=4)\]
 Compiling architecture rtl of entity gaisler.spictrlx [\spictrlx(rev=6,acntbits=3)\]
 Compiling architecture beh of entity grlib.report_version [\report_version(msg1="spictrl0:_...]
-Compiling architecture rtl of entity gaisler.spictrl [\spictrl(pmask=4080,acntbits=3)\]
+Compiling architecture rtl of entity gaisler.spictrl [\spictrl(acntbits=3)\]
 Compiling architecture beh of entity grlib.report_version [\report_version(msg1="apbuart1:_...]
-Compiling architecture rtl of entity gaisler.apbuart [\apbuart(pindex=1,paddr=16,pmask...]
+Compiling architecture rtl of entity gaisler.apbuart [\apbuart(pindex=1,paddr=16,fifos...]
 Compiling architecture beh of entity grlib.report_version [\report_version(msg1="grgpio2:_3...]
-Compiling architecture rtl of entity gaisler.grgpio [\grgpio(pindex=2,paddr=32,pmask=...]
+Compiling architecture rtl of entity gaisler.grgpio [\grgpio(pindex=2,paddr=32,imask=...]
 Compiling architecture beh of entity grlib.report_version [\report_version(msg1="gptimer3:_...]
-Compiling architecture rtl of entity gaisler.gptimer [\gptimer(pindex=3,paddr=48,pmask...]
+Compiling architecture rtl of entity gaisler.gptimer [\gptimer(pindex=3,paddr=48,sepir...]
 Compiling architecture mpei_rv_core_arc of entity work.mpei_rv_core [mpei_rv_core_default]
 Compiling module xil_defaultlib.mpei_rv_core_wrp
 Compiling module xil_defaultlib.tb_mpei_rv_core_wrp
-WARNING: [XSIM 43-3373] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv" Line 167. System function $fread is used as system task. This system function should have a LHS e.g. x=$fread().
+WARNING: [XSIM 43-3373] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv" Line 173. System function $fread is used as system task. This system function should have a LHS e.g. x=$fread().
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot tb_mpei_rv_core_wrp_behav

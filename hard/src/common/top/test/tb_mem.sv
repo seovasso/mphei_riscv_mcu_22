@@ -46,13 +46,15 @@ initial begin
 end
 
 `define SIZEOFMEM 10
+`define START 72
+`define COUNT 5
 
 initial begin
 
     //scan_file = $fseek(data_file, 0, `SEEK_SET); /* Beginning */
 
     i = 0;
-    scan_file = $fread(memtb, data_file);
+    scan_file = $fread(memtb, data_file, `START);
 
     // repeat(`SIZEOFMEM - 5) begin
     //   scan_file = $fread(memtb[i], data_file);

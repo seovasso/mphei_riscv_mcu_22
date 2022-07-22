@@ -183,7 +183,7 @@ generic map (
   rrobin      => 1                          , -- integer                    := 0;           -- round-robin arbitration
   timeout     => 0                          , -- integer range 0 to 255     := 0;           -- HREADY timeout
   ioaddr      => 16#FFF#                    , -- ahb_addr_type              := 16#fff#;     -- I/O area MSB address
-  iomask      => 16#FF0#                    , -- ahb_addr_type              := 16#fff#;     -- I/O area address mask
+  iomask      => 16#FFF#                    , -- ahb_addr_type              := 16#fff#;     -- I/O area address mask
   cfgaddr     => 16#FF0#                    , -- ahb_addr_type              := 16#ff0#;     -- config area MSB address
   cfgmask     => 16#FF0#                    , -- ahb_addr_type              := 16#ff0#;     -- config area address mask
   nahbm       => NAHBMST                    , -- integer range 1 to NAHBMST := NAHBMST;     -- number of masters
@@ -289,7 +289,7 @@ u_spictrl : entity gaisler.spictrl
 generic map(
   pindex    => INDEX_APB_SPICTRL       , -- integer               := 0;       slave bus index
   paddr     => INDEX_APB_SPICTRL*16    , -- integer               := 0;       APB address
-  pmask     => 16#FF0#                 , -- integer               := 16#fff#; APB mask
+  pmask     => 16#FFF#                 , -- integer               := 16#fff#; APB mask
   pirq      => 0                       , -- integer               := 0;       interrupt index
   fdepth    => 1                       , -- integer range 1 to 7  := 1;       FIFO depth is 2^fdepth
   slvselen  => 0                       , -- integer range 0 to 1  := 0;       Slave select register enable
@@ -343,12 +343,12 @@ u_apbuart : entity gaisler.apbuart
 generic map (
   pindex   => INDEX_APB_APBUART       , -- integer                := 0; 
   paddr    => INDEX_APB_APBUART*16    , -- integer                := 0;
-  pmask    => 16#FF0#                 , -- integer                := 16#fff#;
+  pmask    => 16#FFF#                 , -- integer                := 16#fff#;
   console  => 0                       , -- integer                := 0; 
   pirq     => 0                       , -- integer                := 0;
-  parity   => 1                       , -- integer                := 1; 
-  flow     => 1                       , -- integer                := 1;
-  fifosize => 1                       , -- integer range 1 to 32  := 1;
+  parity   => 1                       , -- integer                := 1;       -- parity bit
+  flow     => 1                       , -- integer                := 1;       -- hardware flow-control is supported through the RTSN/CTSN hand-shake signals
+  fifosize => 4                       , -- integer range 1 to 32  := 1;
   abits    => 8                       , -- integer                := 8;
   sbits    => 12                        -- integer range 12 to 32 := 12);
 ) port map(
@@ -376,7 +376,7 @@ u_grgpio : entity gaisler.grgpio
 generic map (
   pindex   => INDEX_APB_GPIO       , -- integer              := 0;
   paddr    => INDEX_APB_GPIO*16    , -- integer              := 0;
-  pmask    => 16#FF0#              , -- integer              := 16#fff#;
+  pmask    => 16#FFF#              , -- integer              := 16#fff#;
   imask    => 16#7FFFFFFF#         , -- integer              := 16#0000#; -- Mask for interrupts
   nbits    => 31                   , -- integer              := 16;		   	-- GPIO bits
   oepol    => 1                    , -- integer              := 0;        -- Output enable polarity
@@ -421,7 +421,7 @@ u_grtimer : entity gaisler.gptimer
 generic map(
   pindex    => INDEX_APB_GRTIMER       , -- Integer              := 0;
   paddr     => INDEX_APB_GRTIMER*16    , -- Integer              := 0;
-  pmask     => 16#FF0#                 , -- Integer              := 16#fff#;
+  pmask     => 16#FFF#                 , -- Integer              := 16#fff#;
   pirq      => 0                       , -- Integer              := 1;
   sepirq    => 1                       , -- Integer              := 1;       -- separate interrupts
   sbits     => 10                      , -- Integer              := 10;      -- scaler bits

@@ -1,8 +1,8 @@
 `timescale 1ns/10ps
 
                             // Change for your system                      
-//`define MEM_PROGRAMM_PATH "C:/Users/nmari/eclipse-workspace/scr1_example_project/soft/eclipse/projects/scr1_test_project/Debug/scr1_test_project.bin" //path to C work directory
-`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_test_project.bin"                          //path to vivado work directory
+`define MEM_PROGRAMM_PATH "C:/Users/nmari/eclipse-workspace/scr1_example_project/soft/eclipse/projects/scr1_test_project/Debug/scr1_test_project.bin" //path to C work directory
+//`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_test_project.bin"                          //path to vivado work directory
 //`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/firmware_scr1.bin"                              //path to vivado work directory
 `define MEM_HIERARCH_PATH tb_mpei_rv_core_wrp.DUT.mpei_rv_core.u_scr1_wrp.u_scr1_top_ahb.i_tcm.i_dp_memory.ram_block
 
@@ -157,14 +157,34 @@ logic ok = 1;
 // end
 
 // tcm initialization
+`define MEMSIZE 16384
 integer data_file;
+integer iii;
+logic   [31:0] tbmem [`MEMSIZE-1:0];
 initial begin 
+  //read file
   data_file = $fopen(`MEM_PROGRAMM_PATH, "rb");
   if (data_file == 0) begin //NULL (file didn't open)
     $display("data_file handle was NULL");
     $finish;
   end
-  $fread(`MEM_HIERARCH_PATH, data_file);
+  
+  //read data from file
+  $fread(tbmem, data_file); //$fread(memory, file, start_index_of_memory, needed_count_word_for_write);
+
+  //change byte endianness
+  iii = 0;
+  repeat(`MEMSIZE) begin
+    `MEM_HIERARCH_PATH[iii][31:28] = tbmem[iii][7:4]  ;
+    `MEM_HIERARCH_PATH[iii][27:24] = tbmem[iii][3:0]  ;
+    `MEM_HIERARCH_PATH[iii][23:20] = tbmem[iii][15:12];
+    `MEM_HIERARCH_PATH[iii][19:16] = tbmem[iii][11:8] ;
+    `MEM_HIERARCH_PATH[iii][15:12] = tbmem[iii][23:20];
+    `MEM_HIERARCH_PATH[iii][11:8]  = tbmem[iii][19:16];
+    `MEM_HIERARCH_PATH[iii][7:4]   = tbmem[iii][31:28];
+    `MEM_HIERARCH_PATH[iii][3:0]   = tbmem[iii][27:24];
+    iii = iii + 1;
+  end
 end
 
 // initial initialization
