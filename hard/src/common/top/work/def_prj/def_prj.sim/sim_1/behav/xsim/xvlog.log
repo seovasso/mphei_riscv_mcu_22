@@ -1,0 +1,68 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/mpei_rv_core_wrp.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mpei_rv_core_wrp
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_cg.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_cg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_clk_ctrl.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_clk_ctrl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_core_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_core_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_dm.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_dm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dmem_ahb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_dmem_ahb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dmem_router.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_dmem_router
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_dmi.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_dmi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_dp_memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_dp_memory
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_imem_ahb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_imem_ahb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_imem_router.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_imem_router
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_ipic.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_ipic
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_csr.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_csr
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_exu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_exu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_hdu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_hdu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_ialu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_ialu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_idu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_idu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_ifu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_ifu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_lsu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_lsu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_mprf.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_mprf
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_tdu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_tdu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/pipeline/scr1_pipe_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_pipe_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/primitives/scr1_reset_cells.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_reset_buf_cell
+INFO: [VRFC 10-311] analyzing module scr1_reset_sync_cell
+INFO: [VRFC 10-311] analyzing module scr1_data_sync_cell
+INFO: [VRFC 10-311] analyzing module scr1_reset_qlfy_adapter_cell_sync
+INFO: [VRFC 10-311] analyzing module scr1_reset_and2_cell
+INFO: [VRFC 10-311] analyzing module scr1_reset_and3_cell
+INFO: [VRFC 10-311] analyzing module scr1_reset_mux2_cell
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_scu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_scu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_tapc.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_tapc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_tapc_shift_reg.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_tapc_shift_reg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/core/scr1_tapc_synchronizer.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_tapc_synchronizer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_tcm.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_tcm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_timer.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_timer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/scr1/src/top/scr1_top_ahb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scr1_top_ahb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_mpei_rv_core_wrp

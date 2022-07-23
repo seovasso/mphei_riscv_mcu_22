@@ -1,0 +1,65 @@
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+WARNING: Insufficient data from the input file for $fread
+TEST STARTED
+ahbctrl: AHB arbiter/multiplexer rev 1
+ahbctrl: Common I/O area at 0xfff00000, 1 Mbyte
+ahbctrl: AHB masters: 16, AHB slaves: 16
+ahbctrl: Configuration area at 0xfffff000, 4 kbyte
+ahbctrl: mst0: Syntacore, cores & toolsRISC-V compatible MCU-class core
+ahbctrl: mst1: Syntacore, cores & toolsRISC-V compatible MCU-class core
+Failure: AHB master index error on master 1. Detected index value 0
+Time: 2 ns  Iteration: 0  Process: /tb_mpei_rv_core_wrp/DUT/mpei_rv_core/u_ahbctrl/diag  File: C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/ahbctrl.vhd
+$finish called at time : 2 ns : File "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/ahbctrl.vhd" Line 903
+ahbctrl: slv0: Cobham Gaisler          AHB/APB Bridge                  
+ahbctrl:       memory at 0x20000000, size 1 Mbyte
+apbctrl: APB Bridge at 0x20000000 rev 1
+apbctrl: slv0: Cobham Gaisler          SPI Controller                  
+apbctrl:       I/O ports at 0x20000000, size 256 byte 
+apbctrl: slv1: Cobham Gaisler          Generic UART                    
+apbctrl:       I/O ports at 0x20001000, size 256 byte 
+apbctrl: slv2: Cobham Gaisler          General Purpose I/O port        
+apbctrl:       I/O ports at 0x20002000, size 256 byte 
+apbctrl: slv3: Cobham Gaisler          Modular Timer Unit              
+apbctrl:       I/O ports at 0x20003000, size 256 byte 
+gptimer3: Timer Unit rev 1, 10-bit scaler, 2 32-bit timers, irq 0
+grgpio2: 31-bit GPIO Unit rev 3
+apbuart1: Generic UART rev 1, fifo 4, irq 0, scaler bits 12
+spictrl0: SPI controller, rev 6, irq 0
+$stop called at time : 1160 ns : File "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv" Line 201
+WARNING: Insufficient data from the input file for $fread
+TEST STARTED
+ahbctrl: AHB arbiter/multiplexer rev 1
+ahbctrl: Common I/O area at 0xfff00000, 1 Mbyte
+ahbctrl: AHB masters: 16, AHB slaves: 16
+ahbctrl: Configuration area at 0xfffff000, 4 kbyte
+ahbctrl: mst0: Syntacore, cores & toolsRISC-V compatible MCU-class core
+ahbctrl: mst1: Syntacore, cores & toolsRISC-V compatible MCU-class core
+Failure: AHB master index error on master 1. Detected index value 0
+Time: 2 ns  Iteration: 0  Process: /tb_mpei_rv_core_wrp/DUT/mpei_rv_core/u_ahbctrl/diag  File: C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/ahbctrl.vhd
+$finish called at time : 2 ns : File "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/grlib/lib/grlib/amba/ahbctrl.vhd" Line 903
+ahbctrl: slv0: Cobham Gaisler          AHB/APB Bridge                  
+ahbctrl:       memory at 0x20000000, size 1 Mbyte
+apbctrl: APB Bridge at 0x20000000 rev 1
+apbctrl: slv0: Cobham Gaisler          SPI Controller                  
+apbctrl:       I/O ports at 0x20000000, size 256 byte 
+apbctrl: slv1: Cobham Gaisler          Generic UART                    
+apbctrl:       I/O ports at 0x20001000, size 256 byte 
+apbctrl: slv2: Cobham Gaisler          General Purpose I/O port        
+apbctrl:       I/O ports at 0x20002000, size 256 byte 
+apbctrl: slv3: Cobham Gaisler          Modular Timer Unit              
+apbctrl:       I/O ports at 0x20003000, size 256 byte 
+gptimer3: Timer Unit rev 1, 10-bit scaler, 2 32-bit timers, irq 0
+grgpio2: 31-bit GPIO Unit rev 3
+apbuart1: Generic UART rev 1, fifo 4, irq 0, scaler bits 12
+spictrl0: SPI controller, rev 6, irq 0
+$stop called at time : 1160 ns : File "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv" Line 201
+WARNING: Insufficient data from the input file for $fread
+TEST STARTED
+ahbctrl: AHB arbiter/multiplexer rev 1
+ahbctrl: Common I/O area at 0xfff00000, 1 Mbyte
+ahbctrl: AHB masters: 16, AHB slaves: 16
+ahbctrl: Configuration area at 0xfffff000, 4 kbyte
+ahbctrl: mst0: Syntacore, cores & toolsRISC-V compatible MCU-class core
+ahbctrl: mst1: Syntacore, cores & toolsRISC-V compatible MCU-class core
+Failure: AHB master index error on master 1.

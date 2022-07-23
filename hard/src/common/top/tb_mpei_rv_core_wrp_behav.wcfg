@@ -29,14 +29,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="370001fs"></ZoomEndTime>
-      <Cursor1Time time="95332fs"></Cursor1Time>
+      <ZoomEndTime time="21160001fs"></ZoomEndTime>
+      <Cursor1Time time="7695000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="162"></NameColumnWidth>
-      <ValueColumnWidth column_width="61"></ValueColumnWidth>
+      <NameColumnWidth column_width="153"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="12" />
    <wvobject fp_name="/tb_mpei_rv_core_wrp/ok" type="logic">
       <obj_property name="ElementShortName">ok</obj_property>
       <obj_property name="ObjectShortName">ok</obj_property>
@@ -52,95 +52,95 @@
    <wvobject fp_name="group1266" type="group">
       <obj_property name="label">SPI</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_miso" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_miso" type="logic">
          <obj_property name="ElementShortName">spi_in_miso</obj_property>
          <obj_property name="ObjectShortName">spi_in_miso</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_mosi" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_mosi" type="logic">
          <obj_property name="ElementShortName">spi_in_mosi</obj_property>
          <obj_property name="ObjectShortName">spi_in_mosi</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_sck" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_sck" type="logic">
          <obj_property name="ElementShortName">spi_in_sck</obj_property>
          <obj_property name="ObjectShortName">spi_in_sck</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_spisel" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_spisel" type="logic">
          <obj_property name="ElementShortName">spi_in_spisel</obj_property>
          <obj_property name="ObjectShortName">spi_in_spisel</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_astart" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_astart" type="logic">
          <obj_property name="ElementShortName">spi_in_astart</obj_property>
          <obj_property name="ObjectShortName">spi_in_astart</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_cstart" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_cstart" type="logic">
          <obj_property name="ElementShortName">spi_in_cstart</obj_property>
          <obj_property name="ObjectShortName">spi_in_cstart</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_ignore" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_ignore" type="logic">
          <obj_property name="ElementShortName">spi_in_ignore</obj_property>
          <obj_property name="ObjectShortName">spi_in_ignore</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_io2" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_io2" type="logic">
          <obj_property name="ElementShortName">spi_in_io2</obj_property>
          <obj_property name="ObjectShortName">spi_in_io2</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_in_io3" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_in_io3" type="logic">
          <obj_property name="ElementShortName">spi_in_io3</obj_property>
          <obj_property name="ObjectShortName">spi_in_io3</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_miso" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_miso" type="logic">
          <obj_property name="ElementShortName">spi_out_miso</obj_property>
          <obj_property name="ObjectShortName">spi_out_miso</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_misooen" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_misooen" type="logic">
          <obj_property name="ElementShortName">spi_out_misooen</obj_property>
          <obj_property name="ObjectShortName">spi_out_misooen</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_mosi" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_mosi" type="logic">
          <obj_property name="ElementShortName">spi_out_mosi</obj_property>
          <obj_property name="ObjectShortName">spi_out_mosi</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_mosioen" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_mosioen" type="logic">
          <obj_property name="ElementShortName">spi_out_mosioen</obj_property>
          <obj_property name="ObjectShortName">spi_out_mosioen</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_sck" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_sck" type="logic">
          <obj_property name="ElementShortName">spi_out_sck</obj_property>
          <obj_property name="ObjectShortName">spi_out_sck</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_sckoen" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_sckoen" type="logic">
          <obj_property name="ElementShortName">spi_out_sckoen</obj_property>
          <obj_property name="ObjectShortName">spi_out_sckoen</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_enable" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_enable" type="logic">
          <obj_property name="ElementShortName">spi_out_enable</obj_property>
          <obj_property name="ObjectShortName">spi_out_enable</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_astart" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_astart" type="logic">
          <obj_property name="ElementShortName">spi_out_astart</obj_property>
          <obj_property name="ObjectShortName">spi_out_astart</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_aready" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_aready" type="logic">
          <obj_property name="ElementShortName">spi_out_aready</obj_property>
          <obj_property name="ObjectShortName">spi_out_aready</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_io2" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_io2" type="logic">
          <obj_property name="ElementShortName">spi_out_io2</obj_property>
          <obj_property name="ObjectShortName">spi_out_io2</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_io2oen" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_io2oen" type="logic">
          <obj_property name="ElementShortName">spi_out_io2oen</obj_property>
          <obj_property name="ObjectShortName">spi_out_io2oen</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_io3" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_io3" type="logic">
          <obj_property name="ElementShortName">spi_out_io3</obj_property>
          <obj_property name="ObjectShortName">spi_out_io3</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_io3oen" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_io3oen" type="logic">
          <obj_property name="ElementShortName">spi_out_io3oen</obj_property>
          <obj_property name="ObjectShortName">spi_out_io3oen</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/spi_out_slvsel" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/spi_out_slvsel" type="array">
          <obj_property name="ElementShortName">spi_out_slvsel[0:0]</obj_property>
          <obj_property name="ObjectShortName">spi_out_slvsel[0:0]</obj_property>
       </wvobject>
@@ -148,47 +148,47 @@
    <wvobject fp_name="group1267" type="group">
       <obj_property name="label">UART</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_in_rxd" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_in_rxd" type="logic">
          <obj_property name="ElementShortName">uart_in_rxd</obj_property>
          <obj_property name="ObjectShortName">uart_in_rxd</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_in_ctsn" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_in_ctsn" type="logic">
          <obj_property name="ElementShortName">uart_in_ctsn</obj_property>
          <obj_property name="ObjectShortName">uart_in_ctsn</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_in_extclk" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_in_extclk" type="logic">
          <obj_property name="ElementShortName">uart_in_extclk</obj_property>
          <obj_property name="ObjectShortName">uart_in_extclk</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_out_rtsn" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_out_rtsn" type="logic">
          <obj_property name="ElementShortName">uart_out_rtsn</obj_property>
          <obj_property name="ObjectShortName">uart_out_rtsn</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_out_txd" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_out_txd" type="logic">
          <obj_property name="ElementShortName">uart_out_txd</obj_property>
          <obj_property name="ObjectShortName">uart_out_txd</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_out_scaler" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_out_scaler" type="array">
          <obj_property name="ElementShortName">uart_out_scaler[31:0]</obj_property>
          <obj_property name="ObjectShortName">uart_out_scaler[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_out_txen" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_out_txen" type="logic">
          <obj_property name="ElementShortName">uart_out_txen</obj_property>
          <obj_property name="ObjectShortName">uart_out_txen</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_out_flow" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_out_flow" type="logic">
          <obj_property name="ElementShortName">uart_out_flow</obj_property>
          <obj_property name="ObjectShortName">uart_out_flow</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_out_rxen" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_out_rxen" type="logic">
          <obj_property name="ElementShortName">uart_out_rxen</obj_property>
          <obj_property name="ObjectShortName">uart_out_rxen</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_out_txtick" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_out_txtick" type="logic">
          <obj_property name="ElementShortName">uart_out_txtick</obj_property>
          <obj_property name="ObjectShortName">uart_out_txtick</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/uart_out_rxtick" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/uart_out_rxtick" type="logic">
          <obj_property name="ElementShortName">uart_out_rxtick</obj_property>
          <obj_property name="ObjectShortName">uart_out_rxtick</obj_property>
       </wvobject>
@@ -196,31 +196,31 @@
    <wvobject fp_name="group1268" type="group">
       <obj_property name="label">GPIO</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/gpio_in_din" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/gpio_in_din" type="array">
          <obj_property name="ElementShortName">gpio_in_din[31:0]</obj_property>
          <obj_property name="ObjectShortName">gpio_in_din[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/gpio_in_sig_in" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/gpio_in_sig_in" type="array">
          <obj_property name="ElementShortName">gpio_in_sig_in[31:0]</obj_property>
          <obj_property name="ObjectShortName">gpio_in_sig_in[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/gpio_in_sig_en" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/gpio_in_sig_en" type="array">
          <obj_property name="ElementShortName">gpio_in_sig_en[31:0]</obj_property>
          <obj_property name="ObjectShortName">gpio_in_sig_en[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/gpio_out_dout" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/gpio_out_dout" type="array">
          <obj_property name="ElementShortName">gpio_out_dout[31:0]</obj_property>
          <obj_property name="ObjectShortName">gpio_out_dout[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/gpio_out_oen" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/gpio_out_oen" type="array">
          <obj_property name="ElementShortName">gpio_out_oen[31:0]</obj_property>
          <obj_property name="ObjectShortName">gpio_out_oen[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/gpio_out_val" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/gpio_out_val" type="array">
          <obj_property name="ElementShortName">gpio_out_val[31:0]</obj_property>
          <obj_property name="ObjectShortName">gpio_out_val[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/gpio_out_sig_out" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/gpio_out_sig_out" type="array">
          <obj_property name="ElementShortName">gpio_out_sig_out[31:0]</obj_property>
          <obj_property name="ObjectShortName">gpio_out_sig_out[31:0]</obj_property>
       </wvobject>
@@ -228,39 +228,39 @@
    <wvobject fp_name="group1269" type="group">
       <obj_property name="label">TIMER</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_in_dhalt" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_in_dhalt" type="logic">
          <obj_property name="ElementShortName">timr_in_dhalt</obj_property>
          <obj_property name="ObjectShortName">timr_in_dhalt</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_in_extclk" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_in_extclk" type="logic">
          <obj_property name="ElementShortName">timr_in_extclk</obj_property>
          <obj_property name="ObjectShortName">timr_in_extclk</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_in_wdogen" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_in_wdogen" type="logic">
          <obj_property name="ElementShortName">timr_in_wdogen</obj_property>
          <obj_property name="ObjectShortName">timr_in_wdogen</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_in_latchv" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_in_latchv" type="array">
          <obj_property name="ElementShortName">timr_in_latchv[31:0]</obj_property>
          <obj_property name="ObjectShortName">timr_in_latchv[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_in_latchd" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_in_latchd" type="array">
          <obj_property name="ElementShortName">timr_in_latchd[31:0]</obj_property>
          <obj_property name="ObjectShortName">timr_in_latchd[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_out_tick" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_out_tick" type="array">
          <obj_property name="ElementShortName">timr_out_tick[0:7]</obj_property>
          <obj_property name="ObjectShortName">timr_out_tick[0:7]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_out_timer1" type="array">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_out_timer1" type="array">
          <obj_property name="ElementShortName">timr_out_timer1[31:0]</obj_property>
          <obj_property name="ObjectShortName">timr_out_timer1[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_out_wdogn" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_out_wdogn" type="logic">
          <obj_property name="ElementShortName">timr_out_wdogn</obj_property>
          <obj_property name="ObjectShortName">timr_out_wdogn</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_mpei_rv_core_wrp/timr_out_wdog" type="logic">
+      <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/timr_out_wdog" type="logic">
          <obj_property name="ElementShortName">timr_out_wdog</obj_property>
          <obj_property name="ObjectShortName">timr_out_wdog</obj_property>
       </wvobject>
@@ -308,5 +308,13 @@
    <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/mpei_rv_core/u_scr1_wrp/u_scr1_top_ahb/i_core_top/i_pipe_top/curr_pc" type="array">
       <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
       <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/mpei_rv_core/u_apbuart/rin" type="array">
+      <obj_property name="ElementShortName">rin</obj_property>
+      <obj_property name="ObjectShortName">rin</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mpei_rv_core_wrp/DUT/mpei_rv_core/u_apbuart/r" type="array">
+      <obj_property name="ElementShortName">r</obj_property>
+      <obj_property name="ObjectShortName">r</obj_property>
    </wvobject>
 </wave_config>

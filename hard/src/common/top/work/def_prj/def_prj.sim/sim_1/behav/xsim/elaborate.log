@@ -128,6 +128,6 @@ Compiling architecture rtl of entity gaisler.gptimer [\gptimer(pindex=3,paddr=48
 Compiling architecture mpei_rv_core_arc of entity work.mpei_rv_core [mpei_rv_core_default]
 Compiling module xil_defaultlib.mpei_rv_core_wrp
 Compiling module xil_defaultlib.tb_mpei_rv_core_wrp
-WARNING: [XSIM 43-3373] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv" Line 173. System function $fread is used as system task. This system function should have a LHS e.g. x=$fread().
+WARNING: [XSIM 43-3373] "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/tb_mpei_rv_core_wrp.sv" Line 167. System function $fread is used as system task. This system function should have a LHS e.g. x=$fread().
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot tb_mpei_rv_core_wrp_behav
