@@ -13,15 +13,8 @@ uint32_t dst[BUFFER_SIZE_WORDS];
 
 int main(void)
 {
-	// Пример работы с юартом (рабочий код из теста микросхемы): в while на 27 строке ждем _STOP_BYTE_VAL пришедший по UART (работает RX).
-	// Далее в while на 34 ждем приема _TEST_SIZE_BYTES и отправляем эти байты в UART TX.
-	// Твоя задача просто отправить в UART какую-нибудь константу (берем 44 строчку (UART->DATA = rw_data;) и пишем константу )
 
-//	uint32_t brate = UART_BR_921600;
-//	uart_regs_s * const UART = UART0;
-//	uint8_t rw_data = 0;
-//	uint32_t bytes_received = 0;
-//
+//  UART example
 //	UART_Init(UART, brate);
 //
 //	 while (rw_data != _STOP_BYTE_VAL)
@@ -45,18 +38,39 @@ int main(void)
 //
 //		bytes_received++;
 //	}
+//  for (uint32_t i = 0; i < BUFFER_SIZE_WORDS; i++)
+//  {
+//      src[i] = i;
+//  }
+//  memcpy(dst, src, sizeof(dst));
 
-	/* Place your code here */
+//*/  Test UART
 
-    for (uint32_t i = 0; i < BUFFER_SIZE_WORDS; i++)
-    {
-    	src[i] = i;
-    }
+	uart_regs_s * const UART       = UART0;                   // pointer to UART structure, returns address of beginning this structure
+    uint32_t            brate      = UART_BR_921600;          // bit rate
+    uint8_t             data       = 100;                     // test data to transfer
 
-    memcpy(dst, src, sizeof(dst));
+    uint32_t            p_data[4]  = {4056, 105, 39, 25};     // array of data to transfer
+    uint32_t            len        = 2;                       // number bit of the array to transfer
+    uint32_t            timeout    = 0;                       // timeout ???
+
+    // Initialization of UART, and rate of transfer (brate)
+    UART_Init(UART, brate);
+
+    UART_SendByte (UART, data);
+
+    // should transmit just 1 word - 46, because len = 4 (transfer just 4 byte)
+    uart_send_n_bytes (UART, len, p_data, timeout);
+    
+    //data = UART_ReadByte (UART);
+
+    uart_read_n_bytes (UART, 1, p_data, timeout);
+
+//*/
+
 
     while(1)
     {
-    	__asm("nop");
+        __asm("nop");
     }
 }

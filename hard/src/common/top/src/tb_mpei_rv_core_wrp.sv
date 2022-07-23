@@ -1,7 +1,7 @@
 `timescale 1ns/10ps
 
                             // Change for your system                      
-`define MEM_PROGRAMM_PATH "C:/Users/nmari/eclipse-workspace/scr1_example_project/soft/eclipse/projects/scr1_test_project/Debug/scr1_test_project.bin" //path to C work directory
+`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/soft/scr1_example_project/soft/eclipse/projects/scr1_test_project/Debug/scr1_test_project.bin" //path to C work directory
 //`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_test_project.bin"                          //path to vivado work directory
 //`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/firmware_scr1.bin"                              //path to vivado work directory
 `define MEM_HIERARCH_PATH tb_mpei_rv_core_wrp.DUT.mpei_rv_core.u_scr1_wrp.u_scr1_top_ahb.i_tcm.i_dp_memory.ram_block
@@ -47,9 +47,9 @@ logic                spi_out_io3      ;
 logic                spi_out_io3oen   ;
 logic [slvselsz-1:0] spi_out_slvsel   ;
           
-logic                uart_in_rxd   	  ;
-logic                uart_in_ctsn     ;
-logic                uart_in_extclk	  ;
+logic                uart_in_rxd   	  = 1;
+logic                uart_in_ctsn     = 0;
+logic                uart_in_extclk	  = 0;
 logic                uart_out_rtsn    ;
 logic                uart_out_txd     ;
 logic [31:0]         uart_out_scaler  ;
@@ -115,7 +115,7 @@ mpei_rv_core_wrp #(
   .spi_out_slvsel        (spi_out_slvsel  ),
  
   //  apbuart interface     
-  .uart_in_rxd           (uart_in_rxd     ), 
+  .uart_in_rxd           (uart_out_txd    ),  // UART transfer data to itself !!! (for test)
   .uart_in_ctsn          (uart_in_ctsn    ),  	
   .uart_in_extclk        (uart_in_extclk  ), 
   .uart_out_rtsn         (uart_out_rtsn   ),  	
@@ -148,13 +148,7 @@ mpei_rv_core_wrp #(
   .timr_out_wdog         (timr_out_wdog   )
 );
 
-logic ok = 1;
-
-// tcm initialization
-// initial begin
-//   //$readmemh (`MEM_PROGRAMM_PATH , `MEM_HIERARCH_PATH, 0, `NWORD-1 );
-//   $readmemb (`MEM_PROGRAMM_PATH , `MEM_HIERARCH_PATH);
-// end
+logic ok     = 1;
 
 // tcm initialization
 `define MEMSIZE 16384

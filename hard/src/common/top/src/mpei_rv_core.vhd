@@ -248,7 +248,7 @@ generic map (
   mcheck      => 1                          ,  -- integer range 0 to 1       := 1;
   ccheck      => 1                             -- integer range 0 to 1       := 1
 ) port map (  
-  rst         => rst_i                      ,  -- in  std_ulogic;
+  rst         => rstn_i                     ,  -- in  std_ulogic;
   clk         => clk_i                      ,  -- in  std_ulogic;
     
   ahbi        => ahbsi                      ,  -- in  ahb_slv_in_type;                  -- значение INDEX_AHBS_AHB2APB см. в библиотеке core_const_pkg
@@ -352,7 +352,7 @@ generic map (
   abits    => 8                       , -- integer                := 8;
   sbits    => 12                        -- integer range 12 to 32 := 12);
 ) port map(
-  rst      => rst_i                  , --in  std_ulogic;
+  rst      => rstn_i                  , --in  std_ulogic;
   clk      => clk_i                   , --in  std_ulogic;
   apbi     => apbi                    , --in  apb_slv_in_type;
   apbo     => apbo(INDEX_APB_APBUART) , --out apb_slv_out_type;

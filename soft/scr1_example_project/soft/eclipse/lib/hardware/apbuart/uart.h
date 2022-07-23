@@ -25,24 +25,22 @@ typedef struct
                                 ///< имитируя обмен без посылок в линию (режим FIFO_DebugMode, CONTROL.11). Смещение 0x10
 } uart_regs_s;
 
-// CONTROL Register
-
+// CONTROL Register address of bit
 #define UART_CTRL_FIFO_EN_POS   (31u)
 #define UART_CTRL_NS_POS        (15u)   // Number of stop bits
 #define UART_CTRL_TI_POS        (3u)    // Transmit Interrupt Enable
 #define UART_CTRL_RI_POS        (2u)    // Receive Interrupt Enable
 #define UART_CTRL_TE_POS        (1u)    // Transmit Enable
 #define UART_CTRL_RE_POS        (0u)    // Receive Enable
-
-
+// CONTROL Register mask
 #define UART_CTRL_FIFO_EN_MSK   (1u << (UART_CTRL_FIFO_EN_POS))
+#define UART_CTRL_NS_MSK        (1u << (UART_CTRL_NS_POS))
 #define UART_CTRL_TI_EN_MSK     (1u << (UART_CTRL_TI_POS))
 #define UART_CTRL_RI_EN_MSK     (1u << (UART_CTRL_RI_POS))
-
 #define UART_CTRL_TE_MSK        (1u << (UART_CTRL_TE_POS))
 #define UART_CTRL_RE_MSK        (1u << (UART_CTRL_RE_POS))
 
-// STATUS Register
+// STATUS Register address of bit
 #define UART_STATUS_RCNT_POS    (26u)   ///< Receiver FIFO count
 #define UART_STATUS_TCNT_POS    (20u)   ///< Transmitter FIFO count
 #define UART_STATUS_RF_POS      (10u)   ///< Receiver FIFO full
@@ -56,8 +54,7 @@ typedef struct
 #define UART_STATUS_TE_POS      (2u)    ///< Transmitter FIFO empty
 #define UART_STATUS_TS_POS      (1u)    ///< Ttrasmitter Shift Register Empty
 #define UART_STATUS_DR_POS      (0u)    ///< Data Ready
-
-
+// STATUS Register mask
 #define UART_STATUS_RCNT_MSK    (0x3Fu)
 #define UART_STATUS_TCNT_MSK    (0x3Fu)
 #define UART_STATUS_RF_MSK      (1u << (UART_STATUS_RF_POS))
@@ -95,30 +92,31 @@ typedef enum
 
 #define UART_QTY    (2) // Количество модулей UART
 
-uint32_t UART_GetControl(uart_regs_s * const UART);
+uint32_t UART_GetControl              (uart_regs_s * const UART);
 
-void UART_Init(uart_regs_s * const UART, uart_br_e rate_to_set);
+void     UART_Init                    (uart_regs_s * const UART, uart_br_e rate_to_set);
 
-bool UART_BasicCommunicationTest(uart_regs_s * const UART, uint32_t rate_to_set);
+bool     UART_BasicCommunicationTest  (uart_regs_s * const UART, uint32_t rate_to_set);
 
-void UART_SendByte(uart_regs_s * const UART, uint8_t charByte);
+void     UART_SendByte                (uart_regs_s * const UART, uint8_t charByte);
 
-void UART_SendString(uart_regs_s * const UART, uint8_t const * charByte, uint32_t Length);
+void     UART_SendString              (uart_regs_s * const UART, uint8_t const * charByte, uint32_t Length);
 
-uint32_t uart_send_n_bytes(uart_regs_s * const UART, uint32_t len, uint32_t p_data, uint32_t timeout);
+uint32_t uart_send_n_bytes            (uart_regs_s * const UART, uint32_t len, uint32_t * p_data, uint32_t timeout);
 
-void uart_send_n_bytes_packets(uart_regs_s * const UART, uint32_t len, uint32_t p_data, uint32_t timeout,  uint32_t num_packets, uint32_t delay_between_packets);
+void     uart_send_n_bytes_packets    (uart_regs_s * const UART, uint32_t len, uint32_t * p_data, uint32_t timeout,  uint32_t num_packets, uint32_t delay_between_packets);
 
-uint8_t UART_ReadByte(uart_regs_s * const UART);
+uint8_t  UART_ReadByte                (uart_regs_s * const UART);
 
-uint32_t uart_read_n_bytes(uart_regs_s * const UART, uint32_t len, uint32_t p_data, uint32_t timeout);
-bool uart_is_rx_fifo_empty(uart_regs_s * const UART);
+uint32_t uart_read_n_bytes            (uart_regs_s * const UART, uint32_t len, uint32_t * p_data, uint32_t timeout);
 
-uint8_t uart_chk_tx_fifo(uart_regs_s * const UART);
+bool     uart_is_rx_fifo_empty        (uart_regs_s * const UART);
+
+uint8_t  uart_chk_tx_fifo             (uart_regs_s * const UART);
 
 //Вводится для совместимости с CustomPrintf:
-void UART_SendChar(const char c);
+void     UART_SendChar                (const char c);
 
-void uart_set_instance_for_printf(uart_regs_s * const uart_instance_ptr);
+void     uart_set_instance_for_printf (uart_regs_s * const uart_instance_ptr);
 
 #endif //UART_H_
