@@ -1,6 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/test/mem.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mem
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/test/tb_mem.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mem
-WARNING: [VRFC 10-3609] overwriting previous definition of module 'mem' [C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/test/mem.sv:1]
-INFO: [VRFC 10-311] analyzing module tb_mem
