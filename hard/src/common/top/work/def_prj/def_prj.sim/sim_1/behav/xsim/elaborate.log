@@ -118,13 +118,13 @@ Compiling architecture rtl of entity grlib.apbctrlx [\apbctrlx(haddr0=512,hmask1
 Compiling architecture struct of entity grlib.apbctrl [\apbctrl(haddr=512,nslaves=4)\]
 Compiling architecture rtl of entity gaisler.spictrlx [\spictrlx(rev=6,acntbits=3)\]
 Compiling architecture beh of entity grlib.report_version [\report_version(msg1="spictrl0:_...]
-Compiling architecture rtl of entity gaisler.spictrl [\spictrl(acntbits=3)\]
+Compiling architecture rtl of entity gaisler.spictrl [\spictrl(pmask=4080,acntbits=3)\]
 Compiling architecture beh of entity grlib.report_version [\report_version(msg1="apbuart1:_...]
-Compiling architecture rtl of entity gaisler.apbuart [\apbuart(pindex=1,paddr=16,fifos...]
+Compiling architecture rtl of entity gaisler.apbuart [\apbuart(pindex=1,paddr=16,pmask...]
 Compiling architecture beh of entity grlib.report_version [\report_version(msg1="grgpio2:_3...]
-Compiling architecture rtl of entity gaisler.grgpio [\grgpio(pindex=2,paddr=32,imask=...]
+Compiling architecture rtl of entity gaisler.grgpio [\grgpio(pindex=2,paddr=32,pmask=...]
 Compiling architecture beh of entity grlib.report_version [\report_version(msg1="gptimer3:_...]
-Compiling architecture rtl of entity gaisler.gptimer [\gptimer(pindex=3,paddr=48,sepir...]
+Compiling architecture rtl of entity gaisler.gptimer [\gptimer(pindex=3,paddr=48,pmask...]
 Compiling architecture mpei_rv_core_arc of entity work.mpei_rv_core [mpei_rv_core_default]
 Compiling module xil_defaultlib.mpei_rv_core_wrp
 Compiling module xil_defaultlib.tb_mpei_rv_core_wrp
