@@ -29,6 +29,7 @@ typedef struct
 #define UART_CTRL_FIFO_EN_POS   (31u)
 #define UART_CTRL_NS_POS        (15u)   // Number of stop bits
 #define UART_CTRL_TI_POS        (3u)    // Transmit Interrupt Enable
+#define UART_CTRL_LB_POS        (7u)    // Loop back mode will be enabled
 #define UART_CTRL_RI_POS        (2u)    // Receive Interrupt Enable
 #define UART_CTRL_TE_POS        (1u)    // Transmit Enable
 #define UART_CTRL_RE_POS        (0u)    // Receive Enable
@@ -36,6 +37,7 @@ typedef struct
 #define UART_CTRL_FIFO_EN_MSK   (1u << (UART_CTRL_FIFO_EN_POS))
 #define UART_CTRL_NS_MSK        (1u << (UART_CTRL_NS_POS))
 #define UART_CTRL_TI_EN_MSK     (1u << (UART_CTRL_TI_POS))
+#define UART_CTRL_LB_MSK        (1u << (UART_CTRL_LB_POS))
 #define UART_CTRL_RI_EN_MSK     (1u << (UART_CTRL_RI_POS))
 #define UART_CTRL_TE_MSK        (1u << (UART_CTRL_TE_POS))
 #define UART_CTRL_RE_MSK        (1u << (UART_CTRL_RE_POS))
@@ -71,12 +73,12 @@ typedef struct
 
 typedef enum
 {
-    UART_BR_4800 = 4800u,
-    UART_BR_9600 = 9600u,
-    UART_BR_14400 = 14400u,
-    UART_BR_19200 = 19200u,
-    UART_BR_38400 = 38400u,
-    UART_BR_57600 = 57600u,
+    UART_BR_4800   = 4800u,
+    UART_BR_9600   = 9600u,
+    UART_BR_14400  = 14400u,
+    UART_BR_19200  = 19200u,
+    UART_BR_38400  = 38400u,
+    UART_BR_57600  = 57600u,
     UART_BR_115200 = 115200u,
     UART_BR_230400 = 230400u,
     UART_BR_460800 = 460800u,
@@ -95,6 +97,8 @@ typedef enum
 uint32_t UART_GetControl              (uart_regs_s * const UART);
 
 void     UART_Init                    (uart_regs_s * const UART, uart_br_e rate_to_set);
+
+void     UART_LoopMode                (uart_regs_s * const UART);
 
 bool     UART_BasicCommunicationTest  (uart_regs_s * const UART, uint32_t rate_to_set);
 

@@ -5,7 +5,6 @@
  *      Author: Turyshev
  */
 
-
 #include "apbuart/uart.h"
 
 uart_regs_s * g_uart_dbg_instance = UART0;    // Номер UART, используемый для дебага. Меняется методом
@@ -20,6 +19,11 @@ void UART_Init(uart_regs_s * const UART, uart_br_e rate_to_set)
     UART->SCALER = (UART_CLK / ((rate_to_set * 8) + 7));
     _set_stop_bits_one(UART);
     UART->CONTROL |= (UART_CTRL_FIFO_EN_MSK | UART_CTRL_TE_MSK | UART_CTRL_RE_MSK);   //0x8003; //|= 0x03; //Включение передатчика и приёмника
+}
+
+void UART_LoopMode (uart_regs_s * const UART)
+{
+	UART->CONTROL |= UART_CTRL_LB_MSK;
 }
 
 static void UNUSED _set_stop_bits_one(uart_regs_s * const UART)

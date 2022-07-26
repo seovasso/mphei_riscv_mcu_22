@@ -1,0 +1,29 @@
+//  UART example
+//	UART_Init(UART, brate);
+//
+//	 while (rw_data != _STOP_BYTE_VAL)
+//	{
+//		while (!(UART->STATUS & UART_STATUS_DR_MSK))
+//		{}
+//		rw_data = UART->DATA;
+//	}
+//
+//	while (bytes_received < _TEST_SIZE_BYTES)
+//	{
+//		while (!(UART->STATUS & UART_STATUS_DR_MSK))
+//		{}
+//
+//		rw_data = UART->DATA;
+//
+//		while(UART->STATUS & UART_STATUS_TF_MSK)
+//		{}
+//
+//		UART->DATA = rw_data;
+//
+//		bytes_received++;
+//	}
+//  for (uint32_t i = 0; i < BUFFER_SIZE_WORDS; i++)
+//  {
+//      src[i] = i;
+//  }
+//  memcpy(dst, src, sizeof(dst));

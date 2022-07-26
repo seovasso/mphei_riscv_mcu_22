@@ -18,7 +18,7 @@ use work.core_const_pkg.all;		-- библиотека в которой буду
 
 entity mpei_rv_core is
 generic (
-  slvselsz           : integer range 1 to 32 := 1 ;  -- for spictrl
+  slvselsz           : integer range 1 to 32 := 4 ;  -- for spictrl
   NAHBIRQ            : integer               := 32;  -- how it how it calculated: 32 + 32*GRLIB_CONFIG_ARRAY(grlib_amba_inc_nirq); -> config.vhd -> 32 + 32*0;
   SCR1_XLEN          : integer               := 32;  -- for scr Fuses
   SCR1_IRQ_LINES_NUM : integer               := 16;  -- for scr IQR
@@ -45,7 +45,7 @@ port(
   spi_out_misooen    : out std_ulogic;
   spi_out_mosi       : out std_ulogic;
   spi_out_mosioen    : out std_ulogic;
-  spi_out_sck        : out std_ulogic; --???? duplicate pins
+  spi_out_sck        : out std_ulogic; 
   spi_out_sckoen     : out std_ulogic;
   spi_out_enable     : out std_ulogic;
   spi_out_astart     : out std_ulogic;
@@ -289,20 +289,20 @@ u_spictrl : entity gaisler.spictrl
 generic map(
   pindex    => INDEX_APB_SPICTRL       , -- integer               := 0;       slave bus index
   paddr     => INDEX_APB_SPICTRL*16    , -- integer               := 0;       APB address
-  pmask     => 16#FFF#                 , -- integer               := 16#fff#; APB mask
+  pmask     => 16#FF0#                 , -- integer               := 16#fff#; APB mask
   pirq      => 0                       , -- integer               := 0;       interrupt index
-  fdepth    => 1                       , -- integer range 1 to 7  := 1;       FIFO depth is 2^fdepth
-  slvselen  => 0                       , -- integer range 0 to 1  := 0;       Slave select register enable
-  slvselsz  => 1                       , -- integer range 1 to 32 := 1;       Number of slave select signals
-  oepol     => 0                       , -- integer range 0 to 1  := 0;       Output enable polarity
+  fdepth    => 2                       , -- integer range 1 to 7  := 1;       FIFO depth is 2^fdepth
+  slvselen  => 1                       , -- integer range 0 to 1  := 0;       Slave select register enable
+  slvselsz  => slvselsz                , -- integer range 1 to 32 := 1;       Number of slave select signals
+  oepol     => 1                       , -- integer range 0 to 1  := 0;       Output enable polarity
   odmode    => 0                       , -- integer range 0 to 1  := 0;       Support open drain mode, only set if pads are i/o or od pads.
   automode  => 0                       , -- integer range 0 to 1  := 0;       Enable automated transfer mode
   acntbits  => 3                       , -- integer range 1 to 32 := 32       # Bits in am period counter
   aslvsel   => 0                       , -- integer range 0 to 1  := 0;       Automatic slave select
-  twen      => 1                       , -- integer range 0 to 1  := 1;       Enable three wire mode
+  twen      => 0                       , -- integer range 0 to 1  := 1;       Enable three wire mode
   maxwlen   => 0                       , -- integer range 0 to 15 := 0;       Maximum word length
   netlist   => 0                       , -- integer               := 0;       Use netlist (tech)
-  syncram   => 1                       , -- integer range 0 to 1  := 1;       Use SYNCRAM for buffers 
+  syncram   => 0                       , -- integer range 0 to 1  := 1;       Use SYNCRAM for buffers 
   memtech   => 0                       , -- integer               := 0;       Memory technology
   ft        => 0                       , -- integer range 0 to 2  := 0;       Fault-Tolerance
   scantest  => 0                       , -- integer range 0 to 1  := 0;       Scan test support
@@ -343,7 +343,7 @@ u_apbuart : entity gaisler.apbuart
 generic map (
   pindex   => INDEX_APB_APBUART       , -- integer                := 0; 
   paddr    => INDEX_APB_APBUART*16    , -- integer                := 0;
-  pmask    => 16#FFF#                 , -- integer                := 16#fff#;
+  pmask    => 16#FF0#                 , -- integer                := 16#fff#;
   console  => 0                       , -- integer                := 0; 
   pirq     => 0                       , -- integer                := 0;
   parity   => 1                       , -- integer                := 1;       -- parity bit
@@ -376,7 +376,7 @@ u_grgpio : entity gaisler.grgpio
 generic map (
   pindex   => INDEX_APB_GPIO       , -- integer              := 0;
   paddr    => INDEX_APB_GPIO*16    , -- integer              := 0;
-  pmask    => 16#FFF#              , -- integer              := 16#fff#;
+  pmask    => 16#FF0#              , -- integer              := 16#fff#;
   imask    => 16#7FFFFFFF#         , -- integer              := 16#0000#; -- Mask for interrupts
   nbits    => 31                   , -- integer              := 16;		   	-- GPIO bits
   oepol    => 1                    , -- integer              := 0;        -- Output enable polarity
@@ -421,7 +421,7 @@ u_grtimer : entity gaisler.gptimer
 generic map(
   pindex    => INDEX_APB_GRTIMER       , -- Integer              := 0;
   paddr     => INDEX_APB_GRTIMER*16    , -- Integer              := 0;
-  pmask     => 16#FFF#                 , -- Integer              := 16#fff#;
+  pmask     => 16#FF0#                 , -- Integer              := 16#fff#;
   pirq      => 0                       , -- Integer              := 1;
   sepirq    => 1                       , -- Integer              := 1;       -- separate interrupts
   sbits     => 10                      , -- Integer              := 10;      -- scaler bits

@@ -33,15 +33,15 @@ use grlib.amba.all;
 package spi is
 
   type spi_in_type is record
-    miso    : std_ulogic;
-    mosi    : std_ulogic;
-    sck     : std_ulogic;
-    spisel  : std_ulogic;
-    astart  : std_ulogic;
-    cstart  : std_ulogic;
-    ignore  : std_ulogic;
-    io2     : std_ulogic;
-    io3     : std_ulogic;
+    miso    : std_ulogic;   -- Master-Input-Slave-Output data line, not used with 3-wire protocol
+    mosi    : std_ulogic;   -- Master-Output-Slave-Input data line
+    sck     : std_ulogic;   -- Serial Clock for clocking of slave. This signal should be driven LOW if it is unused in the design 
+    spisel  : std_ulogic;   -- Slave select input. This signal should be driven HIGH if it is unused in the design
+    astart  : std_ulogic;   -- Automated transfer start. This signal should be driven LOW if it is unused in the design
+    cstart  : std_ulogic;   -- Automated clock start. This signal should be driven LOW if it is unused in the design
+    ignore  : std_ulogic;   -- Ignore somthing
+    io2     : std_ulogic;   -- Data line 2, used with quad SPI protocol 
+    io3     : std_ulogic;   -- Data line 3, used with quad SPI protocol 
   end record;
 
   type spi_in_vector is array (natural range <>) of spi_in_type;
@@ -50,19 +50,19 @@ package spi is
                                          '0', '0');
 
   type spi_out_type is record
-    miso     : std_ulogic;
-    misooen  : std_ulogic;
-    mosi     : std_ulogic;
-    mosioen  : std_ulogic;
-    sck      : std_ulogic;
-    sckoen   : std_ulogic;
-    enable   : std_ulogic;
-    astart   : std_ulogic;
-    aready   : std_ulogic;
-    io2      : std_ulogic;
-    io2oen   : std_ulogic;
-    io3      : std_ulogic;
-    io3oen   : std_ulogic;
+    miso     : std_ulogic;  -- Master-Input-Slave-Output output enable, not used with 3-wire protocol.
+    misooen  : std_ulogic;  -- Master-Input-Slave-Output output enable
+    mosi     : std_ulogic;  -- Master-Output-Slave-Input
+    mosioen  : std_ulogic;  -- Master-Output-Slave-Input output enable
+    sck      : std_ulogic;  -- Serial Clock
+    sckoen   : std_ulogic;  -- Serial Clock output enable
+    enable   : std_ulogic;  -- Not used, Not found 
+    astart   : std_ulogic;  -- Automated transfer start indicator
+    aready   : std_ulogic;  -- Automated transfer ready indicator
+    io2      : std_ulogic;  -- Data line 2, used with quad SPI protocol
+    io2oen   : std_ulogic;  -- Data line 2 output enable, used with quad SPI protocol
+    io3      : std_ulogic;  -- Data line 3, used with quad SPI protocol
+    io3oen   : std_ulogic;  -- Data line 3 output enable, used with quad SPI protocol
   end record;
 
   type spi_out_vector is array (natural range <>) of spi_out_type;

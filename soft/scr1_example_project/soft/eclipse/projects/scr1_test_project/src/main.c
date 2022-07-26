@@ -1,7 +1,7 @@
 #include "global_inc.h"
-#include "apbuart/uart.h"
 #include "core_scr1/core_scr1.h"
-
+#include "apbuart/uart.h"
+#include "spictrl/spi.h"
 
 #define BUFFER_SIZE_WORDS	(30)
 
@@ -11,39 +11,17 @@
 uint32_t src[BUFFER_SIZE_WORDS];
 uint32_t dst[BUFFER_SIZE_WORDS];
 
+#define TEST_UART 0
+#define TEST_SPI  1
+
+#define USFL_DATA_ADDR ((uint32_t*)0xf000ffc8u)
+
 int main(void)
 {
 
-//  UART example
-//	UART_Init(UART, brate);
-//
-//	 while (rw_data != _STOP_BYTE_VAL)
-//	{
-//		while (!(UART->STATUS & UART_STATUS_DR_MSK))
-//		{}
-//		rw_data = UART->DATA;
-//	}
-//
-//	while (bytes_received < _TEST_SIZE_BYTES)
-//	{
-//		while (!(UART->STATUS & UART_STATUS_DR_MSK))
-//		{}
-//
-//		rw_data = UART->DATA;
-//
-//		while(UART->STATUS & UART_STATUS_TF_MSK)
-//		{}
-//
-//		UART->DATA = rw_data;
-//
-//		bytes_received++;
-//	}
-//  for (uint32_t i = 0; i < BUFFER_SIZE_WORDS; i++)
-//  {
-//      src[i] = i;
-//  }
-//  memcpy(dst, src, sizeof(dst));
+    uint32_t * usflData = USFL_DATA_ADDR;
 
+#if TEST_UART
 //*/  Test UART
 
 	uart_regs_s * const UART       = UART0;                   // pointer to UART structure, returns address of beginning this structure
@@ -56,18 +34,48 @@ int main(void)
 
     // Initialization of UART, and rate of transfer (brate)
     UART_Init(UART, brate);
+    //UART_LoopBackMode(UART);
 
-    UART_SendByte (UART, data);
+    //UART_SendByte (UART, len);
 
-    // should transmit just 1 word - 46, because len = 4 (transfer just 4 byte)
-    uart_send_n_bytes (UART, len, p_data, timeout);
+    spi_regs_s * testAddr = SPI0;
+    usflData[0] = &(testAddr->AMTRANSMIT[0]);
+    uart_send_n_bytes (UART, 4, usflData, timeout);
     
     //data = UART_ReadByte (UART);
 
-    uart_read_n_bytes (UART, 1, p_data, timeout);
+    //uart_read_n_bytes (UART, 1, p_data, timeout);
 
 //*/
+#endif
 
+#if TEST_SPI
+//*/  Test SPI
+
+    spi_regs_s * SPI        = SPI0;
+    uint32_t     word       = 1000;
+    uint32_t     wordArr[3] = {1000,5000,3535};
+    uint32_t     slv_addr   = 0b10;
+
+    // Initialization of SPI
+    SPI_Init(SPI);
+    // Special settings
+    SPI_LoopMode(SPI);                			// Enable loop mode
+    SPI_Slave_Select(SPI, slv_addr);  			// Set up address of slave
+    //SPI_Set_Word_Lenght(SPI, SPI_LEN_16);       // Set up word length for transfer
+
+    SPI_Core_Enable(SPI);             			// Power on core (scr; enable to transmit)
+
+    usflData[0] = SPI_Get_Capability(SPI);
+
+    //SPI_Send_Word(SPI, word);
+    //usflData[1] = SPI_Read_Word(SPI);
+
+    SPI_Send_n_Word(SPI, wordArr, 3);
+    SPI_Read_n_Word(SPI, (usflData+2), 3);
+    
+//*/
+#endif
 
     while(1)
     {

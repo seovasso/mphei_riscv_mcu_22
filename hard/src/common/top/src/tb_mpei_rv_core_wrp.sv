@@ -13,7 +13,7 @@
 
 module tb_mpei_rv_core_wrp ();
 
-parameter slvselsz           = 1 ;  // for spictrl
+parameter slvselsz           = 4 ;  // for spictrl
 parameter NAHBIRQ            = 32;  // for gptimer
 parameter SCR1_XLEN          = 32;  // for scr Fuses
 parameter SCR1_IRQ_LINES_NUM = 16;  // for scr IQR
@@ -23,15 +23,15 @@ parameter SCR1_AHB_WIDTH     = 32;  // for scr lenght of AHB
 logic                clk_i            ;
 logic                rstn_i           ;
                
-logic                spi_in_miso      ;
-logic                spi_in_mosi      ;
-logic                spi_in_sck       ;
-logic                spi_in_spisel    ;
-logic                spi_in_astart    ;
-logic                spi_in_cstart    ;
-logic                spi_in_ignore    ;
-logic                spi_in_io2       ;
-logic                spi_in_io3       ;
+logic                spi_in_miso      = 1;     // not used at this time 
+logic                spi_in_mosi      = 1;     // not used at this time
+logic                spi_in_sck       = 0;  // established according to the book p.1757 and spi.vhd
+logic                spi_in_spisel    = 1;  // established according to the book p.1757 and spi.vhd
+logic                spi_in_astart    = 0;  // established according to the book p.1757 and spi.vhd
+logic                spi_in_cstart    = 0;  // established according to the book p.1757 and spi.vhd
+logic                spi_in_ignore    = 0;
+logic                spi_in_io2       = 1;
+logic                spi_in_io3       = 1;
 logic                spi_out_miso     ;
 logic                spi_out_misooen  ;
 logic                spi_out_mosi     ;
@@ -47,9 +47,9 @@ logic                spi_out_io3      ;
 logic                spi_out_io3oen   ;
 logic [slvselsz-1:0] spi_out_slvsel   ;
           
-logic                uart_in_rxd   	  = 1;
-logic                uart_in_ctsn     = 0;
-logic                uart_in_extclk	  = 0;
+logic                uart_in_rxd   	  ;     // not used at this time
+logic                uart_in_ctsn     = 0;  // established according to the book p.----
+logic                uart_in_extclk	  = 0;  // established according to the book p.----
 logic                uart_out_rtsn    ;
 logic                uart_out_txd     ;
 logic [31:0]         uart_out_scaler  ;
@@ -90,7 +90,7 @@ mpei_rv_core_wrp #(
   //  scr1_wrp interface        
 
   //  spictrl interface   
-  .spi_in_miso           (spi_in_miso     ),
+  .spi_in_miso           (spi_in_miso     ),  // SPI transfer data to itself !!! (for test)
   .spi_in_mosi           (spi_in_mosi     ),
   .spi_in_sck            (spi_in_sck      ),
   .spi_in_spisel         (spi_in_spisel   ),
