@@ -1,7 +1,9 @@
 #include "global_inc.h"
 #include "core_scr1/core_scr1.h"
-#include "apbuart/uart.h"
+
 #include "spictrl/spi.h"
+#include "apbuart/uart.h"
+#include "grgpio/gpio.h"
 
 #define BUFFER_SIZE_WORDS	(30)
 
@@ -11,10 +13,19 @@
 uint32_t src[BUFFER_SIZE_WORDS];
 uint32_t dst[BUFFER_SIZE_WORDS];
 
+#define TEST_SPI  0
 #define TEST_UART 0
-#define TEST_SPI  1
+#define TEST_GPIO 1
 
 #define USFL_DATA_ADDR ((uint32_t*)0xf000ffc8u)
+
+void delayTact (uint32_t delay_tact)
+{
+	for(uint32_t i = 0; i < delay_tact; i++)
+	{
+		__asm volatile ("nop");
+	}
+}
 
 int main(void)
 {
@@ -74,6 +85,44 @@ int main(void)
     SPI_Send_n_Word(SPI, wordArr, 3);
     SPI_Read_n_Word(SPI, (usflData+2), 3);
     
+//*/
+#endif
+
+#if TEST_GPIO
+//*/  Test GPIO
+
+    gpio_regs_s * GPIO = GPIO0;
+    uint32_t      data = 1000;
+
+    //GPIO_Set_Interrupt(ALL_PIN_ON);
+    //usflData[1] = GPIO_Get_Capability(GPIO);
+
+    GPIO_Send_Data(GPIO, data);
+
+    delayTact(50);
+
+    GPIO_Set_Transmit(GPIO, ALL_PIN_ON);
+
+    delayTact(50);
+
+    GPIO_Set_Reseiv(GPIO, ALL_PIN_ON);
+
+    delayTact(50);
+
+    GPIO_Set_Bypass(GPIO, ALL_PIN_ON);
+
+    delayTact(50);
+
+    GPIO_Set_Transmit(GPIO, ALL_PIN_OFF);
+
+    delayTact(50);
+
+    GPIO_Set_Reseiv(GPIO, ALL_PIN_OFF);
+
+    delayTact(50);
+
+    GPIO_Set_Bypass(GPIO, ALL_PIN_OFF);
+
 //*/
 #endif
 

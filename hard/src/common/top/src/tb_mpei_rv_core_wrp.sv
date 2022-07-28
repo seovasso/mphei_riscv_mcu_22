@@ -59,8 +59,8 @@ logic                uart_out_rxen    ;
 logic                uart_out_txtick  ;
 logic                uart_out_rxtick  ;
              
-logic [31:0]         gpio_in_din      ;
-logic [31:0]         gpio_in_sig_in   ;
+logic [31:0]         gpio_in_din      = 32'hABCD_0000;
+logic [31:0]         gpio_in_sig_in   = 32'h00AB_CD00;
 logic [31:0]         gpio_in_sig_en   ;
 logic [31:0]         gpio_out_dout    ;
 logic [31:0]         gpio_out_oen     ;
@@ -196,9 +196,14 @@ initial begin
   #(`RESET_GOES_HIGH);
   #(`CLK_PERIOD);
 
+  gpio_in_sig_en   = 32'h0000_0000;
+
+  #8000 gpio_in_sig_en   = 32'hFFFF_FFFF;
+
   //if (ok == 1) $display("TEST PASSED");
   //else         $display("TEST FAILED");
-  #1000 $stop();
+
+  #10000 $stop();
 end
 
 endmodule

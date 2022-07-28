@@ -120,8 +120,8 @@ typedef struct
 // SLAVESELECT Register address of bit
 #define SPI_EVENT_SLVSEL_POS     (0u)                           ///< Slave select addres
 // SLAVESELECT Register mask
-//#define SPI_EVENT_SLVSEL_MSK     ((uint32_t)(pow(2, SSSZ)-1))
-#define SPI_EVENT_SLVSEL_MSK     (0b1111)
+#define SPI_EVENT_SLVSEL_MSK     ((uint32_t)(pow(2, SSSZ)-1))
+//#define SPI_EVENT_SLVSEL_MSK     (0b1111)
 
 typedef enum
 {

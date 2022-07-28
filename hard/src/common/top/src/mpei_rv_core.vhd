@@ -383,19 +383,19 @@ generic map (
   syncrst  => 0                    , -- integer              := 0;        -- Only synchronous reset
   bypass   => 16#7FFFFFFF#         , -- integer              := 16#0000#; -- alternative functions
   scantest => 0                    , -- integer              := 0;
-  bpdir    => 0                    , -- integer              := 16#0000#;
+  bpdir    => 0                    , -- integer              := 16#0000#; -- bypass direction
   pirq     => 0                    , -- integer              := 0;        -- not used
-  irqgen   => 1                    , -- integer              := 0;
-  iflagreg => 1                    , -- integer range 0 to 1 := 0;
+  irqgen   => 1                    , -- integer              := 0;        -- set up mode of interrupts
+  iflagreg => 1                    , -- integer range 0 to 1 := 0;        -- enable flag register
   bpmode   => 1                    , -- integer range 0 to 1 := 0;
-  inpen    => 1                    , -- integer range 0 to 1 := 0;
-  doutresv => 0                    , -- integer              := 0;
-  dirresv  => 0                    , -- integer              := 0;
-  bpresv   => 0                    , -- integer              := 0;
-  inpresv  => 0                    , -- integer              := 0;
-  pulse    => 0                      -- integer              := 0
+  inpen    => 1                    , -- integer range 0 to 1 := 0;        -- enable inpute enable register
+  doutresv => 0                    , -- integer              := 0;        -- reset value for output register
+  bpresv   => 0                    , -- integer              := 0;        -- reset value for bypass   register
+  dirresv  => 0                    , -- integer              := 0;        -- reset value for direction  register
+  inpresv  => 0                    , -- integer              := 0;        -- reset value for input enable register
+  pulse    => 0                      -- integer              := 0         -- enavle pulse register
 ) port map (
-  rst      => rst_i               , --in  std_ulogic;
+  rst      => rstn_i               , --in  std_ulogic;
   clk      => clk_i                , --in  std_ulogic;
   apbi     => apbi                 , --in  apb_slv_in_type;
   apbo     => apbo(INDEX_APB_GPIO) , --out apb_slv_out_type; -- значение INDEX_APB_GPIO см. в библиотеке core_const_pkg

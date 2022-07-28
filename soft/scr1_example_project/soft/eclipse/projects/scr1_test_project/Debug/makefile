@@ -40,6 +40,7 @@ C_SRCS := \
 ../src/core_scr1/syscalls.c \
 ../../../lib/hardware/apbuart/uart.c \
 ../../../lib/hardware/spictrl/spi.c \
+../../../lib/hardware/grgpio/gpio.c \
 ../src/main.c 
 
 S_UPPER_SRCS := \
