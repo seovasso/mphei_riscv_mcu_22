@@ -1,19 +1,20 @@
 `timescale 1ns/10ps
 
-`define CLK_PERIOD 10
+`define CLK_PERIOD 10		//System_clock_Frequency
 `define RESET_GOES_LOW 150
 module tb ();
 
   // Clock/reset generation
   parameter NAPBIR  =1;
   parameter NAPBAMR =1;
+
   
   parameter NAPBCFG  = NAPBIR + NAPBAMR;
   parameter NTESTINBITS = 4;
   parameter NAPBSLV	= 16;
   parameter NAHBIRQ   = 32;
   
-  parameter PINDEX   = 0;
+  parameter PINDEX   = 3;
   parameter PADDR    = 0;
   parameter PMASK    = 12'hfff;
   parameter CONSOLE  = 0;
@@ -27,6 +28,7 @@ module tb ();
   logic           rst = 1'b1;
   logic           clk = 1'b0;
 
+  logic	 [31:0]  					apb_rdata		;
   logic  [0:NAPBSLV-1] 			  	apbi_psel      ;
   logic			 				  	apbi_penable   ;
   logic  [31:0]			  			apbi_paddr     ;
@@ -70,7 +72,7 @@ module tb ();
   assign apb.mst_tb.pready  = 1'b1;
   assign apb.mst_tb.pslverr = 1'b0;
   assign apbi_paddr = apb.mst_tb.paddr;
-  assign apbi_psel = apb.mst_tb.psel; 
+  assign apbi_psel[PINDEX] = apb.mst_tb.psel; 
   assign apbi_penable = apb.mst_tb.penable;  
   assign apbi_pwrite = apb.mst_tb.pwrite;
   assign apbi_pstrb = 4'b1111; 
@@ -110,7 +112,7 @@ uut(
 				
 	.prdata  	(apbo_prdata ),
 	.pirq_o  	(apbo_pirq),
-	.pconfig 	(apbo_pconfig),
+	.pconfig 	(),
 	.pindex  	(apbo_pindex ),
 	
 	.rxd        (uarti_rxd   ),
@@ -130,7 +132,7 @@ uut(
   logic ok = 1;
 
   initial begin
-    apb_rdata = 32'h0;
+    apb_rdata = 32'hFF;
     apb.mst_tb.init;
 
     $display("TEST STARTED");
@@ -140,8 +142,8 @@ uut(
 
     // APB transaction
 	apb.mst_tb.cyc_wait(50);
-	apb.mst_tb.write( 32'hFFFFFFFF, 32'h4, 4'hF );     // wite(data, addr(bytes), strb);
-	apb.mst_tb.read( apb_rdata, 32'h4);                 // read(data, addr);
+	apb.mst_tb.write( apb_rdata, 32'hF, 4'hF );     // wite(data, addr(bytes), strb);
+	apb.mst_tb.read( apb_rdata, 32'hF);                 // read(data, addr);
 
 //   if (d_o != 1'b1) ok = 0;
 

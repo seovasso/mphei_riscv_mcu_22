@@ -43,14 +43,7 @@ entity apbuart_wrapper is
 ------APB output
     prdata      			: out std_logic_vector(31 downto 0);        			-- read data bus
     pirq_o        			: out std_logic_vector(NAHBIRQ-1 downto 0); 			-- interrupt bus
-	pconfig0     			: out std_logic_vector(31 downto 0);     
-	pconfig1     			: out std_logic_vector(31 downto 0);     
-	pconfig2     			: out std_logic_vector(31 downto 0);     
-	pconfig3     			: out std_logic_vector(31 downto 0);     
-	pconfig4     			: out std_logic_vector(31 downto 0);     
-	pconfig5     			: out std_logic_vector(31 downto 0);     
-	pconfig6     			: out std_logic_vector(31 downto 0);     
-	pconfig7     			: out std_logic_vector(31 downto 0);     
+	pconfig     			: out apb_config_type;         
 	pindex      			: out integer range 0 to NAPBSLV -1;
 
 ------UART input	
@@ -131,14 +124,7 @@ begin
 ------APB output				 
 		apbo.prdata => prdata,
 		apbo.pirq => pirq_o,
-		apbo.pconfig => pconfig0,
-		apbo.pconfig => pconfig1,
-		apbo.pconfig => pconfig2,
-		apbo.pconfig => pconfig3,
-		apbo.pconfig => pconfig4,
-		apbo.pconfig => pconfig5,
-		apbo.pconfig => pconfig6,
-		apbo.pconfig => pconfig7,  		
+		apbo.pconfig => pconfig, 		
 		apbo.pindex => pindex,
 
 ------UART input			
