@@ -41,6 +41,7 @@ C_SRCS := \
 ../../../lib/hardware/apbuart/uart.c \
 ../../../lib/hardware/spictrl/spi.c \
 ../../../lib/hardware/grgpio/gpio.c \
+../../../lib/hardware/gptimer/timer.c \
 ../src/main.c 
 
 S_UPPER_SRCS := \

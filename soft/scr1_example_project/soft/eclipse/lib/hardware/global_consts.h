@@ -16,4 +16,7 @@
 
 #define UNUSED __attribute__ ((unused))
 
+#define ALL_PIN_ON                      (0xFFFFFFFF)
+#define ALL_PIN_OFF                     (0x00000000)
+
 #endif // _GLOBAL_CONSTS_H_

@@ -427,10 +427,10 @@ generic map(
   sbits     => 10                      , -- Integer              := 10;      -- scaler bits
   ntimers   => 2                       , -- Integer range 1 to 7 := 2;       -- number of timers
   nbits     => 32                      , -- Integer              := 32;      -- timer bits
-  wdog      => 0                       , -- Integer              := 0;
-  glatch    => 0                       , -- Integer              := 0;
-  gextclk   => 0                       , -- Integer              := 0;
-  gset      => 0                         -- Integer              := 0
+  wdog      => 0                       , -- Integer              := 0;       -- last timer will be enabled and pre-loaded with this value at reset
+  glatch    => 0                       , -- Integer              := 0;       -- Enable support for external latch events
+  gextclk   => 0                       , -- Integer              := 0;       -- Enable external timer clock input
+  gset      => 0                         -- Integer              := 0        -- Enable external timer reload (via interrupt or external vector)
 ) port map (
   rst       => rst_i                  , -- Std_ULogic;
   clk       => clk_i                   , -- Std_ULogic;

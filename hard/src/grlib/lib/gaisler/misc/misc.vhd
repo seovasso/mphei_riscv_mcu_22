@@ -53,11 +53,11 @@ package misc is
   end component;
 
   type gptimer_in_type is record
-    dhalt    : std_ulogic;
-    extclk   : std_ulogic;
-    wdogen   : std_ulogic;
-    latchv   : std_logic_vector(NAHBIRQ-1 downto 0);
-    latchd   : std_logic_vector(NAHBIRQ-1 downto 0);
+    dhalt    : std_ulogic;                              -- Freeze timers
+    extclk   : std_ulogic;                              -- Use as alternative clock
+    wdogen   : std_ulogic;                              -- Sets enable bit of the watchdog timer 
+    latchv   : std_logic_vector(NAHBIRQ-1 downto 0);    -- External latch/set vector, used if VHDLgeneric gelatch /=0
+    latchd   : std_logic_vector(NAHBIRQ-1 downto 0);    -- External latch/set disable vector, used if VHDL generic gelatch = 2
   end record;
 
   function gpti_dhalt_drive (dhalt : std_ulogic) return gptimer_in_type;
@@ -65,10 +65,10 @@ package misc is
   type gptimer_in_vector is array (natural range <>) of gptimer_in_type;
 
   type gptimer_out_type is record
-    tick     : std_logic_vector(0 to 7);
-    timer1   : std_logic_vector(31 downto 0);
-    wdogn    : std_ulogic;
-    wdog    : std_ulogic;
+    tick     : std_logic_vector(0 to 7);                -- is high for one clock each time the scaler[0] or timer[1-7] underflows
+    timer1   : std_logic_vector(31 downto 0);           --
+    wdogn    : std_ulogic;                              -- negative signal of watch dog
+    wdog     : std_ulogic;                              -- signal of watch dog when this timer reach zero
   end record;
 
   type gptimer_out_vector is array (natural range <>) of gptimer_out_type;

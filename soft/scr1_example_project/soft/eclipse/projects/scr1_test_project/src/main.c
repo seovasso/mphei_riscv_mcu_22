@@ -4,6 +4,7 @@
 #include "spictrl/spi.h"
 #include "apbuart/uart.h"
 #include "grgpio/gpio.h"
+#include "gptimer/timer.h"
 
 #define BUFFER_SIZE_WORDS	(30)
 
@@ -13,9 +14,10 @@
 uint32_t src[BUFFER_SIZE_WORDS];
 uint32_t dst[BUFFER_SIZE_WORDS];
 
-#define TEST_SPI  0
-#define TEST_UART 0
-#define TEST_GPIO 1
+#define TEST_SPI   0
+#define TEST_UART  0
+#define TEST_GPIO  0
+#define TEST_TIMER 1
 
 #define USFL_DATA_ADDR ((uint32_t*)0xf000ffc8u)
 
@@ -122,6 +124,14 @@ int main(void)
     delayTact(50);
 
     GPIO_Set_Bypass(GPIO, ALL_PIN_OFF);
+
+//*/
+#endif
+
+#if TEST_TIMER
+//*/  Test TIMER
+
+
 
 //*/
 #endif

@@ -53,11 +53,12 @@ typedef struct
 
 #define ADDR_GPIO0                     (APB1_GPIO0_BA)                ///< Определяем адрес GPIO0 (см. chip.h)
 #define GPIO0                          ((gpio_regs_s *)ADDR_GPIO0)    ///< Выражение для болле удобного присвоения адреса gpio_regs_s указателю
-      
+
+//#define NBITS                          (31)                           ///< Namber of bits
+//#define NBITS_MSK                      (pow(2, NBITS)-1)              ///< Mask for those registers that depend on the number of bits    
 #define NBITS_MSK                      (0x7fffffff)                   ///< Number of bits in GPIO
-//#define NBITS_MSK                      (pow(2, NBITS)-1)              ///< Mask for those registers that depend on the number of bits
-   
-// Register mask   
+
+// All registers below contain one property that address start from zero  
 #define GPIO_DATA_MSK                  (NBITS_MSK) 
 #define GPIO_OUTPUT_MSK                (NBITS_MSK) 
 #define GPIO_DIRECTION_MSK             (NBITS_MSK) 
@@ -65,28 +66,24 @@ typedef struct
 #define GPIO_INTR_POLARITY_MSK         (NBITS_MSK) 
 #define GPIO_INTR_EDGE_MSK             (NBITS_MSK) 
 #define GPIO_BYPASS_MSK                (NBITS_MSK) 
+// All registers below contain one property that always take up all 32 bits and and don't need the mask
+// Mask is not defined because it uses a single command (frequency reduction)
+//      INTR_AVAILABLE
+//      INTR_FLAG     
+//      INPUT_ENABLE  
+//      PULSE    
+// Also for OR/AND/XOR Register
+//      INPUT_ENABLE
+//      OUTPUT     
+//      DIRECTION  
+//      INTR_MASK          
 
 // CAPABILITY Register address of bit
-#define GPIO_CAPABILITY_PU_POS         (18u) 
-#define GPIO_CAPABILITY_IER_POS        (17u) 
-#define GPIO_CAPABILITY_IFL_POS        (16u) 
-#define GPIO_CAPABILITY_IRQGEN_POS     (8u ) 
-#define GPIO_CAPABILITY_NLINES_POS     (0u ) 
+   // read-only
 // CAPABILITY Register mask 
-#define GPIO_CAPABILITY_PU_MSK         (1u << (GPIO_CAPABILITY_PU_POS    )) 
-#define GPIO_CAPABILITY_IER_MSK        (1u << (GPIO_CAPABILITY_IER_POS   )) 
-#define GPIO_CAPABILITY_IFL_MSK        (1u << (GPIO_CAPABILITY_IFL_POS   )) 
-#define GPIO_CAPABILITY_IRQGEN_MSK     (5u << (GPIO_CAPABILITY_IRQGEN_POS)) 
-#define GPIO_CAPABILITY_NLINES_MSK     (5u << (GPIO_CAPABILITY_NLINES_POS)) 
 
 // INTR_MAP Register address of bit
 // INTR_MAP Register mask
-
-// All other register don't need the mask
-// They always take up all 32 bits
-
-#define ALL_PIN_ON                     (0xFFFFFFFF)
-#define ALL_PIN_OFF                    (0x00000000)
 
 //void      GPIO_Init            (gpio_regs_s * const GPIO);
 
