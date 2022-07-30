@@ -18,58 +18,34 @@
 
 typedef struct
 {
+	// n = 1:7
+	volatile uint32_t COUNTER;      ///< 0xn0 read-write register, timer Counter value. Decremented by 1 for each prescaler tick
+	volatile uint32_t RELOAD;       ///< 0xn4 read-write register, timer Reload value
+	volatile uint32_t CONTROL;      ///< 0xn8 read-write register, set up operating mode for this timers
+	volatile uint32_t LATCH;        ///< 0xnC read only  register, latched timer counter value
+} timer_s;
+
+typedef struct
+{
 	volatile uint32_t SCALER_VALUE;        ///< 0x00 read-write register, scaler value register
 	volatile uint32_t SCALER_RELOAD;       ///< 0x04 read-write register, scaler reload value. Writes to this register also set the scaler value.
 	volatile uint32_t CONFIGURATION;       ///< 0x08 read-write register, set up operating mode for all timers
 	volatile uint32_t LATCH_CONFIGURATION; ///< 0x0C read-write register, set up interrupt vector for latching
  
-	volatile uint32_t TIMER1_COUNTER;      ///< 0x10 read-write register, timer Counter value. Decremented by 1 for each prescaler tick
-	volatile uint32_t TIMER1_RELOAD;       ///< 0x14 read-write register, timer Reload value
-	volatile uint32_t TIMER1_CONTROL;      ///< 0x18 read-write register, set up operating mode for this timers
-	volatile uint32_t TIMER1_LATCH;        ///< 0x1C read-write register, latched timer counter value
- 
-	volatile uint32_t TIMER2_COUNTER;      ///< 0x20 
-	volatile uint32_t TIMER2_RELOAD;       ///< 0x24 
-	volatile uint32_t TIMER2_CONTROL;      ///< 0x28 
-	volatile uint32_t TIMER2_LATCH;        ///< 0x2C 
- 
-	volatile uint32_t TIMER3_COUNTER;      ///< 0x30 
-	volatile uint32_t TIMER3_RELOAD;       ///< 0x34 
-	volatile uint32_t TIMER3_CONTROL;      ///< 0x38 
-	volatile uint32_t TIMER3_LATCH;        ///< 0x3C 
- 
-	volatile uint32_t TIMER4_COUNTER;      ///< 0x40 
-	volatile uint32_t TIMER4_RELOAD;       ///< 0x44 
-	volatile uint32_t TIMER4_CONTROL;      ///< 0x48 
-	volatile uint32_t TIMER4_LATCH;        ///< 0x4C 
- 
-	volatile uint32_t TIMER5_COUNTER;      ///< 0x50 
-	volatile uint32_t TIMER5_RELOAD;       ///< 0x54 
-	volatile uint32_t TIMER5_CONTROL;      ///< 0x58 
-	volatile uint32_t TIMER5_LATCH;        ///< 0x5C 
- 
-	volatile uint32_t TIMER6_COUNTER;      ///< 0x60 
-	volatile uint32_t TIMER6_RELOAD;       ///< 0x64 
-	volatile uint32_t TIMER6_CONTROL;      ///< 0x68 
-	volatile uint32_t TIMER6_LATCH;        ///< 0x6C 
- 
-	volatile uint32_t TIMER7_COUNTER;      ///< 0x70 
-	volatile uint32_t TIMER7_RELOAD;       ///< 0x74 
-	volatile uint32_t TIMER7_CONTROL;      ///< 0x78 
-	volatile uint32_t TIMER7_LATCH;        ///< 0x7C 
+	timer_s TIM[7];
+	
 } timer_regs_s;
 
-#define ADDR_TIMER0                     (APB1_TIMER0_BA)                ///< Определяем адрес SPI0 (см. chip.h)
-#define TIMER0                          ((timer_regs_s *)ADDR_TIMER0)   ///< Выражение для болле удобного присвоения адреса spi_regs_s указателю
+#define ADDR_TIMER0                       (APB1_TIMER0_BA)                ///< Определяем адрес SPI0 (см. chip.h)
+#define TIMER0                            ((timer_regs_s *)ADDR_TIMER0)   ///< Выражение для болле удобного присвоения адреса spi_regs_s указателю
  	 	 	 	 	 	 	 	 	   	 	 	 	 	 	            ///< на область расположения hdl SPI структуры подобной spi_regs_s
 
 // #define TIMEREN                          (2)                           ///< Namber of bits
 // #define TIMEREN_MSK                      (pow(2, NBITS)-1)              ///< Mask for those registers that depend on the number of bits    
 
 // All registers below contain one property that address start from zero  
-#define TIMER_SCALER_VALUE_MSK          (16u)
-#define TIMER_SCALER_RELOAD_MSK         (16u)
-#define TIMER_LATCH_CONFIGURATION_MSK   (32u)
+#define TIMER_SCALER_VALUE_MSK            (0xffffu)
+#define TIMER_SCALER_RELOAD_MSK           (0xffffu)
 // All registers below contain one property that always take up all 32 bits and and don't need the mask
 // Mask is not defined because it uses a single command (frequency reduction)
 //      LATCH_CONFIGURATION
@@ -123,12 +99,21 @@ typedef struct
 #define TIMER_TIMER_CONTROL_RS_MSK        (1u      << (TIMER_TIMER_CONTROL_RS_POS      ))
 #define TIMER_TIMER_CONTROL_EN_MSK        (1u      << (TIMER_TIMER_CONTROL_EN_POS      ))
 
-void    TIMER_Init_All_Timers   (timer_regs_s * TIMER); // set TIMER_CONFIGURATION_TIMEREN_MSK
- 
-void    TIMER_Set_Scaler_Value  (timer_regs_s * TIMER, uint32_t value);
+void      TIMER_Init_All_Timers    (timer_regs_s * const TIMER); // set TIMER_CONFIGURATION_TIMEREN_MSK
+   
+void      TIMER_Set_Scaler_Value   (timer_regs_s * const TIMER, uint32_t value);
+  
+void      TIMER_Set_Scaler_Reload  (timer_regs_s * const TIMER, uint32_t value);
 
-void    TIMER_Set_Scaler_Reload (timer_regs_s * TIMER, uint32_t value);
+uint32_t  TIMER_Get_Configuration  (timer_regs_s * const TIMER);
 
-void    TIMER_Init_Timer1       (timer_regs_s * TIMER);
+void      TIMER_Init_Timer         (timer_regs_s * const TIMER, uint8_t timer_n);
+  
+void      TIMER_Set_Timer_Counter  (timer_regs_s * const TIMER, uint8_t timer_n, uint32_t value);
+  
+void      TIMER_Set_Timer_Reload   (timer_regs_s * const TIMER, uint8_t timer_n, uint32_t value);
+
+uint32_t  TIMER_Get_Timer_Latch    (timer_regs_s * const TIMER, uint8_t timer_n);
+
 
 #endif /* HARDWARE_GPTIMER_TIMER_H_ */

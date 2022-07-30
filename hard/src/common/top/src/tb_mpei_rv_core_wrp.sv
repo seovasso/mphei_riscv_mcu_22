@@ -67,11 +67,11 @@ logic [31:0]         gpio_out_oen     ;
 logic [31:0]         gpio_out_val     ;
 logic [31:0]         gpio_out_sig_out ;
                
-logic                timr_in_dhalt    ;
-logic                timr_in_extclk   ;
-logic                timr_in_wdogen   ;
-logic [NAHBIRQ-1:0]  timr_in_latchv   ;
-logic [NAHBIRQ-1:0]  timr_in_latchd   ;
+logic                timr_in_dhalt    = 1'b0;
+logic                timr_in_extclk   = 1'b0;
+logic                timr_in_wdogen   = 1'b0;
+logic [NAHBIRQ-1:0]  timr_in_latchv   = 32'h0000_0000;
+logic [NAHBIRQ-1:0]  timr_in_latchd   = 32'h0000_0000;
 logic [0:7]          timr_out_tick    ;
 logic [31:0]         timr_out_timer1  ;
 logic                timr_out_wdogn   ;

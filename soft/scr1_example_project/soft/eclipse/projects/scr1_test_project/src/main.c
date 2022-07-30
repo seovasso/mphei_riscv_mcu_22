@@ -131,7 +131,37 @@ int main(void)
 #if TEST_TIMER
 //*/  Test TIMER
 
+    #define TIM0 (0)
+    #define TIM1 (1)
+    #define TIM2 (2)
+    #define TIM3 (3)
+    #define TIM4 (4)
+    #define TIM5 (5)
+    #define TIM6 (6)
 
+    timer_regs_s * const TIMER = TIMER0;
+    
+    TIMER_Init_All_Timers    (TIMER);
+
+    TIMER_Set_Scaler_Value   (TIMER, 10);
+    TIMER_Set_Scaler_Reload  (TIMER, 20);
+
+    TIMER_Init_Timer         (TIMER, TIM0);
+    TIMER_Set_Timer_Counter  (TIMER, TIM0, 10);
+    TIMER_Set_Timer_Reload   (TIMER, TIM0, 20);
+
+    TIMER_Init_Timer         (TIMER, TIM1);
+    TIMER_Set_Timer_Counter  (TIMER, TIM1, 10);
+    TIMER_Set_Timer_Reload   (TIMER, TIM1, 20);
+
+    usflData[0] = TIMER_Get_Configuration(TIMER);
+    usflData[1] = TIMER_CONFIGURATION_TIMEREN_MSK;
+
+    // Проверка адресов регистров
+    //usflData[0] = &(TIMER->TIM[0].CONTROL);
+    //usflData[1] = &(TIMER->TIM[7].RELOAD);
+    //usflData[2] = &(TIMER->CONFIGURATION);
+    //usflData[3] = &(TIMER->SCALER_VALUE);
 
 //*/
 #endif

@@ -30,7 +30,7 @@ void      SPI_Set_Word_Lenght (spi_regs_s * const SPI, uint32_t SPI_LEN)
 
 void      SPI_Slave_Select    (spi_regs_s * const SPI, uint32_t slv_addr)
 {
-    SPI->SLAVESELECT = SPI_EVENT_SLVSEL_MSK & slv_addr;
+    SPI->SLAVESELECT = SPI_SLAVESELECT_SLVSEL_MSK & slv_addr;
 }
 
 void      SPI_Core_Enable     (spi_regs_s * const SPI)

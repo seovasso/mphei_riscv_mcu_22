@@ -71,40 +71,40 @@ typedef struct
 // CAPABILITY0 Register mask
 
 // MODE Register address of bit
-#define SPI_MODE_LOOP_POS        (30u) ///< Core will operate in loopback mode
-#define SPI_MODE_CPOL_POS        (29u) ///< Determines the polarity (idle state) of the SCK clock
-#define SPI_MODE_CPHA_POS        (28u) ///< Determines when data will be read, 0 - first edge, 2 - second edge
-#define SPI_MODE_DIV16_POS       (27u) ///< Changes the frequency, see the formula p.1741
-#define SPI_MODE_REV_POS         (26u) ///< Determines how data is transmitted: 0 - LSB first, 1 - MSB first
-#define SPI_MODE_MS_POS          (25u) ///< When this bit is set to 1 the core will act as a master
-#define SPI_MODE_EN_POS          (24u) ///< When this bit is set to 1 the core is enabled, no registers can be changed
-#define SPI_MODE_LEN_POS         (20u) ///< Determines the length in bits of a transfer on the SPI bus
-#define SPI_MODE_PM_POS          (16u) ///< Changes the frequency, see the formula p.1741
-#define SPI_MODE_FACT_POS        (13u) ///< Changes the frequency, see the formula p.1741
-#define SPI_MODE_IGSEL_POS       (2u ) ///< Core will ignore the value of the SPI-SEL input
-// MODE Register mask
-#define SPI_MODE_LOOP_MSK        (1u   << (SPI_MODE_LOOP_POS ))
-#define SPI_MODE_CPOL_MSK        (1u   << (SPI_MODE_CPOL_POS ))
-#define SPI_MODE_CPHA_MSK        (1u   << (SPI_MODE_CPHA_POS ))
-#define SPI_MODE_DIV16_MSK       (1u   << (SPI_MODE_DIV16_POS))
-#define SPI_MODE_REV_MSK         (1u   << (SPI_MODE_REV_POS  ))
-#define SPI_MODE_MS_MSK          (1u   << (SPI_MODE_MS_POS   ))
-#define SPI_MODE_EN_MSK          (1u   << (SPI_MODE_EN_POS   ))
-#define SPI_MODE_LEN_MSK         (0xfu << (SPI_MODE_LEN_POS  ))
-#define SPI_MODE_PM_MSK          (0xfu << (SPI_MODE_PM_POS   ))
-#define SPI_MODE_FACT_MSK        (1u   << (SPI_MODE_FACT_POS ))
-#define SPI_MODE_IGSEL_MSK       (1u   << (SPI_MODE_IGSEL_POS))
-
-// EVENT Register address of bit
-#define SPI_EVENT_TIP_POS        (31u) ///< This bit is 1 when the core has a transfer in progress.
-#define SPI_EVENT_OV_POS         (12u) ///< Core will ignore the value of the SPI-SEL input
-#define SPI_EVENT_NE_POS         (9u ) ///< This bit is set when the receive queue contains one or more elements
-#define SPI_EVENT_NF_POS         (8u ) ///< This bit is set when the transmit queue has room for one or more words
-// EVENT Register mask
-#define SPI_EVENT_TIP_MSK        (1u   << (SPI_EVENT_TIP_POS ))
-#define SPI_EVENT_OV_MSK         (1u   << (SPI_EVENT_OV_POS  ))
-#define SPI_EVENT_NE_MSK         (1u   << (SPI_EVENT_NE_POS  ))
-#define SPI_EVENT_NF_MSK         (1u   << (SPI_EVENT_NF_POS  ))
+#define SPI_MODE_LOOP_POS          (30u) ///< Core will operate in loopback mode
+#define SPI_MODE_CPOL_POS          (29u) ///< Determines the polarity (idle state) of the SCK clock
+#define SPI_MODE_CPHA_POS          (28u) ///< Determines when data will be read, 0 - first edge, 2 - second edge
+#define SPI_MODE_DIV16_POS         (27u) ///< Changes the frequency, see the formula p.1741
+#define SPI_MODE_REV_POS           (26u) ///< Determines how data is transmitted: 0 - LSB first, 1 - MSB first
+#define SPI_MODE_MS_POS            (25u) ///< When this bit is set to 1 the core will act as a master
+#define SPI_MODE_EN_POS            (24u) ///< When this bit is set to 1 the core is enabled, no registers can be changed
+#define SPI_MODE_LEN_POS           (20u) ///< Determines the length in bits of a transfer on the SPI bus
+#define SPI_MODE_PM_POS            (16u) ///< Changes the frequency, see the formula p.1741
+#define SPI_MODE_FACT_POS          (13u) ///< Changes the frequency, see the formula p.1741
+#define SPI_MODE_IGSEL_POS         (2u ) ///< Core will ignore the value of the SPI-SEL input
+// MODE Register mask   
+#define SPI_MODE_LOOP_MSK          (1u   << (SPI_MODE_LOOP_POS ))
+#define SPI_MODE_CPOL_MSK          (1u   << (SPI_MODE_CPOL_POS ))
+#define SPI_MODE_CPHA_MSK          (1u   << (SPI_MODE_CPHA_POS ))
+#define SPI_MODE_DIV16_MSK         (1u   << (SPI_MODE_DIV16_POS))
+#define SPI_MODE_REV_MSK           (1u   << (SPI_MODE_REV_POS  ))
+#define SPI_MODE_MS_MSK            (1u   << (SPI_MODE_MS_POS   ))
+#define SPI_MODE_EN_MSK            (1u   << (SPI_MODE_EN_POS   ))
+#define SPI_MODE_LEN_MSK           (0xfu << (SPI_MODE_LEN_POS  ))
+#define SPI_MODE_PM_MSK            (0xfu << (SPI_MODE_PM_POS   ))
+#define SPI_MODE_FACT_MSK          (1u   << (SPI_MODE_FACT_POS ))
+#define SPI_MODE_IGSEL_MSK         (1u   << (SPI_MODE_IGSEL_POS))
+   
+// EVENT Register address of bit  
+#define SPI_EVENT_TIP_POS          (31u) ///< This bit is 1 when the core has a transfer in progress.
+#define SPI_EVENT_OV_POS           (12u) ///< Core will ignore the value of the SPI-SEL input
+#define SPI_EVENT_NE_POS           (9u ) ///< This bit is set when the receive queue contains one or more elements
+#define SPI_EVENT_NF_POS           (8u ) ///< This bit is set when the transmit queue has room for one or more words
+// EVENT Register mask   
+#define SPI_EVENT_TIP_MSK          (1u   << (SPI_EVENT_TIP_POS ))
+#define SPI_EVENT_OV_MSK           (1u   << (SPI_EVENT_OV_POS  ))
+#define SPI_EVENT_NE_MSK           (1u   << (SPI_EVENT_NE_POS  ))
+#define SPI_EVENT_NF_MSK           (1u   << (SPI_EVENT_NF_POS  ))
 
 // MASK Register address of bit
    //Nothing need
@@ -122,12 +122,12 @@ typedef struct
    //All bits
 // RECEIVE Register mask
 
-#define SSSZ                     (4)                            ///< Number of slave
+//#define SSSZ                       (1)                            ///< Number of slave
 // SLAVESELECT Register address of bit
-#define SPI_EVENT_SLVSEL_POS     (0u)                           ///< Slave select addres
+//#define SPI_SLAVESELECT_SLVSEL_POS (0u)                           ///< Slave select addres
 // SLAVESELECT Register mask
-#define SPI_EVENT_SLVSEL_MSK     ((uint32_t)(pow(2, SSSZ)-1))
-//#define SPI_EVENT_SLVSEL_MSK     (0b1111)
+//#define SPI_SLAVESELECT_SLVSEL_MSK ((uint32_t)(pow(2, SSSZ)-1))
+#define SPI_SLAVESELECT_SLVSEL_MSK     (0xffffffff)
 
 typedef enum
 {
