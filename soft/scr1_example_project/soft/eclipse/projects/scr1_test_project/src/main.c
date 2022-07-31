@@ -154,8 +154,8 @@ int main(void)
     TIMER_Set_Timer_Counter  (TIMER, TIM1, 10);
     TIMER_Set_Timer_Reload   (TIMER, TIM1, 20);
 
-    usflData[0] = TIMER_Get_Configuration(TIMER);
-    usflData[1] = TIMER_CONFIGURATION_TIMEREN_MSK;
+    //usflData[0] = TIMER_Get_Configuration(TIMER);
+    //usflData[1] = TIMER_CONFIGURATION_TIMEREN_MSK;
 
     // Проверка адресов регистров
     //usflData[0] = &(TIMER->TIM[0].CONTROL);

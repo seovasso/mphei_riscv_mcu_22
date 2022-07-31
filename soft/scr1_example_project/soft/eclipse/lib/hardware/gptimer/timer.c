@@ -29,11 +29,11 @@ uint32_t  TIMER_Get_Configuration  (timer_regs_s * const TIMER)
 
 void      TIMER_Init_Timer         (timer_regs_s * const TIMER, uint8_t timer_n)
 {
-    //TIMER->TIM[timer_n].CONTROL =   0u;
-    TIMER->TIM[timer_n].CONTROL |=  TIMER_TIMER_CONTROL_IE_MSK;  // enable interupt
-    TIMER->TIM[timer_n].CONTROL |=  TIMER_TIMER_CONTROL_RS_MSK;  // enable reload
+    TIMER->TIM[timer_n].CONTROL  =  0u;
+    TIMER->TIM[timer_n].CONTROL |=  TIMER_TIMER_CONTROL_IE_MSK;    // enable interupt
+    TIMER->TIM[timer_n].CONTROL |=  TIMER_TIMER_CONTROL_RS_MSK;    // enable reload
     TIMER->TIM[timer_n].CONTROL &= (~TIMER_TIMER_CONTROL_CH_MSK);  // disable chain
-    TIMER->TIM[timer_n].CONTROL |=  TIMER_TIMER_CONTROL_EN_MSK;  // enable timer
+    TIMER->TIM[timer_n].CONTROL |=  TIMER_TIMER_CONTROL_EN_MSK;    // enable timer
 }
   
 void      TIMER_Set_Timer_Counter  (timer_regs_s * const TIMER, uint8_t timer_n, uint32_t value)

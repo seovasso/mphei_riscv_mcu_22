@@ -129,7 +129,7 @@ rst_i <= not rstn_i;
 u_scr1_wrp : entity work.scr1_wrp
 generic map (
   SCR1_XLEN          => SCR1_XLEN          , 
-  SCR1_IRQ_LINES_NUM => SCR1_IRQ_LINES_NUM , 
+  SCR1_IRQ_LINES_NUM => SCR1_IRQ_LINES_NUM ,  -- 16
   SCR1_AHB_WIDTH     => SCR1_AHB_WIDTH      
 )
 port map(
@@ -432,7 +432,7 @@ generic map(
   gextclk   => 0                       , -- Integer              := 0;       -- Enable external timer clock input
   gset      => 0                         -- Integer              := 0        -- Enable external timer reload (via interrupt or external vector)
 ) port map (
-  rst       => rst_i                  , -- Std_ULogic;
+  rst       => rstn_i                  , -- Std_ULogic;
   clk       => clk_i                   , -- Std_ULogic;
   apbi      => apbi                    , -- apb_slv_in_type;
   apbo      => apbo(INDEX_APB_GRTIMER) , -- apb_slv_out_type;
