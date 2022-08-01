@@ -85,7 +85,7 @@ entity spi_wrap is
       spio_io2oen   : out std_ulogic;
       spio_io3      : out std_ulogic;
       spio_io3oen   : out std_ulogic;
-      slvsel        : out std_logic_vector((slvselsz-1) downto 0));	  
+      slvsel_wrap        : out std_logic_vector((slvselsz-1) downto 0));	  
 end entity spi_wrap;
 
 
@@ -146,7 +146,7 @@ component spictrl
         
         signal spii_int : spi_in_type;
         signal spio_int : spi_out_type;  
-        
+        signal slvsel_int : std_logic_vector((slvselsz-1) downto 0);
         
     begin
     
@@ -192,8 +192,8 @@ component spictrl
 	  apbi => apbi_int,
 	  apbo => apbo_int,
 	  spii => spii_int,
-	  spio => spio_int);
-
+	  spio => spio_int,
+      slvsel => slvsel_int);
         -- APB signals
         apbi_int.psel(pindex) <= apbi_psel;
         apbi_int.penable <= apbi_penable;
@@ -222,5 +222,6 @@ component spictrl
         spio_enable  <= spio_int.enable;
         spio_astart  <= spio_int.astart;
         spio_aready  <= spio_int.aready;
+        slvsel_wrap       <= slvsel_int;
     end architecture rtl;
         

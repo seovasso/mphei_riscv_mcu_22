@@ -45,6 +45,7 @@ module tb  ();
   assign apb_pwdata_slave         = apb_slave.mst_tb.pwdata;
   assign apb_paddr_slave          = apb_slave.mst_tb.paddr;
   
+  
   wire miso;
   wire mosi;
  
@@ -56,7 +57,7 @@ module tb  ();
   wire selectms;
   wire selectsm;
   
-  spi_wrap #(.syncram(0), .twen(0), .prot(0), .slvselen(1)) master(
+  spi_wrap #(.syncram(0), .twen(0), .prot(0), .slvselen(1), .fdepth(3)) master(
   
     .clk (clk ) ,
     .rstn(rstn) ,
@@ -93,10 +94,10 @@ module tb  ();
     .spio_io2oen (),
     .spio_io3    (),
     .spio_io3oen (),
-    .slvsel      (selectms)
+    .slvsel_wrap (selectms)
   );
   
-  spi_wrap #(.syncram(0), .twen(0), .prot(0), .slvselen(1)) slave(
+  spi_wrap #(.syncram(0), .twen(0), .prot(0), .slvselen(1), .fdepth(3)) slave(
   
     .clk (clk ) ,
     .rstn(rstn) ,
@@ -114,7 +115,7 @@ module tb  ();
     .spii_miso   (miso2),
     .spii_mosi   (mosi),
     .spii_sck    (clkgen),
-    .spii_spisel (selectms),
+    .spii_spisel (zero),
     .spii_astart (zero),
     .spii_cstart (zero),
     .spii_ignore (one),
@@ -133,7 +134,7 @@ module tb  ();
     .spio_io2oen (),
     .spio_io3    (),
     .spio_io3oen (),
-    .slvsel      (selectsm)
+    .slvsel_wrap (selectsm)
   );
   
   initial begin
@@ -154,21 +155,17 @@ module tb  ();
     (32'h0000_0000 | 1 << CM_EN | 0 << CM_MS | 1 << PM), 32'h20); 
     apb.mst_tb.write( 
     (32'h0000_0000 | 1 << CM_EN | 1 << CM_MS | 1 << PM), 32'h20); 
-    apb.mst_tb.write( 
-    (32'hFFFF_FFFF), 32'h38); 
-    apb_slave.mst_tb.write( 
-    (32'hFFFF_FFFF), 32'h38);     
+    //apb.mst_tb.write((32'h0000_0000 | 1 << 0), 32'h38); 
+    //apb_slave.mst_tb.write((32'h0000_0000 | 1 << 0), 32'h38);     
     
     apb.mst_tb.cyc_wait(20);
     apb.mst_tb.write( 32'h12132431, 32'h30); 
     apb_slave.mst_tb.write( 32'h1700, 32'h30);
     apb.mst_tb.read( apb_prdata, 32'h34);
-    //apb.mst_tb.cyc_wait(60);
-    //apb_slave.mst_tb.read( apb_prdata_slave, 32'h34);
-    //apb.mst_tb.write( 32'h2343_2332, 32'h30); 
-    //apb.mst_tb.cyc_wait(200);
-    //apb_slave.mst_tb.write( 32'h212_21, 32'h30); 
-
+    apb_slave.mst_tb.write( 32'h212_21, 32'h30); 
+    apb.mst_tb.write( 32'h3931_1111, 32'h30); 
+    apb.mst_tb.write( 32'h0992_1111, 32'h30); 
+    //apb_slave.mst_tb.write( 32'h212111, 32'h30); 
   end
   
 endmodule // tb
