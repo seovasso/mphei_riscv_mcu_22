@@ -28,6 +28,11 @@ void      SPI_Set_Word_Lenght (spi_regs_s * const SPI, uint32_t SPI_LEN)
     SPI->MODE |=  SPI_LEN;
 }
 
+void      SPI_Set_Interrupt   (spi_regs_s * const SPI)
+{
+    SPI->MASK |= SPI_MASK_TIPE_MSK;
+}
+
 void      SPI_Slave_Select    (spi_regs_s * const SPI, uint32_t slv_addr)
 {
     SPI->SLAVESELECT = SPI_SLAVESELECT_SLVSEL_MSK & slv_addr;

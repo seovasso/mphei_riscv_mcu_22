@@ -107,8 +107,9 @@ typedef struct
 #define SPI_EVENT_NF_MSK           (1u   << (SPI_EVENT_NF_POS  ))
 
 // MASK Register address of bit
-   //Nothing need
+#define SPI_MASK_TIPE_POS          (31u) ///< If this bit is set the core will generate an interrupt when the TIP bit in the Event is set
 // MASK Register mask
+#define SPI_MASK_TIPE_MSK          (1    << (SPI_MASK_TIPE_POS))
 
 // COMMAND Register address of bit
    //Nothing need
@@ -152,7 +153,9 @@ void      SPI_Init            (spi_regs_s * const SPI);
 void      SPI_LoopMode        (spi_regs_s * const SPI);
  
 void      SPI_Set_Word_Lenght (spi_regs_s * const SPI, uint32_t SPI_LEN);
- 
+
+void      SPI_Set_Interrupt   (spi_regs_s * const SPI);
+
 void      SPI_Slave_Select    (spi_regs_s * const SPI, uint32_t slv_addr);
  
 void      SPI_Core_Enable     (spi_regs_s * const SPI);

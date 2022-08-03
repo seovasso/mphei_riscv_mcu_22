@@ -21,6 +21,11 @@ void UART_Init(uart_regs_s * const UART, uart_br_e rate_to_set)
     UART->CONTROL |= (UART_CTRL_FIFO_EN_MSK | UART_CTRL_TE_MSK | UART_CTRL_RE_MSK);   //0x8003; //|= 0x03; //Включение передатчика и приёмника
 }
 
+void     UART_Set_Interrupt           (uart_regs_s * const UART)
+{
+    UART->CONTROL |= UART_CTRL_TI_EN_MSK;
+}
+
 void UART_LoopMode (uart_regs_s * const UART)
 {
 	UART->CONTROL |= UART_CTRL_LB_MSK;

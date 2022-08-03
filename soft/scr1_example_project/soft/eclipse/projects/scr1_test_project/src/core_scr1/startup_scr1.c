@@ -28,7 +28,13 @@ void WEAK Ecall_Handler(void) 				{Default_Handler("\nEcall_Handler()\n");}
 
 static void (*ext_vector_table[])() =
 {
-	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+	Spi_Irq_Handler,
+	Uart_Irq_Handler,
+	Gpio_Irq_Handler,
+	Timer1_Irq_Handler,
+	Timer2_Irq_Handler,
+	0,0,0,0,0,0,0,0,0,0,
+	Nothing
 };__unused __unused
 
 static void (*fault_vector_table[])() =
@@ -45,6 +51,72 @@ static void (*fault_vector_table[])() =
 	Ecall_Handler,
 	0,0,0,0,0
 };
+
+//#define INTERRUPT_COUNT_ADDR ((uint32_t*)0xf000ffb8u)
+
+volatile uint32_t * interrupt_count_spi    = (uint32_t*)0xf000ffc8u;
+volatile uint32_t * interrupt_count_uart   = (uint32_t*)0xf000ffccu;
+volatile uint32_t * interrupt_count_gpio   = (uint32_t*)0xf000ffd0u;
+volatile uint32_t * interrupt_count_timer1 = (uint32_t*)0xf000ffd4u;
+volatile uint32_t * interrupt_count_timer2 = (uint32_t*)0xf000ffd8u;
+
+// volatile uint32_t interrupt_count_spi   = (volatile uint32_t)0xf000ffC4u;
+// volatile uint32_t interrupt_count_uart  = (volatile uint32_t)0xf000ffC0u;
+// volatile uint32_t interrupt_count_gpio  = (volatile uint32_t)0xf000ffBCu;
+// volatile uint32_t interrupt_count_timer = (volatile uint32_t)0xf000ffB8u;
+
+void Nothing(void)
+{
+	write_csr(IPIC_EOI, 1);
+}
+
+void Reset_Interrupt_Count(void)
+{
+	//write_csr(IPIC_EOI, 1); // Пытался прекратить текущую обработку
+	*interrupt_count_spi    = 0;
+    *interrupt_count_uart   = 0;
+    *interrupt_count_gpio   = 0;
+    *interrupt_count_timer1 = 0;
+	*interrupt_count_timer2 = 0;
+}
+
+void Spi_Irq_Handler (void) // 16-я функция
+{
+    *interrupt_count_spi++;
+}
+
+void Uart_Irq_Handler (void)
+{
+    *interrupt_count_uart++;
+}
+
+void Gpio_Irq_Handler (void)
+{
+    *interrupt_count_gpio++;
+}
+
+void Timer1_Irq_Handler (void)
+{
+    *interrupt_count_timer1++;
+}
+
+void Timer2_Irq_Handler (void)
+{
+    *interrupt_count_timer2++;
+}
+
+void init_ipic(uint8_t ipic_vector)
+{
+    //timer is initialized to not cause timer-interrupts in this test (after __enable_irq())
+    CTIMER->Control = 0;
+    CTIMER->MTime = 0;
+    CTIMER->MTimeH = 0;
+    CTIMER->MTimeCmp = 100; 
+    CTIMER->MTimeCmpH = 0;
+    write_csr(IPIC_IDX, ipic_vector);
+    write_csr(IPIC_CICSR, 0x02);
+    write_csr(IPIC_ICSR, (1 << IPIC_ICSR_IE_Bit) | (1 << IPIC_ICSR_IM_Bit));
+}
 
 void trap_handler(uint32_t mcause, uint32_t __unused mepc, __unused  uint32_t * regs)
 {

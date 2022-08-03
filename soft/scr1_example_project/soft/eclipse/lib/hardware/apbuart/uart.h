@@ -28,16 +28,16 @@ typedef struct
 // CONTROL Register address of bit
 #define UART_CTRL_FIFO_EN_POS   (31u)
 #define UART_CTRL_NS_POS        (15u)   // Number of stop bits
-#define UART_CTRL_TI_POS        (3u)    // Transmit Interrupt Enable
 #define UART_CTRL_LB_POS        (7u)    // Loop back mode will be enabled
+#define UART_CTRL_TI_POS        (3u)    // Transmit Interrupt Enable
 #define UART_CTRL_RI_POS        (2u)    // Receive Interrupt Enable
 #define UART_CTRL_TE_POS        (1u)    // Transmit Enable
 #define UART_CTRL_RE_POS        (0u)    // Receive Enable
 // CONTROL Register mask
 #define UART_CTRL_FIFO_EN_MSK   (1u << (UART_CTRL_FIFO_EN_POS))
 #define UART_CTRL_NS_MSK        (1u << (UART_CTRL_NS_POS))
-#define UART_CTRL_TI_EN_MSK     (1u << (UART_CTRL_TI_POS))
 #define UART_CTRL_LB_MSK        (1u << (UART_CTRL_LB_POS))
+#define UART_CTRL_TI_EN_MSK     (1u << (UART_CTRL_TI_POS))
 #define UART_CTRL_RI_EN_MSK     (1u << (UART_CTRL_RI_POS))
 #define UART_CTRL_TE_MSK        (1u << (UART_CTRL_TE_POS))
 #define UART_CTRL_RE_MSK        (1u << (UART_CTRL_RE_POS))
@@ -97,6 +97,8 @@ typedef enum
 uint32_t UART_GetControl              (uart_regs_s * const UART);
 
 void     UART_Init                    (uart_regs_s * const UART, uart_br_e rate_to_set);
+
+void     UART_Set_Interrupt           (uart_regs_s * const UART);
 
 void     UART_LoopMode                (uart_regs_s * const UART);
 

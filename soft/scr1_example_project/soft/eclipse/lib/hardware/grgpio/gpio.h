@@ -87,18 +87,22 @@ typedef struct
 
 //void      GPIO_Init            (gpio_regs_s * const GPIO);
 
-void      GPIO_Set_Interrupt   (gpio_regs_s * const GPIO, uint32_t pins_to_set);
+void      GPIO_Set_Interrupt     (gpio_regs_s * const GPIO, uint32_t pins_to_set);
 
-void      GPIO_Set_Bypass      (gpio_regs_s * const GPIO, uint32_t pins_to_set);
+void      GPIO_Set_Intr_Polarity (gpio_regs_s * const GPIO, uint32_t pins_to_set);
 
-void      GPIO_Set_Transmit    (gpio_regs_s * const GPIO, uint32_t pins_to_set);
+void      GPIO_Set_Intr_Edge     (gpio_regs_s * const GPIO, uint32_t pins_to_set);
 
-void      GPIO_Set_Reseiv      (gpio_regs_s * const GPIO, uint32_t pins_to_set);
+void      GPIO_Set_Bypass        (gpio_regs_s * const GPIO, uint32_t pins_to_set);
 
-uint32_t  GPIO_Get_Capability  (gpio_regs_s * const GPIO);
+void      GPIO_Set_Transmit      (gpio_regs_s * const GPIO, uint32_t pins_to_set);
+
+void      GPIO_Set_Reseiv        (gpio_regs_s * const GPIO, uint32_t pins_to_set);
+
+uint32_t  GPIO_Get_Capability    (gpio_regs_s * const GPIO);
     
-void      GPIO_Send_Data       (gpio_regs_s * const GPIO, uint32_t p_data);
+void      GPIO_Send_Data         (gpio_regs_s * const GPIO, uint32_t p_data);
     
-uint32_t  GPIO_Read_Data       (gpio_regs_s * const GPIO);
+uint32_t  GPIO_Read_Data         (gpio_regs_s * const GPIO);
 
 #endif /* HARDWARE_GRGPIO_GPIO_H_ */

@@ -345,7 +345,7 @@ generic map (
   paddr    => INDEX_APB_APBUART*16    , -- integer                := 0;
   pmask    => 16#FF0#                 , -- integer                := 16#fff#;
   console  => 0                       , -- integer                := 0; 
-  pirq     => 0                       , -- integer                := 0;
+  pirq     => 1                       , -- integer                := 0;
   parity   => 1                       , -- integer                := 1;       -- parity bit
   flow     => 1                       , -- integer                := 1;       -- hardware flow-control is supported through the RTSN/CTSN hand-shake signals
   fifosize => 4                       , -- integer range 1 to 32  := 1;
@@ -384,16 +384,16 @@ generic map (
   bypass   => 16#7FFFFFFF#         , -- integer              := 16#0000#; -- alternative functions
   scantest => 0                    , -- integer              := 0;
   bpdir    => 0                    , -- integer              := 16#0000#; -- bypass direction
-  pirq     => 0                    , -- integer              := 0;        -- not used
+  pirq     => 2                    , -- integer              := 0;        -- not used
   irqgen   => 1                    , -- integer              := 0;        -- set up mode of interrupts
   iflagreg => 1                    , -- integer range 0 to 1 := 0;        -- enable flag register
-  bpmode   => 1                    , -- integer range 0 to 1 := 0;
+  bpmode   => 1                    , -- integer range 0 to 1 := 0;        -- ???
   inpen    => 1                    , -- integer range 0 to 1 := 0;        -- enable inpute enable register
   doutresv => 0                    , -- integer              := 0;        -- reset value for output register
   bpresv   => 0                    , -- integer              := 0;        -- reset value for bypass   register
   dirresv  => 0                    , -- integer              := 0;        -- reset value for direction  register
   inpresv  => 0                    , -- integer              := 0;        -- reset value for input enable register
-  pulse    => 0                      -- integer              := 0         -- enavle pulse register
+  pulse    => 0                      -- integer              := 0         -- enable pulse register
 ) port map (
   rst      => rstn_i               , --in  std_ulogic;
   clk      => clk_i                , --in  std_ulogic;
@@ -422,7 +422,7 @@ generic map(
   pindex    => INDEX_APB_GRTIMER       , -- Integer              := 0;
   paddr     => INDEX_APB_GRTIMER*16    , -- Integer              := 0;
   pmask     => 16#FF0#                 , -- Integer              := 16#fff#;
-  pirq      => 0                       , -- Integer              := 1;
+  pirq      => 3                       , -- Integer              := 1;       -- number of interrupts line
   sepirq    => 1                       , -- Integer              := 1;       -- separate interrupts
   sbits     => 10                      , -- Integer              := 10;      -- scaler bits
   ntimers   => 2                       , -- Integer range 1 to 7 := 2;       -- number of timers
