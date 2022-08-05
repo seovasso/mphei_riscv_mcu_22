@@ -40,18 +40,15 @@ int main(void)
     uint8_t ipic_vector2 = 2;
     uint8_t ipic_vector3 = 3;
     uint8_t ipic_vector4 = 4;
-    uint8_t ipic_vector5 = 15;
 
-    __enable_irq();
     Reset_Interrupt_Count();
     init_ipic(ipic_vector0);
     init_ipic(ipic_vector1);
     init_ipic(ipic_vector2);
     init_ipic(ipic_vector3);
     init_ipic(ipic_vector4);
-    init_ipic(ipic_vector5);
+    __enable_irq();
     
-
 #if TEST_SPI
 //*/  Test SPI
 
@@ -79,7 +76,7 @@ int main(void)
 
 #if TEST_UART
 //*/  Test UART
-
+    
 	uart_regs_s * const UART       = UART0;                   // pointer to UART structure, returns address of beginning this structure
     uint32_t            brate      = UART_BR_921600;          // bit rate
     uint8_t             data       = 100;                     // test data to transfer

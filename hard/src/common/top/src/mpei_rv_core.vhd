@@ -186,14 +186,14 @@ generic map (
   iomask      => 16#FFF#                    , -- ahb_addr_type              := 16#fff#;     -- I/O area address mask
   cfgaddr     => 16#FF0#                    , -- ahb_addr_type              := 16#ff0#;     -- config area MSB address
   cfgmask     => 16#FF0#                    , -- ahb_addr_type              := 16#ff0#;     -- config area address mask
-  nahbm       => NAHBMST                    , -- integer range 1 to NAHBMST := NAHBMST;     -- number of masters
-  nahbs       => NAHBSLV                    , -- integer range 1 to NAHBSLV := NAHBSLV;     -- number of slaves
+  nahbm       => INDEX_AHBM_ALL             , -- integer range 1 to NAHBMST := NAHBMST;     -- number of masters
+  nahbs       => INDEX_AHBS_ALL             , -- integer range 1 to NAHBSLV := NAHBSLV;     -- number of slaves
   ioen        => 1                          , -- integer range 0 to 15      := 1;           -- enable I/O area
   disirq      => 0                          , -- integer range 0 to 1       := 0;           -- disable interrupt routing
   fixbrst     => 1                          , -- integer range 0 to 1       := 0;           -- support fix-length bursts
   debug       => 2                          , -- integer range 0 to 2       := 2;           -- report cores to console
   fpnpen      => 0                          , -- integer range 0 to 1       := 0;           -- full PnP configuration decoding
-  icheck      => 1                          , -- integer range 0 to 1       := 1;    
+  icheck      => 0                          , -- integer range 0 to 1       := 1;    
   devid       => 0                          , -- integer                    := 0;           -- unique device ID
   enbusmon    => 0                          , -- integer range 0 to 1       := 0;           -- enable bus monitor
   assertwarn  => 0                          , -- integer range 0 to 1       := 0;           -- enable assertions for warnings
