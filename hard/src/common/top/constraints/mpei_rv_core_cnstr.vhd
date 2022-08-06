@@ -16,7 +16,7 @@ use gaisler.spi.all;
 library work;
 use work.core_const_pkg.all;		-- библиотека в которой будут храниться все параметры ( например кол-во мастеров и слейвов у AHBCTRL/APBCTRL )
 
-entity mpei_rv_core is
+entity mpei_rv_core_cnstr is
 generic (
   slvselsz           : integer range 1 to 32 := 4 ;  -- for spictrl
   NAHBIRQ            : integer               := 32;  -- how it how it calculated: 32 + 32*GRLIB_CONFIG_ARRAY(grlib_amba_inc_nirq); -> config.vhd -> 32 + 32*0;
@@ -24,13 +24,24 @@ generic (
   SCR1_IRQ_LINES_NUM : integer               := 16;  -- for scr IQR
   SCR1_AHB_WIDTH     : integer               := 32   -- for scr lenght of AHB
 );
-port(
-  clk_i              : in  std_ulogic;
-  rstn_i             : in  std_ulogic;
-    
+port(    
   --                 scr1_wrp interface
-  --                 what have to output? JTAG, IQR, Fuses, control pin?
-    
+  pwrup_rst_n        : in  std_ulogic;
+  rst_n              : in  std_ulogic;
+  cpu_rst_n          : in  std_ulogic;
+  test_mode          : in  std_ulogic;
+  test_rst_n         : in  std_ulogic;
+  clk                : in  std_ulogic;
+  rtc_clk            : in  std_ulogic;
+           
+  --                 JTAG interface 
+  jtag_trst_n        : in  std_ulogic;
+  jtag_tck           : in  std_ulogic;
+  jtag_tms           : in  std_ulogic;
+  jtag_tdi           : in  std_ulogic;
+  jtag_tdo           : out std_ulogic; 
+  jtag_tdo_en        : out std_ulogic; 
+
   --                 spictrl interface
   spi_in_miso        : in  std_ulogic;
   spi_in_mosi        : in  std_ulogic;
@@ -89,9 +100,9 @@ port(
   timr_out_wdogn     : out std_ulogic;
   timr_out_wdog      : out std_ulogic
 );
-end mpei_rv_core;
+end mpei_rv_core_cnstr;
 
-architecture mpei_rv_core_arc of mpei_rv_core is
+architecture mpei_rv_core_cnstr_arc of mpei_rv_core_cnstr is
 
 -- inner signal
 signal ahbmi     : ahb_mst_in_type;
@@ -115,13 +126,13 @@ signal gpioo     : gpio_out_type;
 signal gpti      : gptimer_in_type;
 signal gpto      : gptimer_out_type;
 
-signal rst_i     : std_ulogic;                                   --inverted signal
+signal pwrup_rst : std_ulogic;                                   --inverted signal
 
 
 begin
 
 -- initialization of inner signal
-rst_i <= not rstn_i;
+pwrup_rst <= not pwrup_rst_n;
 
 ------------------------------------------------------------------------------------
 --                                SCR1_WRP                                        --
@@ -134,13 +145,13 @@ generic map (
 )
 port map(
   -- Control
-  pwrup_rst_n        => rstn_i                     ,  -- in   std_ulogic; --Power-Up Reset
-  rst_n              => rstn_i                     ,  -- in   std_ulogic; --Regular Reset signal
-  cpu_rst_n          => rstn_i                     ,  -- in   std_ulogic; --CPU Reset (Core Reset)
-  test_mode          => '0'                        ,  -- in   std_ulogic; --Test mode
-  test_rst_n         => '1'                        ,  -- in   std_ulogic; --Test mode's reset
-  clk                => clk_i                      ,  -- in   std_ulogic; --System clock
-  rtc_clk            => clk_i                      ,  -- in   std_ulogic; --Real-time clock
+  pwrup_rst_n        => pwrup_rst_n                ,  -- in   std_ulogic; --Power-Up Reset
+  rst_n              => rst_n                      ,  -- in   std_ulogic; --Regular Reset signal
+  cpu_rst_n          => cpu_rst_n                  ,  -- in   std_ulogic; --CPU Reset (Core Reset)
+  test_mode          => test_mode                  ,  -- in   std_ulogic; --Test mode
+  test_rst_n         => test_rst_n                 ,  -- in   std_ulogic; --Test mode's reset
+  clk                => clk                        ,  -- in   std_ulogic; --System clock
+  rtc_clk            => rtc_clk                    ,  -- in   std_ulogic; --Real-time clock
   sys_rst_n_o        => open                       ,  -- out  std_ulogic; --External System Reset out
                                                        -- (for the processor cluster's components or
                                                        -- external SOC (could be useful in small
@@ -156,12 +167,12 @@ port map(
   soft_irq           => '0'                        ,  -- in std_ulogic;                                       Software IRQ in
                                   
   -- JTAG I/F                               
-  trst_n             => '1'                        ,  -- in  std_ulogic;  test reset - reset (initialization) TAPC                                
-  tck                => '0'                        ,  -- in  std_ulogic;  test clock, clk/tck should be >= 12                                
-  tms                => '1'                        ,  -- in  std_ulogic;  test mode select - change test mode                                
-  tdi                => '1'                        ,  -- in  std_ulogic;  test data input  - pin for receive data (instruction) for testing                                 
-  tdo                => open                       ,  -- out std_ulogic;  test data output - resulted data after testing                                
-  tdo_en             => open                       ,  -- out std_ulogic;  test data output enable - enable to output resulted data 
+  trst_n             => jtag_trst_n                ,  -- in  std_ulogic;  test reset - reset (initialization) TAPC                                
+  tck                => jtag_tck                   ,  -- in  std_ulogic;  test clock, clk/tck should be >= 12                                
+  tms                => jtag_tms                   ,  -- in  std_ulogic;  test mode select - change test mode                                
+  tdi                => jtag_tdi                   ,  -- in  std_ulogic;  test data input  - pin for receive data (instruction) for testing                                 
+  tdo                => jtag_tdo                   ,  -- out std_ulogic;  test data output - resulted data after testing                                
+  tdo_en             => jtag_tdo_en                ,  -- out std_ulogic;  test data output enable - enable to output resulted data 
    
   -- Instruction Memory Interface
   msti_imem          => ahbmi                      ,  -- in   ahb_mst_in_type;
@@ -213,8 +224,8 @@ generic map (
   unmapslv    => 0                          , -- integer                    := 0;           -- to redirect unmapped areas to slave, set to 256+bar*32+slv
   ahbendian   => GRLIB_ENDIAN                 -- integer                    := GRLIB_ENDIAN
 ) port map (
-  rst         => rst_i                      , -- in  std_ulogic;
-  clk         => clk_i                      , -- in  std_ulogic;
+  rst         => pwrup_rst                  , -- in  std_ulogic;
+  clk         => clk                        , -- in  std_ulogic;
   
   msti        => ahbmi                      , -- out ahb_mst_in_type;                       -- массив AHB интерфейсов подключенных к мастерам (в нашем случае 1 мастер SCR1_WRP) 
   msto        => ahbmo                      , -- in  ahb_mst_out_vector;	                  -- массив AHB интерфейсов подключенных к мастерам (в нашем случае 1 мастер SCR1_WRP) 
@@ -248,8 +259,8 @@ generic map (
   mcheck      => 1                          ,  -- integer range 0 to 1       := 1;
   ccheck      => 1                             -- integer range 0 to 1       := 1
 ) port map (  
-  rst         => rstn_i                     ,  -- in  std_ulogic;
-  clk         => clk_i                      ,  -- in  std_ulogic;
+  rst         => pwrup_rst_n                ,  -- in  std_ulogic;
+  clk         => clk                        ,  -- in  std_ulogic;
     
   ahbi        => ahbsi                      ,  -- in  ahb_slv_in_type;                  -- значение INDEX_AHBS_AHB2APB см. в библиотеке core_const_pkg
   ahbo        => ahbso(INDEX_AHBS_AHB2APB)  ,  -- out ahb_slv_out_type;                 -- значение INDEX_AHBS_AHB2APB см. в библиотеке core_const_pkg
@@ -314,8 +325,8 @@ generic map(
   ignore    => 0                       , -- integer range 0 to 1  := 0;       Ignore samples
   prot      => 0                         -- integer range 0 to 2  := 0        Legacy, 1: dual, 2: quad
 ) port map (
-  rstn      => rstn_i                  , --std_ulogic;
-  clk       => clk_i                   , --std_ulogic;
+  rstn      => pwrup_rst_n             , --std_ulogic;
+  clk       => clk                     , --std_ulogic;
   apbi      => apbi                    , --apb_slv_in_type;
   apbo      => apbo(INDEX_APB_SPICTRL) , --apb_slv_out_type;
   spii      => spii                    , --spi_in_type;
@@ -352,8 +363,8 @@ generic map (
   abits    => 8                       , -- integer                := 8;
   sbits    => 12                        -- integer range 12 to 32 := 12);
 ) port map(
-  rst      => rstn_i                  , --in  std_ulogic;
-  clk      => clk_i                   , --in  std_ulogic;
+  rst      => pwrup_rst_n             , --in  std_ulogic;
+  clk      => clk                     , --in  std_ulogic;
   apbi     => apbi                    , --in  apb_slv_in_type;
   apbo     => apbo(INDEX_APB_APBUART) , --out apb_slv_out_type;
   uarti    => uarti                   , --in  uart_in_type;
@@ -395,8 +406,8 @@ generic map (
   inpresv  => 0                    , -- integer              := 0;        -- reset value for input enable register
   pulse    => 0                      -- integer              := 0         -- enable pulse register
 ) port map (
-  rst      => rstn_i               , --in  std_ulogic;
-  clk      => clk_i                , --in  std_ulogic;
+  rst      => pwrup_rst_n          , --in  std_ulogic;
+  clk      => clk                  , --in  std_ulogic;
   apbi     => apbi                 , --in  apb_slv_in_type;
   apbo     => apbo(INDEX_APB_GPIO) , --out apb_slv_out_type; -- значение INDEX_APB_GPIO см. в библиотеке core_const_pkg
   gpioi    => gpioi                , --in  gpio_in_type;
@@ -432,12 +443,12 @@ generic map(
   gextclk   => 0                       , -- Integer              := 0;       -- Enable external timer clock input
   gset      => 0                         -- Integer              := 0        -- Enable external timer reload (via interrupt or external vector)
 ) port map (
-  rst       => rstn_i                  , -- Std_ULogic;
-  clk       => clk_i                   , -- Std_ULogic;
+  rst       => pwrup_rst_n             , -- Std_ULogic;
+  clk       => clk                     , -- Std_ULogic;
   apbi      => apbi                    , -- apb_slv_in_type;
   apbo      => apbo(INDEX_APB_GRTIMER) , -- apb_slv_out_type;
   gpti      => gpti                    , -- gptimer_in_type;
   gpto      => gpto                      -- gptimer_out_type;
 );
 
-end mpei_rv_core_arc;
+end mpei_rv_core_cnstr_arc;
