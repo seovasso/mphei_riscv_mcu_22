@@ -56,6 +56,7 @@ read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/uart/apbuart.vhd         -librar
 read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/misc/grgpio.vhd          -library gaisler
 read_vhdl -vhdl2008  ../../../grlib/lib/gaisler/misc/gptimer.vhd         -library gaisler
 
+read_xdc             ../constraints/constraints.xdc
 add_files -norecurse ../constraints/mpei_rv_core_cnstr_wrp.sv
 read_vhdl -vhdl2008  ../src/core_const_pkg.vhd                           -library work
 read_vhdl -vhdl2008  ../src/scr1_wrp.vhd                                 -library work  
