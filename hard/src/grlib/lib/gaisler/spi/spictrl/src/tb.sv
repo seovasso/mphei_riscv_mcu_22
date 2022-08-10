@@ -2,7 +2,7 @@
 
 `define CLK_PERIOD 2
 `define RESET_GOES_HIGH 15
-`define TEST_CODE 1
+`define TEST_CODE 0000_0001
 
 module tb  ();
 
@@ -139,6 +139,8 @@ module tb  ();
     .slvsel_wrap (selectsm)
   );
   
+   localparam BITRATE = 1000;
+        localparam SPI_MODE = 0;
 
  generate
     case (32'h`TEST_CODE)
@@ -170,6 +172,10 @@ module tb  ();
         localparam BITRATE = 1000;
         localparam SPI_MODE = 0;
     end
+    default : begin
+        localparam BITRATE = 1000;
+        localparam SPI_MODE = 0;
+        end
     endcase
   endgenerate
   
@@ -187,7 +193,7 @@ module tb  ();
     #(`RESET_GOES_HIGH);
     #(`CLK_PERIOD);
     
-    if (BITRATE == 32'd100) begin
+    #10 if (BITRATE == 32'd100) begin
     apb.mst_tb.cyc_wait(20);
         apb_slave.mst_tb.write(                                                                   
         (32'h0000_0000  | 1 << PM | 1 << 17 | 1 << 18 | 1 << 27), 32'h20);
@@ -196,7 +202,7 @@ module tb  ();
         apb.mst_tb.cyc_wait(20);
     end
     
-    if (BITRATE == 1000) begin
+   #10 if (BITRATE == 1000) begin
     apb.mst_tb.cyc_wait(20);
         apb_slave.mst_tb.write(                                                                   
         (32'h0000_0000  | 1 << PM | 1 << 18 | 1 << 19), 32'h20);
@@ -234,7 +240,7 @@ module tb  ();
     (32'h0000_0000 | 1 << CM_EN | 1 << CM_MS), 32'h20);   
     apb.mst_tb.cyc_wait(20);
     
-    #100 for (int i = 1; i <= 8; i++) begin
+    #1000 for (int i = 1; i <= 8; i++) begin
         apb.mst_tb.write($random, 32'h30); 
         apb_slave.mst_tb.write($random, 32'h30);
         if (i == 8)
