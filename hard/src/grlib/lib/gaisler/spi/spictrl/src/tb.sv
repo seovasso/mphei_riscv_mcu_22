@@ -2,7 +2,7 @@
 
 `define CLK_PERIOD 2
 `define RESET_GOES_HIGH 15
-`define TEST_CODE 0000_0003
+`define TEST_CODE 0000_0005
 
 module tb  ();
 
@@ -150,7 +150,7 @@ module tb  ();
     32'h0000_0000 : begin
         assign BITRATE = 100;
         assign SPI_MODE = 0;
-        
+        assign WIRE3 = 0;
     end
     32'h0000_0001 : begin
         assign BITRATE = 1000;
