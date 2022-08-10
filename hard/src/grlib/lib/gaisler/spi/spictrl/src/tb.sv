@@ -2,7 +2,7 @@
 
 `define CLK_PERIOD 2
 `define RESET_GOES_HIGH 15
-`define TEST_CODE 0000_0001
+`define TEST_CODE 0000_0003
 
 module tb  ();
 
@@ -60,7 +60,7 @@ module tb  ();
   wire selectsm;
   
   
-  spi_wrap #(.syncram(0), .twen(0), .prot(0), .slvselen(1), .fdepth(3)) master(
+  spi_wrap #(.syncram(0), .prot(0), .slvselen(1), .fdepth(3)) master(
   
     .clk (clk ) ,
     .rstn(rstn) ,
@@ -100,7 +100,7 @@ module tb  ();
     .slvsel_wrap (selectms)
   );
   
-  spi_wrap #(.syncram(0), .twen(0), .prot(0), .slvselen(1), .fdepth(3)) slave(
+  spi_wrap #(.syncram(0), .prot(0), .slvselen(1), .fdepth(3)) slave(
     .clk (clk ) ,
     .rstn(rstn) ,
     .apbi_psel   (apb_psel_slave),
@@ -139,42 +139,53 @@ module tb  ();
     .slvsel_wrap (selectsm)
   );
   
-   localparam BITRATE = 1000;
-        localparam SPI_MODE = 0;
+   logic [31:0] WIRE3;
+   logic [31:0] BITRATE;
+   logic [31:0] SPI_MODE;
+   logic [31:0] hran = 32'h0000_0000;
 
+        
  generate
     case (32'h`TEST_CODE)
     32'h0000_0000 : begin
-        localparam BITRATE = 100;
-        localparam SPI_MODE = 0;
+        assign BITRATE = 100;
+        assign SPI_MODE = 0;
+        
     end
     32'h0000_0001 : begin
-        localparam BITRATE = 1000;
-        localparam SPI_MODE = 0;
+        assign BITRATE = 1000;
+        assign SPI_MODE = 0;
+        assign WIRE3 = 0;
     end
     32'h0000_0002 : begin
-        localparam BITRATE = 2500;
-        localparam SPI_MODE = 0;
+        assign BITRATE = 2500;
+        assign SPI_MODE = 0;
+        assign WIRE3 = 0;
     end
     32'h0000_0003 : begin
-        localparam BITRATE = 1000;
-        localparam SPI_MODE = 1;
+        assign BITRATE = 1000;
+        assign SPI_MODE = 1;
+        assign WIRE3 = 0;
     end
     32'h0000_0004 : begin
-        localparam BITRATE = 1000;
-        localparam SPI_MODE = 2;
+        assign BITRATE = 1000;
+        assign SPI_MODE = 2;
+        assign WIRE3 = 0;
     end
     32'h0000_0005 : begin
-        localparam BITRATE = 1000;
-        localparam SPI_MODE = 3;
+        assign BITRATE = 1000;
+        assign SPI_MODE = 3;
+        assign WIRE3 = 0;
     end 
     32'h0000_0006 : begin
-        localparam BITRATE = 1000;
-        localparam SPI_MODE = 0;
+        assign BITRATE = 1000;
+        assign SPI_MODE = 0;
+        assign WIRE3 = 1;
     end
     default : begin
-        localparam BITRATE = 1000;
-        localparam SPI_MODE = 0;
+        assign BITRATE = 1000;
+        assign SPI_MODE = 0;
+        assign WIRE3 = 0;
         end
     endcase
   endgenerate
@@ -193,52 +204,43 @@ module tb  ();
     #(`RESET_GOES_HIGH);
     #(`CLK_PERIOD);
     
-    #10 if (BITRATE == 32'd100) begin
-    apb.mst_tb.cyc_wait(20);
-        apb_slave.mst_tb.write(                                                                   
-        (32'h0000_0000  | 1 << PM | 1 << 17 | 1 << 18 | 1 << 27), 32'h20);
-        apb.mst_tb.write(                                                                         
-        (32'h0000_0000  | 1 << PM | 1 << 17 | 1 << 18 | 1 << 27), 32'h20);
-        apb.mst_tb.cyc_wait(20);
-    end
-    
-   #10 if (BITRATE == 1000) begin
-    apb.mst_tb.cyc_wait(20);
-        apb_slave.mst_tb.write(                                                                   
-        (32'h0000_0000  | 1 << PM | 1 << 18 | 1 << 19), 32'h20);
-        apb.mst_tb.write(                                                                         
-        (32'h0000_0000  | 1 << PM | 1 << 18 | 1 << 19), 32'h20);
-        apb.mst_tb.cyc_wait(20);
-    end
-    
+     case (BITRATE)
+     32'd100 : begin
+        assign hran = (hran | 1 << 16 | 1 << 17 | 1 << 18 | 1 << 27);
+        end
+        32'd1000 :begin 
+            assign hran = (hran | 1 << 16 | 1 << 17 | 1 << 19);
+        end
+        32'd2500 :begin 
+            assign hran = (hran | 1 << 13);
+        end
+        default: begin
+            assign hran = (hran | 1 << 16 | 1 << 17 | 1 << 19);;
+        end
+      endcase
+
     if (SPI_MODE == 0) begin
-        apb_slave.mst_tb.write(                                                                   
-        (32'h0000_0000  | 0 << 29 | 0 << 28), 32'h20);
-        apb.mst_tb.write(                                                                         
-        (32'h0000_0000  | 0 << 29 | 0 << 28), 32'h20);
+        assign hran = (hran | 0 << 29 | 0 << 28);
     end else if (SPI_MODE == 1) begin
-        apb_slave.mst_tb.write(                                                                   
-        (32'h0000_0000  | 0 << 29 | 1 << 28), 32'h20);
-        apb.mst_tb.write(                                                                         
-        (32'h0000_0000  | 0 << 29 | 1 << 28), 32'h20);
+        assign hran = (hran | 0 << 29 | 1 << 28);
     end else if (SPI_MODE == 2) begin
-        apb_slave.mst_tb.write(                                                                   
-        (32'h0000_0000  | 1 << 29 | 0 << 28), 32'h20);
-        apb.mst_tb.write(                                                                         
-        (32'h0000_0000  | 1 << 29 | 0 << 28), 32'h20);
+        assign hran = (hran | 1 << 29 | 0 << 28);
     end else if (SPI_MODE == 3) begin
-        apb_slave.mst_tb.write(                                                                   
-        (32'h0000_0000  | 1 << 29 | 1 << 28), 32'h20);
-        apb.mst_tb.write(                                                                         
-        (32'h0000_0000  | 1 << 29 | 1 << 28), 32'h20);
+        assign hran = (hran | 1 << 29 | 1 << 28);
     end
-    
-    apb.mst_tb.cyc_wait(20);
-    apb_slave.mst_tb.write(
-    (32'h0000_0000 | 1 << CM_EN | 0 << CM_MS), 32'h20); 
-    apb.mst_tb.write( 
-    (32'h0000_0000 | 1 << CM_EN | 1 << CM_MS), 32'h20);   
-    apb.mst_tb.cyc_wait(20);
+
+    if (WIRE3 == 0) begin
+        apb_slave.mst_tb.write(
+        (hran | 1 << CM_EN | 0 << CM_MS), 32'h20); 
+        apb.mst_tb.write( 
+        (hran | 1 << CM_EN | 1 << CM_MS), 32'h20);   
+    end
+    if (WIRE3 == 1) begin
+        apb_slave.mst_tb.write(
+        (hran | 1 << CM_EN | 0 << CM_MS | 1 << 15), 32'h20); 
+        apb.mst_tb.write( 
+        (hran | 1 << CM_EN | 1 << CM_MS | 1 << 15), 32'h20);   
+    end
     
     #1000 for (int i = 1; i <= 8; i++) begin
         apb.mst_tb.write($random, 32'h30); 
@@ -249,10 +251,5 @@ module tb  ();
         apb.mst_tb.cyc_wait(200);
     end
 
-   //#340000 apb_slave.mst_tb.write(
-  //  (32'h0000_0000 | 0 << CM_MS | 1 << PM | 1 << 18 | 1 << 19), 32'h20); 
- //  #340000  apb.mst_tb.write( 
-  //  (32'h0000_0000 | 1 << CM_MS | 1 << PM | 1 << 18 | 1 << 19), 32'h20);   
-
   end
-endmodule // tb
+endmodule 
