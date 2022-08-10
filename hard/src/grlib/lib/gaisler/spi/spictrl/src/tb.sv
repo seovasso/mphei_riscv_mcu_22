@@ -1,7 +1,9 @@
-`timescale 1ns/10ps
+`timescale 10ns/10ns
 
-`define CLK_PERIOD 10
-`define RESET_GOES_HIGH 150
+`define CLK_PERIOD 2
+`define RESET_GOES_HIGH 15
+`define TEST_CODE 1
+
 module tb  ();
 
   // Clock/reset generation
@@ -57,6 +59,7 @@ module tb  ();
   wire selectms;
   wire selectsm;
   
+  
   spi_wrap #(.syncram(0), .twen(0), .prot(0), .slvselen(1), .fdepth(3)) master(
   
     .clk (clk ) ,
@@ -98,7 +101,6 @@ module tb  ();
   );
   
   spi_wrap #(.syncram(0), .twen(0), .prot(0), .slvselen(1), .fdepth(3)) slave(
-  
     .clk (clk ) ,
     .rstn(rstn) ,
     .apbi_psel   (apb_psel_slave),
@@ -137,6 +139,40 @@ module tb  ();
     .slvsel_wrap (selectsm)
   );
   
+
+ generate
+    case (32'h`TEST_CODE)
+    32'h0000_0000 : begin
+        localparam BITRATE = 100;
+        localparam SPI_MODE = 0;
+    end
+    32'h0000_0001 : begin
+        localparam BITRATE = 1000;
+        localparam SPI_MODE = 0;
+    end
+    32'h0000_0002 : begin
+        localparam BITRATE = 2500;
+        localparam SPI_MODE = 0;
+    end
+    32'h0000_0003 : begin
+        localparam BITRATE = 1000;
+        localparam SPI_MODE = 1;
+    end
+    32'h0000_0004 : begin
+        localparam BITRATE = 1000;
+        localparam SPI_MODE = 2;
+    end
+    32'h0000_0005 : begin
+        localparam BITRATE = 1000;
+        localparam SPI_MODE = 3;
+    end 
+    32'h0000_0006 : begin
+        localparam BITRATE = 1000;
+        localparam SPI_MODE = 0;
+    end
+    endcase
+  endgenerate
+  
   initial begin
     localparam CM_EN = 24;
     localparam CM_MS = 25;
@@ -151,21 +187,66 @@ module tb  ();
     #(`RESET_GOES_HIGH);
     #(`CLK_PERIOD);
     
-    apb_slave.mst_tb.write(
-    (32'h0000_0000 | 1 << CM_EN | 0 << CM_MS | 1 << PM), 32'h20); 
-    apb.mst_tb.write( 
-    (32'h0000_0000 | 1 << CM_EN | 1 << CM_MS | 1 << PM), 32'h20); 
-    //apb.mst_tb.write((32'h0000_0000 | 1 << 0), 32'h38); 
-    //apb_slave.mst_tb.write((32'h0000_0000 | 1 << 0), 32'h38);     
+    if (BITRATE == 32'd100) begin
+    apb.mst_tb.cyc_wait(20);
+        apb_slave.mst_tb.write(                                                                   
+        (32'h0000_0000  | 1 << PM | 1 << 17 | 1 << 18 | 1 << 27), 32'h20);
+        apb.mst_tb.write(                                                                         
+        (32'h0000_0000  | 1 << PM | 1 << 17 | 1 << 18 | 1 << 27), 32'h20);
+        apb.mst_tb.cyc_wait(20);
+    end
+    
+    if (BITRATE == 1000) begin
+    apb.mst_tb.cyc_wait(20);
+        apb_slave.mst_tb.write(                                                                   
+        (32'h0000_0000  | 1 << PM | 1 << 18 | 1 << 19), 32'h20);
+        apb.mst_tb.write(                                                                         
+        (32'h0000_0000  | 1 << PM | 1 << 18 | 1 << 19), 32'h20);
+        apb.mst_tb.cyc_wait(20);
+    end
+    
+    if (SPI_MODE == 0) begin
+        apb_slave.mst_tb.write(                                                                   
+        (32'h0000_0000  | 0 << 29 | 0 << 28), 32'h20);
+        apb.mst_tb.write(                                                                         
+        (32'h0000_0000  | 0 << 29 | 0 << 28), 32'h20);
+    end else if (SPI_MODE == 1) begin
+        apb_slave.mst_tb.write(                                                                   
+        (32'h0000_0000  | 0 << 29 | 1 << 28), 32'h20);
+        apb.mst_tb.write(                                                                         
+        (32'h0000_0000  | 0 << 29 | 1 << 28), 32'h20);
+    end else if (SPI_MODE == 2) begin
+        apb_slave.mst_tb.write(                                                                   
+        (32'h0000_0000  | 1 << 29 | 0 << 28), 32'h20);
+        apb.mst_tb.write(                                                                         
+        (32'h0000_0000  | 1 << 29 | 0 << 28), 32'h20);
+    end else if (SPI_MODE == 3) begin
+        apb_slave.mst_tb.write(                                                                   
+        (32'h0000_0000  | 1 << 29 | 1 << 28), 32'h20);
+        apb.mst_tb.write(                                                                         
+        (32'h0000_0000  | 1 << 29 | 1 << 28), 32'h20);
+    end
     
     apb.mst_tb.cyc_wait(20);
-    apb.mst_tb.write( 32'h12132431, 32'h30); 
-    apb_slave.mst_tb.write( 32'h1700, 32'h30);
-    apb.mst_tb.read( apb_prdata, 32'h34);
-    apb_slave.mst_tb.write( 32'h212_21, 32'h30); 
-    apb.mst_tb.write( 32'h3931_1111, 32'h30); 
-    apb.mst_tb.write( 32'h0992_1111, 32'h30); 
-    //apb_slave.mst_tb.write( 32'h212111, 32'h30); 
+    apb_slave.mst_tb.write(
+    (32'h0000_0000 | 1 << CM_EN | 0 << CM_MS), 32'h20); 
+    apb.mst_tb.write( 
+    (32'h0000_0000 | 1 << CM_EN | 1 << CM_MS), 32'h20);   
+    apb.mst_tb.cyc_wait(20);
+    
+    #100 for (int i = 1; i <= 8; i++) begin
+        apb.mst_tb.write($random, 32'h30); 
+        apb_slave.mst_tb.write($random, 32'h30);
+        if (i == 8)
+            apb.mst_tb.write(32'h0000_0000 | 1 << 22, 32'h2C);
+            apb_slave.mst_tb.write(32'h0000_0000 | 1 << 22, 32'h2C);
+        apb.mst_tb.cyc_wait(200);
+    end
+
+   //#340000 apb_slave.mst_tb.write(
+  //  (32'h0000_0000 | 0 << CM_MS | 1 << PM | 1 << 18 | 1 << 19), 32'h20); 
+ //  #340000  apb.mst_tb.write( 
+  //  (32'h0000_0000 | 1 << CM_MS | 1 << PM | 1 << 18 | 1 << 19), 32'h20);   
+
   end
-  
 endmodule // tb
