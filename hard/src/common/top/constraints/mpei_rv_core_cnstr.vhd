@@ -160,7 +160,7 @@ port map(
                                                   
   -- Fuses                        
   fuse_mhartid       => (others => '0')            ,  -- in std_logic_vector (SCR1_XLEN-1 downto 0); Hart ID
-  fuse_idcode        => (others => '0')            ,  -- in std_logic_vector (31 downto 0)         ; TAPC IDCODE
+  fuse_idcode        => x"deb01001"                ,  -- in std_logic_vector (31 downto 0)         ; TAPC IDCODE
                         
   -- IRQ                                
   irq_lines          => ahbmi.hirq(15 downto 0)    ,  -- in std_logic_vector (SCR1_IRQ_LINES_NUM-1 downto 0); IRQ lines to IPIC

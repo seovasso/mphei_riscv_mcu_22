@@ -16,7 +16,7 @@ void UART_Init(uart_regs_s * const UART, uart_br_e rate_to_set)
 {
     UART->CONTROL = 0u; //~(UART_CTRL_TE_MSK | UART_CTRL_RE_MSK | UART_CTRL_TI_EN_MSK | UART_CTRL_RI_EN_MSK); //0x03;
 //    DBG_MSG("Uart clk = %u", UART_CLK);
-    UART->SCALER = (UART_CLK / ((rate_to_set * 8) + 7));
+    UART->SCALER = (UART_CLK / (rate_to_set * 8) - 1);
     _set_stop_bits_one(UART);
     UART->CONTROL |= (UART_CTRL_FIFO_EN_MSK | UART_CTRL_TE_MSK | UART_CTRL_RE_MSK);   //0x8003; //|= 0x03; //Включение передатчика и приёмника
 }
@@ -92,10 +92,10 @@ void UART_SendString(uart_regs_s * const UART, uint8_t const * strToSend_p, uint
     {
         UART_SendByte(UART, *(strToSend_p + chrCntr));
 
-        /*if (chrCntr < (Length-1))
+        if (chrCntr < (Length-1))
         {
             strToSend_p++;
-        }*/
+        }
     }
 }
 

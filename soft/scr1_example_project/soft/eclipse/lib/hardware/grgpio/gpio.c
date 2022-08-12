@@ -42,6 +42,11 @@ uint32_t  GPIO_Get_Capability    (gpio_regs_s * const GPIO)
     return GPIO->CAPABILITY;
 }
 
+uint32_t  GPIO_Get_Output        (gpio_regs_s * const GPIO)
+{
+    return GPIO->OUTPUT;
+}
+
 void      GPIO_Send_Data         (gpio_regs_s * const GPIO, uint32_t p_data)
 {
 

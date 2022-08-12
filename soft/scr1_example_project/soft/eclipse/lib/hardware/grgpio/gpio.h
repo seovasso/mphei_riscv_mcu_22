@@ -101,6 +101,8 @@ void      GPIO_Set_Reseiv        (gpio_regs_s * const GPIO, uint32_t pins_to_set
 
 uint32_t  GPIO_Get_Capability    (gpio_regs_s * const GPIO);
     
+uint32_t  GPIO_Get_Output        (gpio_regs_s * const GPIO);
+
 void      GPIO_Send_Data         (gpio_regs_s * const GPIO, uint32_t p_data);
     
 uint32_t  GPIO_Read_Data         (gpio_regs_s * const GPIO);

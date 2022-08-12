@@ -6,6 +6,7 @@
  */
 
 #include "spictrl/spi.h"
+#include "apbuart/uart.h"
 
 void      SPI_Init         (spi_regs_s * const SPI)
 {
@@ -14,8 +15,7 @@ void      SPI_Init         (spi_regs_s * const SPI)
     SPI->MASK        = 0u;
     SPI->COMMAND     = 0u;
     // individual setup (temporary code)
-    SPI->MODE |= SPI_MODE_MS_MSK;     //set up master mode
-    SPI->MODE |= SPI_MODE_IGSEL_MSK;  //master ignore input slave select signal
+    SPI->MODE |= SPI_MODE_IGSEL_MSK | SPI_MODE_MS_MSK;  //master ignore input slave select signal
 }
      
 void      SPI_LoopMode        (spi_regs_s * const SPI)
@@ -25,12 +25,20 @@ void      SPI_LoopMode        (spi_regs_s * const SPI)
 
 void      SPI_Set_Word_Lenght (spi_regs_s * const SPI, uint32_t SPI_LEN)
 {
+	SPI->MODE &= (~SPI_MODE_LEN_MSK);
     SPI->MODE |=  SPI_LEN;
 }
 
 void      SPI_Set_Interrupt   (spi_regs_s * const SPI)
 {
     SPI->MASK |= SPI_MASK_TIPE_MSK;
+}
+
+void      SPI_Set_Frequency   (spi_regs_s * const SPI, uint32_t DIV16, uint32_t PM, uint32_t FACT)
+{
+    SPI->MODE |= SPI_MODE_DIV16_MSK & (DIV16 << (SPI_MODE_DIV16_POS));
+    SPI->MODE |= SPI_MODE_PM_MSK    & (PM    << (SPI_MODE_PM_POS   ));
+    SPI->MODE |= SPI_MODE_FACT_MSK  & (FACT  << (SPI_MODE_FACT_POS ));
 }
 
 void      SPI_Slave_Select    (spi_regs_s * const SPI, uint32_t slv_addr)
@@ -46,6 +54,11 @@ void      SPI_Core_Enable     (spi_regs_s * const SPI)
 uint32_t  SPI_Get_Capability  (spi_regs_s * const SPI)
 {
     return SPI->CAPABILITY0;
+}
+
+uint32_t  SPI_Get_Event_TIP   (spi_regs_s * const SPI)
+{
+    return (SPI->EVENT & SPI_EVENT_TIP_MSK);
 }
 
 void      SPI_Send_Word       (spi_regs_s * const SPI, uint32_t p_data)

@@ -15,9 +15,9 @@ uint32_t src[BUFFER_SIZE_WORDS];
 uint32_t dst[BUFFER_SIZE_WORDS];
 
 #define TEST_SPI   1
-#define TEST_UART  1
-#define TEST_GPIO  1
-#define TEST_TIMER 1
+#define TEST_UART  0
+#define TEST_GPIO  0
+#define TEST_TIMER 0
 
 #define USFL_DATA_ADDR ((uint32_t*)0xf000ffc8u)
 
@@ -53,23 +53,93 @@ int main(void)
 //*/  Test SPI
 
     spi_regs_s * SPI        = SPI0;
-    uint32_t     word       = 1000;
-    uint32_t     wordArr[3] = {1000,5000,3535};
-    uint32_t     slv_addr   = 0b10;
 
-    // Initialization of SPI
+    uint16_t     selBank    = 0b0101111100000010;    // selecting one of the bank registers via ECON1 register
+    uint16_t     setAddr    = 0b0101010000010100;    // write address of the PHLCON of the PHY to MIREGADR register
+    uint16_t     setData1   = 0b0101011010100000;    // write into the MIWRL register
+    uint16_t     setData2   = 0b0101011100111010;    // write into the MIWRH register
+    uint16_t     readData   = 0b00000000;
+
+    uint16_t     wordArr[4] = {selBank,setAddr,setData1,setData2};
+    uint32_t     slv_addr   = 0b1;                   // using as CS
+
+    //J10 4567
+
+    uart_regs_s * const UART      = UART0;
+    UART_Init(UART, UART_BR_115200);
+
     SPI_Init(SPI);
-    SPI_LoopMode(SPI);                			// Enable loop mode
-    SPI_Slave_Select(SPI, slv_addr);  			// Set up address of slave
-    //SPI_Set_Word_Lenght(SPI, SPI_LEN_16);       // Set up word length for transfer
-    SPI_Set_Interrupt(SPI);
-    SPI_Core_Enable(SPI);             			// Power on core (scr; enable to transmit)
+    //SPI_LoopMode(SPI);                			// Enable loop mode
+    SPI_Slave_Select(SPI, slv_addr);  			    // Set up address of slave
+    //SPI_Set_Interrupt(SPI);
+    SPI_Core_Enable(SPI);             			    // Power on core (scr; enable to transmit)
+    SPI_Set_Frequency(SPI, 1, 0, 0);
 
-    SPI_Send_Word(SPI, word);
-    //usflData[1] = SPI_Read_Word(SPI);
+    uint8_t index = 0;
 
-    //SPI_Send_n_Word(SPI, wordArr, 3);
-    //SPI_Read_n_Word(SPI, (usflData+2), 3);
+//    SPI_Set_Word_Lenght(SPI, SPI_LEN_16);
+//    while(1){
+//    	SPI_Slave_Select(SPI, 0);
+//    	SPI_Send_Word(SPI, wordArr[index]);
+//        while(SPI_Get_Event_TIP(SPI) != 0){
+//        }
+//        delayTact(100);
+//    	SPI_Slave_Select(SPI, 1);
+//    	index = index + 1;
+//    	if(index == 4){
+//    		index = 0;
+//    	}
+//    	uart_send_n_bytes(UART, 4, &(SPI->RECEIVE), 10);
+//        uart_send_n_bytes(UART, 4, &(SPI->MODE), 10);
+//    }
+
+
+//    SPI_Set_Word_Lenght(SPI, SPI_LEN_16);
+//    SPI_Slave_Select(SPI, 0);
+
+
+    while(1){
+    	SPI_Set_Word_Lenght(SPI, SPI_LEN_32);
+        SPI_Slave_Select(SPI, 0);
+        for(uint8_t index = 0; index < 4; index++){
+                SPI_Send_Word(SPI, readData);
+                while(SPI_Get_Event_TIP(SPI) != 0){
+                }
+                uart_send_n_bytes(UART, 4, &(SPI->RECEIVE), 10);
+               }
+               uart_send_n_bytes(UART, 4, &(SPI->RECEIVE), 10);
+        SPI_Slave_Select(SPI, 1);
+
+        SPI_Set_Word_Lenght(SPI, SPI_LEN_32);
+        SPI_Slave_Select(SPI, 0);
+        	for(uint8_t index = 0; index < 4; index++){
+        		SPI_Send_Word(SPI, readData);
+        		while(SPI_Get_Event_TIP(SPI) != 0){
+        		}
+        		uart_send_n_bytes(UART, 4, &(SPI->RECEIVE), 10);
+        	}
+        	uart_send_n_bytes(UART, 4, &(SPI->RECEIVE), 10);
+        SPI_Slave_Select(SPI, 1);
+
+        uart_send_n_bytes(UART, 4, &(SPI->MODE), 10);
+        }
+
+//    SPI_Set_Word_Lenght(SPI, SPI_LEN_8);
+//    while(1){
+//    	SPI_Slave_Select(SPI, 0);
+//    	SPI_Send_Word(SPI, readData);
+//        while(SPI_Get_Event_TIP(SPI) != 0){
+//        }
+//        delayTact(1000);
+//    	SPI_Slave_Select(SPI, 1);
+//        uart_send_n_bytes(UART, 4, &(SPI->MODE), 10);
+//        uart_send_n_bytes(UART, 4, &(SPI->RECEIVE), 10);
+//    	index = index + 1;
+//    	if(index == 4){
+//    		index = 0;
+//    	}
+//    }
+
 
 //*/
 #endif
@@ -77,25 +147,32 @@ int main(void)
 #if TEST_UART
 //*/  Test UART
     
-	uart_regs_s * const UART       = UART0;                   // pointer to UART structure, returns address of beginning this structure
-    uint32_t            brate      = UART_BR_921600;          // bit rate
-    uint8_t             data       = 100;                     // test data to transfer
+    //частота тактирования 20 МГц
+    //настроить 115200 бод
 
-    //uint32_t            p_data[4]  = {4056, 105, 39, 25};     // array of data to transfer
-    //uint32_t            len        = 2;                       // number bit of the array to transfer
-    //uint32_t            timeout    = 0;                       // timeout ???
+	uart_regs_s * const UART      = UART0;                   // pointer to UART structure, returns address of beginning this structure
+    uint32_t            brate     = UART_BR_115200;          // bit rate
+    uint8_t             data      = 100;                     // test data to transfer
 
-    // Initialization of UART, and rate of transfer (brate)
+    //uint32_t            p_data[4]   = {4056, 105, 39, 25};     // array of data to transfer
+    //uint32_t            timeout     = 0;                       // timeout ???
+
     UART_Init(UART, brate);
     UART_Set_Interrupt(UART);
-    //UART_LoopBackMode(UART);
 
-    UART_SendByte (UART, data);
+    UART_SendByte (UART, SPI->EVENT);
+
+//    UART_SendString(UART, strToSend_p, Length)
+
+//    while(1){
+//    	while ((UART->STATUS & (1 << 0)) == 0)
+//    	{}
+//    	data = UART_ReadByte (UART);
+//    	UART_SendByte (UART, data);
+//    	printf("Введите строку: ");
+//    }
 
     //uart_send_n_bytes (UART, 4, usflData, timeout);
-    
-    //data = UART_ReadByte (UART);
-
     //uart_read_n_bytes (UART, 1, p_data, timeout);
 
 //*/
@@ -109,32 +186,33 @@ int main(void)
     GPIO_Set_Intr_Polarity (GPIO, ALL_PIN_OFF);  
     GPIO_Set_Intr_Edge     (GPIO, ALL_PIN_OFF); 
     GPIO_Set_Interrupt     (GPIO, ALL_PIN_ON);
+    GPIO_Set_Transmit      (GPIO, ALL_PIN_ON);
 
-    GPIO_Send_Data(GPIO, data);
+    GPIO_Send_Data(GPIO, ALL_PIN_OFF);
 
-    delayTact(50);
+//    uint8_t index = 0;
+//
+//    while(1)
+//    {
+//    	GPIO_Send_Data(GPIO, index);
+//    	index++;
+//    	if(index == 16)
+//    	{
+//    		index = 0;
+//    	}
+//    	delayTact(CONFIG_SYS_CLK/4);
+//    }
 
-    GPIO_Set_Transmit(GPIO, ALL_PIN_ON);
 
-    delayTact(50);
-
-    GPIO_Set_Reseiv(GPIO, ALL_PIN_ON);
-
-    delayTact(50);
-
-    GPIO_Set_Bypass(GPIO, ALL_PIN_ON);
-
-    delayTact(50);
-
-    GPIO_Set_Transmit(GPIO, ALL_PIN_OFF);
-
-    delayTact(50);
-
-    GPIO_Set_Reseiv(GPIO, ALL_PIN_OFF);
-
-    delayTact(50);
-
-    GPIO_Set_Bypass(GPIO, ALL_PIN_OFF);
+//    GPIO_Set_Reseiv(GPIO, ALL_PIN_ON);
+//
+//    GPIO_Set_Bypass(GPIO, ALL_PIN_ON);
+//
+//    GPIO_Set_Transmit(GPIO, ALL_PIN_OFF);
+//
+//    GPIO_Set_Reseiv(GPIO, ALL_PIN_OFF);
+//
+//    GPIO_Set_Bypass(GPIO, ALL_PIN_OFF);
 
 //*/
 #endif
@@ -154,17 +232,17 @@ int main(void)
     
     TIMER_Init_All_Timers    (TIMER);
 
-    TIMER_Set_Scaler_Value   (TIMER, 10);
-    TIMER_Set_Scaler_Reload  (TIMER, 20);
+    TIMER_Set_Scaler_Value   (TIMER, 1);
 
     TIMER_Init_Timer         (TIMER, TIM0);
-    TIMER_Set_Timer_Counter  (TIMER, TIM0, 10);
-    TIMER_Set_Timer_Reload   (TIMER, TIM0, 20);
-
-    TIMER_Init_Timer         (TIMER, TIM1);
-    TIMER_Set_Timer_Counter  (TIMER, TIM1, 10);
-    TIMER_Set_Timer_Reload   (TIMER, TIM1, 20);
+    TIMER_Set_Timer_Counter  (TIMER, TIM0, 0x2710); //500ms
+    TIMER_Set_Timer_Reload   (TIMER, TIM0, 0x2710);
     
+    while(1){
+    	data = GPIO_Get_Output(GPIO);
+    	UART_SendByte (UART, data);
+    }
+
 //*/
 #endif
 

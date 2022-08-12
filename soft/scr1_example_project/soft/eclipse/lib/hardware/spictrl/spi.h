@@ -156,11 +156,15 @@ void      SPI_Set_Word_Lenght (spi_regs_s * const SPI, uint32_t SPI_LEN);
 
 void      SPI_Set_Interrupt   (spi_regs_s * const SPI);
 
+void      SPI_Set_Frequency   (spi_regs_s * const SPI, uint32_t DIV16, uint32_t PM, uint32_t FACT);
+
 void      SPI_Slave_Select    (spi_regs_s * const SPI, uint32_t slv_addr);
  
 void      SPI_Core_Enable     (spi_regs_s * const SPI);
   
 uint32_t  SPI_Get_Capability  (spi_regs_s * const SPI);
+
+uint32_t  SPI_Get_Event_TIP   (spi_regs_s * const SPI);
        
 void      SPI_Send_Word       (spi_regs_s * const SPI, uint32_t p_data);
         

@@ -20,69 +20,72 @@ parameter SCR1_IRQ_LINES_NUM = 16;  // for scr IQR
 parameter SCR1_AHB_WIDTH     = 32;  // for scr lenght of AHB
 
 // Clock/reset generation & 
-logic                clk_i            ;
-logic                rstn_i           ;
+logic                clk_i             ;
+logic                rstn_i            ;
            
-logic                jtag_trst_n     ;
-logic                jtag_tck        ;
-logic                jtag_tms        ;
-logic                jtag_tdi        ;
-logic                jtag_tdo        ;
-logic                jtag_tdo_en     ;
+logic                jtag_trst_n       ;
+logic                jtag_tck          ;
+logic                jtag_tms          ;
+logic                jtag_tdi          ;
+logic                jtag_tdo          ;
+logic                jtag_tdo_en       ;
 
-logic                spi_in_miso      = 1;     // not used at this time 
-logic                spi_in_mosi      = 1;     // not used at this time
-logic                spi_in_sck       = 0;  // established according to the book p.1757 and spi.vhd
-logic                spi_in_spisel    = 1;  // established according to the book p.1757 and spi.vhd
-logic                spi_in_astart    = 0;  // established according to the book p.1757 and spi.vhd
-logic                spi_in_cstart    = 0;  // established according to the book p.1757 and spi.vhd
-logic                spi_in_ignore    = 0;
-logic                spi_in_io2       = 1;
-logic                spi_in_io3       = 1;
-logic                spi_out_miso     ;
-logic                spi_out_misooen  ;
-logic                spi_out_mosi     ;
-logic                spi_out_mosioen  ;
-logic                spi_out_sck      ;
-logic                spi_out_sckoen   ;
-logic                spi_out_enable   ;
-logic                spi_out_astart   ;
-logic                spi_out_aready   ;
-logic                spi_out_io2      ;
-logic                spi_out_io2oen   ;
-logic                spi_out_io3      ;
-logic                spi_out_io3oen   ;
-logic [slvselsz-1:0] spi_out_slvsel   ;
-          
-logic                uart_in_rxd   	  ;     // not used at this time
-logic                uart_in_ctsn     = 0;  // established according to the book p.----
-logic                uart_in_extclk	  = 0;  // established according to the book p.----
-logic                uart_out_rtsn    ;
-logic                uart_out_txd     ;
-logic [31:0]         uart_out_scaler  ;
-logic                uart_out_txen    ;
-logic                uart_out_flow    ;
-logic                uart_out_rxen    ;
-logic                uart_out_txtick  ;
-logic                uart_out_rxtick  ;
-             
-logic [31:0]         gpio_in_din      = 32'hABCD_0000;
-logic [31:0]         gpio_in_sig_in   = 32'h00AB_CD00;
-logic [31:0]         gpio_in_sig_en   ;
-logic [31:0]         gpio_out_dout    ;
-logic [31:0]         gpio_out_oen     ;
-logic [31:0]         gpio_out_val     ;
-logic [31:0]         gpio_out_sig_out ;
-               
-logic                timr_in_dhalt    = 1'b0;
-logic                timr_in_extclk   = 1'b0;
-logic                timr_in_wdogen   = 1'b0;
-logic [NAHBIRQ-1:0]  timr_in_latchv   = 32'h0000_0000;
-logic [NAHBIRQ-1:0]  timr_in_latchd   = 32'h0000_0000;
-logic [0:7]          timr_out_tick    ;
-logic [31:0]         timr_out_timer1  ;
-logic                timr_out_wdogn   ;
-logic                timr_out_wdog    ;
+logic                spi_in_miso       = 1;     // not used at this time 
+logic                spi_in_mosi       = 1;     // not used at this time
+logic                spi_in_sck        = 0;  // established according to the book p.1757 and spi.vhd
+logic                spi_in_spisel     = 1;  // established according to the book p.1757 and spi.vhd
+logic                spi_in_astart     = 0;  // established according to the book p.1757 and spi.vhd
+logic                spi_in_cstart     = 0;  // established according to the book p.1757 and spi.vhd
+logic                spi_in_ignore     = 0;
+logic                spi_in_io2        = 1;
+logic                spi_in_io3        = 1;
+logic                spi_out_miso      ;
+logic                spi_out_misooen   ;
+logic                spi_out_mosi      ;
+logic                spi_out_mosioen   ;
+logic                spi_out_sck       ;
+logic                spi_out_sckoen    ;
+logic                spi_out_enable    ;
+logic                spi_out_astart    ;
+logic                spi_out_aready    ;
+logic                spi_out_io2       ;
+logic                spi_out_io2oen    ;
+logic                spi_out_io3       ;
+logic                spi_out_io3oen    ;
+logic [slvselsz-1:0] spi_out_slvsel    ;
+           
+logic                uart_in_rxd   	   ;     // not used at this time
+logic                uart_in_ctsn      = 0;  // established according to the book p.----
+logic                uart_in_extclk	   = 0;  // established according to the book p.----
+logic                uart_out_rtsn     ;
+logic                uart_out_txd      ;
+logic [31:0]         uart_out_scaler   ;
+logic                uart_out_txen     ;
+logic                uart_out_flow     ;
+logic                uart_out_rxen     ;
+logic                uart_out_txtick   ;
+logic                uart_out_rxtick   ;
+              
+logic [31:0]         gpio_in_din       = 32'hABCD_0000;
+logic [31:0]         gpio_in_sig_in    = 32'h00AB_CD00;
+logic [31:0]         gpio_in_sig_en    ;
+logic [31:0]         gpio_out_dout     ;
+logic [31:0]         gpio_out_oen      ;
+logic [31:0]         gpio_out_val      ;
+logic [31:0]         gpio_out_sig_out  ;
+                
+logic                timr_in_dhalt     = 1'b0;
+logic                timr_in_extclk    = 1'b0;
+logic                timr_in_wdogen    = 1'b0;
+logic [NAHBIRQ-1:0]  timr_in_latchv    = 32'h0000_0000;
+logic [NAHBIRQ-1:0]  timr_in_latchd    = 32'h0000_0000;
+logic [0:7]          timr_out_tick     ;
+logic [31:0]         timr_out_timer1   ;
+logic                timr_out_wdogn    ;
+logic                timr_out_wdog     ;
+ 
+wire [3:0]          gpio_inout        ;
+logic                timr_out_one_tick ;
 
 mpei_rv_core_cnstr_wrp #(
   .slvselsz           (slvselsz          ),
@@ -92,18 +95,30 @@ mpei_rv_core_cnstr_wrp #(
   .SCR1_AHB_WIDTH     (SCR1_AHB_WIDTH    )
 ) DUT (  
   //  scr1_wrp interface       
-  .clk_i                 (clk_i           ),
-  .rstn_i                (rstn_i          ),
+  .clk_i                 (clk_i            ),
+  .rstn_i                (rstn_i           ),
        
   //  JTAG interface
-  .jtag_tck              (jtag_tck        ),
-  .jtag_tms              (jtag_tms        ),
-  .jtag_tdi              (jtag_tdi        ),
-  .jtag_tdo              (jtag_tdo        ),
+  .jtag_tck              (jtag_tck         ),
+  .jtag_tms              (jtag_tms         ),
+  .jtag_tdi              (jtag_tdi         ),
+  .jtag_tdo              (jtag_tdo         ),
  
-  //  apbuart interface     
-  .uart_in_rxd           (uart_in_rxd     ),  // UART transfer data to itself !!! (for test)
-  .uart_out_txd          (uart_out_txd    ) 
+  // SPI interface
+  .spi_in_miso           (spi_in_miso      ),
+  .spi_out_mosi          (spi_out_mosi     ),
+  .spi_out_sck           (spi_out_sck      ),
+  .spi_out_slvsel        (spi_out_slvsel   ),
+
+  //  UART interface     
+  .uart_in_rxd           (uart_in_rxd      ), 
+  .uart_out_txd          (uart_out_txd     ), 
+
+  // GPIO interface
+  .gpio_inout            (gpio_inout       ),
+
+  // TIMER interface
+  .timr_out_one_tick     (timr_out_one_tick)
 );
 
 logic ok     = 1;

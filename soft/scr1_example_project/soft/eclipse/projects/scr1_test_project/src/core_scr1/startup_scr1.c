@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "core_scr1.h"
+#include "grgpio\gpio.h"
 
 extern unsigned int _sbss;
 extern unsigned int _ebss;
@@ -83,7 +84,13 @@ void Gpio_Irq_Handler (void)
 
 void Timer1_Irq_Handler (void)
 {
-    *interrupt_count_timer1 = *interrupt_count_timer1 + 1;
+    gpio_regs_s * GPIO = GPIO0;
+	if(GPIO_Get_Output(GPIO) == ALL_PIN_OFF){
+		GPIO_Send_Data(GPIO, ALL_PIN_ON);
+	}
+	else{
+		GPIO_Send_Data(GPIO, ALL_PIN_OFF);
+	}
 }
 
 void Timer2_Irq_Handler (void)
