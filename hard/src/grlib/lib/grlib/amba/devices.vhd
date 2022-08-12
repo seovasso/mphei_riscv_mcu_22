@@ -39,6 +39,7 @@ package devices is
   constant VENDOR_RESERVED   : amba_vendor_type := 16#00#;  -- Do not use!
   constant VENDOR_GAISLER    : amba_vendor_type := 16#01#;
   constant VENDOR_PENDER     : amba_vendor_type := 16#02#;
+  constant VENDOR_SYNTACORE  : amba_vendor_type := 16#03#;
   constant VENDOR_ESA        : amba_vendor_type := 16#04#;
   constant VENDOR_ASTRIUM    : amba_vendor_type := 16#06#;
   constant VENDOR_OPENCHIP   : amba_vendor_type := 16#07#;
@@ -281,6 +282,11 @@ package devices is
   constant GAISLER_HSSL          : amba_device_type := 16#0C8#;
   constant GAISLER_GRWATCHDOG    : amba_device_type := 16#0C9#;
   constant GAISLER_L2CL          : amba_device_type := 16#0D0#;
+
+-- Syntacore
+
+  constant SYNTACORE_SCR1_IMEM : amba_device_type := 16#0D1#;
+  constant SYNTACORE_SCR1_DMEM : amba_device_type := 16#0D2#;
 
 -- Sun Microsystems
 
@@ -713,6 +719,16 @@ package devices is
     vendordesc   => GAISLER_DESC,
     device_table => gaisler_device_table
     );
+
+  constant SYNTACORE_DESC         : vendor_description  := "Syntacore, cores & tools";
+  constant syntacore_device_table : device_table_type   := (
+    SYNTACORE_SCR1_IMEM => "RISC-V compatible MCU-class core",
+    SYNTACORE_SCR1_DMEM => "RISC-V compatible MCU-class core",
+    others         => "Unknown Device                  ");
+  constant syntacore_lib          : vendor_library_type := (
+    vendorid       => VENDOR_SYNTACORE,
+    vendordesc     => SYNTACORE_DESC,
+    device_table   => syntacore_device_table);
 
   constant ESA_DESC : vendor_description := "European Space Agency   ";
 
@@ -1256,6 +1272,7 @@ package devices is
 
   constant iptable : device_array := (
     VENDOR_GAISLER      => gaisler_lib,
+    VENDOR_SYNTACORE    => syntacore_lib,
     VENDOR_ESA          => esa_lib,
     VENDOR_OPENCHIP     => openchip_lib,
     VENDOR_OPENCORES    => opencores_lib,

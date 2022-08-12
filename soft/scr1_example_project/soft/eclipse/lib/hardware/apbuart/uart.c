@@ -5,7 +5,6 @@
  *      Author: Turyshev
  */
 
-
 #include "apbuart/uart.h"
 
 uart_regs_s * g_uart_dbg_instance = UART0;    // Номер UART, используемый для дебага. Меняется методом
@@ -13,14 +12,33 @@ uart_regs_s * g_uart_dbg_instance = UART0;    // Номер UART, использ
 static void _set_stop_bits_one(uart_regs_s * const UART);
 static void _set_stop_bits_two(uart_regs_s * const UART);
 
+void UART_Init(uart_regs_s * const UART, uart_br_e rate_to_set)
+{
+    UART->CONTROL = 0u; //~(UART_CTRL_TE_MSK | UART_CTRL_RE_MSK | UART_CTRL_TI_EN_MSK | UART_CTRL_RI_EN_MSK); //0x03;
+//    DBG_MSG("Uart clk = %u", UART_CLK);
+    UART->SCALER = (UART_CLK / (rate_to_set * 8) - 1);
+    _set_stop_bits_one(UART);
+    UART->CONTROL |= (UART_CTRL_FIFO_EN_MSK | UART_CTRL_TE_MSK | UART_CTRL_RE_MSK);   //0x8003; //|= 0x03; //Включение передатчика и приёмника
+}
+
+void     UART_Set_Interrupt           (uart_regs_s * const UART)
+{
+    UART->CONTROL |= UART_CTRL_TI_EN_MSK;
+}
+
+void UART_LoopMode (uart_regs_s * const UART)
+{
+	UART->CONTROL |= UART_CTRL_LB_MSK;
+}
+
 static void UNUSED _set_stop_bits_one(uart_regs_s * const UART)
 {
-    UART->CONTROL &= ~(1 << UART_CTRL_NS_POS);
+    UART->CONTROL &= ~ UART_CTRL_NS_MSK;
 }
 
 static void UNUSED _set_stop_bits_two(uart_regs_s * const UART)
 {
-    UART->CONTROL |= (1 << UART_CTRL_NS_POS);
+    UART->CONTROL |= UART_CTRL_NS_MSK;
 }
 
 uint32_t UART_GetControl(uart_regs_s * const UART)
@@ -28,23 +46,62 @@ uint32_t UART_GetControl(uart_regs_s * const UART)
     return UART->CONTROL;
 }
 
-void UART_Init(uart_regs_s * const UART, uart_br_e rate_to_set)
-{
-    UART->CONTROL = 0u; //~(UART_CTRL_TE_MSK | UART_CTRL_RE_MSK | UART_CTRL_TI_EN_MSK | UART_CTRL_RI_EN_MSK); //0x03;
-//    DBG_MSG("Uart clk = %u", UART_CLK);
-    UART->SCALER = (UART_CLK / ((rate_to_set * 8) + 7));
-    _set_stop_bits_one(UART);
-    UART->CONTROL |= (UART_CTRL_FIFO_EN_MSK | UART_CTRL_TE_MSK | UART_CTRL_RE_MSK);   //0x8003; //|= 0x03; //Включение передатчика и приёмника
-}
-
 void UART_SendByte(uart_regs_s * const UART, uint8_t byteToSend)
 {
     UART->CONTROL |= 0x02; //На всякий случай включаем передатчик
 
-    while ((UART->STATUS & (1 << 9)) == (1 << 9))
+    while ((UART->STATUS & UART_STATUS_TF_MSK) == UART_STATUS_TF_MSK)
     {} //Ждём появления места в FIFO
 
     UART->DATA = ((uint32_t)byteToSend) & 0xFF;
+}
+
+uint32_t uart_send_n_bytes(uart_regs_s * const UART, uint32_t len, uint32_t * p_data, uint32_t timeout)
+{
+    (void)timeout;  /// \todo Использовать timeout
+
+    uint32_t err = 0;
+    uint8_t byte_to_send;
+
+    for(uint32_t snt_bytes = 0; snt_bytes < len; snt_bytes++)
+    {
+        byte_to_send = *((uint8_t const *)p_data + snt_bytes);
+
+        UART_SendByte(UART, byte_to_send);
+    }
+
+    return err;
+}
+
+void uart_send_n_bytes_packets(uart_regs_s * const UART, uint32_t len, uint32_t * p_data, uint32_t timeout,  uint32_t num_packets, uint32_t delay_between_packets)
+{
+    uint32_t one_packet_length = len / num_packets;
+    for (uint32_t idx = 0; idx < num_packets; idx++)
+    {
+        uart_send_n_bytes(UART, one_packet_length, p_data + idx * one_packet_length, timeout);
+        for(uint32_t i = 0; i < delay_between_packets; i++)
+        {
+            __asm volatile ("nop");
+        }
+    }
+}
+
+void UART_SendString(uart_regs_s * const UART, uint8_t const * strToSend_p, uint32_t Length)
+{
+    for(uint16_t chrCntr = 0 ; chrCntr < Length ; chrCntr++)
+    {
+        UART_SendByte(UART, *(strToSend_p + chrCntr));
+
+        if (chrCntr < (Length-1))
+        {
+            strToSend_p++;
+        }
+    }
+}
+
+void UART_SendChar(const char c) ///< Функция введена для совместимости с функцией CustomPrintf
+{
+    UART_SendByte(g_uart_dbg_instance, (uint8_t)c);
 }
 
 uint8_t UART_ReadByte(uart_regs_s * const UART) // Поставить в обработку прерывания!
@@ -52,7 +109,7 @@ uint8_t UART_ReadByte(uart_regs_s * const UART) // Поставить в обр�
     return (uint8_t)((UART->DATA) & 0xFF);
 }
 
-uint32_t uart_read_n_bytes(uart_regs_s * const UART, uint32_t len, uint32_t p_data, uint32_t timeout)
+uint32_t uart_read_n_bytes(uart_regs_s * const UART, uint32_t len, uint32_t * p_data, uint32_t timeout)
 {
     (void)timeout;  /// \todo Использовать timeout
     uint32_t err = 0;
@@ -67,35 +124,6 @@ uint32_t uart_read_n_bytes(uart_regs_s * const UART, uint32_t len, uint32_t p_da
     }
 
     return err;
-}
-
-uint32_t uart_send_n_bytes(uart_regs_s * const UART, uint32_t len, uint32_t p_data, uint32_t timeout)
-{
-    (void)timeout;  /// \todo Использовать timeout
-
-    uint32_t err = 0;
-
-    for(uint32_t snt_bytes = 0; snt_bytes < len; snt_bytes++)
-    {
-        const uint8_t byte_to_send = *(uint8_t const *)(p_data + snt_bytes);
-
-        UART_SendByte(UART, byte_to_send);
-    }
-
-    return err;
-}
-
-void uart_send_n_bytes_packets(uart_regs_s * const UART, uint32_t len, uint32_t p_data, uint32_t timeout,  uint32_t num_packets, uint32_t delay_between_packets)
-{
-    uint32_t one_packet_length = len / num_packets;
-    for (uint32_t idx = 0; idx < num_packets; idx++)
-    {
-        uart_send_n_bytes(UART, one_packet_length, p_data + idx * one_packet_length, timeout);
-        for(uint32_t i = 0; i < delay_between_packets; i++)
-        {
-            __asm volatile ("nop");
-        }
-    }
 }
 
 bool UART_BasicCommunicationTest(uart_regs_s * UART, uint32_t rate_to_set)
@@ -127,24 +155,6 @@ bool UART_BasicCommunicationTest(uart_regs_s * UART, uint32_t rate_to_set)
     UART->CONTROL &= (~(1 << 7));
 
     return retFlag;
-}
-
-void UART_SendString(uart_regs_s * const UART, uint8_t const * strToSend_p, uint32_t Length)
-{
-    for(uint16_t chrCntr = 0 ; chrCntr < Length ; chrCntr++)
-    {
-        UART_SendByte(UART, *strToSend_p);
-
-        if (chrCntr < (Length-1))
-        {
-            strToSend_p++;
-        }
-    }
-}
-
-void UART_SendChar(const char c) ///< Функция введена для совместимости с функцией CustomPrintf
-{
-    UART_SendByte(g_uart_dbg_instance, (uint8_t)c);
 }
 
 #if 0

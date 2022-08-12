@@ -188,6 +188,15 @@
 #define rdcycle() 			read_csr(cycle)
 #define rdinstret() 		read_csr(instret)
 
+void Nothing(void);
+void Reset_Interrupt_Count(void);
+void Spi_Irq_Handler (void);
+void Uart_Irq_Handler (void);
+void Gpio_Irq_Handler (void);
+void Timer1_Irq_Handler (void);
+void Timer2_Irq_Handler (void);
+void init_ipic(uint8_t ipic_vector);
+
 static inline void __enable_irq()
 {
 	write_csr(CSR_MIE, (1 << CSR_MIE_MSIE_Bit) | (1 << CSR_MIE_MEIE_Bit));

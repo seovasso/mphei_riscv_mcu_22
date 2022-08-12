@@ -32,21 +32,21 @@ use grlib.amba.all;
 package uart is
 
 type uart_in_type is record
-  rxd   	: std_ulogic;
-  ctsn   	: std_ulogic;
-  extclk	: std_ulogic;
+  rxd   	: std_ulogic;                     -- UART receiver data
+  ctsn   	: std_ulogic;                     -- UART clear-to-send 
+  extclk	: std_ulogic;                     -- Use as alternative UART clock 
 end record;
 type uart_in_vector_type is array (natural range <>) of uart_in_type;
 
 type uart_out_type is record
-  rtsn   	: std_ulogic;
-  txd   	: std_ulogic;
-  scaler	: std_logic_vector(31 downto 0);
-  txen     	: std_ulogic;
-  flow   	: std_ulogic;
-  rxen     	: std_ulogic;
-  txtick        : std_ulogic;
-  rxtick        : std_ulogic;
+  rtsn   	: std_ulogic;                     -- UART request-to-send
+  txd   	: std_ulogic;                     -- UART transmit data 
+  scaler	: std_logic_vector(31 downto 0);  -- UART scaler value
+  txen    : std_ulogic;                     -- Output enable for transmitter 
+  flow   	: std_ulogic;                     -- Unused
+  rxen    : std_ulogic;                     -- Receiver enable
+  txtick  : std_ulogic;                     -- transmit tick (clk)
+  rxtick  : std_ulogic;                     -- receiver tick (clk)
 end record;
 type uart_out_vector_type is array (natural range <>) of uart_out_type;
 

@@ -135,7 +135,7 @@ parameter int unsigned SCR1_MTVEC_BASE_WR_BITS = 26;    // number of writable hi
 `define SCR1_NO_EXE_STAGE           // disable register between IDU and EXU
 `define SCR1_NEW_PC_REG             // enable register in IFU for New_PC value
 `define SCR1_FAST_MUL               // enable fast one-cycle multiplication, otherwise multiplication takes 32 cycles
-`define SCR1_CLKCTRL_EN             // enable global clock gating
+//`define SCR1_CLKCTRL_EN             // enable global clock gating
 `define SCR1_MPRF_RST_EN            // enable reset for MPRF
 `define SCR1_MCOUNTEN_EN            // enable custom MCOUNTEN CSR for counter control
 
@@ -167,11 +167,11 @@ parameter int unsigned SCR1_TDU_TRIG_NUM = 2;   // number of hardware triggers
 
 `ifndef SCR1_ARCH_CUSTOM
 // Default address constants (if scr1_arch_custom.svh is not used)
-parameter bit [`SCR1_XLEN-1:0]          SCR1_ARCH_RST_VECTOR        = 'h200;            // Reset vector value (start address after reset)
+parameter bit [`SCR1_XLEN-1:0]          SCR1_ARCH_RST_VECTOR        = 'hF000_0200;      // Reset vector value (start address after reset)
 parameter bit [`SCR1_XLEN-1:0]          SCR1_ARCH_MTVEC_BASE        = 'h1C0;            // MTVEC.base field reset value, or constant value for MTVEC.base bits that are hardwired
 
 parameter bit [`SCR1_DMEM_AWIDTH-1:0]   SCR1_TCM_ADDR_MASK          = 'hFFFF0000;       // TCM mask and size; size in bytes is two's complement of the mask value
-parameter bit [`SCR1_DMEM_AWIDTH-1:0]   SCR1_TCM_ADDR_PATTERN       = 'h00480000;       // TCM address match pattern
+parameter bit [`SCR1_DMEM_AWIDTH-1:0]   SCR1_TCM_ADDR_PATTERN       = 'hF0000000;       // TCM address match pattern
 
 parameter bit [`SCR1_DMEM_AWIDTH-1:0]   SCR1_TIMER_ADDR_MASK        = 'hFFFFFFE0;       // Timer mask
 parameter bit [`SCR1_DMEM_AWIDTH-1:0]   SCR1_TIMER_ADDR_PATTERN     = 'h00490000;       // Timer address match pattern

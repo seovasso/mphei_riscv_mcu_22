@@ -10,6 +10,7 @@ module scr1_dp_memory
 #(
     parameter SCR1_WIDTH    = 32,
     parameter SCR1_SIZE     = `SCR1_IMEM_AWIDTH'h00010000,
+    //parameter SCR1_SIZE     = `SCR1_IMEM_AWIDTH'h00008000, // size of TCM * 4, default - `SCR1_IMEM_AWIDTH'h00010000,
     parameter SCR1_NBYTES   = SCR1_WIDTH / 8
 )
 (
@@ -109,3 +110,4 @@ end
 endmodule : scr1_dp_memory
 
 `endif // SCR1_TCM_EN
+//xc7v585t_0

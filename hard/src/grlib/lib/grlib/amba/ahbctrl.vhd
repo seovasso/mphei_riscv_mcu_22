@@ -386,7 +386,8 @@ begin
   variable hresp   : std_logic_vector(1 downto 0);
   variable hrdata  : std_logic_vector(AHBDW-1 downto 0);
   variable haddr   : std_logic_vector(31 downto 0);
-  variable hirq    : std_logic_vector(NAHBIRQ-1 downto 0);
+  variable mhirq   : std_logic_vector(NAHBIRQ-1 downto 0);
+  variable shirq   : std_logic_vector(NAHBIRQ-1 downto 0);
   variable arb     : std_ulogic;
   variable hconfndx : integer range 0 to 7;
   variable vslvi   : ahb_slv_in_type;
@@ -637,10 +638,11 @@ begin
     end if;
 
     -- interrupt merging
-    hirq := (others => '0');
+    mhirq := (others => '0');
+    shirq := (others => '0');
     if disirq = 0 then
-      for i in 0 to nahbs-1 loop hirq := hirq or slvo(i).hirq; end loop;
-      for i in 0 to nahbm-1 loop hirq := hirq or msto(i).hirq; end loop;
+      for i in 0 to nahbs-1 loop mhirq := mhirq or slvo(i).hirq; end loop;
+      for i in 0 to nahbm-1 loop shirq := shirq or msto(i).hirq; end loop;
     end if;
 
     if (split = 0) or (r.defmst = '0') then
@@ -656,11 +658,11 @@ begin
       vslvi.hmaster    := conv_std_logic_vector(r.hmaster, 4);
       vslvi.hsel       := hsel(0 to NAHBSLV-1);
       vslvi.hmbsel     := hmbsel;
-      vslvi.hirq       := hirq;
+      vslvi.hirq       := shirq;
     else
       vslvi := ahbs_in_none;
       vslvi.hready := hready;
-      vslvi.hirq   := hirq;
+      vslvi.hirq   := shirq;
     end if;
     if acdm = 0 then
       vslvi.hwdata := msto(r.hmasterd).hwdata;
@@ -688,7 +690,7 @@ begin
     msti.hready  <= hready;
     msti.hresp   <= hresp;
     msti.hrdata  <= hrdata;
-    msti.hirq    <= hirq;
+    msti.hirq    <= mhirq;
     msti.testen  <= testen;
     msti.testrst <= testrst;
     msti.scanen  <= scanen and testen;
@@ -707,7 +709,7 @@ begin
     lmsti.hready  <= hready;
     lmsti.hresp   <= hresp;
     lmsti.hrdata  <= hrdata;
-    lmsti.hirq    <= hirq;
+    lmsti.hirq    <= mhirq;
 -- pragma translate_on
 
     if split = 0 then v.ldefmst := '0'; v.lsplmst := 0; end if;

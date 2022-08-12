@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "core_scr1.h"
+#include "grgpio\gpio.h"
 
 extern unsigned int _sbss;
 extern unsigned int _ebss;
@@ -28,7 +29,12 @@ void WEAK Ecall_Handler(void) 				{Default_Handler("\nEcall_Handler()\n");}
 
 static void (*ext_vector_table[])() =
 {
-	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+	Spi_Irq_Handler,
+	Uart_Irq_Handler,
+	Gpio_Irq_Handler,
+	Timer1_Irq_Handler,
+	Timer2_Irq_Handler,
+	0,0,0,0,0,0,0,0,0,0,0
 };__unused __unused
 
 static void (*fault_vector_table[])() =
@@ -46,8 +52,68 @@ static void (*fault_vector_table[])() =
 	0,0,0,0,0
 };
 
+volatile uint32_t * interrupt_count_spi    = (uint32_t*)0xf0000000u;
+volatile uint32_t * interrupt_count_uart   = (uint32_t*)0xf0000004u;
+volatile uint32_t * interrupt_count_gpio   = (uint32_t*)0xf0000008u;
+volatile uint32_t * interrupt_count_timer1 = (uint32_t*)0xf000000cu;
+volatile uint32_t * interrupt_count_timer2 = (uint32_t*)0xf0000010u;
+
+void Reset_Interrupt_Count(void)
+{
+	*interrupt_count_spi    = 0;
+    *interrupt_count_uart   = 0;
+    *interrupt_count_gpio   = 0;
+    *interrupt_count_timer1 = 0;
+	*interrupt_count_timer2 = 0;
+}
+
+void Spi_Irq_Handler (void) // 16-я функция
+{
+    *interrupt_count_spi = *interrupt_count_spi + 1;
+}
+
+void Uart_Irq_Handler (void)
+{
+	*interrupt_count_uart = *interrupt_count_uart + 1;
+}
+
+void Gpio_Irq_Handler (void)
+{
+    *interrupt_count_gpio = *interrupt_count_gpio + 1;
+}
+
+void Timer1_Irq_Handler (void)
+{
+    gpio_regs_s * GPIO = GPIO0;
+	if(GPIO_Get_Output(GPIO) == ALL_PIN_OFF){
+		GPIO_Send_Data(GPIO, ALL_PIN_ON);
+	}
+	else{
+		GPIO_Send_Data(GPIO, ALL_PIN_OFF);
+	}
+}
+
+void Timer2_Irq_Handler (void)
+{
+    *interrupt_count_timer2 = *interrupt_count_timer2 + 1;
+}
+
+void init_ipic(uint8_t ipic_vector)
+{
+    //timer is initialized to not cause timer-interrupts in this test (after __enable_irq())
+    CTIMER->Control = 0;
+    CTIMER->MTime = 0;
+    CTIMER->MTimeH = 0;
+    CTIMER->MTimeCmp = 100; 
+    CTIMER->MTimeCmpH = 0;
+    write_csr(IPIC_IDX, ipic_vector);
+    //write_csr(IPIC_CICSR, 0x02);
+    write_csr(IPIC_ICSR, (1 << IPIC_ICSR_IE_Bit) | (1 << IPIC_ICSR_IM_Bit));
+}
+
 void trap_handler(uint32_t mcause, uint32_t __unused mepc, __unused  uint32_t * regs)
 {
+	write_csr(IPIC_SOI, 0x01);
 	uint32_t exCode = mcause & 0x1F;
 	if (mcause & (1 << CSR_MCAUSE_INT_Bit))
 	{
@@ -68,6 +134,7 @@ void trap_handler(uint32_t mcause, uint32_t __unused mepc, __unused  uint32_t * 
 
 		while(1){}
 	}
+	write_csr(IPIC_EOI, 0x01);
 }
 
 void startup_scr1()

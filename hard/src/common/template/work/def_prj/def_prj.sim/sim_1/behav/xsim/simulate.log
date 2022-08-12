@@ -1,0 +1,5 @@
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+TEST STARTED
+TEST FAILED
+$stop called at time : 705 ns : File "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/template/src/tb.sv" Line 57

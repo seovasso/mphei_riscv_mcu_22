@@ -39,6 +39,9 @@ C_SRCS := \
 ../src/core_scr1/startup_scr1.c \
 ../src/core_scr1/syscalls.c \
 ../../../lib/hardware/apbuart/uart.c \
+../../../lib/hardware/spictrl/spi.c \
+../../../lib/hardware/grgpio/gpio.c \
+../../../lib/hardware/gptimer/timer.c \
 ../src/main.c 
 
 S_UPPER_SRCS := \

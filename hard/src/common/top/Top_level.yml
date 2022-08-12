@@ -1,0 +1,3455 @@
+toplevel: mpei_rv_core_wrp
+name: Test
+files: 
+  - name: "src\mpei_rv_core_wrp.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src\tb_mpei_rv_core_wrp.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src\core_const_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src\scr1_wrp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src\mpei_rv_core.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "..\..\grlib\lib\grlib\amba\ahbctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\ahblitm2ahbm.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\ahbmst.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\amba.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\amba.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\amba.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\amba.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\amba.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\amba_tp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\apbctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\apbctrl3p.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\apbctrl4p.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\apbctrldp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\apbctrlsp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\apbctrlx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\defmst.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\devices.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\dma2ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\dma2ahb_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\dma2ahb_tp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\amba\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\dftlib\dftlib.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\dftlib\synciotest.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\dftlib\trstmux.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\dftlib\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\dirs.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\ahb_be.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\axi4_be.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\bmahbmst.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\bm_fre.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\bm_me_rc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\bm_me_wc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\fifo_control_rc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\fifo_control_wc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\generic_bm_ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\generic_bm_axi.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\generic_bm_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\generic_bm\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\modgen\leaves.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\modgen\multlib.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\modgen\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\riscv\cpu_disas.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\riscv\riscv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\riscv\riscv_disas.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\riscv\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\riscv\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\sparc\cpu_disas.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\sparc\sparc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\sparc\sparc_disas.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\sparc\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\sparc\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\config.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\config_types.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\stdio.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\stdio_tb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\stdlib.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\testlib.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\version.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\stdlib\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\util\debug.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\util\debug.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\util\debug.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\util\debug.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\util\fpudummy.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\util\util.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\grlib\util\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: grlib
+  - name: "..\..\grlib\lib\gaisler\ambatest\ahbtbm.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ambatest\ahbtbp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ambatest\ahbtbs.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ambatest\README_ahbtbp.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ambatest\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\arith\arith.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\arith\div32.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\arith\mul32.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\arith\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\ahb2axi3b.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\ahb2axi4b.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\ahb2axib.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\ahb2axi_l.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\ahbm2axi.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\ahbm2axi3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\ahbm2axi4.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\axi.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\axinullslv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\axi\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\canmux.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_mc.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_mc.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_mc.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_mc.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_mc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_mod.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_oc.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_oc.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_oc.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_oc.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_oc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\can_rd.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\grcan.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\grcan.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\grcan.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\grcan.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\can\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\canfd\canfd.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\canfd\grcanfd.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\canfd\grcanfd.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\canfd\grcanfd.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\canfd\grcanfd.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\canfd\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ahb2avl_async.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ahb2avl_async_be.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ahb2axi_mig_7series.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ahb2mig_7series.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ahb2mig_7series_cpci_xc7k.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ahb2mig_7series_ddr2_dq16_ad13_ba3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ahb2mig_7series_ddr3_dq16_ad15_ba3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ahb2mig_7series_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\axi_mig_7series.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr1spax.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr1spax_ddr.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2buf.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2sp.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2sp.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2sp.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2sp.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2spa.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2spax.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2spax_ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddr2spax_ddr.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddrintpkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddrphy_wrap.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddrpkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddrsp.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddrsp.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddrsp.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddrsp.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\ddrspa.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\mig.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\mig.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\mig.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\mig_7series.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\mig_7series.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\mig_7series.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\mig_interface_model.v"
+    file_type: "verilogSource-2005"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\ddr\vlogsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\dirs.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b_2.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b_2.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b_2.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b_2.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b_nlw.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b_pads.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\gr1553b_stdlogic.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\simtrans1553.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\gr1553b\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac\apbmem.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac\grdmac.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac\grdmac_1p.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac\grdmac_ahbmst.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac\grdmac_alignram.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac\grdmac_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\buf2mem.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2_acc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2_ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2_apb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2_axi.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2_ctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\grdmac2_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\mem2buf.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\grdmac2\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\comma_detect.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\elastic_buffer.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\gmii_to_mii.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\rgmii.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\rgmii_kc705.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\rgmii_series6.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\rgmii_series7.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\sgmii.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\adapters\word_aligner.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\ethernet_mac.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth2.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth2.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth2.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth2.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\grethm.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\grethm_mb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greths.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greths_mb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth_gbit.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth_gbit_mb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\greth_mb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\greth\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahb.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahb.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahb.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahb.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahbx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahb_apb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahb_apb_gen.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c2ahb_gen.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2cmst.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2cmst_gen.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2cslv.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2cslv.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2cslv.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2cslv.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2cslv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\i2c_slave_model.v"
+    file_type: "verilogSource-2005"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\i2c\vlogsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\iommu\iommu.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\iommu\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\irqmp\irqamp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\irqmp\irqmp.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\irqmp\irqmp.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\irqmp\irqmp.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\irqmp\irqmp.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\irqmp\irqmp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\irqmp\irqmp_bmode.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\irqmp\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\ahbjtag.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\ahbjtagrv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\ahbjtag_bsd.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\bscan.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\bscan.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\bscan.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\bscan.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\bscanregs.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\bscanregsbd.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag2.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag2.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag2.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag2.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtagcom.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtagcom2.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtagcomrv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtagtst.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\jtag_rv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\libjtagcom.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\jtag\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2cache\l2c.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2cache\l2c.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2cache\l2c.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2cache\l2c.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2cache\pkg\l2cache.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2cache\pkg\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2c_lite\l2c_lite.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2c_lite\l2c_lite_ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2c_lite\l2c_lite_axi.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2c_lite\l2c_lite_ctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2c_lite\l2c_lite_mem.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\l2c_lite\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\cpu_disasx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\grfpushwx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\l3stat.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\l3stat.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\l3stat.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\l3stat.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\leon3.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\leon3.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\leon3.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\leon3.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\leon3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\cachemem.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\cmvalidbits.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\dsu3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\dsu3x.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\dsu3_mb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\grfpwx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\grfpwxsh.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\grlfpwx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\iu3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\l3stat.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\leon3cg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\leon3s.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\leon3sh.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\leon3x.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\libcache.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\libfpu.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\libiu.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\libleon3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\mmu_acache.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\mmu_cache.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\mmu_dcache.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\mmu_icache.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\proc3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\regfile_3p_l3.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\tbufmem.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\tbufmem_2p.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon3v3\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\l4stat.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\l4stat.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\l4stat.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\l4stat.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\leon4.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\leon4.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\leon4.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\leon4.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\leon4.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon4\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\debug5.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\debug5.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\debug5.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\debug5.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\leon5.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\leon5.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\leon5.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\leon5.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\leon5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\bht_pap.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\btb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\cachemem5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\cctrl5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\cpucore5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\dbgmod5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\inst_text.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\irqmp5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\itbufmem5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\iu5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\l5stat.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\leon5int.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\leon5sys.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\nanofpu.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\regfile5_dff.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\regfile5_ram.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\tbufmem5.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\leon5v0\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftmctrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftmctrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftmctrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftmctrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftsdctrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftsdctrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftsdctrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftsdctrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftsrctrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftsrctrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftsrctrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ftsrctrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\memctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\sdctrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\sdctrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\sdctrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\sdctrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\sdctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\sdctrl64.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\sdmctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\srctrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\srctrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\srctrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\srctrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\srctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ssrctrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ssrctrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ssrctrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\ssrctrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\memctrl\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbdma.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbdpram.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbmmux.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbram.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbram.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbram.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbram.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbram.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbrom.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbrom.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbrom.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbrom.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbsmux.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbstat.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbstat.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbstat.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbstat.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbstat.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbtrace.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbtrace_mb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahbtrace_mmb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ahb_mst_iface.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\apb3cdc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\apbps2.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\apbvga.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\charrom.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\charrom_package.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ftahbram.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ftahbram.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ftahbram.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ftahbram.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gptimer.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gptimer.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gptimer.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gptimer.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gptimer.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gracectrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gracectrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gracectrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gracectrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\gracectrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio2.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio2.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio2.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpio2.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgprbank.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grgpreg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grsysmon.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grsysmon.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grsysmon.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grsysmon.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grsysmon.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grtachom.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grversion.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grversion.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grversion.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grversion.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\grversion.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\logan.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\misc.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ps2.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ps2.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ps2.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ps2.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ps2vga.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ps2vga.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ps2vga.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\ps2vga.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\rstgen.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\svgactrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\svgactrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\svgactrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\svgactrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\svgactrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\misc\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\nand\nandfctrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\nand\nandfctrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\nand\nandfctrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\nand\nandfctrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\nand\nandpkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\nand\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\net\edcl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\net\edcl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\net\edcl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\net\edcl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\net\net.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\net\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\clint\clint.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\clint\clint_ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\clint\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\bhtnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\btbdmnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\btbnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\cachememnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\cctrlnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\cpucorenv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\div64.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\fputilnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\iunv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\mmuconfig.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\mul64.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\mulfp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\nanofpunv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\noelvint.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\pmp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\progbuf.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\rasnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\regfile64dffnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\regfile64sramnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\rvdm.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\rvdmx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\tbufmemnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\utilnv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\core\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\noelv.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\noelv.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\noelv.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\noelv.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\pkg\noelv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\pkg\noelv_cfg_32.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\pkg\noelv_cfg_64.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\pkg_32\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\pkg_64\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\subsys\dummy_pnp.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\subsys\noelvcpu.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\subsys\noelvsys.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\subsys\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\noelv\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci1\pci.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci1\pci.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci1\pci.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci1\pci.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci1\pcidma.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci1\pci_mtf.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci1\pci_target.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2_ahb_mst.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2_cdc_gate.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2_phy.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\grpci2_phy_wrapper.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\pcilib2.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\grpci2\wrapper\grpci2_gen.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\pci.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\pcipads.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\pcitrace\pcitrace.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\pcitrace\pcitrace.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\pcitrace\pcitrace.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\pcitrace\pcitrace.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\ptf\pt_pci_arb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\ptf\pt_pci_master.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\ptf\pt_pci_monitor.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\ptf\pt_pci_target.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\ptf\pt_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pci\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pcie\pcie.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pcie\pcie.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pcie\pcie.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pcie\pcie.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pcie\pcie.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\pcie\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\plic\grplic.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\plic\grplic_ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\plic\plic.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\plic\plic_encoder.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\plic\plic_gateway.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\plic\plic_target.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\plic\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\ahbram_sim.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\ahbrep.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\aximem.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\axirep.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\axixmem.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\ddr2ram.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\ddr3ram.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\ddrram.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\delay_wire.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\dfi_phy_sim.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\phy.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\pwm_check.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\ramback.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\sdrtestmod.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\ser_phy.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\sim.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\slavecheck_slv.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\sram.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\sram16.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\sramtestmod.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\uartprint.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\sim\vlogsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacefibre\spacefibre.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacefibre\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\router.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\router.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\router.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\router.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\spacewire.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\spacewire.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\spacewire.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\spacewire.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\spacewire.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spacewire\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi2ahb.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi2ahb.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi2ahb.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi2ahb.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi2ahb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi2ahbx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi2ahb_apb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl\scripts\run.sh"
+    file_type: SH
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl\scripts\vivado.tcl"
+    file_type: tclSource
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl\spictrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl\spictrlx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl\src\tb.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl\src\top.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spictrlx.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spimctrl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spimctrl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spimctrl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spimctrl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spimctrl.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\spi_flash.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\vhdlsim.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\spi\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\libmmu.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\mmu.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\mmuconfig.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\mmuiface.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\mmulru.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\mmulrue.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\mmutlb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\mmutlbcam.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\mmutw.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\srmmu\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\subsys\leon_dsu_stat_base.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\subsys\leon_dsu_stat_base.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\subsys\leon_dsu_stat_base.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\subsys\leon_dsu_stat_base.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\subsys\leon_dsu_stat_base.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\subsys\subsys.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\subsys\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\ahbuart.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\apbuart.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\dcom.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\dcom.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\dcom.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\dcom.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\dcom.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\dcom_uart.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\libdcom.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart1.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart1.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart1.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart1.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart2.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart2.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart2.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\uart2.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\uart\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusb.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusbdc.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusbdc.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusbdc.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusbdc.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusbhc.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusbhc.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusbhc.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusbhc.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusb_dcl.in"
+    file_type: IN
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusb_dcl.in.h"
+    file_type: H
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusb_dcl.in.help"
+    file_type: HELP
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\grusb_dcl.in.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+  - name: "..\..\grlib\lib\gaisler\usb\vhdlsyn.txt"
+    file_type: TXT
+    is_include_file: false
+    include_path: ""
+    logical_name: gaisler
+tool_options: 
+  vivado: 
+    installation_path: ""
+    part: ""
+    synth: ""
+    pnr: vivado
+    jtag_freq: ""
+    hw_target: ""
+    linter_options_xvlog: 
+      - ""
+    linter_options_xvhdl: 
+      - ""
