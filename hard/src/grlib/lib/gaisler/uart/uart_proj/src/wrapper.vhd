@@ -28,38 +28,38 @@ entity apbuart_wrapper is
 	clk                     : in  std_logic;
 
 ------APB input
-    psel        			: in  std_logic_vector(0 to NAPBSLV-1);     			-- slave select
-    penable     			: in  std_ulogic;                           			-- strobe
-    paddr       			: in  std_logic_vector(31 downto 0);        			-- address bus (byte)
-    pwrite      			: in  std_ulogic;                           			-- write
-    pwdata      			: in  std_logic_vector(31 downto 0);        			-- write data bus
-    pirq_i        			: in  std_logic_vector(NAHBIRQ-1 downto 0); 			-- interrupt result bus
-    testen      			: in  std_ulogic;                           			-- scan test enable
-    testrst     			: in  std_ulogic;                          				-- scan test reset
-    scanen      			: in  std_ulogic;                           			-- scan enable
-    testoen     			: in  std_ulogic;                           			-- test output enable
-    testin      			: in  std_logic_vector(NTESTINBITS-1 downto 0);         -- test vector for syncrams
+        psel        		: in  std_logic_vector(0 to NAPBSLV-1);     	-- slave select
+        penable     		: in  std_ulogic;                           	-- strobe
+        paddr       		: in  std_logic_vector(31 downto 0);        	-- address bus (byte)
+        pwrite      		: in  std_ulogic;                           	-- write
+        pwdata      		: in  std_logic_vector(31 downto 0);        	-- write data bus
+        pirq_i        		: in  std_logic_vector(NAHBIRQ-1 downto 0); 	-- interrupt result bus
+        testen      		: in  std_ulogic;                           	-- scan test enable
+        testrst     		: in  std_ulogic;                          	-- scan test reset
+        scanen      		: in  std_ulogic;                           	-- scan enable
+        testoen     		: in  std_ulogic;                           	-- test output enable
+        testin      		: in  std_logic_vector(NTESTINBITS-1 downto 0); -- test vector for syncrams
 
 ------APB output
-    prdata      			: out std_logic_vector(31 downto 0);        			-- read data bus
-    pirq_o        			: out std_logic_vector(NAHBIRQ-1 downto 0); 			-- interrupt bus
-	pconfig     			: out apb_config_type;         
-	pindex      			: out integer range 0 to NAPBSLV -1;
+        prdata      		: out std_logic_vector(31 downto 0);        	-- read data bus
+        pirq_o        		: out std_logic_vector(NAHBIRQ-1 downto 0); 	-- interrupt bus
+        pconfig     		: out apb_config_type;         
+        pindex      		: out integer range 0 to NAPBSLV -1;
 
 ------UART input	
-	rxd   					: in  std_ulogic;
-	ctsn   					: in  std_ulogic;
-	extclk					: in  std_ulogic;
+	rxd   			: in  std_ulogic;
+	ctsn   			: in  std_ulogic;
+	extclk			: in  std_ulogic;
 
 ------UART output	
-	rtsn   					: out  std_ulogic;
-	txd   					: out  std_ulogic;
-	scaler					: out  std_logic_vector(31 downto 0);
-	txen     				: out  std_ulogic;
-	flow   					: out  std_ulogic;
-	rxen     				: out  std_ulogic;
-	txtick        			: out  std_ulogic;
-	rxtick        			: out  std_ulogic	
+	rtsn   			: out  std_ulogic;
+	txd   			: out  std_ulogic;
+	scaler			: out  std_logic_vector(31 downto 0);
+	txen     		: out  std_ulogic;
+	flow   			: out  std_ulogic;
+	rxen     		: out  std_ulogic;
+	txtick        		: out  std_ulogic;
+	rxtick        		: out  std_ulogic	
 	);
  end;
 
@@ -78,12 +78,12 @@ architecture wrap of apbuart_wrapper is
 	sbits    : integer range 12 to 32 := 12
 	); 
   port (
-    rst    : in  std_ulogic;
-    clk    : in  std_ulogic;
-    apbi   : in  apb_slv_in_type;
-    apbo   : out apb_slv_out_type;
-    uarti  : in  uart_in_type;
-    uarto  : out uart_out_type
+        rst    : in  std_ulogic;
+        clk    : in  std_ulogic;
+        apbi   : in  apb_slv_in_type;
+        apbo   : out apb_slv_out_type;
+        uarti  : in  uart_in_type;
+        uarto  : out uart_out_type
 	);
 	
 end component;
@@ -96,13 +96,13 @@ begin
 		pindex 		=>   const_pindex, 	
 		paddr 		=>   const_paddr,
 		pmask 		=>   const_pmask, 	
-	    console 	=>   const_console, 
-	    pirq 		=>   const_pirq, 	 
-	    parity 		=>   const_parity, 	
-	    flow 		=>   const_flow, 	 
-	    fifosize 	=>   const_fifosize,
-	    abits 		=>   const_abits, 	
-	    sbits 		=>   const_sbits	
+                console 	=>   const_console, 
+                pirq 		=>   const_pirq, 	 
+                parity 		=>   const_parity, 	
+                flow 		=>   const_flow, 	 
+                fifosize 	=>   const_fifosize,
+                abits 		=>   const_abits, 	
+                sbits 		=>   const_sbits	
 )
 	port map (
 		rst  =>  rstn,
