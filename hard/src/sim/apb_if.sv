@@ -151,7 +151,7 @@ interface apb_if
 
          penable  <= 1; 
         
-         do @(posedge pclk) data = prdata; while(!(pready));
+         do begin @(posedge pclk) /*; #1ps;*/ data = prdata; end while(!(pready));
 
          paddr    <= '0;
          pwrite   <= '0;

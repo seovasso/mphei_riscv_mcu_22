@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 
-`define TEST_PAR 1
+`define TEST_PAR 9
 `define CLK_PERIOD 20		//System_clock_Frequency
 `define RESET_GOES_LOW 1500
 module tb ();
@@ -151,42 +151,49 @@ generate
       boudrate = 9600;
       freq = 5000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd1  : initial begin
       ctrl = 32'b00000000000000000000000000000011; 
       boudrate = 9600;
       freq = 50000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd2  : initial begin
     ctrl = 32'b00000000000000000000000000000011; 
       boudrate = 9600;
       freq = 100000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd3  : initial begin
     ctrl = 32'b00000000000000000000000000000011; 
       boudrate = 115200;
       freq = 5000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd4  : initial begin
     ctrl = 32'b00000000000000000000000000000011; 
       boudrate = 115200;
       freq = 50000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd5  : initial begin
     ctrl = 32'b00000000000000000000000000000011; 
       boudrate = 115200;
       freq = 100000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd6  : initial begin
     ctrl = 32'b00000000000000000000000000000011; 
       boudrate = 921600;
       freq = 5000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd7  : 
     initial begin
@@ -194,6 +201,7 @@ generate
       boudrate = 921600;
       freq = 50000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd8  : 
     initial begin
@@ -201,12 +209,14 @@ generate
       boudrate = 921600;
       freq = 100000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
     32'd9  : initial begin
-    ctrl = 32'b00000000000000000000000010000011; 
+    ctrl = 32'b000000000000000000000000_1000_0011; 
       boudrate = 9600;
-      freq = 100000000;
+      freq = 50000000;
       sclr = freq/(boudrate*8)-1;
+      assign uarti_rxd = uarto_txd;
     end
   endcase
 endgenerate
@@ -239,18 +249,31 @@ endgenerate
 //	apb.mst_tb.write( ctrl, 32'hC, 4'hF );
                  // read(data, addr);
 	apb.mst_tb.read(sts, 32'h04);
-	while (sts[0]==0) begin
-		apb.mst_tb.read(sts, 32'h04);	
-	end
+	fork
+	   while (sts[0]===0) begin
+	   	apb.mst_tb.read(sts, 32'h04);	
+	   end
+	#(2500us) $display("aaaaaa");
+	join_any
 	apb.mst_tb.read(apb_rdata1, 32'h00);
 	
-	apb.mst_tb.read(sts, 32'h04);
-	while (sts[0]==0) begin
-		apb.mst_tb.read(sts, 32'h04);	
-	end
+	apb.mst_tb.read(sts, 32'h04);	
+	fork
+	    while (sts[0]===0) begin
+	    	apb.mst_tb.read(sts, 32'h04);	
+	    end
+	#(2500us) $display("aaaaaa");	
+	join_any
 	apb.mst_tb.read(apb_rdata3, 32'h00);
+	
+
 //	$display("read data: %h", sts);
-//   if (d_o != 1'b1) ok = 0;
+
+	if (apb_rdata != apb_rdata1) begin 
+		ok = 0;
+		$display ("Not match");
+	end 
+	if (apb_rdata2 != apb_rdata3) ok = 0;
 
 //    d_i = 0;
     #(`CLK_PERIOD);
