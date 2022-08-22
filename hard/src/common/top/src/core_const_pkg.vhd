@@ -21,6 +21,7 @@ package core_const_pkg is
   constant INDEX_APB_APBUART          : integer    := 1;
   constant INDEX_APB_GPIO             : integer    := 2;
   constant INDEX_APB_GRTIMER          : integer    := 3;
-  constant INDEX_APB_ALL              : integer    := 4;
+  constant INDEX_APB_I2CMST           : integer    := 4;
+  constant INDEX_APB_ALL              : integer    := 5;
 
 end package core_const_pkg;

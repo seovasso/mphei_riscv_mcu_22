@@ -12,6 +12,8 @@ use gaisler.uart.all;
 use gaisler.net.all;
 use gaisler.jtag.all;
 use gaisler.spi.all;
+use gaisler.i2c.all;
+
 
 library work;
 use work.core_const_pkg.all;		-- библиотека в которой будут храниться все параметры ( например кол-во мастеров и слейвов у AHBCTRL/APBCTRL )
@@ -98,7 +100,17 @@ port(
   timr_out_tick      : out std_logic_vector(0 to 7);
   timr_out_timer1    : out std_logic_vector(31 downto 0);
   timr_out_wdogn     : out std_ulogic;
-  timr_out_wdog      : out std_ulogic
+  timr_out_wdog      : out std_ulogic;
+  
+  
+  i2ci_scl           :  in std_ulogic;
+  i2co_scl           :  out std_ulogic;
+  iscloen            :  out std_ulogic;
+  i2ci_sda           :  in std_ulogic;
+  i2co_sda           :  out std_ulogic;
+  isdaoen            :  out std_ulogic
+
+  
 );
 end mpei_rv_core_cnstr;
 
@@ -125,6 +137,10 @@ signal gpioo     : gpio_out_type;
 
 signal gpti      : gptimer_in_type;
 signal gpto      : gptimer_out_type;
+
+
+signal i2ci      : i2c_in_type;
+signal i2co      : i2c_out_type;
 
 signal pwrup_rst : std_ulogic;                                   --inverted signal
 
@@ -413,6 +429,43 @@ generic map (
   gpioi    => gpioi                , --in  gpio_in_type;
   gpioo    => gpioo                  --out gpio_out_type
 );
+
+
+------------------------------------------------------------------------------------
+--                                VAL I2C                                         --
+------------------------------------------------------------------------------------
+i2ci.scl        <=  i2ci_scl   ; 
+i2ci.sda        <=  i2ci_sda   ; 
+
+i2co_scl        <=  i2co.scl      ;    
+i2co_sda        <=  i2co.sda      ;   
+iscloen         <=  i2co.scloen   ; 
+isdaoen         <=  i2co.sdaoen   ;  
+
+
+u_i2c : entity gaisler.i2cmst
+generic map(
+  pindex    => 4                      , 
+  paddr     => 4*16                   ,
+  pmask     => 16#FFF#                , 
+  pirq      => 4                      ,
+  oepol     => 1                      ,
+  filter    => 2                      ,
+  dynfilt   => 0                      
+) 
+port map (
+  rstn      => pwrup_rst_n             , 
+  clk       => clk                     , 
+  apbi      => apbi                     ,
+  apbo      => apbo (INDEX_APB_I2CMST) ,
+  i2ci      => i2ci                    ,
+  i2co      => i2co                          
+);
+
+
+
+
+
 
 ------------------------------------------------------------------------------------
 --                                GRTIMER                                         --

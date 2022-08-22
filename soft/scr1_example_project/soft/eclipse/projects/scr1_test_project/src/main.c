@@ -4,6 +4,7 @@
 #include "spictrl/spi.h"
 #include "apbuart/uart.h"
 #include "grgpio/gpio.h"
+#include "i2cmst/i2c.h"
 #include "gptimer/timer.h"
 
 #define BUFFER_SIZE_WORDS	(30)
@@ -14,10 +15,12 @@
 uint32_t src[BUFFER_SIZE_WORDS];
 uint32_t dst[BUFFER_SIZE_WORDS];
 
-#define TEST_SPI   1
+#define TEST_SPI   0
 #define TEST_UART  0
 #define TEST_GPIO  0
 #define TEST_TIMER 0
+
+#define TEST_I2C   1
 
 #define USFL_DATA_ADDR ((uint32_t*)0xf000ffc8u)
 
@@ -35,19 +38,19 @@ int main(void)
     //uint32_t * usflData = USFL_DATA_ADDR;
     //usflData[0] = &(testAddr->AMTRANSMIT[0]);
 
-    uint8_t ipic_vector0 = 0;
-    uint8_t ipic_vector1 = 1;
-    uint8_t ipic_vector2 = 2;
-    uint8_t ipic_vector3 = 3;
-    uint8_t ipic_vector4 = 4;
-
-    Reset_Interrupt_Count();
-    init_ipic(ipic_vector0);
-    init_ipic(ipic_vector1);
-    init_ipic(ipic_vector2);
-    init_ipic(ipic_vector3);
-    init_ipic(ipic_vector4);
-    __enable_irq();
+//    uint8_t ipic_vector0 = 0;
+//    uint8_t ipic_vector1 = 1;
+//    uint8_t ipic_vector2 = 2;
+//    uint8_t ipic_vector3 = 3;
+//    uint8_t ipic_vector4 = 4;
+//
+////    Reset_Interrupt_Count();
+//    init_ipic(ipic_vector0);
+//    init_ipic(ipic_vector1);
+//    init_ipic(ipic_vector2);
+//    init_ipic(ipic_vector3);
+//    init_ipic(ipic_vector4);
+//    __enable_irq();
     
 #if TEST_SPI
 //*/  Test SPI
@@ -151,7 +154,7 @@ int main(void)
     //настроить 115200 бод
 
 	uart_regs_s * const UART      = UART0;                   // pointer to UART structure, returns address of beginning this structure
-    uint32_t            brate     = UART_BR_115200;          // bit rate
+    uint32_t            brate     = UART_BR_921600;          // bit rate
     uint8_t             data      = 100;                     // test data to transfer
 
     //uint32_t            p_data[4]   = {4056, 105, 39, 25};     // array of data to transfer
@@ -243,8 +246,31 @@ int main(void)
     	UART_SendByte (UART, data);
     }
 
+    //*/
+#endif
+
+#if TEST_I2C
+//*/  Test SPI
+
+    i2c_regs_s * const I2C        = I2C0;
+
+
+    I2C_Init(I2C);
+//	I2C_Set_Frequency(I2C, 9);
+//	I2C_Core_Enable(I2C);
+//	I2C_Interrupts_Enable(I2C);
+//	I2C_StartCond_Enable(I2C);
+//
+//
+//    while(1){
+////		I2C_Write_Data(I2C, 0b00010000);
+//		I2C_StopCond_Enable(I2C);
+//	}
 //*/
 #endif
+
+
+
 
     while(1)
     {

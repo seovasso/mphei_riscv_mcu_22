@@ -2,3 +2,6 @@ pwd
 cd C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/scripts
 source vivado.tcl 
 source vivado_cnstr.tcl 
+
+
+cd D:/Ghub/mphei_riscv_mcu_22/hard/src/common/top/scripts

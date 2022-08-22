@@ -30,6 +30,15 @@ module mpei_rv_core_cnstr_wrp #
  
   //     gpio interface 
   inout  logic [3:0]            gpio_inout        ,
+  
+  // VAL i2c
+  input logic                   i2ci_scl   ,    
+  input logic                   i2ci_sda   ,
+  output logic                  i2co_scl   ,
+  output logic                  iscloen    ,
+  output logic                  i2co_sda   ,
+  output logic                  isdaoen    ,
+   
 
   //     timer interface
   output logic                  timr_out_one_tick 
@@ -132,6 +141,14 @@ mpei_rv_core_cnstr #(
   .gpio_out_oen        (gpio_out_oen      ),
   .gpio_out_val        (                  ),
   .gpio_out_sig_out    (                  ),
+     
+  //  VAL I2C
+  .i2ci_scl (i2c_in_scl),
+  .i2ci_sda (i2c_in_sda), 
+  .i2co_scl (i2c_out_scl),
+  .i2co_sda (i2c_out_sda),
+  .iscloen  (scloen),
+  .isdaoen  (sdaoen),
      
   //  grtimer interface                   
   .timr_in_dhalt       (                  ),

@@ -32,6 +32,8 @@ read_vhdl -vhdl2008 ../../../grlib/lib/gaisler/net/net.vhd               -librar
 read_vhdl -vhdl2008 ../../../grlib/lib/gaisler/greth/ethernet_mac.vhd    -library gaisler
 read_vhdl -vhdl2008 ../../../grlib/lib/gaisler/greth/greth.vhd           -library gaisler
 read_vhdl -vhdl2008 ../../../grlib/lib/gaisler/jtag/jtag.vhd             -library gaisler
+read_vhdl -vhdl2008	../../../grlib/lib/opencores/i2c/i2coc.vhd		     -library opencores
+
 
 read_vhdl -vhdl2008 ../../../grlib/lib/techmap/gencomp/gencomp.vhd       -library techmap
 read_vhdl -vhdl2008 ../../../grlib/lib/techmap/gencomp/netcomp.vhd       -library techmap
