@@ -48,12 +48,12 @@ interface apb_if
                      import   cyc_wait,
                      import   mon,
                      import   read,
-                     import get_arr
+                     import   get_arr
                );
    // synopsys translate_on
    
    modport slv (
-                  input pclk,
+                  input   pclk,
                   input   paddr   ,
                   input   psel    ,
                   input   penable ,
@@ -67,7 +67,7 @@ interface apb_if
                );
    // synopsys translate_off
    modport slv_tb (
-                        input pclk,
+                        input   pclk,
                         input   paddr   ,
                         input   psel    ,
                         input   penable ,
@@ -78,7 +78,7 @@ interface apb_if
                         output  pready  ,
                         output  prdata  , 
                         output  pslverr ,
-                        import mon
+                        import  mon
                );
    // synopsys translate_on
 
@@ -141,6 +141,7 @@ interface apb_if
       endtask
 
       task automatic read(output bit [PDATAW-1:0] data,input bit [PDATAW-1:0] addr);
+         //bit [31:0] buff;
          paddr    <= addr;
          pwrite   <= 0;
          psel     <= 1;
@@ -151,7 +152,11 @@ interface apb_if
 
          penable  <= 1; 
         
-         do @(posedge pclk) data = prdata; while(!(pready));
+         do begin
+            @(posedge pclk);
+            #1ps;
+            data = prdata;
+         end while(!(pready));
 
          paddr    <= '0;
          pwrite   <= '0;
