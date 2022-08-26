@@ -9,7 +9,7 @@ set SIM_FILESET             src_sim
 file mkdir $DIR_OUTPUT
 
 # Crate project
-create_project -force $PROJECT_NAME $DIR_OUTPUT/$PROJECT_NAME -part xc7k325tffg900-2
+create_project -force $PROJECT_NAME $DIR_OUTPUT/$PROJECT_NAME -part xc7v585tffg1761-1
 set_property board_part xilinx.com:kc705:part0:1.6 [current_project]
 
 # add source

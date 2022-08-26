@@ -14,9 +14,9 @@
 uint32_t src[BUFFER_SIZE_WORDS];
 uint32_t dst[BUFFER_SIZE_WORDS];
 
-#define TEST_SPI   1
+#define TEST_SPI   0
 #define TEST_UART  0
-#define TEST_GPIO  0
+#define TEST_GPIO  1
 #define TEST_TIMER 0
 
 #define USFL_DATA_ADDR ((uint32_t*)0xf000ffc8u)
@@ -183,12 +183,117 @@ int main(void)
 
     gpio_regs_s * GPIO = GPIO0;
 
-    GPIO_Set_Intr_Polarity (GPIO, ALL_PIN_OFF);  
-    GPIO_Set_Intr_Edge     (GPIO, ALL_PIN_OFF); 
-    GPIO_Set_Interrupt     (GPIO, ALL_PIN_ON);
-    GPIO_Set_Transmit      (GPIO, ALL_PIN_ON);
+    	GPIO_Set_Intr_Polarity (GPIO, ALL_PIN_OFF);
+    //    GPIO_Set_Intr_Edge     (GPIO, ALL_PIN_OFF);
+    //    GPIO_Set_Interrupt     (GPIO, ALL_PIN_ON);
+        GPIO_Set_Transmit      (GPIO, ALL_PIN_ON);
 
-    GPIO_Send_Data(GPIO, ALL_PIN_OFF);
+        GPIO_Send_Data(GPIO, ALL_PIN_OFF);
+
+        const uint32_t PWM_PERIOD   = 2048;
+//        const uint32_t R_DUTY_CYCLE = 6 ;
+//        const uint32_t G_DUTY_CYCLE = 5 ;
+//        const uint32_t B_DUTY_CYCLE = 3 ;
+
+		#define GPIO_R_POS      (0u)    ///<
+		#define GPIO_G_POS      (1u)    ///<
+		#define GPIO_B_POS      (2u)    ///<
+
+		#define GPIO_R_MSK     (1u << (GPIO_R_POS))
+		#define GPIO_G_MSK     (1u << (GPIO_G_POS))
+		#define GPIO_B_MSK     (1u << (GPIO_B_POS))
+
+        uint32_t r_cycle = 0;
+        uint32_t g_cycle = 682;
+        uint32_t b_cycle = 1365;
+        uint32_t gpio_state=0x0000000f;
+
+        int r_dir = 0;
+        int g_dir = 0;
+        int b_dir = 0;
+
+        GPIO_Send_Data(GPIO, gpio_state);
+		while(1)
+				{
+					for (uint32_t i=0; i<PWM_PERIOD; i++){
+
+						if (i==r_cycle){
+							gpio_state ^= GPIO_R_MSK;
+						}
+						if (i==g_cycle){
+							gpio_state ^= GPIO_G_MSK;
+						}
+						if (i==b_cycle){
+							gpio_state ^= GPIO_B_MSK;
+						}
+						else if(i==0){
+							gpio_state |= GPIO_R_MSK;
+							gpio_state |= GPIO_G_MSK;
+							gpio_state |= GPIO_B_MSK;
+						}
+
+						if(i==0){
+							if (r_cycle<PWM_PERIOD && r_dir ==0 )
+								r_cycle++;
+							else if (r_cycle > 0 && r_dir ==1 )
+								r_cycle--;
+							else
+								r_dir = (r_dir+1)%2;
+
+							if (g_cycle<PWM_PERIOD && g_dir ==0 )
+								g_cycle++;
+							else if (g_cycle > 0 && g_dir ==1 )
+								g_cycle--;
+							else
+								g_dir = (g_dir+1)%2;
+
+							if (b_cycle<PWM_PERIOD && b_dir ==0 )
+								b_cycle++;
+							else if (b_cycle > 0 && b_dir ==1 )
+								b_cycle--;
+							else
+								b_dir = (b_dir+1)%2;
+						}
+						GPIO_Send_Data(GPIO, gpio_state);
+					}
+				}
+
+//        while(1)
+//        {
+//        	for (uint32_t i=0; i<=PWM_PERIOD; i++){
+//
+//        		GPIO_Send_Data(GPIO, gpio_state);
+//
+//        		if (i==r_cycle){
+//        			gpio_state ^= GPIO_R_MSK;
+//        		}
+//
+//        		else if(i==0){
+//        			gpio_state ^= GPIO_R_MSK;
+//        		}
+//
+//        		if(i==0){
+//        			if (r_cycle<PWM_PERIOD)
+//        				r_cycle=r_cycle*j;
+//        			else
+//        				r_cycle=0;
+
+
+//        		GPIO_Send_Data(GPIO, B_DUTY_CYCLE);
+
+//        		GPIO_Send_Data(GPIO, gpio_state);
+//        		if (i==0){
+//        			GPIO_Send_Data(GPIO, 0);
+//        		}
+//        		else if (i==R_DUTY_CYCLE){
+//        			GPIO_Send_Data(GPIO, 1);
+//        		}
+//        		else if (i==G_DUTY_CYCLE){
+//        			GPIO_Send_Data(GPIO, 3);
+//        		}
+//        		else if (i==B_DUTY_CYCLE){
+//        			GPIO_Send_Data(GPIO, 7);
+//        		}
 
 //    uint8_t index = 0;
 //

@@ -20,9 +20,12 @@ set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AK33} [get_ports jtag_tck   
 set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AJ33} [get_ports jtag_tdo         ]
 
 # # SPI interface
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AP42} [get_ports spi_in_miso      ]
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AN40} [get_ports spi_out_mosi     ]
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AN41} [get_ports spi_out_sck      ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AP42} [get_ports gpio_inout[0]    ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AN40} [get_ports gpio_inout[1]    ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AN41} [get_ports gpio_inout[2]    ]
+#set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AP42} [get_ports spi_in_miso      ]
+#set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AN40} [get_ports spi_out_mosi     ]
+#set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AN41} [get_ports spi_out_sck      ]
 set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AL32} [get_ports spi_out_slvsel   ]
     
 # UART interface    
@@ -30,9 +33,9 @@ set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AY40} [get_ports uart_in_rxd
 set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AY39} [get_ports uart_out_txd     ]
     
 # GPIO interface    
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AR40} [get_ports gpio_inout[0]    ]
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AR42} [get_ports gpio_inout[1]    ]
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AP40} [get_ports gpio_inout[2]    ]
+#set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AR40} [get_ports gpio_inout[0]    ]
+#set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AR42} [get_ports gpio_inout[1]    ]
+#set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AP40} [get_ports gpio_inout[2]    ]
 set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AP41} [get_ports gpio_inout[3]    ]
 
 # TIMER interface

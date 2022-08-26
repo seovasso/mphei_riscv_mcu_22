@@ -1,7 +1,7 @@
 `timescale 1ns/10ps
 
                             // Change for your system                      
-`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/soft/scr1_example_project/soft/eclipse/projects/scr1_test_project/Debug/scr1_test_project.bin" //path to C work directory
+`define MEM_PROGRAMM_PATH "C:/Users/annag/Desktop/DSOL/GitHub/mphei_riscv_mcu_22/soft/scr1_example_project/soft/eclipse/projects/scr1_test_project/Debug/scr1_test_project.bin" //path to C work directory
 //`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/scr1_test_project.bin"                          //path to vivado work directory
 //`define MEM_PROGRAMM_PATH "C:/Users/nmari/Documents/GitHub/mphei_riscv_mcu_22/hard/src/common/top/src/firmware_scr1.bin"                              //path to vivado work directory
 `define MEM_HIERARCH_PATH tb_mpei_rv_core_cnstr_wrp.DUT.mpei_rv_core_cnstr.u_scr1_wrp.u_scr1_top_ahb.i_tcm.i_dp_memory.ram_block

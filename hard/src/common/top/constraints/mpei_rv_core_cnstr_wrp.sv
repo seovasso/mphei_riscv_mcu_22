@@ -19,9 +19,9 @@ module mpei_rv_core_cnstr_wrp #
   output logic                  jtag_tdo          ,
   
   // //     spi interface  
-  input  logic                  spi_in_miso       ,
-  output logic                  spi_out_mosi      ,
-  output logic                  spi_out_sck       ,
+//  input  logic                  spi_in_miso       ,
+//  output logic                  spi_out_mosi      ,
+//  output logic                  spi_out_sck       ,
   output logic [(slvselsz-1):0] spi_out_slvsel    ,
  
   //     apbuart interface  
@@ -36,6 +36,10 @@ module mpei_rv_core_cnstr_wrp #
 );
 
 logic [1:0] clk_w;
+
+logic                  spi_in_miso    =0;
+logic                  spi_out_mosi     ;
+logic                  spi_out_sck      ;
 
 always @(posedge clk_i) begin
   if (!rstn_i) begin
