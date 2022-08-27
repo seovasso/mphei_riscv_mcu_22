@@ -2,7 +2,7 @@
 
 `define CLK_PERIOD 2
 `define RESET_GOES_HIGH 15
-`define TEST_CODE 0000_0005
+`define TEST_CODE 0000_0000
 
 module tb  ();
 
@@ -139,7 +139,6 @@ module tb  ();
     .slvsel_wrap (selectsm)
   );
   
-   logic [31:0] WIRE3;
    logic [31:0] BITRATE;
    logic [31:0] SPI_MODE;
    logic [31:0] hran = 32'h0000_0000;
@@ -150,45 +149,41 @@ module tb  ();
     32'h0000_0000 : begin
         assign BITRATE = 100;
         assign SPI_MODE = 0;
-        assign WIRE3 = 0;
     end
     32'h0000_0001 : begin
         assign BITRATE = 1000;
         assign SPI_MODE = 0;
-        assign WIRE3 = 0;
     end
     32'h0000_0002 : begin
         assign BITRATE = 2500;
         assign SPI_MODE = 0;
-        assign WIRE3 = 0;
     end
     32'h0000_0003 : begin
         assign BITRATE = 1000;
         assign SPI_MODE = 1;
-        assign WIRE3 = 0;
     end
     32'h0000_0004 : begin
         assign BITRATE = 1000;
         assign SPI_MODE = 2;
-        assign WIRE3 = 0;
     end
     32'h0000_0005 : begin
         assign BITRATE = 1000;
         assign SPI_MODE = 3;
-        assign WIRE3 = 0;
     end 
     32'h0000_0006 : begin
         assign BITRATE = 1000;
         assign SPI_MODE = 0;
-        assign WIRE3 = 1;
     end
     default : begin
         assign BITRATE = 1000;
         assign SPI_MODE = 0;
-        assign WIRE3 = 0;
         end
     endcase
   endgenerate
+  
+          integer Arr;
+        integer Brr;
+        integer HRAN;
   
   initial begin
     localparam CM_EN = 24;
@@ -206,50 +201,67 @@ module tb  ();
     
      case (BITRATE)
      32'd100 : begin
-        assign hran = (hran | 1 << 16 | 1 << 17 | 1 << 18 | 1 << 27);
+            hran = (hran | 1 << 16 | 1 << 17 | 1 << 18 | 1 << 27);
         end
         32'd1000 :begin 
-            assign hran = (hran | 1 << 16 | 1 << 17 | 1 << 19);
+            hran = (hran | 1 << 16 | 1 << 17 | 1 << 19);
         end
         32'd2500 :begin 
-            assign hran = (hran | 1 << 13);
+            hran = (hran | 1 << 13);
         end
         default: begin
-            assign hran = (hran | 1 << 16 | 1 << 17 | 1 << 19);;
+            hran = (hran | 1 << 16 | 1 << 17 | 1 << 19);;
         end
       endcase
 
-    if (SPI_MODE == 0) begin
-        assign hran = (hran | 0 << 29 | 0 << 28);
+    if (SPI_MODE == 0) begin 
+        apb_slave.mst_tb.write((hran | 0 << 29 | 0 << 28 | 1 << CM_EN | 0 << CM_MS), 32'h20);
+        apb.mst_tb.write((hran | 0 << 29 | 0 << 28 | 1 << CM_EN | 1 << CM_MS), 32'h20);
     end else if (SPI_MODE == 1) begin
-        assign hran = (hran | 0 << 29 | 1 << 28);
+        apb_slave.mst_tb.write((hran | 0 << 29 | 1 << 28 | 1 << CM_EN | 0 << CM_MS), 32'h20);
+        apb.mst_tb.write((hran | 0 << 29 | 1 << 28 | 1 << CM_EN | 1 << CM_MS), 32'h20);
     end else if (SPI_MODE == 2) begin
-        assign hran = (hran | 1 << 29 | 0 << 28);
+        apb_slave.mst_tb.write((hran | 1 << 29 | 0 << 28 | 1 << CM_EN | 0 << CM_MS), 32'h20);
+        apb.mst_tb.write((hran | 1 << 29 | 0 << 28 | 1 << CM_EN | 1 << CM_MS), 32'h20);
     end else if (SPI_MODE == 3) begin
-        assign hran = (hran | 1 << 29 | 1 << 28);
+        apb_slave.mst_tb.write((hran | 1 << 29 | 1 << 28 | 1 << CM_EN | 0 << CM_MS), 32'h20);
+        apb.mst_tb.write((hran | 1 << 29 | 1 << 28 | 1 << CM_EN | 1 << CM_MS), 32'h20);
     end
 
-    if (WIRE3 == 0) begin
-        apb_slave.mst_tb.write(
-        (hran | 1 << CM_EN | 0 << CM_MS), 32'h20); 
-        apb.mst_tb.write( 
-        (hran | 1 << CM_EN | 1 << CM_MS), 32'h20);   
-    end
-    if (WIRE3 == 1) begin
-        apb_slave.mst_tb.write(
-        (hran | 1 << CM_EN | 0 << CM_MS | 1 << 15), 32'h20); 
-        apb.mst_tb.write( 
-        (hran | 1 << CM_EN | 1 << CM_MS | 1 << 15), 32'h20);   
-    end
-    
+
     #1000 for (int i = 1; i <= 8; i++) begin
-        apb.mst_tb.write($random, 32'h30); 
-        apb_slave.mst_tb.write($random, 32'h30);
-        if (i == 8)
+        Arr = $urandom_range(2147483, 0);
+        Brr = $urandom_range(2147483, 0);
+        apb.mst_tb.write(Arr, 32'h30); 
+        apb_slave.mst_tb.write(Brr, 32'h30);
+        if (i == 1) begin
+            HRAN = Arr;
+                   $display(Arr);
+        end
+        if (i == 8) begin
             apb.mst_tb.write(32'h0000_0000 | 1 << 22, 32'h2C);
             apb_slave.mst_tb.write(32'h0000_0000 | 1 << 22, 32'h2C);
-        apb.mst_tb.cyc_wait(200);
+        end
+       end
+       if (BITRATE == 32'd100) begin
+     #300000 apb_slave.mst_tb.read(apb_prdata, 32'h34);
+        if (apb_prdata == HRAN) begin
+            $display("damn");
+            $display(Arr);
+       end else  begin
+            $display("ne damn");
+             apb.mst_tb.cyc_wait(200);
+             end
+      end else begin
+      #30000 apb_slave.mst_tb.read(apb_prdata, 32'h34);
+                if (apb_prdata == HRAN) begin
+            $display("Test passed");
+            $display(Arr);
+       end else  begin
+            $display("Ne passed");
+            
+             apb.mst_tb.cyc_wait(200);
+             end
     end
-
   end
 endmodule 
