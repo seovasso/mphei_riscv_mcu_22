@@ -1,0 +1,10 @@
+target extended localhost:3333
+monitor halt
+monitor targets SCR1.cpu
+monitor halt
+set mem inaccessible-by-default off
+monitor reg pc 0x200200
+monitor target current
+monitor load_image c:/tmp/__novemcortex/testbench_prot.elf
+monitor SCR1.cpu curstate
+
