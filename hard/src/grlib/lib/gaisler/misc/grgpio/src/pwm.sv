@@ -1,15 +1,15 @@
 module pwm (
-    input              clk_i          ,
-    input              rstn_i         ,
-
-    output      [2:0]  pwm_o          ,
+    input              clk_i            ,
+    input              rstn_i           ,
+  
+    output      [2:0]  pwm_o            ,
 
     // Configuration
 
-    input       [2:0]  enable_i       ,
-    input       [31:0] prescaler_i    ,
-    input       [31:0] pwm_period_i   ,
-    input       [31:0] duty_cycle_i    
+    input const   [2:0]  enable_i       =1,
+    input const   [31:0] prescaler_i    =682,
+    input const   [31:0] pwm_period_i   =2048,
+    input const   [31:0] duty_cycle_i   =1365  
 );
 
   always_ff @(posedge clk_i or negedge rstn_i) begin : proc_d_o
