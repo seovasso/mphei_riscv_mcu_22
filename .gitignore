@@ -32,3 +32,16 @@
 *.app
 
 /hard/src/common/top/work/
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.cache/wt/gui_handlers.wdf
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.cache/wt/java_command_handlers.wdf
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.cache/wt/webtalk_pa.xml
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.cache/wt/xsim.wdf
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.ip_user_files/README.txt
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim/compile.bat
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim/compile.log
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim/glbl.v
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim/tb_vlog.prj
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim/xsim.ini
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim/xvlog.log
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.sim/sim_1/behav/xsim/xvlog.pb
+hard/src/grlib/lib/gaisler/misc/grgpio/work/def_prj/def_prj.xpr
