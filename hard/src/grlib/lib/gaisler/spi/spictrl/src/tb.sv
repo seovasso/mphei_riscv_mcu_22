@@ -2,7 +2,7 @@
 
 `define CLK_PERIOD 2
 `define RESET_GOES_HIGH 15
-`define TEST_CODE 0000_0000
+`define TEST_CODE 0000_0001
 
 module tb  ();
 
@@ -241,6 +241,9 @@ module tb  ();
         if (i == 8) begin
             apb.mst_tb.write(32'h0000_0000 | 1 << 22, 32'h2C);
             apb_slave.mst_tb.write(32'h0000_0000 | 1 << 22, 32'h2C);
+            apb.mst_tb.write(32'h0000_0000 | 1 << 14, 32'h24);
+            apb_slave.mst_tb.write(32'h0000_0000 | 1 << 14, 32'h24);
+             apb.mst_tb.cyc_wait(2000);
         end
        end
        if (BITRATE == 32'd100) begin

@@ -1,0 +1,655 @@
+
+scr1_test_project.elf:     file format elf32-littleriscv
+scr1_test_project.elf
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0xf0000200
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0xf0000000 paddr 0xf0000000 align 2**12
+         filesz 0x000005cc memsz 0x000005cc flags r-x
+    LOAD off    0x00002000 vaddr 0xf000f000 paddr 0xf00005cc align 2**12
+         filesz 0x00000010 memsz 0x00000010 flags rw-
+    LOAD off    0x00002c00 vaddr 0xf000fc00 paddr 0xf000fc00 align 2**12
+         filesz 0x00000000 memsz 0x00000400 flags rw-
+
+Sections:
+Idx Name           Size      VMA       LMA       File off  Algn  Flags
+  0 .init          000002d4  f0000000  f0000000  00001000  2**0  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .text          000002f8  f00002d4  f00002d4  000012d4  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .data          00000010  f000f000  f00005cc  00002000  2**2  CONTENTS, ALLOC, LOAD, DATA
+  3 .bss           00000000  f000f010  f00005dc  00000000  2**0  ALLOC
+  4 .stack         00000400  f000fc00  f000fc00  00002c00  2**0  ALLOC
+  5 .debug_info    000033c8  00000000  00000000  00002010  2**0  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev  00000b6f  00000000  00000000  000053d8  2**0  CONTENTS, READONLY, DEBUGGING
+  7 .debug_loc     000004a9  00000000  00000000  00005f47  2**0  CONTENTS, READONLY, DEBUGGING
+  8 .debug_aranges 000001c0  00000000  00000000  000063f0  2**3  CONTENTS, READONLY, DEBUGGING
+  9 .debug_ranges  00000190  00000000  00000000  000065b0  2**3  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_macro   00002c8d  00000000  00000000  00006740  2**0  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_line    00002112  00000000  00000000  000093cd  2**0  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_str     0000aaf3  00000000  00000000  0000b4df  2**0  CONTENTS, READONLY, DEBUGGING
+ 13 .comment       00000039  00000000  00000000  00015fd2  2**0  CONTENTS, READONLY
+ 14 .debug_frame   000002f4  00000000  00000000  0001600c  2**2  CONTENTS, READONLY, DEBUGGING
+SYMBOL TABLE:
+f0000000 l    d  .init	00000000 .init
+f00002d4 l    d  .text	00000000 .text
+f000f000 l    d  .data	00000000 .data
+f000f010 l    d  .bss	00000000 .bss
+f000fc00 l    d  .stack	00000000 .stack
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_macro	00000000 .debug_macro
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    df *ABS*	00000000 ./s_objs/startup_asm_scr1.o
+f0000240 l       .init	00000000 trap_entry
+00000000 l    df *ABS*	00000000 startup_scr1.c
+f0000548 l     O .text	00000040 ext_vector_table
+f0000588 l     O .text	00000044 fault_vector_table
+00000000 l    df *ABS*	00000000 gpio.c
+00000000 l    df *ABS*	00000000 i2c.c
+00000000 l    df *ABS*	00000000 main.c
+00000400 g       *ABS*	00000000 STACK_SIZE
+f00004ec g     F .text	00000010 I2C_Set_Frequency
+f000f000 g     O .data	00000004 interrupt_count_gpio
+f0010000 g       .stack	00000000 __C_STACK_TOP__
+f00002d8  w    F .text	00000004 InstrAccess_Handler
+f000f010 g       .bss	00000000 _sbss
+f00004c8 g     F .text	00000010 GPIO_Send_Data
+f000f000 g       .data	00000000 _sdata
+f00002f4  w    F .text	00000004 Ecall_Handler
+f00004d8 g     F .text	00000014 I2C_Init
+f000f010 g       .bss	00000000 _ebss
+f00004c0 g     F .text	00000008 GPIO_Get_Output
+f00003a8 g     F .text	00000090 trap_handler
+f000f004 g     O .data	00000004 interrupt_count_spi
+f0000508 g     F .text	00000008 I2C_Write_Data
+f0000200 g       .init	00000000 _start
+f000034c g     F .text	0000001c Timer2_Irq_Handler
+f00002d4  w    F .text	00000004 InstrAddrMisalign_Handler
+f00002f0  w    F .text	00000004 StoreAccess_Handler
+f0000510 g     F .text	00000038 main
+f00002e0  w    F .text	00000004 Breakpoint_Handler
+f00002e4  w    F .text	00000004 LoadAddrMisalign_Handler
+f000f00c g     O .data	00000004 interrupt_count_uart
+f00002ec  w    F .text	00000004 StoreAddrMisalign_Handler
+f00002e8  w    F .text	00000004 LoadAccess_Handler
+f00002dc  w    F .text	00000004 IllegalInstr_Handler
+f00004fc g     F .text	0000000c I2C_StartCond_Enable
+f000f010 g       .data	00000000 _edata
+f000f010 g       .data	00000000 _end
+f0000330 g     F .text	0000001c Gpio_Irq_Handler
+f0000314 g     F .text	0000001c Uart_Irq_Handler
+f0000368 g     F .text	00000040 Timer1_Irq_Handler
+f00002f8 g     F .text	0000001c Spi_Irq_Handler
+f0000438 g     F .text	00000088 startup_scr1
+f00005cc g       *ABS*	00000000 _ldata
+f000fc00 g       .stack	00000000 __STACK_START__
+f000f008 g     O .data	00000004 interrupt_count_timer2
+
+
+
+Disassembly of section .init:
+
+f0000000 <_start-0x200>:
+	...
+
+f0000200 <_start>:
+_start():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:69
+ .option norvc
+ .section ".init.startup","ax",@progbits
+
+_start:
+	# init stack
+	la    sp, __C_STACK_TOP__
+f0000200:	00010117          	auipc	sp,0x10
+f0000204:	e0010113          	addi	sp,sp,-512 # f0010000 <__C_STACK_TOP__>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:72
+
+	# set base trap vector
+	la  a0, trap_entry
+f0000208:	00000517          	auipc	a0,0x0
+f000020c:	03850513          	addi	a0,a0,56 # f0000240 <trap_entry>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:73
+    csrw mtvec, a0
+f0000210:	30551073          	csrw	mtvec,a0
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:75
+
+	call startup_scr1
+f0000214:	224000ef          	jal	ra,f0000438 <startup_scr1>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:76
+	call main
+f0000218:	2f8000ef          	jal	ra,f0000510 <main>
+	...
+
+f0000240 <trap_entry>:
+trap_entry():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:82
+
+.option norvc
+.section ".init.traphandler","ax",@progbits
+
+trap_entry:
+	irq_save_regs
+f0000240:	f8010113          	addi	sp,sp,-128
+f0000244:	00112223          	sw	ra,4(sp)
+f0000248:	00312623          	sw	gp,12(sp)
+f000024c:	00412823          	sw	tp,16(sp)
+f0000250:	00512a23          	sw	t0,20(sp)
+f0000254:	00612c23          	sw	t1,24(sp)
+f0000258:	00712e23          	sw	t2,28(sp)
+f000025c:	02812023          	sw	s0,32(sp)
+f0000260:	02912223          	sw	s1,36(sp)
+f0000264:	02a12423          	sw	a0,40(sp)
+f0000268:	02b12623          	sw	a1,44(sp)
+f000026c:	02c12823          	sw	a2,48(sp)
+f0000270:	02d12a23          	sw	a3,52(sp)
+f0000274:	02e12c23          	sw	a4,56(sp)
+f0000278:	02f12e23          	sw	a5,60(sp)
+f000027c:	08010513          	addi	a0,sp,128
+f0000280:	00a12423          	sw	a0,8(sp)
+f0000284:	34202573          	csrr	a0,mcause
+f0000288:	341025f3          	csrr	a1,mepc
+f000028c:	00010613          	mv	a2,sp
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:83
+    call trap_handler
+f0000290:	118000ef          	jal	ra,f00003a8 <trap_handler>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:84
+	irq_load_regs
+f0000294:	00412083          	lw	ra,4(sp)
+f0000298:	00c12183          	lw	gp,12(sp)
+f000029c:	01012203          	lw	tp,16(sp)
+f00002a0:	01412283          	lw	t0,20(sp)
+f00002a4:	01812303          	lw	t1,24(sp)
+f00002a8:	01c12383          	lw	t2,28(sp)
+f00002ac:	02012403          	lw	s0,32(sp)
+f00002b0:	02412483          	lw	s1,36(sp)
+f00002b4:	02812503          	lw	a0,40(sp)
+f00002b8:	02c12583          	lw	a1,44(sp)
+f00002bc:	03012603          	lw	a2,48(sp)
+f00002c0:	03412683          	lw	a3,52(sp)
+f00002c4:	03812703          	lw	a4,56(sp)
+f00002c8:	03c12783          	lw	a5,60(sp)
+f00002cc:	00812103          	lw	sp,8(sp)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_asm_scr1.S:85
+    mret
+f00002d0:	30200073          	mret
+
+Disassembly of section .text:
+
+f00002d4 <InstrAddrMisalign_Handler>:
+InstrAddrMisalign_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:20
+#define WEAK __attribute__ ((weak))
+
+void WEAK MSoftware_Handler(void);
+void WEAK MTimer_Handler(void);
+
+void WEAK InstrAddrMisalign_Handler(void)	{Default_Handler("\nInstrAddrMisalign_Handler()\n");}
+f00002d4:	00008067          	ret
+
+f00002d8 <InstrAccess_Handler>:
+InstrAccess_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:21
+void WEAK InstrAccess_Handler(void)			{Default_Handler("\nInstrAccess_Handler()\n");}
+f00002d8:	00008067          	ret
+
+f00002dc <IllegalInstr_Handler>:
+IllegalInstr_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:22
+void WEAK IllegalInstr_Handler(void)		{Default_Handler("\nIllegalInstr_Handler()\n");}
+f00002dc:	00008067          	ret
+
+f00002e0 <Breakpoint_Handler>:
+Breakpoint_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:23
+void WEAK Breakpoint_Handler(void)			{Default_Handler("\nBreakPoint_Handler()\n");}
+f00002e0:	00008067          	ret
+
+f00002e4 <LoadAddrMisalign_Handler>:
+LoadAddrMisalign_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:24
+void WEAK LoadAddrMisalign_Handler(void)	{Default_Handler("\nLoadAddrMisalign_Handler()\n");}
+f00002e4:	00008067          	ret
+
+f00002e8 <LoadAccess_Handler>:
+LoadAccess_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:25
+void WEAK LoadAccess_Handler(void)			{Default_Handler("\nLoadAccess_Handler()\n");}
+f00002e8:	00008067          	ret
+
+f00002ec <StoreAddrMisalign_Handler>:
+StoreAddrMisalign_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:26
+void WEAK StoreAddrMisalign_Handler(void)	{Default_Handler("\nStoreAddrMisalign_Handler()\n");}
+f00002ec:	00008067          	ret
+
+f00002f0 <StoreAccess_Handler>:
+StoreAccess_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:27
+void WEAK StoreAccess_Handler(void)			{Default_Handler("\nStoreAccess_Handler()\n");}
+f00002f0:	00008067          	ret
+
+f00002f4 <Ecall_Handler>:
+Ecall_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:28
+void WEAK Ecall_Handler(void) 				{Default_Handler("\nEcall_Handler()\n");}
+f00002f4:	00008067          	ret
+
+f00002f8 <Spi_Irq_Handler>:
+Spi_Irq_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:72
+	*interrupt_count_timer2 = 0;
+}
+
+void Spi_Irq_Handler (void) // 16-я функция
+{
+    *interrupt_count_spi = *interrupt_count_spi + 1;
+f00002f8:	0000f797          	auipc	a5,0xf
+f00002fc:	d0c78793          	addi	a5,a5,-756 # f000f004 <interrupt_count_spi>
+f0000300:	0007a703          	lw	a4,0(a5)
+f0000304:	00072783          	lw	a5,0(a4)
+f0000308:	00178793          	addi	a5,a5,1
+f000030c:	00f72023          	sw	a5,0(a4)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:73
+}
+f0000310:	00008067          	ret
+
+f0000314 <Uart_Irq_Handler>:
+Uart_Irq_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:77
+
+void Uart_Irq_Handler (void)
+{
+	*interrupt_count_uart = *interrupt_count_uart + 1;
+f0000314:	0000f797          	auipc	a5,0xf
+f0000318:	cf878793          	addi	a5,a5,-776 # f000f00c <interrupt_count_uart>
+f000031c:	0007a703          	lw	a4,0(a5)
+f0000320:	00072783          	lw	a5,0(a4)
+f0000324:	00178793          	addi	a5,a5,1
+f0000328:	00f72023          	sw	a5,0(a4)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:78
+}
+f000032c:	00008067          	ret
+
+f0000330 <Gpio_Irq_Handler>:
+Gpio_Irq_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:82
+
+void Gpio_Irq_Handler (void)
+{
+    *interrupt_count_gpio = *interrupt_count_gpio + 1;
+f0000330:	0000f797          	auipc	a5,0xf
+f0000334:	cd078793          	addi	a5,a5,-816 # f000f000 <interrupt_count_gpio>
+f0000338:	0007a703          	lw	a4,0(a5)
+f000033c:	00072783          	lw	a5,0(a4)
+f0000340:	00178793          	addi	a5,a5,1
+f0000344:	00f72023          	sw	a5,0(a4)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:83
+}
+f0000348:	00008067          	ret
+
+f000034c <Timer2_Irq_Handler>:
+Timer2_Irq_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:98
+	}
+}
+
+void Timer2_Irq_Handler (void)
+{
+    *interrupt_count_timer2 = *interrupt_count_timer2 + 1;
+f000034c:	0000f797          	auipc	a5,0xf
+f0000350:	cbc78793          	addi	a5,a5,-836 # f000f008 <interrupt_count_timer2>
+f0000354:	0007a703          	lw	a4,0(a5)
+f0000358:	00072783          	lw	a5,0(a4)
+f000035c:	00178793          	addi	a5,a5,1
+f0000360:	00f72023          	sw	a5,0(a4)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:99
+}
+f0000364:	00008067          	ret
+
+f0000368 <Timer1_Irq_Handler>:
+Timer1_Irq_Handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:86
+{
+f0000368:	ff010113          	addi	sp,sp,-16
+f000036c:	00112623          	sw	ra,12(sp)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:88
+	if(GPIO_Get_Output(GPIO) == ALL_PIN_OFF){
+f0000370:	20002537          	lui	a0,0x20002
+f0000374:	14c000ef          	jal	ra,f00004c0 <GPIO_Get_Output>
+f0000378:	02051063          	bnez	a0,f0000398 <Timer1_Irq_Handler+0x30>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:89
+		GPIO_Send_Data(GPIO, ALL_PIN_ON);
+f000037c:	800005b7          	lui	a1,0x80000
+f0000380:	fff5c593          	not	a1,a1
+f0000384:	20002537          	lui	a0,0x20002
+f0000388:	140000ef          	jal	ra,f00004c8 <GPIO_Send_Data>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:94
+}
+f000038c:	00c12083          	lw	ra,12(sp)
+f0000390:	01010113          	addi	sp,sp,16
+f0000394:	00008067          	ret
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:92
+		GPIO_Send_Data(GPIO, ALL_PIN_OFF);
+f0000398:	00000593          	li	a1,0
+f000039c:	20002537          	lui	a0,0x20002
+f00003a0:	128000ef          	jal	ra,f00004c8 <GPIO_Send_Data>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:94
+}
+f00003a4:	fe9ff06f          	j	f000038c <Timer1_Irq_Handler+0x24>
+
+f00003a8 <trap_handler>:
+trap_handler():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:115
+    //write_csr(IPIC_CICSR, 0x02);
+    write_csr(IPIC_ICSR, (1 << IPIC_ICSR_IE_Bit) | (1 << IPIC_ICSR_IM_Bit));
+}
+
+void trap_handler(uint32_t mcause, uint32_t __unused mepc, __unused  uint32_t * regs)
+{
+f00003a8:	ff010113          	addi	sp,sp,-16
+f00003ac:	00112623          	sw	ra,12(sp)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:116
+	write_csr(IPIC_SOI, 0x01);
+f00003b0:	bf50d073          	csrwi	0xbf5,1
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:117
+	uint32_t exCode = mcause & 0x1F;
+f00003b4:	01f57793          	andi	a5,a0,31
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:118
+	if (mcause & (1 << CSR_MCAUSE_INT_Bit))
+f00003b8:	02054063          	bltz	a0,f00003d8 <trap_handler+0x30>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:133
+		}
+	}
+	else
+	{
+
+		fault_vector_table[exCode]();
+f00003bc:	00279793          	slli	a5,a5,0x2
+f00003c0:	00000717          	auipc	a4,0x0
+f00003c4:	1c870713          	addi	a4,a4,456 # f0000588 <fault_vector_table>
+f00003c8:	00f707b3          	add	a5,a4,a5
+f00003cc:	0007a783          	lw	a5,0(a5)
+f00003d0:	000780e7          	jalr	a5
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:135 (discriminator 1)
+
+		while(1){}
+f00003d4:	0000006f          	j	f00003d4 <trap_handler+0x2c>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:120
+		switch(exCode)
+f00003d8:	00700713          	li	a4,7
+f00003dc:	04e78863          	beq	a5,a4,f000042c <trap_handler+0x84>
+f00003e0:	00b00713          	li	a4,11
+f00003e4:	00e78e63          	beq	a5,a4,f0000400 <trap_handler+0x58>
+f00003e8:	00300713          	li	a4,3
+f00003ec:	02e78a63          	beq	a5,a4,f0000420 <trap_handler+0x78>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:137 (discriminator 3)
+	}
+	write_csr(IPIC_EOI, 0x01);
+f00003f0:	bf40d073          	csrwi	0xbf4,1
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:138 (discriminator 3)
+}
+f00003f4:	00c12083          	lw	ra,12(sp)
+f00003f8:	01010113          	addi	sp,sp,16
+f00003fc:	00008067          	ret
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:123
+				uint32_t irqVect = read_csr(IPIC_CISV);
+f0000400:	bf0027f3          	csrr	a5,0xbf0
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:124
+				ext_vector_table[irqVect]();
+f0000404:	00279713          	slli	a4,a5,0x2
+f0000408:	00000797          	auipc	a5,0x0
+f000040c:	14078793          	addi	a5,a5,320 # f0000548 <ext_vector_table>
+f0000410:	00e787b3          	add	a5,a5,a4
+f0000414:	0007a783          	lw	a5,0(a5)
+f0000418:	000780e7          	jalr	a5
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:125
+			}break;
+f000041c:	fd5ff06f          	j	f00003f0 <trap_handler+0x48>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:126
+			case CSR_MCAUSE_EC_MSI_Val: {MSoftware_Handler();} break;
+f0000420:	10000097          	auipc	ra,0x10000
+f0000424:	be0080e7          	jalr	-1056(ra) # 0 <__C_STACK_TOP__+0xfff0000>
+f0000428:	fc9ff06f          	j	f00003f0 <trap_handler+0x48>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:127
+			case CSR_MCAUSE_EC_MTI_Val: {MTimer_Handler();} break;
+f000042c:	10000097          	auipc	ra,0x10000
+f0000430:	bd4080e7          	jalr	-1068(ra) # 0 <__C_STACK_TOP__+0xfff0000>
+f0000434:	fbdff06f          	j	f00003f0 <trap_handler+0x48>
+
+f0000438 <startup_scr1>:
+startup_scr1():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:145
+void startup_scr1()
+{
+	// clear bss
+	volatile uint32_t* bss = (uint32_t*) &_sbss;
+
+	while(bss < (uint32_t*) &_ebss)
+f0000438:	0000f717          	auipc	a4,0xf
+f000043c:	bd870713          	addi	a4,a4,-1064 # f000f010 <_edata>
+f0000440:	0000f797          	auipc	a5,0xf
+f0000444:	bd078793          	addi	a5,a5,-1072 # f000f010 <_edata>
+f0000448:	02f77663          	bleu	a5,a4,f0000474 <startup_scr1+0x3c>
+f000044c:	00070793          	mv	a5,a4
+f0000450:	0000f717          	auipc	a4,0xf
+f0000454:	bbf70713          	addi	a4,a4,-1089 # f000f00f <interrupt_count_uart+0x3>
+f0000458:	40f70733          	sub	a4,a4,a5
+f000045c:	ffc77713          	andi	a4,a4,-4
+f0000460:	00470713          	addi	a4,a4,4
+f0000464:	00f70733          	add	a4,a4,a5
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:147
+	{
+		*bss = 0;
+f0000468:	0007a023          	sw	zero,0(a5)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:148
+		bss++;
+f000046c:	00478793          	addi	a5,a5,4
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:145
+	while(bss < (uint32_t*) &_ebss)
+f0000470:	fee79ce3          	bne	a5,a4,f0000468 <startup_scr1+0x30>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:155
+
+	// data init
+	volatile uint32_t* rom_src = (uint32_t*) &_ldata;
+	volatile uint32_t* ram_data = (uint32_t*) &_sdata;
+
+	while(ram_data < (uint32_t*) &_edata)
+f0000474:	0000f717          	auipc	a4,0xf
+f0000478:	b8c70713          	addi	a4,a4,-1140 # f000f000 <interrupt_count_gpio>
+f000047c:	0000f797          	auipc	a5,0xf
+f0000480:	b9478793          	addi	a5,a5,-1132 # f000f010 <_edata>
+f0000484:	02f77c63          	bleu	a5,a4,f00004bc <startup_scr1+0x84>
+f0000488:	0000f617          	auipc	a2,0xf
+f000048c:	b8760613          	addi	a2,a2,-1145 # f000f00f <interrupt_count_uart+0x3>
+f0000490:	40e60633          	sub	a2,a2,a4
+f0000494:	ffc67613          	andi	a2,a2,-4
+f0000498:	00460613          	addi	a2,a2,4
+f000049c:	00000797          	auipc	a5,0x0
+f00004a0:	13078793          	addi	a5,a5,304 # f00005cc <_ldata>
+f00004a4:	00f60633          	add	a2,a2,a5
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:157
+	{
+		*ram_data = *rom_src;
+f00004a8:	0007a683          	lw	a3,0(a5)
+f00004ac:	00d72023          	sw	a3,0(a4)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:158
+		ram_data++;
+f00004b0:	00470713          	addi	a4,a4,4
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:159
+		rom_src++;
+f00004b4:	00478793          	addi	a5,a5,4
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:155
+	while(ram_data < (uint32_t*) &_edata)
+f00004b8:	fef618e3          	bne	a2,a5,f00004a8 <startup_scr1+0x70>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/core_scr1/startup_scr1.c:161
+	}
+}
+f00004bc:	00008067          	ret
+
+f00004c0 <GPIO_Get_Output>:
+GPIO_Get_Output():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/grgpio/gpio.c:47
+    return GPIO->CAPABILITY;
+}
+
+uint32_t  GPIO_Get_Output        (gpio_regs_s * const GPIO)
+{
+    return GPIO->OUTPUT;
+f00004c0:	00452503          	lw	a0,4(a0) # 20002004 <STACK_SIZE+0x20001c04>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/grgpio/gpio.c:48
+}
+f00004c4:	00008067          	ret
+
+f00004c8 <GPIO_Send_Data>:
+GPIO_Send_Data():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/grgpio/gpio.c:53
+
+void      GPIO_Send_Data         (gpio_regs_s * const GPIO, uint32_t p_data)
+{
+
+    GPIO->OUTPUT = GPIO_OUTPUT_MSK & p_data;    // Записыаем в OUTPUT регистр данные
+f00004c8:	00159593          	slli	a1,a1,0x1
+f00004cc:	0015d593          	srli	a1,a1,0x1
+f00004d0:	00b52223          	sw	a1,4(a0)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/grgpio/gpio.c:56
+    //GPIO_Set_Bypass(GPIO, ALL_PIN_OFF);         // Переключаем выход DOUT на передачу OUTPUT регистра,
+    									          // а не на передачу входа SIG_IN
+}
+f00004d4:	00008067          	ret
+
+f00004d8 <I2C_Init>:
+I2C_Init():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:6
+#include "i2cmst/i2c.h"
+#include "apbuart/uart.h"
+
+void      I2C_Init         (i2c_regs_s * const I2C)
+{
+	I2C->CONTROL = I2C_CONTROL_EN_MSK;
+f00004d8:	08000793          	li	a5,128
+f00004dc:	00f52223          	sw	a5,4(a0)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:7
+	I2C->PRESCALE         = 0u;
+f00004e0:	00052023          	sw	zero,0(a0)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:9
+
+	I2C->COMMAND_STATUS   = 0u;
+f00004e4:	00052623          	sw	zero,12(a0)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:11
+
+}
+f00004e8:	00008067          	ret
+
+f00004ec <I2C_Set_Frequency>:
+I2C_Set_Frequency():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:16
+
+void      I2C_Set_Frequency   (i2c_regs_s * const I2C, uint32_t PRESCALE)
+{
+
+	I2C->PRESCALE = I2C_PRESCALE_CP_MSK  & (PRESCALE  << (I2C_PRESCALE_CP_POS ));
+f00004ec:	00759593          	slli	a1,a1,0x7
+f00004f0:	7805f593          	andi	a1,a1,1920
+f00004f4:	00b52023          	sw	a1,0(a0)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:17
+}
+f00004f8:	00008067          	ret
+
+f00004fc <I2C_StartCond_Enable>:
+I2C_StartCond_Enable():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:32
+	I2C->CONTROL = I2C_CONTROL_IEN_MSK;
+}
+
+void      I2C_StartCond_Enable     (i2c_regs_s * const I2C)		//2
+{
+	I2C->COMMAND_STATUS = I2C_COMMAND_STATUS_STA_MSK | I2C_COMMAND_STATUS_WR_MSK;
+f00004fc:	09000793          	li	a5,144
+f0000500:	00f52623          	sw	a5,12(a0)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:35
+
+
+}
+f0000504:	00008067          	ret
+
+f0000508 <I2C_Write_Data>:
+I2C_Write_Data():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:44
+//    while((I2C ->COMMAND_STATUS & I2C_COMMAND_STATUS_TIP_MSK ) != I2C_COMMAND_STATUS_TIP_MSK)
+//	{
+//		{} // waiting for a place to appear in the queue
+//		if ((I2C -> COMMAND_STATUS & I2C_COMMAND_STATUS_TIP_MSK) != I2C_COMMAND_STATUS_RACK_MSK)
+//		{
+			I2C->TRANSMIT_RECEIVE = p_data;
+f0000508:	00b52423          	sw	a1,8(a0)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../../../lib/hardware/i2cmst/i2c.c:47
+//		}
+//	}
+}
+f000050c:	00008067          	ret
+
+f0000510 <main>:
+main():
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/main.c:36
+		__asm volatile ("nop");
+	}
+}
+
+int main(void)
+{
+f0000510:	ff010113          	addi	sp,sp,-16
+f0000514:	00112623          	sw	ra,12(sp)
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/main.c:259
+
+    i2c_regs_s * const I2C        = I2C0;
+
+//	I2C_Write_Data(I2C, 0b11110000u);
+
+	I2C_Set_Frequency(I2C, 9);
+f0000518:	00900593          	li	a1,9
+f000051c:	20004537          	lui	a0,0x20004
+f0000520:	fcdff0ef          	jal	ra,f00004ec <I2C_Set_Frequency>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/main.c:260
+    I2C_Init(I2C);
+f0000524:	20004537          	lui	a0,0x20004
+f0000528:	fb1ff0ef          	jal	ra,f00004d8 <I2C_Init>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/main.c:261
+	I2C_Write_Data(I2C, 0b00000000u);
+f000052c:	00000593          	li	a1,0
+f0000530:	20004537          	lui	a0,0x20004
+f0000534:	fd5ff0ef          	jal	ra,f0000508 <I2C_Write_Data>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/main.c:264
+//	I2C_Write_Data(I2C, 0b11110000u);
+//	I2C_Interrupts_Enable(I2C);
+	I2C_StartCond_Enable(I2C);
+f0000538:	20004537          	lui	a0,0x20004
+f000053c:	fc1ff0ef          	jal	ra,f00004fc <I2C_StartCond_Enable>
+D:\Ghub\mphei_riscv_mcu_22\soft\scr1_example_project\soft\eclipse\projects\scr1_test_project\Debug/../src/main.c:277 (discriminator 1)
+
+
+
+    while(1)
+    {
+        __asm("nop");
+f0000540:	00000013          	nop
+f0000544:	ffdff06f          	j	f0000540 <main+0x30>
+
+f0000548 <ext_vector_table>:
+f0000548:	f00002f8 f0000314 f0000330 f0000368     ........0...h...
+f0000558:	f000034c 00000000 00000000 00000000     L...............
+	...
+
+f0000588 <fault_vector_table>:
+f0000588:	f00002d4 f00002d8 f00002dc f00002e0     ................
+f0000598:	f00002e4 f00002e8 f00002ec f00002f0     ................
+	...
+f00005b4:	f00002f4 00000000 00000000 00000000     ................
+	...
