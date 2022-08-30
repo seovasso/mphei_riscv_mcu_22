@@ -79,8 +79,6 @@ entity grgpio_wrp is
     -- APB slave outputs
     apbo_prdata   : out std_logic_vector(31 downto 0);
     apbo_pirq     : out std_logic_vector(NAHBIRQ-1 downto 0); -- interrupt bus
-    --apbo_pconfig  : out apb_config_type;                      -- memory access reg.
-    --pindex        : out integer range 0 to NAPBSLV -1;
     --GPIO slave inputs
     gpioi_din           : in  std_logic_vector(31 downto 0);
     gpioi_sig_in        : in  std_logic_vector(31 downto 0);
@@ -135,7 +133,6 @@ signal apbo   :  apb_slv_out_type;
 signal gpioi  :  gpio_in_type;
 signal gpioo  :  gpio_out_type;
 
---signal apbo_pirq : std_ulogic;
 signal rstn : std_logic;
 begin
   u_grgpio : grgpio
@@ -198,70 +195,3 @@ begin
   gpioo_sig_out <= gpioo.sig_out;
 
 end;
---     port map (
---       rstn         => rstn,
---       clk          => clk,
---       -- APB signals
---       apbi_psel    => apbi.psel(pindex),
---       apbi_penable => apbi.penable,
---       apbi_paddr   => apbi.paddr,
---       apbi_pwrite  => apbi.pwrite,
---       apbi_pwdata  => apbi.pwdata,
---       apbi_testen  => apbi.testen,
---       apbi_testrst => apbi.testrst,
---       apbi_scanen  => apbi.scanen,
---       apbi_testoen => apbi.testoen,
---       apbo_prdata  => apbo.prdata,
---       apbo_pirq    => apbo.pirq,
---     -- GPIO signals  
-
-
-
--- ctrl_netlist : if netlist /= 0 generate
---   netlc :  grgpio_net
---     port map (
---       rstn         => rstn,
---       clk          => clk,
--- -- APB signals
---       apbi_psel    => apbi.psel(pindex),
---       apbi_penable => apbi.penable,
---       apbi_paddr   => apbi.paddr,
---       apbi_pwrite  => apbi.pwrite,
---       apbi_pwdata  => apbi.pwdata,
---       apbi_testen  => apbi.testen,
---       apbi_testrst => apbi.testrst,
---       apbi_scanen  => apbi.scanen,
---       apbi_testoen => apbi.testoen,
---       apbo_prdata  => apbo.prdata,
---       apbo_pirq    => apbo.pirq,
--- end generate ctrl_netlist;
-
---   --Signals
-
--- signal gpti : gptimer_in_type;
--- begin
---   gpio0 : if CFG_GRGPIO_EN /= 0 generate -- GR GPIO unit
---   grgpio0: grgpio
---   generic map( 
---     pindex       => 11, 
---     paddr        => 11, 
---     imask        => CFG_GRGPIO_IMASK, 
---     nbits        => 8)
---   port map( 
---     rstn         => rstn,
---     clk          => clk, 
---     apbi, 
---     apbo(11), 
---     gpioi, 
---     gpioo);
-  
---   pio_pads : for i in 0 to 7 generate
---   pio_pad : iopad 
---   generic map (
---     tech         => padtech)
---   port map (
---     gpio(i), 
---     gpioo.dout(i), 
---     gpioo.oen(i), 
---     gpioi.din(i));
---   end generate;

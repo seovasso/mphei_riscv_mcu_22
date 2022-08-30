@@ -223,12 +223,12 @@ initial begin
 //    apb.mst_tb.cyc_wait(1);
 //    apb.mst_tb.write( 8'b1, 32'h4C);
 //    gpioi_sig_in = 8'b1;
-    
         for (int i=0; i<=255; i++)
         begin
-            //apb.mst_tb.cyc_wait(1);
             apb.mst_tb.write( i, 32'h4C);
             gpioi_sig_in = i;
+            if ((gpioi_sig_in[7:0] != gpioo_dout[7:0])&&(apbi_penable == 1))
+                $display("Test error");
         end
     end
 
@@ -236,40 +236,100 @@ initial begin
 //    apb.mst_tb.write( 8'b1, 32'h4C); 
     
     // Test 3
-    //Регистры OR AND XOR
+    //Registers OR AND XOR
     if (define == 3)
     begin
-        apb.mst_tb.write( 32'h35, PORT_OUT_REG);
-        apb.mst_tb.cyc_wait(1);
-        apb.mst_tb.write( 8'b11 , PORT_OUT_REG_OR);
-        apb.mst_tb.cyc_wait(5);
-        apb.mst_tb.write( 32'hff, PORT_DIR_REG);
-        apb.mst_tb.cyc_wait(1);
-        apb.mst_tb.write( 1'b1 , PORT_DIR_REG_OR);
+        //apb.mst_tb.write( 32'h35, PORT_OUT_REG);
+        //apb.mst_tb.cyc_wait(1);
+        //apb.mst_tb.write( 8'b11 , PORT_OUT_REG_OR);
+        //apb.mst_tb.cyc_wait(5);
+        //apb.mst_tb.write( 32'h23, PORT_OUT_REG);
+        //apb.mst_tb.cyc_wait(1);
+        //apb.mst_tb.write( 8'b11 , PORT_OUT_REG_OR);
+//        apb.mst_tb.cyc_wait(5);
+//        apb.mst_tb.write( 32'hff, PORT_DIR_REG);
+//        apb.mst_tb.cyc_wait(1);
+//        apb.mst_tb.write( 1'b1 , PORT_DIR_REG_OR);
+
+//        for (int i=0; i<=255; i++)
+//        begin
+//            //apb.mst_tb.cyc_wait(5);
+//            apb.mst_tb.write( i, PORT_OUT_REG);
+//            //apb.mst_tb.cyc_wait(1);
+//            apb.mst_tb.write( i , PORT_OUT_REG_OR);
+//            if (apbo_prdata[7:0] != gpioo_dout[7:0])
+//                $display("Test error");
+//        end 
         
-        apb.mst_tb.cyc_wait(15);
+        //apb.mst_tb.cyc_wait(5);
         
-        apb.mst_tb.write( 32'h35, PORT_OUT_REG);
-        apb.mst_tb.cyc_wait(1);
-        apb.mst_tb.write( 8'b11 , PORT_OUT_REG_AND);
-        apb.mst_tb.cyc_wait(5);
-        apb.mst_tb.write( 32'h00, PORT_DIR_REG);
-        apb.mst_tb.cyc_wait(1);
-        apb.mst_tb.write( 8'b01 , PORT_DIR_REG_AND);
+//        for (int i=0; i<=255; i++)
+//        begin
+//            //apb.mst_tb.cyc_wait(2);
+//            apb.mst_tb.write( i, PORT_DIR_REG);
+//            //apb.mst_tb.cyc_wait(1);
+//            apb.mst_tb.write( i , PORT_DIR_REG_OR);
+//            if (apbo_prdata[7:0] != gpioo_oen[7:0])
+//                $display("Test error");
+//        end
         
-        apb.mst_tb.cyc_wait(15);
+//        apb.mst_tb.cyc_wait(15);
         
-        apb.mst_tb.write( 32'h35, PORT_OUT_REG);
-        apb.mst_tb.cyc_wait(1);
-        apb.mst_tb.write( 8'b11 , PORT_OUT_REG_XOR);
-        apb.mst_tb.cyc_wait(5);
-        apb.mst_tb.write( 32'hff, PORT_DIR_REG);
-        apb.mst_tb.cyc_wait(1);
-        apb.mst_tb.write( 8'b01 , PORT_DIR_REG_XOR);
+//        for (int i=0; i<=255; i++)
+//        begin
+    //        apb.mst_tb.write( i, PORT_OUT_REG);
+    //        //apb.mst_tb.cyc_wait(1);
+    //        apb.mst_tb.write( i , PORT_OUT_REG_AND);
+    //        if (apbo_prdata[7:0] != gpioo_dout[7:0])
+    //          $display("Test error");
+//        end
+
+//        apb.mst_tb.cyc_wait(5);
+
+//        for (int i=0; i<=255; i++)
+//        begin
+//            //apb.mst_tb.cyc_wait(2);
+//            apb.mst_tb.write( i, PORT_DIR_REG);
+//            //apb.mst_tb.cyc_wait(1);
+//            apb.mst_tb.write( i , PORT_DIR_REG_AND);
+//            if (apbo_prdata[7:0] != gpioo_oen[7:0])
+//                $display("Test error");
+//        end
+        
+//        apb.mst_tb.cyc_wait(15);
+        
+//        for (int i=0; i<=255; i++)
+//        begin
+    //        apb.mst_tb.write( i, PORT_OUT_REG);
+    //        //apb.mst_tb.cyc_wait(1);
+    //        apb.mst_tb.write( i , PORT_OUT_REG_XOR);
+    //        if (apbo_prdata[7:0] != gpioo_dout[7:0])
+    //          $display("Test error");
+//        end
+
+//        apb.mst_tb.cyc_wait(5);
+
+//        for (int i=0; i<=255; i++)
+//        begin
+//            //apb.mst_tb.cyc_wait(2);
+//            apb.mst_tb.write( i, PORT_DIR_REG);
+//            //apb.mst_tb.cyc_wait(1);
+//            apb.mst_tb.write( i , PORT_DIR_REG_XOR);
+//            if (apbo_prdata[7:0] != gpioo_oen[7:0])
+//                $display("Test error");
+//        end
+
+//        apb.mst_tb.write( 32'h35, PORT_OUT_REG);
+//        apb.mst_tb.cyc_wait(1);
+//        apb.mst_tb.write( 8'b11 , PORT_OUT_REG_XOR);
+//        apb.mst_tb.cyc_wait(5);
+//        apb.mst_tb.write( 32'hff, PORT_DIR_REG);
+//        apb.mst_tb.cyc_wait(1);
+//        apb.mst_tb.write( 8'b01 , PORT_DIR_REG_XOR);
     end
    
     // Test 4
-    //Регистр IMASK
+    //Register IMASK
     if (define == 4)
     begin     
         apb.mst_tb.write( 32'h55, PORT_IMASK_REG);
