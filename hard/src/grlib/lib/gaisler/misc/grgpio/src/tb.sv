@@ -174,10 +174,12 @@ localparam PORT_DIR_REG_XOR   = 32'h78;
 localparam PORT_IMASK_REG_XOR = 32'h7C;
 
 logic [31:0] read_data ;
-logic [31:0] gpioo_dout_reg;
+logic [31:0] gpioo_dout_reg, gpioi_sig_in_reg;
 
-always@ ( posedge clk )
-    gpioo_dout_reg <= gpioo_dout;
+always@ ( posedge clk ) begin
+    gpioo_dout_reg   <=   gpioo_dout;
+    gpioi_sig_in_reg <= gpioi_sig_in;
+    end
 
 integer define = 2;
 
@@ -225,15 +227,26 @@ initial begin
     // Test 2
     if (define == 2)
     begin
+        apb.mst_tb.write( 32'hff, 32'h4C);
         for (int i=0; i<=255; i++)
         begin
-            apb.mst_tb.write( i, 32'h4C);
             gpioi_sig_in = i;
-            if (gpioi_sig_in[i] == 1)
-                if (gpioo_dout[i] == gpioo_dout_reg[i])
-                    $display("Test error");
-//            if (gpioi_sig_in[7:0] != gpioo_dout[7:0])
-//                $display("Test error");
+            @(posedge clk);
+            for (int j=0; j<=31; j++)
+            begin
+//                if (gpioi_sig_in_reg[j] == 1)
+//                    if (gpioo_dout[j] == gpioo_dout_reg[j])
+//                        $display("Test error");
+//                else //if (gpioi_sig_in_reg[j] == 0)
+//                    if (gpioo_dout[j] != gpioo_dout_reg[j])
+//                        $display("Test error");
+                      
+                if ((gpioi_sig_in_reg[j] == 1)&&(gpioo_dout[j] == gpioo_dout_reg[j]))
+                        $display("Test error");
+                else if ((gpioi_sig_in_reg[j] == 0)&&(gpioo_dout[j] != gpioo_dout_reg[j]))
+                        $display("Test error");
+                        
+            end
         end
     end
     
@@ -281,19 +294,5 @@ initial begin
     apb.mst_tb.cyc_wait(50);
     $stop();
   end
-  
-//  initial begin 
-//    $display("TEST2 STARTED");
-//      if (define == 2)
-//          begin 
-//            for (int i=0; i<=255; i++)
-//              begin
-//              if ((gpioi_sig_in[i] == 1)&&(gpioo_dout[i] == gpioo_dout_reg[i]))
-//                        $display("Test error");        
-//              end
-//          end
-          
-//     $stop();
-//  end
   
 endmodule // tb
