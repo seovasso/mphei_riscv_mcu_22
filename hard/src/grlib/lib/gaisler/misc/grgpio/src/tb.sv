@@ -174,9 +174,15 @@ localparam PORT_DIR_REG_XOR   = 32'h78;
 localparam PORT_IMASK_REG_XOR = 32'h7C;
 
 logic [31:0] read_data ;
+logic [31:0] gpioo_dout_reg;
+
+always@ ( posedge clk )
+    gpioo_dout_reg <= gpioo_dout;
+
+integer define = 2;
 
 initial begin
-    integer define = 3;
+
     logic   ok=1;
     apb.mst_tb.init;
 
@@ -211,7 +217,6 @@ initial begin
         begin
             pado_io = i;
             apb.mst_tb.read( read_data, PORT_DATA_REG);
-            //apb.mst_tb.read( read_data, PORT_DATA_REG);
             if (read_data[7:0] != pado_io[7:0])
                 $display("Test error");
         end
@@ -220,112 +225,46 @@ initial begin
     // Test 2
     if (define == 2)
     begin
-//    apb.mst_tb.cyc_wait(1);
-//    apb.mst_tb.write( 8'b1, 32'h4C);
-//    gpioi_sig_in = 8'b1;
         for (int i=0; i<=255; i++)
         begin
             apb.mst_tb.write( i, 32'h4C);
             gpioi_sig_in = i;
-            if ((gpioi_sig_in[7:0] != gpioo_dout[7:0])&&(apbi_penable == 1))
-                $display("Test error");
+            if (gpioi_sig_in[i] == 1)
+                if (gpioo_dout[i] == gpioo_dout_reg[i])
+                    $display("Test error");
+//            if (gpioi_sig_in[7:0] != gpioo_dout[7:0])
+//                $display("Test error");
         end
     end
-
-//    apb.mst_tb.cyc_wait(1);
-//    apb.mst_tb.write( 8'b1, 32'h4C); 
     
     // Test 3
     //Registers OR AND XOR
     if (define == 3)
     begin
-        //apb.mst_tb.write( 32'h35, PORT_OUT_REG);
-        //apb.mst_tb.cyc_wait(1);
-        //apb.mst_tb.write( 8'b11 , PORT_OUT_REG_OR);
-        //apb.mst_tb.cyc_wait(5);
-        //apb.mst_tb.write( 32'h23, PORT_OUT_REG);
-        //apb.mst_tb.cyc_wait(1);
-        //apb.mst_tb.write( 8'b11 , PORT_OUT_REG_OR);
-//        apb.mst_tb.cyc_wait(5);
-//        apb.mst_tb.write( 32'hff, PORT_DIR_REG);
-//        apb.mst_tb.cyc_wait(1);
-//        apb.mst_tb.write( 1'b1 , PORT_DIR_REG_OR);
-
-//        for (int i=0; i<=255; i++)
-//        begin
-//            //apb.mst_tb.cyc_wait(5);
-//            apb.mst_tb.write( i, PORT_OUT_REG);
-//            //apb.mst_tb.cyc_wait(1);
-//            apb.mst_tb.write( i , PORT_OUT_REG_OR);
-//            if (apbo_prdata[7:0] != gpioo_dout[7:0])
-//                $display("Test error");
-//        end 
+    
+        for (int i=0; i<=255; i++)
+        begin
+            apb.mst_tb.write( i, PORT_OUT_REG);
+            apb.mst_tb.write( i , PORT_OUT_REG_OR);
+            if (apbo_prdata[7:0] != gpioo_dout[7:0])
+                $display("Test error");
+        end 
         
-        //apb.mst_tb.cyc_wait(5);
+        for (int i=0; i<=255; i++)
+        begin
+            apb.mst_tb.write( i, PORT_OUT_REG);
+            apb.mst_tb.write( i , PORT_OUT_REG_AND);
+            if (apbo_prdata[7:0] != gpioo_dout[7:0])
+              $display("Test error");
+        end
         
-//        for (int i=0; i<=255; i++)
-//        begin
-//            //apb.mst_tb.cyc_wait(2);
-//            apb.mst_tb.write( i, PORT_DIR_REG);
-//            //apb.mst_tb.cyc_wait(1);
-//            apb.mst_tb.write( i , PORT_DIR_REG_OR);
-//            if (apbo_prdata[7:0] != gpioo_oen[7:0])
-//                $display("Test error");
-//        end
-        
-//        apb.mst_tb.cyc_wait(15);
-        
-//        for (int i=0; i<=255; i++)
-//        begin
-    //        apb.mst_tb.write( i, PORT_OUT_REG);
-    //        //apb.mst_tb.cyc_wait(1);
-    //        apb.mst_tb.write( i , PORT_OUT_REG_AND);
-    //        if (apbo_prdata[7:0] != gpioo_dout[7:0])
-    //          $display("Test error");
-//        end
-
-//        apb.mst_tb.cyc_wait(5);
-
-//        for (int i=0; i<=255; i++)
-//        begin
-//            //apb.mst_tb.cyc_wait(2);
-//            apb.mst_tb.write( i, PORT_DIR_REG);
-//            //apb.mst_tb.cyc_wait(1);
-//            apb.mst_tb.write( i , PORT_DIR_REG_AND);
-//            if (apbo_prdata[7:0] != gpioo_oen[7:0])
-//                $display("Test error");
-//        end
-        
-//        apb.mst_tb.cyc_wait(15);
-        
-//        for (int i=0; i<=255; i++)
-//        begin
-    //        apb.mst_tb.write( i, PORT_OUT_REG);
-    //        //apb.mst_tb.cyc_wait(1);
-    //        apb.mst_tb.write( i , PORT_OUT_REG_XOR);
-    //        if (apbo_prdata[7:0] != gpioo_dout[7:0])
-    //          $display("Test error");
-//        end
-
-//        apb.mst_tb.cyc_wait(5);
-
-//        for (int i=0; i<=255; i++)
-//        begin
-//            //apb.mst_tb.cyc_wait(2);
-//            apb.mst_tb.write( i, PORT_DIR_REG);
-//            //apb.mst_tb.cyc_wait(1);
-//            apb.mst_tb.write( i , PORT_DIR_REG_XOR);
-//            if (apbo_prdata[7:0] != gpioo_oen[7:0])
-//                $display("Test error");
-//        end
-
-//        apb.mst_tb.write( 32'h35, PORT_OUT_REG);
-//        apb.mst_tb.cyc_wait(1);
-//        apb.mst_tb.write( 8'b11 , PORT_OUT_REG_XOR);
-//        apb.mst_tb.cyc_wait(5);
-//        apb.mst_tb.write( 32'hff, PORT_DIR_REG);
-//        apb.mst_tb.cyc_wait(1);
-//        apb.mst_tb.write( 8'b01 , PORT_DIR_REG_XOR);
+        for (int i=0; i<=255; i++)
+        begin
+            apb.mst_tb.write( i, PORT_OUT_REG);
+            apb.mst_tb.write( i , PORT_OUT_REG_XOR);
+            if (apbo_prdata[7:0] != gpioo_dout[7:0])
+              $display("Test error");
+        end
     end
    
     // Test 4
@@ -342,4 +281,19 @@ initial begin
     apb.mst_tb.cyc_wait(50);
     $stop();
   end
+  
+//  initial begin 
+//    $display("TEST2 STARTED");
+//      if (define == 2)
+//          begin 
+//            for (int i=0; i<=255; i++)
+//              begin
+//              if ((gpioi_sig_in[i] == 1)&&(gpioo_dout[i] == gpioo_dout_reg[i]))
+//                        $display("Test error");        
+//              end
+//          end
+          
+//     $stop();
+//  end
+  
 endmodule // tb
