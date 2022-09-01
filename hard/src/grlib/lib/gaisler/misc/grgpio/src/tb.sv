@@ -14,20 +14,23 @@ module tb ();
   logic       [31:0] pwm_period_i  ;
   logic       [31:0] duty_cycle_i  ;
 
+  logic       [31:0] pwm_o         ;
+
   wire        [2:0]  io            ;
   logic       [2:0]  pado_io       ;
 
   always #(`CLK_PERIOD/2) clk = !clk;
   initial #(`RESET_GOES_HIGH) rstn = 1'b1;
   
-  top #(
+  top #()
+  uut(
     .rstn          (rstn               ),//: in  std_logic;
-    .clk           (clk                ),//: in  std_logic;
+    .clk           (clk                )//: in  std_logic;
 
-    .enable_i      (enable_i           ),
-    .prescaler_i   (prescaler_i        ),
-    .pwm_period_i  (pwm_period_i       ),
-    .duty_cycle_i  (duty_cycle_i       )
+    // .enable_i      (enable_i           ),
+    // .prescaler_i   (prescaler_i        ),
+    // .pwm_period_i  (pwm_period_i       ),
+    // .duty_cycle_i  (duty_cycle_i       )
   );
 
 initial begin
