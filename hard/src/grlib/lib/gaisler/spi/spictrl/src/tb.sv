@@ -60,7 +60,7 @@ module tb  ();
   wire selectsm;
   
   
-  spi_wrap #(.syncram(0), .prot(0), .slvselen(1), .fdepth(3)) master(
+  spi_wrap #(.syncram(0), .prot(0), .slvselen(1), .fdepth(0)) master(
   
     .clk (clk ) ,
     .rstn(rstn) ,
@@ -100,7 +100,7 @@ module tb  ();
     .slvsel_wrap (selectms)
   );
   
-  spi_wrap #(.syncram(0), .prot(0), .slvselen(1), .fdepth(3)) slave(
+  spi_wrap #(.syncram(0), .prot(0), .slvselen(1), .fdepth(0)) slave(
     .clk (clk ) ,
     .rstn(rstn) ,
     .apbi_psel   (apb_psel_slave),
@@ -184,15 +184,20 @@ module tb  ();
           integer Arr;
         integer Brr;
         integer HRAN;
+        integer NE = 0;
+  
   
   initial begin
     localparam CM_EN = 24;
     localparam CM_MS = 25;
-    localparam CM_ASEL = 14;
-    localparam CC_LST = 22;
-    localparam CE_LT = 14;
-    localparam CM_REV = 26;
-    localparam PM = 16;
+    localparam CM_FACT = 13;
+    localparam CM_PM16 = 16;
+    localparam CM_PM17 = 17;
+    localparam CM_PM18 = 18;
+    localparam CM_PM19 = 19;
+    localparam CM_DIV16 = 27;
+    localparam CM_CPHA = 28;
+    localparam CM_CPOL = 29;
     apb.mst_tb.init;
     apb_slave.mst_tb.init;
     
@@ -201,31 +206,31 @@ module tb  ();
     
      case (BITRATE)
      32'd100 : begin
-            hran = (hran | 1 << 16 | 1 << 17 | 1 << 18 | 1 << 27);
+            hran = (hran | 1 << CM_PM16 | 1 << CM_PM17 | 1 << CM_PM18 | 1 << CM_DIV16);
         end
         32'd1000 :begin 
-            hran = (hran | 1 << 16 | 1 << 17 | 1 << 19);
+            hran = (hran | 1 << CM_PM16 | 1 << CM_PM17 | 1 << CM_PM19);
         end
         32'd2500 :begin 
-            hran = (hran | 1 << 13);
+            hran = (hran | 1 << CM_FACT);
         end
         default: begin
-            hran = (hran | 1 << 16 | 1 << 17 | 1 << 19);;
+            hran = (hran | 1 << CM_PM16 | 1 << CM_PM17 | 1 << CM_PM19);;
         end
       endcase
 
     if (SPI_MODE == 0) begin 
-        apb_slave.mst_tb.write((hran | 0 << 29 | 0 << 28 | 1 << CM_EN | 0 << CM_MS), 32'h20);
-        apb.mst_tb.write((hran | 0 << 29 | 0 << 28 | 1 << CM_EN | 1 << CM_MS), 32'h20);
+        apb_slave.mst_tb.write((hran | 0 << CM_CPOL | 0 << CM_CPHA | 1 << CM_EN | 0 << CM_MS), 32'h20);
+        apb.mst_tb.write((hran | 0 << CM_CPOL | 0 << CM_CPHA | 1 << CM_EN | 1 << CM_MS), 32'h20);
     end else if (SPI_MODE == 1) begin
-        apb_slave.mst_tb.write((hran | 0 << 29 | 1 << 28 | 1 << CM_EN | 0 << CM_MS), 32'h20);
-        apb.mst_tb.write((hran | 0 << 29 | 1 << 28 | 1 << CM_EN | 1 << CM_MS), 32'h20);
+        apb_slave.mst_tb.write((hran | 0 << CM_CPOL | 1 << CM_CPHA | 1 << CM_EN | 0 << CM_MS), 32'h20);
+        apb.mst_tb.write((hran | 0 << CM_CPOL | 1 << CM_CPHA | 1 << CM_EN | 1 << CM_MS), 32'h20);
     end else if (SPI_MODE == 2) begin
-        apb_slave.mst_tb.write((hran | 1 << 29 | 0 << 28 | 1 << CM_EN | 0 << CM_MS), 32'h20);
-        apb.mst_tb.write((hran | 1 << 29 | 0 << 28 | 1 << CM_EN | 1 << CM_MS), 32'h20);
+        apb_slave.mst_tb.write((hran | 1 << CM_CPOL | 0 << CM_CPHA | 1 << CM_EN | 0 << CM_MS), 32'h20);
+        apb.mst_tb.write((hran | 1 << CM_CPOL | 0 << CM_CPHA | 1 << CM_EN | 1 << CM_MS), 32'h20);
     end else if (SPI_MODE == 3) begin
-        apb_slave.mst_tb.write((hran | 1 << 29 | 1 << 28 | 1 << CM_EN | 0 << CM_MS), 32'h20);
-        apb.mst_tb.write((hran | 1 << 29 | 1 << 28 | 1 << CM_EN | 1 << CM_MS), 32'h20);
+        apb_slave.mst_tb.write((hran | 1 << CM_CPOL | 1 << CM_CPHA | 1 << CM_EN | 0 << CM_MS), 32'h20);
+        apb.mst_tb.write((hran | 1 << CM_CPOL | 1 << CM_CPHA | 1 << CM_EN | 1 << CM_MS), 32'h20);
     end
 
 
@@ -234,37 +239,48 @@ module tb  ();
         Brr = $urandom_range(2147483, 0);
         apb.mst_tb.write(Arr, 32'h30); 
         apb_slave.mst_tb.write(Brr, 32'h30);
-        if (i == 1) begin
-            HRAN = Arr;
-                   $display(Arr);
+        HRAN = Arr;
+        if (BITRATE == 32'd100) begin
+            #60000 apb_slave.mst_tb.read(apb_prdata, 32'h34);
         end
-        if (i == 8) begin
-            apb.mst_tb.write(32'h0000_0000 | 1 << 22, 32'h2C);
-            apb_slave.mst_tb.write(32'h0000_0000 | 1 << 22, 32'h2C);
-            apb.mst_tb.write(32'h0000_0000 | 1 << 14, 32'h24);
-            apb_slave.mst_tb.write(32'h0000_0000 | 1 << 14, 32'h24);
-             apb.mst_tb.cyc_wait(2000);
+        if (BITRATE == 32'd1000) begin
+            #6000 apb_slave.mst_tb.read(apb_prdata, 32'h34);
         end
-       end
-       if (BITRATE == 32'd100) begin
-     #300000 apb_slave.mst_tb.read(apb_prdata, 32'h34);
+        if (BITRATE == 32'd2500) begin
+            #200 apb_slave.mst_tb.read(apb_prdata, 32'h34);
+        end
+        
         if (apb_prdata == HRAN) begin
-            $display("damn");
-            $display(Arr);
-       end else  begin
-            $display("ne damn");
-             apb.mst_tb.cyc_wait(200);
-             end
-      end else begin
-      #30000 apb_slave.mst_tb.read(apb_prdata, 32'h34);
-                if (apb_prdata == HRAN) begin
-            $display("Test passed");
-            $display(Arr);
-       end else  begin
+            NE = NE + 1;
+        end else  begin
             $display("Ne passed");
-            
-             apb.mst_tb.cyc_wait(200);
-             end
+        end
+        if (NE == 7) begin
+            $display("Test passed");
+        end
+        end
     end
-  end
+  //       if (BITRATE == 32'd100) begin
+//     #300000 apb_slave.mst_tb.read(apb_prdata, 32'h34);
+//        if (apb_prdata == HRAN) begin
+//            $display("damn");
+//            $display(Arr);
+//       end else  begin
+//            $display("ne damn");
+//             apb.mst_tb.cyc_wait(200);
+//             end
+//      end else begin
+//      end
+    
+  //       if (BITRATE == 32'd100) begin
+//     #300000 apb_slave.mst_tb.read(apb_prdata, 32'h34);
+//        if (apb_prdata == HRAN) begin
+//            $display("damn");
+//            $display(Arr);
+//       end else  begin
+//            $display("ne damn");
+//             apb.mst_tb.cyc_wait(200);
+//             end
+//      end else begin
+//      end
 endmodule 
