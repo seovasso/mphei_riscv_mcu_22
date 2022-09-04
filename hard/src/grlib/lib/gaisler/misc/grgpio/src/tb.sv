@@ -6,36 +6,25 @@
 module tb ();
 //pwm
   // Clock/reset generation
-  logic        clk           = 1'b0;
-  logic        rstn          = 1'b0;
-     
-  logic       [2:0]  enable_i      ;
-  logic       [31:0] prescaler_i   ;
-  logic       [31:0] pwm_period_i  ;
-  logic       [31:0] duty_cycle_i  ;
+  logic        clk_i           = 1'b0;
+  logic        rstn_i          = 1'b0;
 
-  logic       [31:0] pwm_o         ;
+  logic  [2:0] pwm_io         ;
 
-  wire        [2:0]  io            ;
-  logic       [2:0]  pado_io       ;
-
-  always #(`CLK_PERIOD/2) clk = !clk;
-  initial #(`RESET_GOES_HIGH) rstn = 1'b1;
+  always #(`CLK_PERIOD/2) clk_i = !clk_i;
+  initial #(`RESET_GOES_HIGH) rstn_i = 1'b1;
   
   top #()
   uut(
-    .rstn          (rstn               ),//: in  std_logic;
-    .clk           (clk                )//: in  std_logic;
+    .rstn_i          (rstn_i               ),//: in  std_logic;
+    .clk_i           (clk_i                ),//: in  std_logic;
 
-    // .enable_i      (enable_i           ),
-    // .prescaler_i   (prescaler_i        ),
-    // .pwm_period_i  (pwm_period_i       ),
-    // .duty_cycle_i  (duty_cycle_i       )
+    .pwm_io          (pwm_io               )
   );
 
 initial begin
     logic   ok=1;
-    apb.mst_tb.init;
+    //apb.mst_tb.init;
 
     $display("TEST STARTED");
     // we wait start
@@ -45,7 +34,7 @@ initial begin
 
     if (ok == 1) $display("TEST PASSED");
     else         $display("TEST FAILED");
-    apb.mst_tb.cyc_wait(50);
+    //apb.mst_tb.cyc_wait(50);
     $stop();
   end
 endmodule // tb

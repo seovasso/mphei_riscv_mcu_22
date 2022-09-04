@@ -5,7 +5,7 @@ module MUX(a, enable, y);
   output reg  y     ;
 
   always@ (a or enable)
-    if (enable == 1'b1)
+    if (enable == 1'b0)
       y = 1'bz;
     else
       y = a;
@@ -24,28 +24,32 @@ module IO_Pad (pad_pwm_dout, pad_pwm_oen, pad_pwm_din, pad_io);
 endmodule
 
 module top (
-  input              clk          ,
-  input              rstn         ,
+  input              clk_i             ,
+  input              rstn_i            ,
 
-  output      [2:0]  pwm_o         
+  output  logic    [2:0]  pwm_io                 
 );
 
-  wire        [2:0]  io            ;
-  wire               in_pad        ;
-  logic       [2:0]  pado_io       ;
+  logic       [2:0]  enable_i     =8'b111   ;
+  logic  [2:0][31:0] prescaler_i  ={0,0,0};
+  logic  [2:0][31:0] pwm_period_i ={32'd255,32'd255,32'd255};
+  logic  [2:0][31:0] duty_cycle_i ={32'd32,32'd64,32'd5};
+
+  wire        [2:0]  io                ;
+  wire        [2:0]  in_pad            ;
+  logic       [2:0]  pwm_o           ;
 
 generate
-  for (genvar i=0; i<3; i++)
-  begin : pwm_iopad
-  IO_Pad U0(.pad_pwm_dout(pwm_o[i]), .pad_pwm_oen(enable_i[i]), .pad_pwm_din(in_pad), .pad_io(io[i]));
-  assign io[i] = pado_io[i];
+  for (genvar i=0; i<3; i++)begin : pwm_iopad
+  IO_Pad U0(.pad_pwm_dout(in_pad[i]), .pad_pwm_oen(enable_i[i]), .pad_pwm_din(pwm_o[i]), .pad_io(io[i]));
+  assign pwm_io[i] = io[i];
   end
 endgenerate
 
 pwm #()
 uut(
-  .clk         (clk_i       ),
-  .rstn        (rstn_i      ),
+  .clk_i       (clk_i       ),
+  .rstn_i      (rstn_i      ),
 
   .pwm_o       (pwm_o       ),
 
