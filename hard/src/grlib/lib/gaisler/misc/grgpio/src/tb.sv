@@ -181,7 +181,10 @@ always@ ( posedge clk ) begin
     gpioi_sig_in_reg <= gpioi_sig_in;
     end
 
-integer define = 2;
+`define test1
+//`define test2
+//`define test3 
+//`define test4 //doesn`t work
 
 initial begin
 
@@ -194,100 +197,121 @@ initial begin
     #(`CLK_PERIOD); 
     
     // Test 1 
-    if (define == 1)
-    begin
-        pado_io = 'z;
-        
-        apb.mst_tb.cyc_wait(1);
-        apb.mst_tb.write( 32'hff, PORT_DIR_REG);
-        apb.mst_tb.cyc_wait(1);
-        for (int i=0; i<=255; i++)
+    `ifdef test1
         begin
-            apb.mst_tb.write( i, PORT_OUT_REG);
+            pado_io = 'z;
+            
             apb.mst_tb.cyc_wait(1);
-            if (io != i)
+            apb.mst_tb.write( 32'hff, PORT_DIR_REG);
+            apb.mst_tb.cyc_wait(1);
+            for (int i=0; i<=255; i++)
             begin
-             $display("Test error");
-             ok = 0;
-            end
-         end
+                apb.mst_tb.write( i, PORT_OUT_REG);
+                apb.mst_tb.cyc_wait(1);
+                if (io != i)
+                begin
+                 $display("Test error");
+                 ok = 0;
+                end
+             end
+            
+            apb.mst_tb.write( 32'h0, PORT_DIR_REG);
+            apb.mst_tb.cyc_wait(1);
         
-        apb.mst_tb.write( 32'h0, PORT_DIR_REG);
-        apb.mst_tb.cyc_wait(1);
-    
-        for (int i=0; i<=255; i++)
-        begin
-            pado_io = i;
-            apb.mst_tb.read( read_data, PORT_DATA_REG);
-            if (read_data[7:0] != pado_io[7:0])
-                $display("Test error");
+            for (int i=0; i<=255; i++)
+            begin
+                pado_io = i;
+                apb.mst_tb.read( read_data, PORT_DATA_REG);
+                if (read_data[7:0] != pado_io[7:0])
+                    begin
+                     $display("Test error");
+                     ok = 0;
+                    end
+            end
         end
-    end
+    `endif
     
     // Test 2
-    if (define == 2)
-    begin
-        apb.mst_tb.write( 32'hff, 32'h4C);
-        for (int i=0; i<=255; i++)
+    `ifdef test2
         begin
-            gpioi_sig_in = i;
-            @(posedge clk);
-            for (int j=0; j<=31; j++)
+            apb.mst_tb.write( 32'hff, 32'h4C);
+            for (int i=0; i<=255; i++)
             begin
-//                if (gpioi_sig_in_reg[j] == 1)
-//                    if (gpioo_dout[j] == gpioo_dout_reg[j])
-//                        $display("Test error");
-//                else //if (gpioi_sig_in_reg[j] == 0)
-//                    if (gpioo_dout[j] != gpioo_dout_reg[j])
-//                        $display("Test error");
-                      
-                if ((gpioi_sig_in_reg[j] == 1)&&(gpioo_dout[j] == gpioo_dout_reg[j]))
-                        $display("Test error");
-                else if ((gpioi_sig_in_reg[j] == 0)&&(gpioo_dout[j] != gpioo_dout_reg[j]))
-                        $display("Test error");
-                        
+                gpioi_sig_in = i;
+                @(posedge clk);
+                for (int j=0; j<=31; j++)
+                begin
+    //                if (gpioi_sig_in_reg[j] == 1)
+    //                    if (gpioo_dout[j] == gpioo_dout_reg[j])
+    //                        $display("Test error");
+    //                else //if (gpioi_sig_in_reg[j] == 0)
+    //                    if (gpioo_dout[j] != gpioo_dout_reg[j])
+    //                        $display("Test error");
+                          
+                    if ((gpioi_sig_in_reg[j] == 1)&&(gpioo_dout[j] == gpioo_dout_reg[j]))
+                        begin
+                         $display("Test error");
+                         ok = 0;
+                        end
+                    else if ((gpioi_sig_in_reg[j] == 0)&&(gpioo_dout[j] != gpioo_dout_reg[j]))
+                        begin
+                         $display("Test error");
+                         ok = 0;
+                        end        
+                end
             end
         end
-    end
+    `endif
     
     // Test 3
     //Registers OR AND XOR
-    if (define == 3)
-    begin
-    
-        for (int i=0; i<=255; i++)
+    `ifdef test3
         begin
-            apb.mst_tb.write( i, PORT_OUT_REG);
-            apb.mst_tb.write( i , PORT_OUT_REG_OR);
-            if (apbo_prdata[7:0] != gpioo_dout[7:0])
-                $display("Test error");
-        end 
         
-        for (int i=0; i<=255; i++)
-        begin
-            apb.mst_tb.write( i, PORT_OUT_REG);
-            apb.mst_tb.write( i , PORT_OUT_REG_AND);
-            if (apbo_prdata[7:0] != gpioo_dout[7:0])
-              $display("Test error");
+            for (int i=0; i<=255; i++)
+            begin
+                apb.mst_tb.write( i, PORT_OUT_REG);
+                apb.mst_tb.write( i , PORT_OUT_REG_OR);
+                if (apbo_prdata[7:0] != gpioo_dout[7:0])
+                    begin
+                     $display("Test error");
+                     ok = 0;
+                    end
+            end 
+            
+            for (int i=0; i<=255; i++)
+            begin
+                apb.mst_tb.write( i, PORT_OUT_REG);
+                apb.mst_tb.write( i , PORT_OUT_REG_AND);
+                if (apbo_prdata[7:0] != gpioo_dout[7:0])
+                    begin
+                     $display("Test error");
+                     ok = 0;
+                    end
+            end
+            
+            for (int i=0; i<=255; i++)
+            begin
+                apb.mst_tb.write( i, PORT_OUT_REG);
+                apb.mst_tb.write( i , PORT_OUT_REG_XOR);
+                if (apbo_prdata[7:0] != gpioo_dout[7:0])
+                    begin
+                     $display("Test error");
+                     ok = 0;
+                    end
+            end
         end
-        
-        for (int i=0; i<=255; i++)
-        begin
-            apb.mst_tb.write( i, PORT_OUT_REG);
-            apb.mst_tb.write( i , PORT_OUT_REG_XOR);
-            if (apbo_prdata[7:0] != gpioo_dout[7:0])
-              $display("Test error");
-        end
-    end
+    `endif
    
     // Test 4
     //Register IMASK
-    if (define == 4)
-    begin     
-        apb.mst_tb.write( 32'h55, PORT_IMASK_REG);
-        apb.mst_tb.cyc_wait(1);
-        apb.mst_tb.read( read_data , PORT_IMASK_REG);
-    end
+    `ifdef test4
+        begin     
+            apb.mst_tb.write( 32'h55, PORT_IMASK_REG);
+            apb.mst_tb.cyc_wait(1);
+            apb.mst_tb.read( read_data , PORT_IMASK_REG);
+        end
+    `endif
 
     if (ok == 1) $display("TEST PASSED");
     else         $display("TEST FAILED");
