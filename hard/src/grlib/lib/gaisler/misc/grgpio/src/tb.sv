@@ -175,15 +175,16 @@ localparam PORT_IMASK_REG_XOR = 32'h7C;
 
 logic [31:0] read_data ;
 logic [31:0] gpioo_dout_reg, gpioi_sig_in_reg;
+logic [7:0] tmp;
 
 always@ ( posedge clk ) begin
     gpioo_dout_reg   <=   gpioo_dout;
     gpioi_sig_in_reg <= gpioi_sig_in;
     end
 
-`define test1
+//`define test1
 //`define test2
-//`define test3 
+`define test3 
 //`define test4 //doesn`t work
 
 initial begin
@@ -234,6 +235,9 @@ initial begin
     // Test 2
     `ifdef test2
         begin
+            pado_io = 'z;
+            apb.mst_tb.write( 32'hff, PORT_DIR_REG);
+            apb.mst_tb.cyc_wait(1);
             apb.mst_tb.write( 32'hff, 32'h4C);
             for (int i=0; i<=255; i++)
             begin
@@ -241,13 +245,6 @@ initial begin
                 @(posedge clk);
                 for (int j=0; j<=31; j++)
                 begin
-    //                if (gpioi_sig_in_reg[j] == 1)
-    //                    if (gpioo_dout[j] == gpioo_dout_reg[j])
-    //                        $display("Test error");
-    //                else //if (gpioi_sig_in_reg[j] == 0)
-    //                    if (gpioo_dout[j] != gpioo_dout_reg[j])
-    //                        $display("Test error");
-                          
                     if ((gpioi_sig_in_reg[j] == 1)&&(gpioo_dout[j] == gpioo_dout_reg[j]))
                         begin
                          $display("Test error");
@@ -267,23 +264,26 @@ initial begin
     //Registers OR AND XOR
     `ifdef test3
         begin
-        
             for (int i=0; i<=255; i++)
             begin
-                apb.mst_tb.write( i, PORT_OUT_REG);
-                apb.mst_tb.write( i , PORT_OUT_REG_OR);
-                if (apbo_prdata[7:0] != gpioo_dout[7:0])
+                apb.mst_tb.write( 32'h0, PORT_OUT_REG);
+                apb.mst_tb.write( i, PORT_OUT_REG_OR);
+                tmp = 32'h0|i;
+                @(posedge clk);
+                if (tmp != gpioo_dout[7:0])
                     begin
                      $display("Test error");
                      ok = 0;
                     end
-            end 
+            end   
             
             for (int i=0; i<=255; i++)
             begin
-                apb.mst_tb.write( i, PORT_OUT_REG);
+                apb.mst_tb.write( 32'hff, PORT_OUT_REG);
                 apb.mst_tb.write( i , PORT_OUT_REG_AND);
-                if (apbo_prdata[7:0] != gpioo_dout[7:0])
+                tmp = 32'hff&i;
+                @(posedge clk);
+                if (tmp != gpioo_dout[7:0])
                     begin
                      $display("Test error");
                      ok = 0;
@@ -292,9 +292,11 @@ initial begin
             
             for (int i=0; i<=255; i++)
             begin
-                apb.mst_tb.write( i, PORT_OUT_REG);
+                apb.mst_tb.write( 32'hff, PORT_OUT_REG);
                 apb.mst_tb.write( i , PORT_OUT_REG_XOR);
-                if (apbo_prdata[7:0] != gpioo_dout[7:0])
+                tmp = 32'hff^i;
+                @(posedge clk);
+                if (tmp != gpioo_dout[7:0])
                     begin
                      $display("Test error");
                      ok = 0;
